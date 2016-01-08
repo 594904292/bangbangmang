@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.bbxiaoqu"
+    android:versionCode="2"
+    android:versionName="1.20160107" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="22" />
+
+    <!-- Push service 运行需要的权限 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.READ_LOGS" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <application
+        android:name="com.bbxiaoqu.DemoApplication"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.bbxiaoqu.ui.fragment.SendCrashActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.ui.Welcome"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.bbxiaoqu.ui.fragment.HomeActivity" />
+        <activity
+            android:name="com.bbxiaoqu.ui.LoginActivity"
+            android:label="@string/login"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateVisible|adjustResize" >
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.ui.sub.SelectPhotoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/DialogStyleBottom" >
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.ui.RegisterActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.ui.SendActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.ui.PublishActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.ui.SearchActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.ui.SuggestActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.ui.main.ViewActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.ui.main.ViewListActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.ui.sub.InfoGzActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.ui.sub.InfoBmActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.ui.sub.InfoMyActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.ui.sub.BmUserActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.ui.sub.ChattingActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.ui.sub.UserInfoActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.ui.sub.UserInfoViewActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.ui.community.SubscribeCommunityMapActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.ui.community.CommunityListActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.ui.community.CommunityActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.ui.community.AddCommunityActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.ui.community.SelCommunityActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.ui.community.LeftMessageTab"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.ui.community.CommunityGzListActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.ui.community.CommunityNearListActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.ui.sub.SettingsActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.ui.sub.ViewUserInfoActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.view.BaseActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.ui.sub.DiscussActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.ui.sub.PayActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.ui.sub.MyinfosActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.ui.sub.RecentActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.ui.sub.FriendsActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.ui.sub.PayAddActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.client.CustomActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleTask" >
+        </activity>
+        <activity
+            android:name="com.baidu.android.voicedemo.Setting"
+            android:configChanges="orientation|keyboardHidden|screenLayout"
+            android:label="设置"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="com.baidu.speech.asr.demo.setting" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.comm.gallery.BigImgActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.ui.AboutActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.ui.main.MainActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.ui.main.NearActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.ui.main.MapActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.ui.NoticeActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/myDialogTheme"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <!-- 后台服务 -->
+
+        <service android:name="com.bbxiaoqu.update.UpdateService" >
+        </service>
+        <service android:name="com.bbxiaoqu.client.xmpp.MessageService" >
+        </service>
+        <service android:name="com.bbxiaoqu.comm.service.ServiceDemo" >
+            <intent-filter>
+                <action android:name="com.bbxiaoqu.comm.service.ServiceDemo" />
+            </intent-filter>
+        </service>
+
+        <receiver android:name="com.bbxiaoqu.client.xmpp.StartXmppReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <!--
+        receiver android:name="com.bbxiaoqu.client.xmpp.StartXmppReceiver">
+        <intent-filter>
+            <action android:name="android.intent.action.BOOT_COMPLETED"></action>  
+
+            <action android:name="android.intent.action.USER_PRESENT" />  
+        </intent-filter>  
+        <intent-filter>  
+
+            <action android:name="android.intent.action.PACKAGE_ADDED"></action>  
+            <action android:name="android.intent.action.PACKAGE_REMOVED"></action>  
+            <data android:scheme="package"></data>  
+        </intent-filter>  
+        </receiver
+        -->
+
+
+        <!-- push应用定义消息receiver声明 -->
+        <receiver android:name="com.bbxiaoqu.client.baidu.BbPushMessageReceiver" >
+            <intent-filter>
+
+                <!-- 接收push消息 -->
+                <action android:name="com.baidu.android.pushservice.action.MESSAGE" />
+                <!-- 接收bind,unbind,fetch,delete等反馈消息 -->
+                <action android:name="com.baidu.android.pushservice.action.RECEIVE" />
+                <action android:name="com.baidu.android.pushservice.action.notification.CLICK" />
+            </intent-filter>
+        </receiver>
+
+        <!-- push必须的receviver和service声明 -->
+        <receiver
+            android:name="com.baidu.android.pushservice.PushServiceReceiver"
+            android:process=":bdservice_v1" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="com.baidu.android.pushservice.action.notification.SHOW" />
+                <action android:name="com.baidu.android.pushservice.action.media.CLICK" />
+                <!-- 以下四项为可选的action声明，可大大提高service存活率和消息到达速度 -->
+                <action android:name="android.intent.action.MEDIA_MOUNTED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.baidu.android.pushservice.RegistrationReceiver"
+            android:process=":bdservice_v1" >
+            <intent-filter>
+                <action android:name="com.baidu.android.pushservice.action.METHOD" />
+                <action android:name="com.baidu.android.pushservice.action.BIND_SYNC" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.baidu.android.pushservice.PushService"
+            android:exported="true"
+            android:process=":bdservice_v1" >
+            <intent-filter>
+                <action android:name="com.baidu.android.pushservice.action.PUSH_SERVICE" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.baidu.android.pushservice.CommandService"
+            android:exported="true" />
+        <!-- push结束 -->
+
+
+        <!-- 在百度开发者中心查询应用的API Key -->
+        <meta-data
+            android:name="api_key"
+            android:value="a9iBkVoUQAH78XCTnLdL6PoY" />
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" >
+            <intent-filter>
+                <action android:name="com.baidu.location.service_v2.2" >
+                </action>
+            </intent-filter>
+        </service>
+
+        <!-- 百度地图 -->
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="a9iBkVoUQAH78XCTnLdL6PoY" />
+
+        <!-- begin: baidu 语音 sdk -->
+        <meta-data
+            android:name="com.baidu.speech.API_KEY"
+            android:value="a9iBkVoUQAH78XCTnLdL6PoY" />
+        <meta-data
+            android:name="com.baidu.speech.SECRET_KEY"
+            android:value="NGO4k0pwf9rcbIiVimMkzEN58bAZtUbh" />
+
+        <service
+            android:name="com.baidu.speech.VoiceRecognitionService"
+            android:exported="false" />
+
+        <activity
+            android:name="com.baidu.voicerecognition.android.ui.BaiduASRDigitalDialog"
+            android:configChanges="orientation|keyboardHidden|screenLayout"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Dialog" >
+            <intent-filter>
+                <action android:name="com.baidu.action.RECOGNIZE_SPEECH" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <!-- end : baidu speech sdk -->
+
+    </application>
+
+</manifest>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/activity_bg_color"
+    android:orientation="horizontal" >
+
+    <include
+        android:id="@+id/title_bar"
+        layout="@layout/title_bar" />
+
+    <ListView
+        android:id="@+id/view_group_discuss_list"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/title_bar"
+        android:layout_marginBottom="50dp"
+        android:layout_marginTop="10dp"
+        android:divider="#b5b5b5"
+        android:dividerHeight="1dp"
+        android:listSelector="@drawable/list_selector" />
+
+    <RelativeLayout
+        android:id="@+id/view_rl_bottom"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/view_group_discuss_list"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/chat_footer_bg" >
+
+        <Button
+            android:id="@+id/view_group_discuss_submit"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/chat_send_btn"
+            android:onClick="discussSubmit"
+            android:text="发送"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/view_group_discuss"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@id/view_group_discuss_submit"
+            android:background="@drawable/login_edit_normal"
+            android:hint="评论"
+            android:singleLine="true"
+            android:textColor="#000"
+            android:textSize="18sp" >
+
+            <requestFocus />
+        </EditText>
+    </RelativeLayout>
+    <!--
+    LinearLayout
+        android:id="@+id/rl_bottom"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" >
+
+       
+        <include
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/custom_facerelativelayout" />
+    </LinearLayout
+    -->
+
+</RelativeLayout>

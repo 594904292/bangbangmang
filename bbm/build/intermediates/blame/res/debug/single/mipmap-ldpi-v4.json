@@ -1,0 +1,30 @@
+[
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-ldpi-v4\\face_del_ico_dafeult.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-ldpi\\face_del_ico_dafeult.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-ldpi-v4\\item_signature_iv_menu_defaul.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-ldpi\\item_signature_iv_menu_defaul.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-ldpi-v4\\d1.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-ldpi\\d1.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-ldpi-v4\\ic_pulltorefresh_arrow.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-ldpi\\ic_pulltorefresh_arrow.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-ldpi-v4\\face_del_ico_pressed.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-ldpi\\face_del_ico_pressed.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-ldpi-v4\\iv_face_pressed.9.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-ldpi\\iv_face_pressed.9.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-ldpi-v4\\d2.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-ldpi\\d2.png"
+    }
+]

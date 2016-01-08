@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" >
+ 
+    
+    <ImageView
+        android:id="@+id/xq_imageView"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:scaleType="fitXY"
+        android:padding="5dp"
+        android:src="@mipmap/ic_launcher" />
+    
+      <TextView
+        android:id="@+id/list.distance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/xq_imageView"        
+        android:textSize="12sp"/>
+      
+      
+       <TextView
+        android:id="@+id/list.homenumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"  
+        android:layout_marginLeft="30dp"
+         android:textSize="12sp"            
+        android:layout_toRightOf="@id/list.distance" />
+       
+	 <CheckBox
+	     android:id="@+id/list.select"
+	     android:layout_width="wrap_content"
+	     android:layout_height="wrap_content"
+	      android:layout_alignParentRight="true"
+	     />
+	  <TextView
+	     android:id="@+id/list.name"
+	     android:layout_width="fill_parent"
+	     android:layout_height="wrap_content"
+	    android:layout_below="@id/list.distance"
+        android:layout_toRightOf="@id/xq_imageView"
+        android:textSize="18sp"
+        />
+	  <TextView
+	     android:id="@+id/list.address"
+	     android:layout_width="fill_parent"
+	     android:layout_height="wrap_content"
+	   android:layout_below="@id/list.name"
+	   android:textSize="12sp"
+        android:layout_toRightOf="@id/xq_imageView"/>
+</RelativeLayout>
+
+

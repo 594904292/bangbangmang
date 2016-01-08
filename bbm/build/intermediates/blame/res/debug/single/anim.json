@@ -1,0 +1,58 @@
+[
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\anim\\avatar_animation_right_in.xml",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\anim\\avatar_animation_right_in.xml"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\anim\\slide_out_right.xml",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\anim\\slide_out_right.xml"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\anim\\slide_in_right.xml",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\anim\\slide_in_right.xml"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\anim\\slide_left_in.xml",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\anim\\slide_left_in.xml"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\anim\\push_bottom_out.xml",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\anim\\push_bottom_out.xml"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\anim\\push_bottom_in.xml",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\anim\\push_bottom_in.xml"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\anim\\avatar_animation_right_out.xml",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\anim\\avatar_animation_right_out.xml"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\anim\\slide_out_left.xml",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\anim\\slide_out_left.xml"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\anim\\slide_right_out.xml",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\anim\\slide_right_out.xml"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\anim\\app_refresh_progress.xml",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\anim\\app_refresh_progress.xml"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\anim\\hold.xml",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\anim\\hold.xml"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\anim\\slide_in_left.xml",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\anim\\slide_in_left.xml"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\anim\\fade.xml",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\anim\\fade.xml"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\anim\\slide_left_out.xml",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\anim\\slide_left_out.xml"
+    }
+]

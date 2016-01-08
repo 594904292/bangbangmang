@@ -1,0 +1,514 @@
+[
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\t11.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\t11.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\bdspeech_help_deep.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\bdspeech_help_deep.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\refresh_pressed.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\refresh_pressed.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\simple_notification_icon.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\simple_notification_icon.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\chat_bg_default.jpg",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\chat_bg_default.jpg"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\loading_3.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\loading_3.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\qr_android.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\qr_android.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\circle_praise.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\circle_praise.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\chatto_bg.xml",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\chatto_bg.xml"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\chatfrom_bg.xml",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\chatfrom_bg.xml"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\loading_1.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\loading_1.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\navi_map_gps_locked.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\navi_map_gps_locked.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\tab_sub_sos.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\tab_sub_sos.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\icon.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\icon.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\tab_settings.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\tab_settings.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\load.gif",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\load.gif"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\loading_2.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\loading_2.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\dynamic_join_left.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\dynamic_join_left.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\sos.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\sos.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\bpush_gray_logo.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\bpush_gray_logo.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\pin_blue.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\pin_blue.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\map_zan.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\map_zan.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\left.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\left.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\txt_search_clear.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\txt_search_clear.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\banner1.jpg",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\banner1.jpg"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\send.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\send.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\notice.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\notice.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\email.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\email.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\custom_loc.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\custom_loc.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\select_photo_bg.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\select_photo_bg.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\loading_5.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\loading_5.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\maker.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\maker.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\rihanna.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\rihanna.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\t2.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\t2.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\dynamic_info_left.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\dynamic_info_left.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\canhelp_pressed.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\canhelp_pressed.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\t32.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\t32.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\tab_settings_sel.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\tab_settings_sel.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\dynamic_info_icon.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\dynamic_info_icon.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\bdspeech_help_light.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\bdspeech_help_light.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\select_photo_up_bg.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\select_photo_up_bg.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\t22.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\t22.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\refresh_normal.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\refresh_normal.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\app_drag.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\app_drag.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\screenshot_loading.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\screenshot_loading.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\cancel_zan.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\cancel_zan.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\t12.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\t12.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\error.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\error.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\dynamic_name_left.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\dynamic_name_left.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\loading_6.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\loading_6.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\t52.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\t52.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\tab_subscribe.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\tab_subscribe.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\t5.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\t5.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\help_pressed.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\help_pressed.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\coment_pressed.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\coment_pressed.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\popup.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\popup.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\empty.jpg",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\empty.jpg"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\chat_bottom_send_normal.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\chat_bottom_send_normal.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\bottom_bg.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\bottom_bg.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\bdspeech_close_v2.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\bdspeech_close_v2.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\h_line.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\h_line.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\tab_message_sel.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\tab_message_sel.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\copyright.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\copyright.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\help_normal.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\help_normal.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\gallery_icon_bg.xml",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\gallery_icon_bg.xml"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\refresh_list_release_up.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\refresh_list_release_up.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\gallery_radio_on.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\gallery_radio_on.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\tab_sub_all.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\tab_sub_all.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\tab_sub_market.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\tab_sub_market.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\app_icon_loading.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\app_icon_loading.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\iv_face.xml",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\iv_face.xml"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\tab_sub_sos_my.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\tab_sub_sos_my.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\chat_bottom_send_pressed.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\chat_bottom_send_pressed.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\tab_sub_sos_my_sel.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\tab_sub_sos_my_sel.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\icon_gcoding.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\icon_gcoding.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\t31.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\t31.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\tab_message.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\tab_message.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\banner2.jpg",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\banner2.jpg"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\help3_normal.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\help3_normal.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\bdspeech_mask_deep.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\bdspeech_mask_deep.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\canhelp.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\canhelp.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\bdspeech_help_pressed_light.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\bdspeech_help_pressed_light.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\tab_publish.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\tab_publish.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\canhelp_normal.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\canhelp_normal.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\ic_launcher.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\circle_comment.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\circle_comment.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\t1.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\t1.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\icon_115profile.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\icon_115profile.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\mail.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\mail.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\t21.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\t21.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\ground_overlay.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\ground_overlay.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\bg_map_bottom.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\bg_map_bottom.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\bdspeech_mask_light.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\bdspeech_mask_light.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\chat_send_btn.xml",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\chat_send_btn.xml"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\tab_sub_market_sel.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\tab_sub_market_sel.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\txt_search_default.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\txt_search_default.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\bdspeech_help_pressed_deep.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\bdspeech_help_pressed_deep.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\yuyin.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\yuyin.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\t3.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\t3.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\gallery_radio_off.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\gallery_radio_off.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\t51.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\t51.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\help3.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\help3.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\croppictrue_bg.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\croppictrue_bg.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\t4.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\t4.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\face_del_icon.xml",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\face_del_icon.xml"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\tabswitcher_short.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\tabswitcher_short.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\help3_pressed.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\help3_pressed.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\help.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\help.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\ic_pulltorefresh_arrow.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\ic_pulltorefresh_arrow.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\loading_4.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\loading_4.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\no_image.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\no_image.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\ib_face.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\ib_face.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\tab_subscribe_sel.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\tab_subscribe_sel.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\tab_sub_all_sel.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\tab_sub_all_sel.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\pull_to_refresh_arrow.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\pull_to_refresh_arrow.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\loading_7.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\loading_7.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\myloc.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\myloc.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\tabswitcher_long.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\tabswitcher_long.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\tab_sub_sos_sel.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\tab_sub_sos_sel.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\dynamic_join_icon.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\dynamic_join_icon.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\tab_publish_sel.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\tab_publish_sel.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\t42.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\t42.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\t41.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\t41.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\banner3.jpg",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\banner3.jpg"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\refresh_list_pull_down.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\refresh_list_pull_down.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\loading_0.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\loading_0.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\dynamic_name_icon.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\dynamic_name_icon.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\bpush_return_btn.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-hdpi\\bpush_return_btn.png"
+    }
+]
