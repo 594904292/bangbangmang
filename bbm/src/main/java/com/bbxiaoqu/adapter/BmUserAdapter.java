@@ -101,9 +101,8 @@ public class BmUserAdapter extends BaseAdapter implements OnClickListener {
 		holder.button.setOnClickListener(this);
 		holder.button.setTag(position+"_tel");
 
-		
 		if(this.isbm)
-		{//确定有人报名了
+		{//确定有人报名
 			if(dataList.get(position).get("status").toString().equals("0"))
 			{//未报名,其它人已经报名,报名不能用
 				holder.button2.setVisibility(View.GONE);
