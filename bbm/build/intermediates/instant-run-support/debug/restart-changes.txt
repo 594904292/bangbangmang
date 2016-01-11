@@ -1,1 +1,8 @@
+F:\AndroidStudio\workspace\bbm\build\intermediates\transforms\instantRun\debug\folders\1\5\main\com\bbxiaoqu\adapter\ListViewAdapter$ViewHolderimg.class
+F:\AndroidStudio\workspace\bbm\build\intermediates\transforms\instantRun\debug\folders\1\5\main\com\bbxiaoqu\adapter\ListViewAdapter$ProgressLoadtagTask.class
+F:\AndroidStudio\workspace\bbm\build\intermediates\transforms\instantRun\debug\folders\1\5\main\com\bbxiaoqu\adapter\ListViewAdapter.class
+F:\AndroidStudio\workspace\bbm\build\intermediates\transforms\instantRun\debug\folders\1\5\main\com\bbxiaoqu\ui\main\NearActivity$3.class
+F:\AndroidStudio\workspace\bbm\build\intermediates\transforms\instantRun\debug\folders\1\5\main\com\bbxiaoqu\adapter\ListViewAdapter$1.class
+F:\AndroidStudio\workspace\bbm\build\intermediates\transforms\instantRun\debug\folders\1\5\main\com\bbxiaoqu\ui\main\NearActivity.class
+F:\AndroidStudio\workspace\bbm\build\intermediates\transforms\instantRun\debug\folders\1\5\main\com\bbxiaoqu\ui\main\NearActivity$2.class
 F:\AndroidStudio\workspace\bbm\build\intermediates\transforms\instantRun\debug\folders\1\5\main\com\bbxiaoqu\comm\service\db\XiaoquService.class

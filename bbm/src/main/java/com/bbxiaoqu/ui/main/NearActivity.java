@@ -261,11 +261,8 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 				// TODO Auto-generated method stub
 				Intent intent=new Intent(NearActivity.this,SearchActivity.class);									
 				startActivity(intent);
-				
-				
 			}
 		});
-		
 		top_add.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -278,9 +275,6 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 				
 			}
 		});
-	
-        
-		
 	}
 
 	private void initData() {

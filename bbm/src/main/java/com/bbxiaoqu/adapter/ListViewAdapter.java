@@ -175,14 +175,11 @@ public class ListViewAdapter extends BaseAdapter {
 						holder_img.imageView.setImageResource(R.mipmap.empty);
 					}
 				}
-	
 				@Override
 				public void onLoadingStarted(String arg0, View arg1) {
 					// TODO Auto-generated method stub
 					//开始加载
 				}
-				
-				
 			});
 		}
 		if(list.get(position).get("infocatagroy").toString().equals("0"))
@@ -205,24 +202,22 @@ public class ListViewAdapter extends BaseAdapter {
 		
 		holder_img.tag1.setText(list.get(position).get("tag1").toString());
 		holder_img.tag2.setText(list.get(position).get("tag2").toString());
-		if(list.get(position).get("status").toString().equals("0"))
+		if(list.get(position).get("infocatagroy").toString().equals("3")) {
+			holder_img.status.setText("");
+		}else
 		{
-			holder_img.status.setTextColor(Color.RED);   
-			holder_img.status.setText("求助中");
-		}
-		else if(list.get(position).get("status").toString().equals("1"))
-		{
-			holder_img.status.setTextColor(Color.GREEN);   
-			holder_img.status.setText("解决中");
-			
-		}else if(list.get(position).get("status").toString().equals("2"))
-		{
-			holder_img.status.setTextColor(Color.GRAY);   
-			holder_img.status.setText("已解决");
-		
-		}
+			if (list.get(position).get("status").toString().equals("0")) {
+				holder_img.status.setTextColor(Color.RED);
+				holder_img.status.setText("求助中");
+			} else if (list.get(position).get("status").toString().equals("1")) {
+				holder_img.status.setTextColor(Color.GREEN);
+				holder_img.status.setText("解决中");
 
-	
+			} else if (list.get(position).get("status").toString().equals("2")) {
+				holder_img.status.setTextColor(Color.GRAY);
+				holder_img.status.setText("已解决");
+			}
+		}
 		return convertView;
 	}
 	
