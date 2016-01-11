@@ -1,4 +1,4 @@
-package com.bbxiaoqu.ui.community;
+package com.bbxiaoqu.bean;
 
 public class Community {
 	private String id;  

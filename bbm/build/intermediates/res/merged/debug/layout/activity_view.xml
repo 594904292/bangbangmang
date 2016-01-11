@@ -200,7 +200,7 @@
 
     <TextView
         android:id="@+id/view_group_discuss_tip"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/body_info"
         android:layout_marginTop="10dp"
@@ -237,7 +237,7 @@
            android:background="@drawable/chat_send_btn"
             android:onClick="discussSubmit"
             android:text="发送"
-            android:textSize="20sp" />
+            android:textSize="15sp" />
 
         <EditText
             android:id="@+id/view_group_discuss"

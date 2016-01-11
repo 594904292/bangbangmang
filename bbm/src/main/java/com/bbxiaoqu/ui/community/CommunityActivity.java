@@ -100,10 +100,6 @@ import android.widget.Toast;
  * 小区信息显示
  */
 public class CommunityActivity extends BaseActivity {
-	TextView title_tv;
-	TextView right_text_tv;
-	TextView group_discuss_tip;
-
 	private DemoApplication myapplication;
 
 	private static final String TAG = CommunityActivity.class.getSimpleName();
@@ -111,10 +107,14 @@ public class CommunityActivity extends BaseActivity {
 
 	private DetailGallery myGallery;
 	private AssetManager assetManager;
+	TextView title_tv;
+	TextView right_text_tv;
+	TextView group_discuss_tip;
+
 
 	String getdatamethon = "";
-	public static String id = "";
-	String name = "";
+	String id = "";
+	String xqname = "";
 	String address = "";
 	String lat = "";
 	String lng = "";
@@ -125,7 +125,9 @@ public class CommunityActivity extends BaseActivity {
 	String propertytype = "";
 	String homenumber = "";
 	String buildyear = "";
-	
+	TextView title;
+	TextView right_text;
+	ImageView imgmore;
 	Button btn1;
 
 	@Override
@@ -136,23 +138,36 @@ public class CommunityActivity extends BaseActivity {
 		getWindow().setSoftInputMode(
 				WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 		myGallery = (DetailGallery) findViewById(R.id.detail_shotcut_gallery);
+		initView();
+		initData();
 		assetManager = this.getAssets();
 		btn1=(Button)findViewById(R.id.button1);
 		btn1.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				String name=v.getTag().toString();
+				String btn_name=v.getTag().toString();
 				XiaoquService xiaoquService = new XiaoquService(CommunityActivity.this);
-				if(name.equals("关注"))
+				if(btn_name.equals("关注"))
 				{
-					xiaoquService.addxiaoqu(id);
-					subscribe(id, "add");
-					btn1.setText("取消关注");
-				}else if(name.equals("取消关注"))
+					if(xiaoquService.allxiaoqunum()>3) {
+						T.showShort(myapplication, "最多只能关注三个小区");
+						return;
+					}else
+					{
+						xiaoquService.addxiaoqu(id, xqname);
+						subscribe(id, "add");
+						btn1.setText("取消关注");
+					}
+				}else if(btn_name.equals("取消关注"))
 				{
 					xiaoquService.removexiaoqu(id);
 					subscribe(id, "remove");
 					btn1.setText("关注");
 				}
+
+				Intent intent = new Intent();
+				intent.putExtra("community", xqname);
+				setResult(RESULT_OK, intent);
+				finish();
 				
 			}
 		});
@@ -161,7 +176,7 @@ public class CommunityActivity extends BaseActivity {
 		Bundle Bundle1 = this.getIntent().getExtras();		
 
 		id = Bundle1.getString("id");
-		name = Bundle1.getString("name");
+		xqname = Bundle1.getString("name");
 		address = Bundle1.getString("address");
 		lat = Bundle1.getString("lat");
 		lng = Bundle1.getString("lng");
@@ -197,6 +212,29 @@ public class CommunityActivity extends BaseActivity {
 		new Thread(ajaxloadinfo).start();
 
 	}
+
+	private void initView() {
+		title = (TextView) findViewById(R.id.title);
+		right_text = (TextView) findViewById(R.id.right_text);
+		right_text.setVisibility(View.GONE);
+		imgmore=(ImageView) findViewById(R.id.top_more);
+		imgmore.setVisibility(View.GONE);
+
+
+	}
+
+	private void initData() {
+		title.setText("附近小区 ");
+		right_text.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent=new Intent(CommunityActivity.this,AddCommunityActivity.class);
+				startActivity(intent);
+			}
+		});
+	}
+
 
 	private void subscribe(String xiaoquid, String action) {
 		String target = myapplication.getlocalhost()+"adduserxiaoqu.php";
@@ -234,7 +272,7 @@ public class CommunityActivity extends BaseActivity {
 				Message msg = new Message();
 				Bundle arguments = new Bundle();
 				arguments.putString("id",id);	
-				arguments.putString("name",name);	
+				arguments.putString("name",xqname);
 				arguments.putString("address",address);								
 				arguments.putString("pic",pic);					
 				arguments.putString("business",business);	
@@ -282,17 +320,7 @@ public class CommunityActivity extends BaseActivity {
 
 	};
 
-	private void initView() {
-		title_tv = (TextView) findViewById(R.id.title);
-		right_text_tv = (TextView) findViewById(R.id.right_text);
-		right_text_tv.setVisibility(View.GONE);
 
-	}
-
-	private void initData() {
-		title_tv.setText("查看");
-		right_text_tv.setText("");
-	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

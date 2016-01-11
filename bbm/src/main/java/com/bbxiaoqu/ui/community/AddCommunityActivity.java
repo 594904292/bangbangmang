@@ -120,6 +120,7 @@ OnGetGeoCoderResultListener {
 
 	TextView title;
 	TextView right_text;
+	ImageView topmore;
 	TextView latlngtip;
 	EditText name;
 	EditText propertymanagement;
@@ -184,6 +185,8 @@ OnGetGeoCoderResultListener {
 		title = (TextView) findViewById(R.id.title);
 		right_text = (TextView) findViewById(R.id.right_text);
 		right_text.setVisibility(View.VISIBLE);
+		topmore=(ImageView)findViewById(R.id.top_more);
+		topmore.setVisibility(View.GONE);
 
 	}
 	private void initData() {

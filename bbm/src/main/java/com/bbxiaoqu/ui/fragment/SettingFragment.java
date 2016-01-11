@@ -3,8 +3,6 @@ package com.bbxiaoqu.ui.fragment;
 
 
 import com.bbxiaoqu.R;
-import com.bbxiaoqu.ui.community.LeftMessageTab;
-import com.bbxiaoqu.ui.sub.SettingsActivity;
 import com.bbxiaoqu.ui.sub.UserInfoActivity;
 
 import android.annotation.SuppressLint;
@@ -63,8 +61,8 @@ public class SettingFragment extends Fragment implements OnClickListener{
 				this.getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 */				break;
 			case R.id.message_btn:
-				this.getActivity().startActivity(new Intent(this.getActivity(),LeftMessageTab.class));
-				this.getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);			
+				//this.getActivity().startActivity(new Intent(this.getActivity(),LeftMessageTab.class));
+				//this.getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 				break;				
 			default:
 				break;

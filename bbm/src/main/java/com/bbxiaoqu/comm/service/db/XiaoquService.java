@@ -12,20 +12,20 @@ public class XiaoquService {
 	
 	
 	
-	public boolean addxiaoqu(String xiaoquname){
+	public boolean addxiaoqu(String xiaoquid,String xiaoquname){
 		SQLiteDatabase sdb=dbHelper.getReadableDatabase();
-		String sql="insert into xiaoqu (xiaoquname) values(?)";
-		Object obj[]={xiaoquname};
+		String sql="insert into xiaoqu (xiaoquid,xiaoquname) values(?,?)";
+		Object obj[]={xiaoquid,xiaoquname};
 		sdb.execSQL(sql, obj);
 		sdb.close();
 		return true;
 	}
 	
 	
-	public boolean removexiaoqu(String xiaoquname){
+	public boolean removexiaoqu(String xiaoquid){
 		SQLiteDatabase sdb=dbHelper.getReadableDatabase();
-		String sql="delete from xiaoqu where xiaoquname=?";
-		Object obj[]={xiaoquname};
+		String sql="delete from xiaoqu where xiaoquid=?";
+		Object obj[]={xiaoquid};
 		sdb.execSQL(sql, obj);
 		sdb.close();
 		return true;
@@ -33,11 +33,11 @@ public class XiaoquService {
 	
 	
 	
-	public boolean isexit(String str) {
+	public boolean isexit(String xiaoquid) {
 		// 读写数据库
 		SQLiteDatabase sdb=dbHelper.getReadableDatabase();
-		String sql="select * from xiaoqu where xiaoquname=?";
-		Cursor cursor=sdb.rawQuery(sql, new String[]{str});		
+		String sql="select * from xiaoqu where xiaoquid=?";
+		Cursor cursor=sdb.rawQuery(sql, new String[]{xiaoquid});
 		if(cursor.moveToFirst()==true){
 			cursor.close();
 			sdb.close();
@@ -47,7 +47,45 @@ public class XiaoquService {
 		sdb.close();
 		return false;
 	}
-	
+
+
+	public String allxiaoqu() {
+		// 读写数据库
+		SQLiteDatabase sdb=dbHelper.getReadableDatabase();
+		String sql="select xiaoquname from xiaoqu";
+		String name="";
+		String obj[]=new String[]{};
+		Cursor c = sdb.rawQuery(sql, obj);
+		while (c.moveToNext()) {
+			//guidlist.add(String.valueOf(c.getString(1).toString()));
+			name=name+String.valueOf(c.getString(0).toString());
+			if(!c.isLast())
+			{
+				name=name+",";
+			}
+		}
+		c.close();
+		sdb.close();
+		return name;
+	}
+
+	public int allxiaoqunum() {
+		// 读写数据库
+		SQLiteDatabase sdb=dbHelper.getReadableDatabase();
+		String sql="select xiaoquname from xiaoqu";
+		String name="";
+		String obj[]=new String[]{};
+		int num=0;
+		Cursor c = sdb.rawQuery(sql, obj);
+
+			num=c.getCount();
+
+		c.close();
+		sdb.close();
+		return num;
+	}
+
+
 	public void close() {  
 	     if (dbHelper != null) {  
 	    	 dbHelper.close();  

@@ -74,9 +74,9 @@ public class LoginActivity extends BaseActivity implements OnFocusChangeListener
 	Button login, register;
 	UserService uService = new UserService(LoginActivity.this);
 	private static final int DIALOG_PROGRESS = 0;
-	// 用户不存在（用户名错误）
+	//用户不存在（用户名错误）
 	private static final int ERROR_CODE_USERNAME_NOT_EXIST = 211;
-	// 用户密码错误
+	//用户密码错误
 	private static final int ERROR_CODE_PASSWORD_INVALID = 212;
 
 	@Override
@@ -89,8 +89,6 @@ public class LoginActivity extends BaseActivity implements OnFocusChangeListener
 		myapplication = (DemoApplication) this.getApplication();
 		initView();
 	}
-
-	
 
 	private void initView() {
 		// TODO Auto-generated method stub
@@ -123,22 +121,18 @@ public class LoginActivity extends BaseActivity implements OnFocusChangeListener
 				} else {
 					login();					
 				}
-					
 			}
 		});
 		register.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				Intent intent = new Intent(LoginActivity.this,
-						RegisterActivity.class);
+				Intent intent = new Intent(LoginActivity.this,	RegisterActivity.class);
 				startActivity(intent);
-
 			}
 		});
 	}
 	
 	
 		private void login() {
-		    
 	        if (!isFinishing()) {
 	            showDialog(DIALOG_PROGRESS);
 	        } else {
@@ -167,7 +161,6 @@ public class LoginActivity extends BaseActivity implements OnFocusChangeListener
 		            mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 		            mProgressDialog.setMessage(getString(R.string.singin));
 		            return mProgressDialog;
-
 		        default:
 		            return super.onCreateDialog(id);
 		        }
@@ -198,40 +191,46 @@ public class LoginActivity extends BaseActivity implements OnFocusChangeListener
 				jsonobj = new JSONObject(JsonContext);
 				String userid = jsonobj.getString("userid");
 				if (userid != "") {
+					String pass = etPassword.getText().toString();
 					String password = jsonobj.getString("pass");
-					String telphone = jsonobj.getString("telphone");
-					String headface = jsonobj.getString("headface");
-					String username = jsonobj.getString("username");
-					User user = new User();
-					user.setNickname(username);
-					user.setUsername(userid);
-					user.setPassword(password);
-					user.setTelphone(telphone);
-					user.setHeadface(headface);
-					uService.register(user);// 注册一个
-					boolean flag = uService.login(userid,password);
-					myapplication.setUserId(userid);
-					myapplication.setPassword(password);
-					myapplication.setNickname(username);
-					myapplication.setHeadface(headface);
-					if (flag) {
-						Log.i("TAG", "登录成功");
-						uService.online(userid);// 更改状态
-						mSession.setUid(userid);
-						mSession.setUserName(username);
-						mSession.setPassword(password);
-						Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-						startActivity(intent);
-					} else {
+					if(!pass.equals(password))
+					{
 						Toast.makeText(LoginActivity.this, "码密错误",Toast.LENGTH_LONG).show();
-					} 
+						return;
+					}else {
+						String telphone = jsonobj.getString("telphone");
+						String headface = jsonobj.getString("headface");
+						String username = jsonobj.getString("username");
+						User user = new User();
+						user.setNickname(username);
+						user.setUsername(userid);
+						user.setPassword(password);
+						user.setTelphone(telphone);
+						user.setHeadface(headface);
+						uService.register(user);// 注册一个
+						boolean flag = uService.login(userid, password);
+						myapplication.setUserId(userid);
+						myapplication.setPassword(password);
+						myapplication.setNickname(username);
+						myapplication.setHeadface(headface);
+						if (flag) {
+							Log.i("TAG", "登录成功");
+							uService.online(userid);// 更改状态
+							mSession.setUid(userid);
+							mSession.setUserName(username);
+							mSession.setPassword(password);
+							Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+							startActivity(intent);
+						} else {
+							Toast.makeText(LoginActivity.this, "码密错误", Toast.LENGTH_LONG).show();
+						}
+					}
 				}
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}// 转换为JSONObject
-				
-            break;                   
+            break;
         default:
             break;
         }
@@ -317,19 +316,15 @@ public class LoginActivity extends BaseActivity implements OnFocusChangeListener
 	public void onFocusChange(View v, boolean flag) {
         switch (v.getId()) {
         case R.id.username:
-
             if (!flag) {
                 checkUserName();
             }
             break;
-
         case R.id.password:
-
             if (!flag) {
                 checkPassword(etPassword);
             }
             break;
-
         default:
             break;
         }

@@ -74,7 +74,6 @@
             android:label="@string/app_name" >  
              <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>          
         </activity>        
@@ -86,20 +85,13 @@
             android:screenOrientation="portrait"               
             android:label="@string/login" >
         </activity>
-     
-                 
-        <activity
+       <activity
             android:name="com.bbxiaoqu.ui.sub.SelectPhotoActivity"         
            android:screenOrientation="portrait"
             android:theme="@style/DialogStyleBottom" >
         </activity>
         <activity
             android:name="com.bbxiaoqu.ui.RegisterActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:label="@string/app_name" >
-        </activity>
-         <activity
-            android:name="com.bbxiaoqu.ui.SendActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name" >
         </activity>
@@ -171,12 +163,6 @@
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name" >
         </activity>
-        
-          <activity
-            android:name="com.bbxiaoqu.ui.community.CommunityListActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:label="@string/app_name" >
-        </activity>
          <activity
             android:name="com.bbxiaoqu.ui.community.CommunityActivity"
             android:configChanges="orientation|keyboardHidden"
@@ -194,19 +180,9 @@
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name" >
         </activity>
-                  <activity
-            android:name="com.bbxiaoqu.ui.community.LeftMessageTab"
-            android:configChanges="orientation|keyboardHidden"
-            android:label="@string/app_name" >
-        </activity>
-      
-        <activity
+
+         <activity
             android:name="com.bbxiaoqu.ui.community.CommunityGzListActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:label="@string/app_name" >
-        </activity>
-        <activity
-            android:name="com.bbxiaoqu.ui.community.CommunityNearListActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name" >
         </activity>
@@ -257,22 +233,7 @@
             android:label="@string/app_name" >
         </activity>
 
-        <activity
-            android:name="com.bbxiaoqu.client.CustomActivity"
-            android:launchMode="singleTask"
-            android:configChanges="orientation|keyboardHidden" >
-        </activity>
 
-        <activity
-            android:name="com.baidu.android.voicedemo.Setting"
-            android:label="设置"
-            android:configChanges="orientation|keyboardHidden|screenLayout"
-            android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="com.baidu.speech.asr.demo.setting" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
         <activity
             android:name="com.bbxiaoqu.comm.gallery.BigImgActivity"
             android:label="@string/app_name"

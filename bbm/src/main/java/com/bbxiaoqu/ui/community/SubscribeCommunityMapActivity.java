@@ -545,7 +545,7 @@ public class SubscribeCommunityMapActivity extends Activity {
 					currentInfo.setIszan(0);
 					
 				} else {
-					xiaoquService.addxiaoqu(currentInfo.getId());
+					xiaoquService.addxiaoqu(currentInfo.getId(),currentInfo.getName());
 					subscribe(currentInfo.getId(), "add");
 					currentMarker.setIcon(BitmapDescriptorFactory
 							.fromResource(R.mipmap.pin_blue));

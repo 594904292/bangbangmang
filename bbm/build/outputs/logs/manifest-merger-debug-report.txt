@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:2:1-442:12
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:2:1-403:12
 	xmlns:android
 		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:2:11-69
 	package
@@ -103,7 +103,7 @@ ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:54:5-70
 	android:name
 		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:54:23-67
 application
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:60:6-440:19
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:60:6-401:19
 	android:label
 		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:62:9-41
 	android:icon
@@ -125,580 +125,524 @@ ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:65:10-71:
 	android:name
 		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:66:13-70
 activity#com.bbxiaoqu.ui.Welcome
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:72:10-80:20
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:72:10-79:20
 	android:label
 		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:74:13-45
 	android:name
 		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:73:13-51
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:75:14-79:29
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:75:14-78:29
 action#android.intent.action.MAIN
 ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:76:17-69
 	android:name
 		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:76:25-66
 category#android.intent.category.LAUNCHER
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:78:17-77
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:77:17-77
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:78:27-74
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:77:27-74
 activity#com.bbxiaoqu.ui.fragment.HomeActivity
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:81:9-83
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:80:9-83
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:81:19-71
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:80:19-71
 activity#com.bbxiaoqu.ui.LoginActivity
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:82:10-88:20
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:81:10-87:20
 	android:windowSoftInputMode
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:84:13-68
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:83:13-68
 	android:screenOrientation
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:86:13-49
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:85:13-49
 	android:label
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:87:13-42
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:86:13-42
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:83:13-57
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:82:13-57
 	android:launchMode
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:85:13-44
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:84:13-44
 activity#com.bbxiaoqu.ui.sub.SelectPhotoActivity
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:91:9-95:20
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:88:8-92:20
 	android:screenOrientation
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:93:12-48
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:90:12-48
 	android:theme
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:94:13-53
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:91:13-53
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:92:13-67
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:89:13-67
 activity#com.bbxiaoqu.ui.RegisterActivity
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:96:9-100:20
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:93:9-97:20
 	android:label
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:99:13-45
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:96:13-45
 	android:configChanges
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:98:13-63
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:95:13-63
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:97:13-60
-activity#com.bbxiaoqu.ui.SendActivity
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:101:10-105:20
-	android:label
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:104:13-45
-	android:configChanges
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:103:13-63
-	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:102:13-56
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:94:13-60
 activity#com.bbxiaoqu.ui.PublishActivity
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:106:9-110:20
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:98:9-102:20
 	android:label
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:109:13-45
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:101:13-45
 	android:configChanges
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:108:13-63
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:100:13-63
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:107:13-59
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:99:13-59
 activity#com.bbxiaoqu.ui.SearchActivity
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:111:13-115:20
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:103:13-107:20
 	android:label
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:114:13-45
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:106:13-45
 	android:configChanges
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:113:13-63
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:105:13-63
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:112:13-58
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:104:13-58
 activity#com.bbxiaoqu.ui.SuggestActivity
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:116:11-120:20
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:108:11-112:20
 	android:label
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:119:13-45
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:111:13-45
 	android:configChanges
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:118:13-63
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:110:13-63
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:117:13-59
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:109:13-59
 activity#com.bbxiaoqu.ui.main.ViewActivity
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:121:9-125:20
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:113:9-117:20
 	android:label
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:124:13-45
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:116:13-45
 	android:configChanges
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:123:13-63
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:115:13-63
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:122:13-61
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:114:13-61
 activity#com.bbxiaoqu.ui.main.ViewListActivity
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:126:10-130:20
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:118:10-122:20
 	android:label
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:129:13-45
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:121:13-45
 	android:configChanges
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:128:13-63
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:120:13-63
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:127:13-65
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:119:13-65
 activity#com.bbxiaoqu.ui.sub.InfoGzActivity
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:131:9-135:20
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:123:9-127:20
 	android:label
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:134:13-45
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:126:13-45
 	android:configChanges
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:133:13-63
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:125:13-63
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:132:13-62
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:124:13-62
 activity#com.bbxiaoqu.ui.sub.InfoBmActivity
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:136:9-140:20
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:128:9-132:20
 	android:label
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:139:13-45
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:131:13-45
 	android:configChanges
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:138:13-63
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:130:13-63
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:137:13-62
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:129:13-62
 activity#com.bbxiaoqu.ui.sub.InfoMyActivity
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:141:9-145:20
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:133:9-137:20
 	android:label
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:144:13-45
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:136:13-45
 	android:configChanges
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:143:13-63
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:135:13-63
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:142:13-62
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:134:13-62
 activity#com.bbxiaoqu.ui.sub.BmUserActivity
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:146:9-150:20
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:138:9-142:20
 	android:label
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:149:13-45
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:141:13-45
 	android:configChanges
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:148:13-63
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:140:13-63
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:147:13-62
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:139:13-62
 activity#com.bbxiaoqu.ui.sub.ChattingActivity
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:151:9-155:20
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:143:9-147:20
+	android:label
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:146:13-45
+	android:configChanges
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:145:13-63
+	android:name
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:144:13-64
+activity#com.bbxiaoqu.ui.sub.UserInfoActivity
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:151:11-155:20
 	android:label
 		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:154:13-45
 	android:configChanges
 		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:153:13-63
 	android:name
 		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:152:13-64
-activity#com.bbxiaoqu.ui.sub.UserInfoActivity
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:159:11-163:20
-	android:label
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:162:13-45
-	android:configChanges
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:161:13-63
-	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:160:13-64
 activity#com.bbxiaoqu.ui.sub.UserInfoViewActivity
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:164:15-168:20
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:156:15-160:20
 	android:label
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:167:13-45
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:159:13-45
 	android:configChanges
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:166:13-63
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:158:13-63
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:165:13-68
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:157:13-68
 activity#com.bbxiaoqu.ui.community.SubscribeCommunityMapActivity
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:169:10-173:20
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:161:10-165:20
 	android:label
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:172:13-45
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:164:13-45
 	android:configChanges
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:171:13-63
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:163:13-63
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:170:13-83
-activity#com.bbxiaoqu.ui.community.CommunityListActivity
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:175:11-179:20
-	android:label
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:178:13-45
-	android:configChanges
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:177:13-63
-	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:176:13-75
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:162:13-83
 activity#com.bbxiaoqu.ui.community.CommunityActivity
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:180:10-184:20
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:166:10-170:20
 	android:label
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:183:13-45
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:169:13-45
 	android:configChanges
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:182:13-63
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:168:13-63
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:181:13-71
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:167:13-71
 activity#com.bbxiaoqu.ui.community.AddCommunityActivity
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:185:10-189:20
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:171:10-175:20
 	android:label
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:188:13-45
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:174:13-45
 	android:configChanges
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:187:13-63
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:173:13-63
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:186:13-74
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:172:13-74
 activity#com.bbxiaoqu.ui.community.SelCommunityActivity
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:192:11-196:20
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:178:11-182:20
 	android:label
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:195:13-45
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:181:13-45
 	android:configChanges
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:194:13-63
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:180:13-63
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:193:13-74
-activity#com.bbxiaoqu.ui.community.LeftMessageTab
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:197:19-201:20
-	android:label
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:200:13-45
-	android:configChanges
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:199:13-63
-	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:198:13-68
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:179:13-74
 activity#com.bbxiaoqu.ui.community.CommunityGzListActivity
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:203:9-207:20
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:184:10-188:20
 	android:label
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:206:13-45
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:187:13-45
 	android:configChanges
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:205:13-63
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:186:13-63
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:204:13-77
-activity#com.bbxiaoqu.ui.community.CommunityNearListActivity
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:208:9-212:20
-	android:label
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:211:13-45
-	android:configChanges
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:210:13-63
-	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:209:13-79
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:185:13-77
 activity#com.bbxiaoqu.ui.sub.SettingsActivity
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:213:10-217:20
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:189:10-193:20
 	android:label
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:216:13-45
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:192:13-45
 	android:configChanges
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:215:13-63
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:191:13-63
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:214:13-64
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:190:13-64
 activity#com.bbxiaoqu.ui.sub.ViewUserInfoActivity
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:218:18-222:20
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:194:18-198:20
 	android:label
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:221:13-45
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:197:13-45
 	android:configChanges
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:220:13-63
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:196:13-63
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:219:13-68
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:195:13-68
 activity#com.bbxiaoqu.view.BaseActivity
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:223:11-227:20
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:199:11-203:20
 	android:label
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:226:13-45
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:202:13-45
 	android:configChanges
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:225:13-63
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:201:13-63
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:224:13-58
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:200:13-58
 activity#com.bbxiaoqu.ui.sub.DiscussActivity
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:228:10-232:20
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:204:10-208:20
 	android:label
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:231:13-45
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:207:13-45
 	android:configChanges
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:230:13-63
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:206:13-63
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:229:13-63
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:205:13-63
 activity#com.bbxiaoqu.ui.sub.PayActivity
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:233:9-237:20
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:209:9-213:20
 	android:label
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:236:13-45
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:212:13-45
 	android:configChanges
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:235:13-63
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:211:13-63
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:234:13-59
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:210:13-59
 activity#com.bbxiaoqu.ui.sub.MyinfosActivity
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:238:9-242:20
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:214:9-218:20
 	android:label
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:241:13-45
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:217:13-45
 	android:configChanges
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:240:13-63
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:216:13-63
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:239:13-63
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:215:13-63
 activity#com.bbxiaoqu.ui.sub.RecentActivity
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:243:9-247:20
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:219:9-223:20
+	android:label
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:222:13-45
+	android:configChanges
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:221:13-63
+	android:name
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:220:13-62
+activity#com.bbxiaoqu.ui.sub.FriendsActivity
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:224:9-228:20
+	android:label
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:227:13-45
+	android:configChanges
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:226:13-63
+	android:name
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:225:13-63
+activity#com.bbxiaoqu.ui.sub.PayAddActivity
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:230:9-234:20
+	android:label
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:233:13-45
+	android:configChanges
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:232:13-63
+	android:name
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:231:13-62
+activity#com.bbxiaoqu.comm.gallery.BigImgActivity
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:237:9-243:20
+	android:windowSoftInputMode
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:242:13-52
+	android:screenOrientation
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:240:13-49
+	android:label
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:239:13-45
+	android:theme
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:241:13-66
+	android:name
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:238:13-68
+activity#com.bbxiaoqu.ui.AboutActivity
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:244:10-250:20
+	android:windowSoftInputMode
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:249:13-52
+	android:screenOrientation
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:247:13-49
 	android:label
 		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:246:13-45
-	android:configChanges
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:245:13-63
-	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:244:13-62
-activity#com.bbxiaoqu.ui.sub.FriendsActivity
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:248:9-252:20
-	android:label
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:251:13-45
-	android:configChanges
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:250:13-63
-	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:249:13-63
-activity#com.bbxiaoqu.ui.sub.PayAddActivity
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:254:9-258:20
-	android:label
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:257:13-45
-	android:configChanges
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:256:13-63
-	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:255:13-62
-activity#com.bbxiaoqu.client.CustomActivity
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:260:9-264:20
-	android:configChanges
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:263:13-63
-	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:261:13-62
-	android:launchMode
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:262:13-44
-activity#com.baidu.android.voicedemo.Setting
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:266:9-275:20
-	android:screenOrientation
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:270:13-49
-	android:label
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:268:13-31
-	android:configChanges
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:269:13-76
-	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:267:13-63
-intent-filter#android.intent.category.DEFAULT+com.baidu.speech.asr.demo.setting
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:271:13-274:29
-action#com.baidu.speech.asr.demo.setting
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:272:17-76
-	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:272:25-73
-category#android.intent.category.DEFAULT
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:273:17-76
-	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:273:27-73
-activity#com.bbxiaoqu.comm.gallery.BigImgActivity
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:276:9-282:20
-	android:windowSoftInputMode
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:281:13-52
-	android:screenOrientation
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:279:13-49
-	android:label
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:278:13-45
 	android:theme
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:280:13-66
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:248:13-66
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:277:13-68
-activity#com.bbxiaoqu.ui.AboutActivity
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:283:10-289:20
-	android:windowSoftInputMode
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:288:13-52
-	android:screenOrientation
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:286:13-49
-	android:label
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:285:13-45
-	android:theme
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:287:13-66
-	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:284:13-57
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:245:13-57
 activity#com.bbxiaoqu.ui.main.MainActivity
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:290:9-296:20
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:251:9-257:20
 	android:windowSoftInputMode
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:295:13-52
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:256:13-52
 	android:screenOrientation
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:293:13-49
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:254:13-49
 	android:label
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:292:13-45
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:253:13-45
 	android:theme
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:294:13-66
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:255:13-66
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:291:13-61
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:252:13-61
 activity#com.bbxiaoqu.ui.main.NearActivity
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:298:8-304:20
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:259:8-265:20
 	android:windowSoftInputMode
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:303:13-52
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:264:13-52
 	android:screenOrientation
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:301:13-49
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:262:13-49
 	android:label
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:300:13-45
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:261:13-45
 	android:theme
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:302:13-66
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:263:13-66
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:299:13-61
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:260:13-61
 activity#com.bbxiaoqu.ui.main.MapActivity
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:305:13-311:20
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:266:13-272:20
 	android:windowSoftInputMode
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:310:13-52
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:271:13-52
 	android:screenOrientation
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:308:13-49
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:269:13-49
 	android:label
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:307:13-45
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:268:13-45
 	android:theme
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:309:13-66
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:270:13-66
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:306:13-60
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:267:13-60
 activity#com.bbxiaoqu.ui.NoticeActivity
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:312:10-318:20
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:273:10-279:20
 	android:windowSoftInputMode
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:317:13-52
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:278:13-52
 	android:screenOrientation
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:315:13-49
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:276:13-49
 	android:label
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:314:13-45
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:275:13-45
 	android:theme
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:316:14-50
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:277:14-50
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:313:13-58
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:274:13-58
 service#com.bbxiaoqu.update.UpdateService
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:322:3-323:13
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:283:3-284:13
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:322:12-60
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:283:12-60
 service#com.bbxiaoqu.client.xmpp.MessageService
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:324:3-325:13
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:285:3-286:13
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:324:12-66
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:285:12-66
 service#com.bbxiaoqu.comm.service.ServiceDemo
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:326:3-330:13
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:287:3-291:13
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:326:12-64
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:287:12-64
 intent-filter#com.bbxiaoqu.comm.service.ServiceDemo
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:327:13-329:29
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:288:13-290:29
 action#com.bbxiaoqu.comm.service.ServiceDemo
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:328:17-79
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:289:17-79
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:328:25-77
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:289:25-77
 receiver#com.bbxiaoqu.client.xmpp.StartXmppReceiver
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:332:8-336:20
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:293:8-297:20
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:332:18-75
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:293:18-75
 intent-filter#android.intent.action.BOOT_COMPLETED
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:333:13-335:29
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:294:13-296:29
 action#android.intent.action.BOOT_COMPLETED
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:334:17-78
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:295:17-78
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:334:25-76
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:295:25-76
 receiver#com.bbxiaoqu.client.baidu.BbPushMessageReceiver
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:353:9-361:20
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:314:9-322:20
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:353:19-81
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:314:19-81
 intent-filter#com.baidu.android.pushservice.action.MESSAGE+com.baidu.android.pushservice.action.RECEIVE+com.baidu.android.pushservice.action.notification.CLICK
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:354:13-360:29
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:315:13-321:29
 action#com.baidu.android.pushservice.action.MESSAGE
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:356:17-87
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:317:17-87
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:356:25-84
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:317:25-84
 action#com.baidu.android.pushservice.action.RECEIVE
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:358:17-87
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:319:17-87
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:358:25-84
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:319:25-84
 action#com.baidu.android.pushservice.action.notification.CLICK
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:359:17-98
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:320:17-98
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:359:25-95
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:320:25-95
 receiver#com.baidu.android.pushservice.PushServiceReceiver
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:364:9-377:20
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:325:9-338:20
 	android:process
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:365:13-44
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:326:13-44
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:364:19-83
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:325:19-83
 intent-filter#android.intent.action.ACTION_POWER_CONNECTED+android.intent.action.ACTION_POWER_DISCONNECTED+android.intent.action.BOOT_COMPLETED+android.intent.action.MEDIA_MOUNTED+android.intent.action.USER_PRESENT+android.net.conn.CONNECTIVITY_CHANGE+com.baidu.android.pushservice.action.media.CLICK+com.baidu.android.pushservice.action.notification.SHOW
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:366:13-376:29
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:327:13-337:29
 action#android.net.conn.CONNECTIVITY_CHANGE
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:368:17-79
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:329:17-79
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:368:25-76
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:329:25-76
 action#com.baidu.android.pushservice.action.notification.SHOW
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:369:17-97
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:330:17-97
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:369:25-94
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:330:25-94
 action#com.baidu.android.pushservice.action.media.CLICK
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:370:17-91
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:331:17-91
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:370:25-88
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:331:25-88
 action#android.intent.action.MEDIA_MOUNTED
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:372:3-64
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:333:3-64
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:372:11-61
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:333:11-61
 action#android.intent.action.USER_PRESENT
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:373:3-63
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:334:3-63
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:373:11-60
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:334:11-60
 action#android.intent.action.ACTION_POWER_CONNECTED
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:374:3-73
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:335:3-73
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:374:11-70
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:335:11-70
 action#android.intent.action.ACTION_POWER_DISCONNECTED
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:375:3-76
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:336:3-76
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:375:11-73
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:336:11-73
 receiver#com.baidu.android.pushservice.RegistrationReceiver
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:378:9-388:20
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:339:9-349:20
 	android:process
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:379:13-44
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:340:13-44
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:378:19-84
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:339:19-84
 intent-filter#com.baidu.android.pushservice.action.BIND_SYNC+com.baidu.android.pushservice.action.METHOD
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:380:13-383:29
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:341:13-344:29
 action#com.baidu.android.pushservice.action.METHOD
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:381:17-86
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:342:17-86
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:381:25-83
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:342:25-83
 action#com.baidu.android.pushservice.action.BIND_SYNC
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:382:17-89
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:343:17-89
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:382:25-86
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:343:25-86
 intent-filter#android.intent.action.PACKAGE_REMOVED
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:384:13-387:29
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:345:13-348:29
 action#android.intent.action.PACKAGE_REMOVED
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:385:17-79
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:346:17-79
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:385:25-77
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:346:25-77
 data
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:386:17-50
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:347:17-50
 	android:scheme
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:386:23-47
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:347:23-47
 service#com.baidu.android.pushservice.PushService
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:389:9-396:19
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:350:9-357:19
 	android:process
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:392:13-44
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:353:13-44
 	android:exported
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:391:13-36
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:352:13-36
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:390:13-69
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:351:13-69
 intent-filter#com.baidu.android.pushservice.action.PUSH_SERVICE
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:393:13-395:29
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:354:13-356:29
 action#com.baidu.android.pushservice.action.PUSH_SERVICE
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:394:17-92
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:355:17-92
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:394:25-89
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:355:25-89
 service#com.baidu.android.pushservice.CommandService
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:397:2-398:39
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:358:2-359:39
 	android:exported
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:398:13-36
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:359:13-36
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:397:11-70
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:358:11-70
 meta-data#api_key
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:402:9-86
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:363:9-86
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:402:20-42
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:363:20-42
 	android:value
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:402:43-83
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:363:43-83
 service#com.baidu.location.f
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:405:10-413:19
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:366:10-374:19
 	android:process
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:408:13-38
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:369:13-38
 	android:enabled
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:407:13-35
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:368:13-35
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:406:13-48
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:367:13-48
 intent-filter#com.baidu.location.service_v2.2
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:409:13-412:29
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:370:13-373:29
 action#com.baidu.location.service_v2.2
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:410:17-411:26
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:371:17-372:26
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:410:25-71
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:371:25-71
 meta-data#com.baidu.lbsapi.API_KEY
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:416:5-100
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:377:5-100
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:416:17-56
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:377:17-56
 	android:value
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:416:57-97
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:377:57-97
 meta-data#com.baidu.speech.API_KEY
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:421:9-102
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:382:9-102
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:421:20-59
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:382:20-59
 	android:value
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:421:60-100
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:382:60-100
 meta-data#com.baidu.speech.SECRET_KEY
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:422:9-113
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:383:9-113
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:422:20-62
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:383:20-62
 	android:value
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:422:63-111
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:383:63-111
 service#com.baidu.speech.VoiceRecognitionService
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:423:9-101
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:384:9-101
 	android:exported
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:423:74-98
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:384:74-98
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:423:18-73
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:384:18-73
 activity#com.baidu.voicerecognition.android.ui.BaiduASRDigitalDialog
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:424:9-434:20
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:385:9-395:20
 	android:screenOrientation
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:429:17-53
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:390:17-53
 	android:configChanges
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:426:17-80
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:387:17-80
 	android:theme
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:427:17-60
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:388:17-60
 	android:exported
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:428:17-41
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:389:17-41
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:425:17-91
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:386:17-91
 intent-filter#android.intent.category.DEFAULT+com.baidu.action.RECOGNIZE_SPEECH
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:430:13-433:29
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:391:13-394:29
 action#com.baidu.action.RECOGNIZE_SPEECH
-ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:431:17-76
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:392:17-76
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:431:25-73
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:392:25-73
+category#android.intent.category.DEFAULT
+ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:393:17-76
+	android:name
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:393:27-73

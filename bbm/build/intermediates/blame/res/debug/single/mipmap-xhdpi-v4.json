@@ -132,12 +132,12 @@
         "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-xhdpi\\account_icon_kaixin.png"
     },
     {
-        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi-v4\\splash.png",
-        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-xhdpi\\splash.png"
-    },
-    {
         "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi-v4\\left_drawer_activity_press.png",
         "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-xhdpi\\left_drawer_activity_press.png"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi-v4\\splash.png",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\mipmap-xhdpi\\splash.png"
     },
     {
         "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi-v4\\ic_drawer_favorite_normal.png",

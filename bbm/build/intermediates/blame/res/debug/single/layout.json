@@ -60,12 +60,12 @@
         "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\layout\\community_near_list_item.xml"
     },
     {
-        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\layout\\activity_select_photo.xml",
-        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\layout\\activity_select_photo.xml"
-    },
-    {
         "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\layout\\drag_list_item.xml",
         "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\layout\\drag_list_item.xml"
+    },
+    {
+        "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\layout\\activity_select_photo.xml",
+        "source": "F:\\AndroidStudio\\workspace\\bbm\\src\\main\\res\\layout\\activity_select_photo.xml"
     },
     {
         "merged": "F:\\AndroidStudio\\workspace\\bbm\\build\\intermediates\\res\\merged\\debug\\layout\\activity_viewlist.xml",

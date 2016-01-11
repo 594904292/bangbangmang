@@ -2,57 +2,37 @@ package com.bbxiaoqu.ui.community;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
-import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.params.CoreConnectionPNames;
-import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.bbxiaoqu.DemoApplication;
 import com.bbxiaoqu.ImageOptions;
 import com.bbxiaoqu.R;
-import com.bbxiaoqu.bean.BbMessage;
+import com.bbxiaoqu.bean.Community;
 import com.bbxiaoqu.bean.InfoBase;
-import com.bbxiaoqu.ui.fragment.HomeActivity;
 import com.bbxiaoqu.ui.sub.InfoBean;
-import com.bbxiaoqu.comm.service.db.MessageDB;
 import com.bbxiaoqu.comm.service.db.XiaoquService;
-import com.bbxiaoqu.comm.tool.CustomerHttpClient;
 import com.bbxiaoqu.comm.tool.NetworkUtils;
 import com.bbxiaoqu.comm.tool.StreamTool;
 import com.bbxiaoqu.comm.tool.T;
-import com.bbxiaoqu.ui.LoginActivity;
 import com.bbxiaoqu.view.BaseActivity;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.ImageScaleType;
-import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -60,14 +40,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
 /**
@@ -84,6 +60,7 @@ public class SelCommunityActivity extends BaseActivity {
 	XiaoquService xiaoquService;
 	TextView title;
 	TextView right_text;
+	ImageView topmore;
 	private static final int MESSAGETYPE_01 = 0x0001;
 	private ProgressDialog progressDialog = null;
 
@@ -123,11 +100,9 @@ public class SelCommunityActivity extends BaseActivity {
 			T.showShort(myapplication, "当前无网络连接,请稍后再试！");
 			return;
 		}
-		//progressDialog = ProgressDialog.show(SelCommunityActivity.this, "同步","数据同步中,请稍候！");
-		//new Thread(SyncSubscribe).start();// 后台同步数据
 	}
 
-	Runnable SyncSubscribe = new Runnable() {
+	/*Runnable SyncSubscribe = new Runnable() {
 		@Override
 		public void run() {
 			String target = myapplication.getlocalhost()+"getsubscribe.php?userid="
@@ -176,46 +151,48 @@ public class SelCommunityActivity extends BaseActivity {
 			}
 
 		}
-	};
+	};*/
 
-	Handler savejsonhandler = new Handler() {
-		@Override
-		public void handleMessage(Message msg) {
-			switch (msg.what) {
-			case MESSAGETYPE_01:
-				// super.handleMessage(msg);
-				Bundle data = msg.getData();
-				String json = data.getString("json");
-				JSONArray jsonarray = null;
-				try {
-					jsonarray = new JSONArray(json);
-					for (int i = 0; i < jsonarray.length(); i++) {
-						JSONObject customJson = jsonarray.getJSONObject(i);
-						String community = customJson.getString("community")
-								.toString();
-						String userid = myapplication.getUserId();
-						XiaoquService xiaoquService = new XiaoquService(
-								myapplication.getApplicationContext());
-						if (!xiaoquService.isexit(community)) {
-							xiaoquService.addxiaoqu(community);
-						}
-					}
-				} catch (JSONException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				progressDialog.dismiss(); // 关闭进度条
-				break;
-			}
-
-		}
-
-	};
+//	Handler savejsonhandler = new Handler() {
+//		@Override
+//		public void handleMessage(Message msg) {
+//			switch (msg.what) {
+//			case MESSAGETYPE_01:
+//				// super.handleMessage(msg);
+//				Bundle data = msg.getData();
+//				String json = data.getString("json");
+//				JSONArray jsonarray = null;
+//				try {
+//					jsonarray = new JSONArray(json);
+//					for (int i = 0; i < jsonarray.length(); i++) {
+//						JSONObject customJson = jsonarray.getJSONObject(i);
+//						String community = customJson.getString("community")
+//								.toString();
+//						String userid = myapplication.getUserId();
+//						XiaoquService xiaoquService = new XiaoquService(myapplication.getApplicationContext());
+//						if (!xiaoquService.isexit(community)) {
+//							xiaoquService.addxiaoqu(community);
+//						}
+//					}
+//				} catch (JSONException e1) {
+//					// TODO Auto-generated catch block
+//					e1.printStackTrace();
+//				}
+//				progressDialog.dismiss(); // 关闭进度条
+//				break;
+//			}
+//
+//		}
+//
+//	};
 
 	private void initView() {
 		title = (TextView) findViewById(R.id.title);
 		right_text = (TextView) findViewById(R.id.right_text);
 		right_text.setVisibility(View.VISIBLE);
+		topmore=(ImageView)findViewById(R.id.top_more);
+		topmore.setVisibility(View.GONE);
+
 		
 
 	}
@@ -299,13 +276,14 @@ public class SelCommunityActivity extends BaseActivity {
 						mcommunity.setBuildyear(jsonobject
 								.getString("buildyear"));
 						XiaoquService xiaoquService = new XiaoquService(this);
-						boolean ishavezhan = xiaoquService.isexit(mcommunity
+					/*	boolean ishavezhan = xiaoquService.isexit(mcommunity
 								.getId());
 						if (ishavezhan) {
 							mcommunity.setIsgz(1);
 						} else {
 							mcommunity.setIsgz(0);
-						}
+						}*/
+						mcommunity.setIsgz(0);
 						mcommunity.setDistance(String.valueOf(distance));
 						communitylist.add(mcommunity);
 					}
@@ -356,50 +334,32 @@ public class SelCommunityActivity extends BaseActivity {
 		public View getView(int position, View convertView, ViewGroup parent) {
 			View view;
 			ViewHolder holder = null;
-
 			if (map.get(position) == null) {
-
-				view = LayoutInflater.from(context).inflate(
-						R.layout.community_near_list_item, null);
-
+				view = LayoutInflater.from(context).inflate(R.layout.community_near_list_item, null);
 				holder = new ViewHolder();
-				holder.imageView = (ImageView) view
-						.findViewById(R.id.xq_imageView);
-				holder.distance = (TextView) view
-						.findViewById(R.id.list_distance);
-				holder.homenumber = (TextView) view
-						.findViewById(R.id.list_homenumber);
+				holder.imageView = (ImageView) view.findViewById(R.id.xq_imageView);
+				holder.distance = (TextView) view.findViewById(R.id.list_distance);
+				holder.homenumber = (TextView) view.findViewById(R.id.list_homenumber);
 				holder.isgz = (TextView) view.findViewById(R.id.list_isgz);
-
 				holder.name = (TextView) view.findViewById(R.id.list_name);
-				holder.address = (TextView) view
-						.findViewById(R.id.list_address);
+				holder.address = (TextView) view.findViewById(R.id.list_address);
 				final int p = position;
 				map.put(position, view);
-
 				view.setTag(holder);
 			} else {
 				Log.e("SubscribeCommunityActivity", "position2 = " + position);
 				view = map.get(position);
 				holder = (ViewHolder) view.getTag();
 			}
-
-		
-
 			String fileName = listCommunity.get(position).getPic();
-			ImageLoader.getInstance().displayImage(fileName, holder.imageView,
-					ImageOptions.getOptions());
-			holder.distance.setText(listCommunity.get(position).getDistance()
-					+ "米");
-			holder.homenumber.setText(listCommunity.get(position)
-					.getHomenumber());
+			ImageLoader.getInstance().displayImage(fileName, holder.imageView,ImageOptions.getOptions());
+			holder.distance.setText(listCommunity.get(position).getDistance()+ "米");
+			holder.homenumber.setText(listCommunity.get(position).getHomenumber());
 			holder.name.setText(listCommunity.get(position).getName());
 			holder.address.setText(listCommunity.get(position).getAddress());
 			if (listCommunity.get(position).getIsgz() == 1) {
-
 				holder.isgz.setText("已关注");
 			} else {
-
 				holder.isgz.setText("");
 			}
 			return view;

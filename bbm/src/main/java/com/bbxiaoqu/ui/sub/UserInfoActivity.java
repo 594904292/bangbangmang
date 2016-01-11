@@ -4,7 +4,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -27,15 +26,14 @@ import com.bbxiaoqu.DemoApplication;
 import com.bbxiaoqu.ImageOptions;
 import com.bbxiaoqu.R;
 import com.bbxiaoqu.comm.service.db.UserService;
+import com.bbxiaoqu.comm.service.db.XiaoquService;
 import com.bbxiaoqu.comm.tool.CustomerHttpClient;
 import com.bbxiaoqu.comm.tool.NetworkUtils;
 import com.bbxiaoqu.comm.tool.StreamTool;
 import com.bbxiaoqu.comm.tool.T;
-import com.bbxiaoqu.ui.LoginActivity;
 import com.bbxiaoqu.ui.SearchActivity;
 import com.bbxiaoqu.ui.community.SelCommunityActivity;
-import com.bbxiaoqu.ui.main.MainActivity;
-import com.bbxiaoqu.ui.main.ViewActivity;
+import com.bbxiaoqu.ui.community.CommunityGzListActivity;
 import com.bbxiaoqu.view.BaseActivity;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -43,15 +41,10 @@ import com.loopj.android.http.RequestParams;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.io.File;
-import java.net.HttpURLConnection;
-import java.net.URL;
-
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.ThumbnailUtils;
@@ -64,16 +57,12 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -90,11 +79,13 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 	private RadioButton male=null;
 	private RadioButton female=null;
 	
-	private EditText community;
+	private EditText community_eidt;
+	private EditText gzcommunity_eidt;
 	private EditText telphone;
 	Button save;
 	Button score_btn;
 	Button SelCommunityBtn;
+	Button GzCommunityBtn;
 	private String headfacepath = "";
 	private String headfacename = "";
 	private String community_id="";
@@ -110,6 +101,7 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 	private static final String IMAGE_FILE_NAME = "image.jpg";
 
 	private static final int SelXq_REQUEST_CODE=100;
+	private static final int GzXq_REQUEST_CODE=101;
 	/** 请求码 */
 	private static final int IMAGE_REQUEST_CODE = 0;
 	private static final int CAMERA_REQUEST_CODE = 1;
@@ -128,12 +120,13 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 		title = (TextView) findViewById(R.id.title);
 		username = (EditText) findViewById(R.id.username);
 		age = (EditText) findViewById(R.id.age);
-		community = (EditText) findViewById(R.id.community);
+		community_eidt = (EditText) findViewById(R.id.community);
+		gzcommunity_eidt= (EditText) findViewById(R.id.Gzcommunity);
 		telphone = (EditText) findViewById(R.id.telphone);
 		save = (Button) findViewById(R.id.save);
 		score_btn  = (Button) findViewById(R.id.score_btn);
 		SelCommunityBtn = (Button) findViewById(R.id.SelCommunityBtn);
-
+		GzCommunityBtn = (Button) findViewById(R.id.GzCommunityBtn);
 		txt_userid=(TextView) findViewById(R.id.txt_userid);
 		tv_score=(TextView) findViewById(R.id.score_tv);
 		
@@ -150,8 +143,6 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 				// TODO Auto-generated method stub
 				Intent intent=new Intent(UserInfoActivity.this,SearchActivity.class);									
 				startActivity(intent);
-				
-				
 			}
 		});
 		
@@ -181,7 +172,6 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 	    					uService.updateheadface(headfacename, userid);
 	    				}
 	    				new Thread(saveuserinfo).start();
-	         
 	                } 
 	            }) 
 	            .setNegativeButton("返回", new DialogInterface.OnClickListener() { 
@@ -191,16 +181,22 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 	                // 点击“返回”后的操作,这里不设置没有任何操作 
 	                } 
 	            }).show(); 
-				
-				
-				
 			}
 		});
 		SelCommunityBtn.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				 					
 				Intent intent=new Intent(UserInfoActivity.this,SelCommunityActivity.class);
 				startActivityForResult(intent, SelXq_REQUEST_CODE);    
+			}
+		});
+		XiaoquService xiaoquService = new XiaoquService(this);
+		String names=xiaoquService.allxiaoqu();
+		gzcommunity_eidt.setText(names);
+		GzCommunityBtn.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+
+				Intent intent=new Intent(UserInfoActivity.this,CommunityGzListActivity.class);
+				startActivityForResult(intent, GzXq_REQUEST_CODE);
 			}
 		});
 		iv_photo = (RoundAngleImageView) findViewById(R.id.iv_photo);
@@ -233,7 +229,6 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 	 * 显示选择对话框
 	 */
 	private void showDialog() {
-
 		new AlertDialog.Builder(this)
 				.setTitle("设置头像")
 				.setItems(items, new DialogInterface.OnClickListener() {
@@ -285,10 +280,15 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 		if (resultCode != RESULT_CANCELED) {
 			switch (requestCode) {
 			case SelXq_REQUEST_CODE:
-				community.setText(data.getStringExtra("community"));
+				community_eidt.setText(data.getStringExtra("community"));
 				community_id=data.getStringExtra("community_id");
 				community_lat=data.getStringExtra("community_lat");
 				community_lng=data.getStringExtra("community_lng");
+				break;
+			case GzXq_REQUEST_CODE:
+				XiaoquService xiaoquService = new XiaoquService(this);
+				String names=xiaoquService.allxiaoqu();
+				gzcommunity_eidt.setText(names);
 				break;
 			case IMAGE_REQUEST_CODE:
 				startPhotoZoom(data.getData());
@@ -391,23 +391,16 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 			String target = myapplication.getlocalhost()+"saveuserinfo.php";
 			HttpPost httprequest = new HttpPost(target);
 			List<NameValuePair> paramsList = new ArrayList<NameValuePair>();
-			paramsList.add(new BasicNameValuePair("userid", myapplication
-					.getUserId()));
+			paramsList.add(new BasicNameValuePair("userid", myapplication.getUserId()));
 			paramsList.add(new BasicNameValuePair("headface", headfacename));
-			paramsList.add(new BasicNameValuePair("username", username
-					.getText().toString()));
-			
-			
-		
-			paramsList.add(new BasicNameValuePair("age", age.getText()
-					.toString()));
+			paramsList.add(new BasicNameValuePair("username", username.getText().toString()));
+ 			paramsList.add(new BasicNameValuePair("age", age.getText()	.toString()));
 			paramsList.add(new BasicNameValuePair("sex", sex_str));
 			
-			paramsList.add(new BasicNameValuePair("telphone", telphone
-					.getText().toString()));
-			
-			
-			paramsList.add(new BasicNameValuePair("community", community.getText().toString()));
+			paramsList.add(new BasicNameValuePair("telphone", telphone.getText().toString()));
+
+
+			paramsList.add(new BasicNameValuePair("community", community_eidt.getText().toString()));
 			paramsList.add(new BasicNameValuePair("community_id", community_id));
 			paramsList.add(new BasicNameValuePair("community_lat", community_lat));
 			paramsList.add(new BasicNameValuePair("community_lng", community_lng));
@@ -579,10 +572,10 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 			}
 			if(!data.getString("community").equals("null")&&data.getString("community").length()>0)
 			{
-				community.setText(data.getString("community"));
+				community_eidt.setText(data.getString("community"));
 			}else
 			{
-				community.setText("");
+				community_eidt.setText("");
 			}
 			telphone.setText(data.getString("telphone"));
 			

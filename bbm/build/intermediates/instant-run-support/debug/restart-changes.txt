@@ -1,0 +1,1 @@
+F:\AndroidStudio\workspace\bbm\build\intermediates\transforms\instantRun\debug\folders\1\5\main\com\bbxiaoqu\comm\service\db\XiaoquService.class

@@ -1039,6 +1039,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     }
     public static final class id {
         public static final int FaceRelativeLayout=0x7f0a00ae;
+        public static final int GzCommunityBtn=0x7f0a017a;
+        public static final int Gzcommunity=0x7f0a0179;
         public static final int SelCommunityBtn=0x7f0a0178;
         public static final int Spinner_paytype=0x7f0a0145;
         public static final int TextView09=0x7f0a00cb;
@@ -1172,12 +1174,12 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int id_chat_msg=0x7f0a012c;
         public static final int id_chat_send=0x7f0a012b;
         public static final int id_marker_info=0x7f0a0031;
-        public static final int id_menu_map_addMaker=0x7f0a017f;
-        public static final int id_menu_map_common=0x7f0a017b;
-        public static final int id_menu_map_myLoc=0x7f0a017e;
-        public static final int id_menu_map_site=0x7f0a017c;
-        public static final int id_menu_map_style=0x7f0a0180;
-        public static final int id_menu_map_traffic=0x7f0a017d;
+        public static final int id_menu_map_addMaker=0x7f0a0181;
+        public static final int id_menu_map_common=0x7f0a017d;
+        public static final int id_menu_map_myLoc=0x7f0a0180;
+        public static final int id_menu_map_site=0x7f0a017e;
+        public static final int id_menu_map_style=0x7f0a0182;
+        public static final int id_menu_map_traffic=0x7f0a017f;
         public static final int id_solutcion_btn=0x7f0a012e;
         public static final int imageView=0x7f0a00ef;
         public static final int imageView1=0x7f0a002c;
@@ -1326,8 +1328,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int row_discuss_content=0x7f0a00d3;
         public static final int row_discuss_time=0x7f0a00d2;
         public static final int row_user_image=0x7f0a00d0;
-        public static final int save=0x7f0a0179;
-        public static final int score=0x7f0a017a;
+        public static final int save=0x7f0a017b;
+        public static final int score=0x7f0a017c;
         public static final int score_btn=0x7f0a0171;
         public static final int score_tv=0x7f0a0170;
         public static final int scrollView1=0x7f0a0007;

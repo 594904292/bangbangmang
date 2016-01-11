@@ -1,53 +1,29 @@
 package com.bbxiaoqu.view;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Handler;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bbxiaoqu.DemoApplication;
 import com.bbxiaoqu.ImageOptions;
 import com.bbxiaoqu.R;
-import com.bbxiaoqu.bean.InfoBase;
-import com.bbxiaoqu.comm.tool.StreamTool;
-import com.bbxiaoqu.ui.community.LeftMessageTab;
 import com.bbxiaoqu.ui.sub.FriendsActivity;
 import com.bbxiaoqu.ui.sub.InfoGzActivity;
 import com.bbxiaoqu.ui.sub.MyinfosActivity;
 import com.bbxiaoqu.ui.sub.RecentActivity;
 import com.bbxiaoqu.ui.sub.SettingsActivity;
-import com.bbxiaoqu.ui.sub.UserInfoActivity;
 import com.bbxiaoqu.ui.sub.UserInfoViewActivity;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu.OnClosedListener;
