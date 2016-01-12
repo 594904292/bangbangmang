@@ -478,6 +478,7 @@ public class ViewActivity extends BaseActivity implements OnItemClickListener,Ap
 		});
 
 		chat = (Button) findViewById(R.id.chat);
+		chat.setVisibility(View.GONE);
 		chat.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				if (senduserid.equals(myapplication.getUserId())) {
@@ -939,6 +940,12 @@ public class ViewActivity extends BaseActivity implements OnItemClickListener,Ap
 					current_login_userid = myapplication.getUserId();
 					current_login_usernickname = myapplication.getNickname();
 					senduserid = jsonobject.getString("senduser");
+					if (senduserid.equals(myapplication.getUserId())) {
+						chat.setVisibility(View.GONE);//隐藏
+					}else
+					{
+						chat.setVisibility(View.VISIBLE);//显示
+					}
 					sendusername = jsonobject.getString("username");
 					if (jsonobject.getString("issolution").equals("1")) {
 						issolution = true;
