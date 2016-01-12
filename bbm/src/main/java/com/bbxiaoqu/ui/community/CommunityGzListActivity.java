@@ -2,9 +2,12 @@ package com.bbxiaoqu.ui.community;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -14,11 +17,15 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.CoreConnectionPNames;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.bbxiaoqu.DemoApplication;
 import com.bbxiaoqu.ImageOptions;
 import com.bbxiaoqu.R;
+import com.bbxiaoqu.api.ApiAsyncTask;
+import com.bbxiaoqu.api.MarketAPI;
+import com.bbxiaoqu.api.util.Utils;
 import com.bbxiaoqu.bean.InfoBase;
 import com.bbxiaoqu.bean.Community;
 import com.bbxiaoqu.comm.service.db.XiaoquService;
@@ -29,11 +36,18 @@ import com.bbxiaoqu.ui.sub.InfoBean;
 import com.bbxiaoqu.view.BaseActivity;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.os.StrictMode;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,6 +55,8 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -50,7 +66,7 @@ import android.widget.AdapterView.OnItemClickListener;
  * @author dzy
  * 小区列表订阅
  */
-public class CommunityGzListActivity extends BaseActivity {
+public class CommunityGzListActivity extends BaseActivity implements ApiAsyncTask.ApiRequestListener {
 	private DemoApplication myapplication;
 	ListView lstv;
 	List<Community> communitylist = new ArrayList<Community>();
@@ -63,6 +79,12 @@ public class CommunityGzListActivity extends BaseActivity {
 	private static final int MESSAGETYPE_01 = 0x0001;
 	private ProgressDialog progressDialog = null;
 	private static final int GzXq_REQUEST_CODE=101;
+	private Drawable mIconSearchDefault; // 搜索文本框默认图标
+	private Drawable mIconSearchClear; // 搜索文本框清除文本内容图标
+	private EditText etSearch ;
+	ImageView  ivDeleteText;
+	Button btnSearch;
+	private static final int DIALOG_PROGRESS = 0;
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -75,7 +97,7 @@ public class CommunityGzListActivity extends BaseActivity {
 		xiaoquService = new XiaoquService(this);
 		initView();
 		initData();
-		getData();
+		LoadData();
 		lstv = (ListView) findViewById(R.id.lvnear);
 		lstv.setOnItemClickListener(new OnItemClickListener() {
 			@Override
@@ -109,16 +131,74 @@ public class CommunityGzListActivity extends BaseActivity {
 	
 
 
-
+	String keyword="";
 	private void initView() {
 		title = (TextView) findViewById(R.id.title);
 		right_text = (TextView) findViewById(R.id.right_text);
 		right_text.setVisibility(View.VISIBLE);
 		imgmore=(ImageView) findViewById(R.id.top_more);
 		imgmore.setVisibility(View.GONE);
+		Resources res = getResources();
+		mIconSearchDefault = res.getDrawable(R.mipmap.txt_search_default);
+		mIconSearchClear = res.getDrawable(R.mipmap.txt_search_clear);
+		ivDeleteText = (ImageView) findViewById(R.id.ivDeleteText);
+		etSearch  = (EditText) findViewById(R.id.etSearch);
+		ivDeleteText.setOnClickListener(new OnClickListener() {
 
+			public void onClick(View v) {
+				etSearch.setText("");
+			}
+		});
 
+		etSearch.addTextChangedListener(new TextWatcher() {
+
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				// TODO Auto-generated method stub
+				System.out.println(s);
+			}
+
+			public void beforeTextChanged(CharSequence s, int start, int count,
+										  int after) {
+				// TODO Auto-generated method stub
+				System.out.println(s);
+			}
+
+			public void afterTextChanged(Editable s) {
+				if (s.length() == 0) {
+					ivDeleteText.setVisibility(View.GONE);
+				} else {
+					ivDeleteText.setVisibility(View.VISIBLE);
+				}
+			}
+		});
+		btnSearch  = (Button) findViewById(R.id.btnSearch);
+		btnSearch.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				keyword=etSearch.getText().toString();
+				if(keyword.length()==0)
+				{
+					Utils.makeEventToast(CommunityGzListActivity.this, "请输入关键词",false);
+					return;
+				}
+				new Thread(new Runnable() {
+					@Override
+					public void run(){
+						LoadData();
+					}
+				}).start();
+			}
+		});
 	}
+
+
+	private Handler handler = new Handler() {
+		public void handleMessage(Message msg) {
+
+			adapter = new MyListAdapter(CommunityGzListActivity.this,communitylist);
+			lstv.setAdapter(adapter);
+		};
+	};
+
 
 	private void initData() {
 		title.setText("附近小区 ");
@@ -170,100 +250,39 @@ public class CommunityGzListActivity extends BaseActivity {
 
 		
 	};*/
-	
 
-	String keyword="";
-	private void getData() {
-		String target="";
-		communitylist.clear();
-		if (!NetworkUtils.isNetConnected(myapplication)) {			
-			T.showShort(myapplication, "当前无网络连接,请稍后再试！");
+	private void LoadData() {
+		if (!isFinishing()) {
+			showDialog(DIALOG_PROGRESS);
+		} else {
+			// 如果当前页面已经关闭，不进行登录操作
 			return;
 		}
-		//target = myapplication.getlocalhost()+"getgzxiaoqu.php?userid="+ myapplication.getUserId() ;
-		//target = myapplication.getlocalhost()+"getgzxiaoqu.php?userid="+ myapplication.getUserId() ;
-		target = myapplication.getlocalhost()+"getxiaoqu.php?latitude="+ myapplication.getLat() + "&longitude="+ myapplication.getLng();
-		try {
-			// /////////////////////////////
-			List<InfoBase> bfjllist = null;
-			HttpGet httprequest = new HttpGet(target);
-			HttpClient HttpClient1 = new DefaultHttpClient();
-			// 请求超时
-			HttpClient1.getParams().setParameter(
-					CoreConnectionPNames.CONNECTION_TIMEOUT, 20000);
-			// 读取超时
-			HttpClient1.getParams().setParameter(
-					CoreConnectionPNames.SO_TIMEOUT, 20000);
-			HttpResponse httpResponse = null;
-			try {
-				httpResponse = HttpClient1.execute(httprequest);
-			} catch (ClientProtocolException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
-				InputStream jsonStream = null;
-				try {
-					jsonStream = httpResponse.getEntity().getContent();
-					byte[] data = StreamTool.read(jsonStream);
-					String json = new String(data);
-					Community mcommunity;
-					JSONArray jsonarray = new JSONArray(json);
-					for (int i = 0; i < jsonarray.length(); i++) {
-						JSONObject jsonobject = jsonarray.getJSONObject(i);
-						double distance = InfoBean
-								.getDistance(Double.parseDouble(myapplication
-										.getLat()), Double
-										.parseDouble(myapplication.getLng()),
-										Double.parseDouble(jsonobject
-												.getString("lat")), Double
-												.parseDouble(jsonobject
-														.getString("lng")));
-						mcommunity = new Community();
-						mcommunity.setId(jsonobject.getString("id"));
-						mcommunity.setName(jsonobject.getString("name"));
-						mcommunity.setAddress(jsonobject.getString("address"));
-						mcommunity.setLat(jsonobject.getString("lat"));
-						mcommunity.setLng(jsonobject.getString("lng"));
-						mcommunity.setPic(jsonobject.getString("pic"));
-						mcommunity
-								.setBusiness(jsonobject.getString("business"));
-						mcommunity.setDevelop(jsonobject.getString("develop"));
-						mcommunity.setPropertymanagement(jsonobject
-								.getString("propertymanagement"));
-						mcommunity.setPropertytype(jsonobject
-								.getString("propertytype"));
-						mcommunity.setHomenumber(jsonobject
-								.getString("homenumber"));
-						mcommunity.setBuildyear(jsonobject
-								.getString("buildyear"));
-						XiaoquService xiaoquService = new XiaoquService(this);
-						boolean ishavegz = xiaoquService.isexit(mcommunity.getId());
-						if (ishavegz) {
-							mcommunity.setIsgz(1);
-						} else {
-							mcommunity.setIsgz(0);
-						}
-						xiaoquService.close();
-						mcommunity.setDistance(String.valueOf(distance));
-						communitylist.add(mcommunity);
-					}
-				} catch (IllegalStateException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		MarketAPI.geXiaoqus(getApplicationContext(),this,myapplication.getLat(),myapplication.getLng(),keyword);
+	}
+
+
+	@Override
+	protected void onPrepareDialog(int id, Dialog dialog) {
+		super.onPrepareDialog(id, dialog);
+
+		if (dialog.isShowing()) {
+			dialog.dismiss();
 		}
-		
+	}
+	@Override
+	protected Dialog onCreateDialog(int id) {
+
+		switch (id) {
+			case DIALOG_PROGRESS:
+				ProgressDialog mProgressDialog = new ProgressDialog(this);
+				mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+				mProgressDialog.setMessage(getString(R.string.init_data));
+				return mProgressDialog;
+
+			default:
+				return super.onCreateDialog(id);
+		}
 	}
 
 
@@ -274,10 +293,98 @@ public class CommunityGzListActivity extends BaseActivity {
 			switch (requestCode) {
 				case GzXq_REQUEST_CODE:
 					String name=data.getStringExtra("community");
-					getData();
-					adapter = new MyListAdapter(CommunityGzListActivity.this,communitylist);
-					lstv.setAdapter(adapter);
+					LoadData();
+
 			}
+		}
+	}
+
+
+
+	@Override
+	public void onSuccess(int method, Object obj) {
+		// TODO Auto-generated method stub
+		switch (method) {
+			case MarketAPI.ACTION_GETXIAOQUS:
+				try{
+					dismissDialog(DIALOG_PROGRESS);
+				}catch (IllegalArgumentException e) {
+				}
+				HashMap<String, String> result = (HashMap<String, String>) obj;
+				String JsonContext=result.get("xiaoqus");
+				if(JsonContext.length()>0)
+				{
+					JSONArray jsonarray = null;
+					try {
+						communitylist.clear();
+						jsonarray = new JSONArray(JsonContext);
+						for (int i = 0; i < jsonarray.length(); i++) {
+							JSONObject jsonobject = jsonarray.getJSONObject(i);
+							double distance = InfoBean
+									.getDistance(Double.parseDouble(myapplication
+													.getLat()), Double
+													.parseDouble(myapplication.getLng()),
+											Double.parseDouble(jsonobject
+													.getString("lat")), Double
+													.parseDouble(jsonobject
+															.getString("lng")));
+							Community mcommunity = new Community();
+							mcommunity.setId(jsonobject.getString("id"));
+							mcommunity.setName(jsonobject.getString("name"));
+							mcommunity.setAddress(jsonobject.getString("address"));
+							mcommunity.setLat(jsonobject.getString("lat"));
+							mcommunity.setLng(jsonobject.getString("lng"));
+							mcommunity.setPic(jsonobject.getString("pic"));
+							mcommunity
+									.setBusiness(jsonobject.getString("business"));
+							mcommunity.setDevelop(jsonobject.getString("develop"));
+							mcommunity.setPropertymanagement(jsonobject
+									.getString("propertymanagement"));
+							mcommunity.setPropertytype(jsonobject
+									.getString("propertytype"));
+							mcommunity.setHomenumber(jsonobject
+									.getString("homenumber"));
+							mcommunity.setBuildyear(jsonobject
+									.getString("buildyear"));
+							XiaoquService xiaoquService = new XiaoquService(this);
+							boolean ishavegz = xiaoquService.isexit(mcommunity.getId());
+							if (ishavegz) {
+								mcommunity.setIsgz(1);
+							} else {
+								mcommunity.setIsgz(0);
+							}
+							xiaoquService.close();
+							mcommunity.setDistance(String.valueOf(distance));
+							communitylist.add(mcommunity);
+						}
+					} catch (JSONException e1) {
+						// TODO Auto-generated catch block
+						com.bbxiaoqu.client.baidu.Utils.makeEventToast(CommunityGzListActivity.this, "xiaoqus xml解释错误",false);
+						e1.printStackTrace();
+					}
+					Message msg = handler.obtainMessage();
+					msg.what = 1;
+					handler.sendMessage(msg);
+				}
+				break;
+			default:
+				break;
+		}
+	}
+
+	@Override
+	public void onError(int method, int statusCode) {
+		// TODO Auto-generated method stub
+		switch (method) {
+			case MarketAPI.ACTION_GETFRIENDS:
+				// 隐藏登录框
+				try {
+					dismissDialog(DIALOG_PROGRESS);
+				} catch (IllegalArgumentException e) {
+				}
+				break;
+			default:
+				break;
 		}
 	}
 	// 自定义ListView适配器
@@ -336,7 +443,7 @@ public class CommunityGzListActivity extends BaseActivity {
 						
 				view.setTag(holder);
 			} else {
-				Log.e("SubscribeCommunityActivity", "position2 = " + position);
+				//Log.e("SubscribeCommunityActivity", "position2 = " + position);
 				view = map.get(position);
 				holder = (ViewHolder) view.getTag();
 			}

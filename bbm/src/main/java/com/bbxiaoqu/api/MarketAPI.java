@@ -67,7 +67,9 @@ public class MarketAPI {
             // ACTION_GETINFOS
             API_BASE_URL + "getinfos.php",
             // ACTION_GETINFOS
-            API_BASE_URL + "getfriends.php"
+            API_BASE_URL + "getfriends.php",
+
+             API_BASE_URL + "getxiaoqu.php"
                        
            };
     
@@ -87,8 +89,8 @@ public class MarketAPI {
     public static final int ACTION_GETINFOS = 6;
     /**获取朋友 */
     public static final int ACTION_GETFRIENDS =7;
- 
-    
+    /**获取小区 */
+    public static final int ACTION_GETXIAOQUS =8;
     
     /**
 	 * Register API<br>
@@ -195,6 +197,22 @@ public class MarketAPI {
        
    
    }
+
+
+    public static void geXiaoqus(Context context, ApiRequestListener handler,String latitude,String longitude,String keyword) {
+        final HashMap<String, Object> params = new HashMap<String, Object>(2);
+        params.put("latitude", latitude);
+        params.put("longitude", longitude);
+        if(keyword!=null&&keyword.length()>0) {
+            params.put("keyword", keyword);
+        }else
+        {
+            params.put("keyword", "");
+        }
+        new ApiAsyncTask(context,ACTION_GETXIAOQUS, handler, params).execute();
+
+
+    }
    
    /* *//**
      * Get Search Keywords API<br>
