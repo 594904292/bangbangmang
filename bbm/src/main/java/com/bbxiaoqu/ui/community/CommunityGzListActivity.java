@@ -306,10 +306,7 @@ public class CommunityGzListActivity extends BaseActivity implements ApiAsyncTas
 		// TODO Auto-generated method stub
 		switch (method) {
 			case MarketAPI.ACTION_GETXIAOQUS:
-				try{
-					dismissDialog(DIALOG_PROGRESS);
-				}catch (IllegalArgumentException e) {
-				}
+
 				HashMap<String, String> result = (HashMap<String, String>) obj;
 				String JsonContext=result.get("xiaoqus");
 				if(JsonContext.length()>0)
@@ -361,6 +358,10 @@ public class CommunityGzListActivity extends BaseActivity implements ApiAsyncTas
 						// TODO Auto-generated catch block
 						com.bbxiaoqu.client.baidu.Utils.makeEventToast(CommunityGzListActivity.this, "xiaoqus xml解释错误",false);
 						e1.printStackTrace();
+					}
+					try{
+						dismissDialog(DIALOG_PROGRESS);
+					}catch (IllegalArgumentException e) {
 					}
 					Message msg = handler.obtainMessage();
 					msg.what = 1;

@@ -2,109 +2,11 @@
 <items version="2" >
 
     <item
-        jar="F:\AndroidStudio\workspace\bbm\build\intermediates\exploded-aar\workspace\slidingmenu_library\unspecified\jars\classes.jar"
+        jar="F:\AndroidStudio\workspace\bbm\build\intermediates\incremental-classes\debug\classes.jar"
         jumboMode="false"
         revision="20.0.0"
-        sha1="8fd617ec710a6b81cd8b95f8fef9e01c07d7c912">
-        <dex dex="F:\AndroidStudio\workspace\bbm\build\intermediates\pre-dexed\release\workspace-slidingmenu_library-unspecified_4172d6efe57d89a8354932cc39528b5997f51d6a.jar" />
-    </item>
-    <item
-        jar="F:\AndroidStudio\workspace\bbm\libs\libammsdk.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="c1f63f70671d69ee38379728e1192db82e289246">
-        <dex dex="F:\AndroidStudio\workspace\bbm\build\intermediates\pre-dexed\release\libammsdk_c351b93f06fdd7662e6a5bd8b862f1fcdb5662f8.jar" />
-    </item>
-    <item
-        jar="F:\AndroidStudio\workspace\bbm\libs\VoiceRecognition.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="99844d9e4943e9f0d59e94423ec9c2cef5d36db8">
-        <dex dex="F:\AndroidStudio\workspace\bbm\build\intermediates\pre-dexed\release\VoiceRecognition_1c7163eb80475a12d2a398851709c0f427e79c26.jar" />
-    </item>
-    <item
-        jar="F:\AndroidStudio\workspace\bbm\libs\android-async-http-1.4.4.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="3bae85a076241828810bf8fbcc12e5891d5fc34c">
-        <dex dex="F:\AndroidStudio\workspace\bbm\build\intermediates\pre-dexed\release\android-async-http-1.4.4_d33d9d9b95369d861c2c3bb323f02e8e784daa48.jar" />
-    </item>
-    <item
-        jar="F:\AndroidStudio\workspace\bbm\libs\pushservice-4.5.1.8.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="12e032c029dcede1ee7166e22eb9c458cfc5e545">
-        <dex dex="F:\AndroidStudio\workspace\bbm\build\intermediates\pre-dexed\release\pushservice-4.5.1.8_8e6cb4238c44558560231feeb14549d7176ee336.jar" />
-    </item>
-    <item
-        jar="F:\AndroidStudio\workspace\bbm\libs\universal-image-loader-1.9.4.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="dd9eeb557650c4ad7394df23f0f5cf27a7cfc697">
-        <dex dex="F:\AndroidStudio\workspace\bbm\build\intermediates\pre-dexed\release\universal-image-loader-1.9.4_9871a961b3d1a53bd4c6deb38544b15ff4fda1ff.jar" />
-    </item>
-    <item
-        jar="F:\AndroidStudio\workspace\bbm\libs\smackx.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="bd7557b72511ad3de3f8d1c8d3b336226e116622">
-        <dex dex="F:\AndroidStudio\workspace\bbm\build\intermediates\pre-dexed\release\smackx_fc2259e3310c9feb135b44fe1ed96e14eeb94496.jar" />
-    </item>
-    <item
-        jar="F:\AndroidStudio\workspace\bbm\libs\galaxy_mini.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="58de9ecfba229dbb2c3eb3f45dbe284ba58100ea">
-        <dex dex="F:\AndroidStudio\workspace\bbm\build\intermediates\pre-dexed\release\galaxy_mini_a623acf0e4575f3417c18b30087148484e9f6897.jar" />
-    </item>
-    <item
-        jar="E:\android-sdks\extras\android\m2repository\com\android\support\support-v4\19.1.0\support-v4-19.1.0.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67">
-        <dex dex="F:\AndroidStudio\workspace\bbm\build\intermediates\pre-dexed\release\support-v4-19.1.0_c9f88ea49ebe45c4caada850a271d62938b052e2.jar" />
-    </item>
-    <item
-        jar="C:\Users\dzy\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.2.4\a60a5e993c98c864010053cb901b7eab25306568\gson-2.2.4.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="a60a5e993c98c864010053cb901b7eab25306568">
-        <dex dex="F:\AndroidStudio\workspace\bbm\build\intermediates\pre-dexed\release\gson-2.2.4_cf239e4b44d436a7f3fc7876af123b4df5a55319.jar" />
-    </item>
-    <item
-        jar="F:\AndroidStudio\workspace\bbm\libs\crittercism_v3_0_3_sdkonly.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="17fd8b2c455671bb79b043fe79fa82846881809f">
-        <dex dex="F:\AndroidStudio\workspace\bbm\build\intermediates\pre-dexed\release\crittercism_v3_0_3_sdkonly_63a9d4e1903a919850c2b7534ce20d4284d24510.jar" />
-    </item>
-    <item
-        jar="F:\AndroidStudio\workspace\bbm\libs\android_api_1.1_forsdk.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="610ab8a4952cfec5cc008a697790e21dec7b8d3a">
-        <dex dex="F:\AndroidStudio\workspace\bbm\build\intermediates\pre-dexed\release\android_api_1.1_forsdk_91e5566fe4f165d7c1ee3b426ac46efc7a1b934b.jar" />
-    </item>
-    <item
-        jar="F:\AndroidStudio\workspace\bbm\libs\smack.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="6c753d9ee1267d5c95f129575963e62ed49860a1">
-        <dex dex="F:\AndroidStudio\workspace\bbm\build\intermediates\pre-dexed\release\smack_b8fb67cb512b7e27b86df43f1b19bbbd8d451785.jar" />
-    </item>
-    <item
-        jar="F:\AndroidStudio\workspace\bbm\libs\locSDK_5.2.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="389047997db28fcb848dc4247c5590a08b7ff769">
-        <dex dex="F:\AndroidStudio\workspace\bbm\build\intermediates\pre-dexed\release\locSDK_5.2_fac5c25651900b05f9914cdc6b57c986f6eee61a.jar" />
-    </item>
-    <item
-        jar="F:\AndroidStudio\workspace\bbm\libs\baidumapapi_v3_5_0.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="ba79500bb64218f10b5fd0d5ea54503b2bf6b3bb">
-        <dex dex="F:\AndroidStudio\workspace\bbm\build\intermediates\pre-dexed\release\baidumapapi_v3_5_0_0807fb21fadac0c895aed9f58e4ebee40c07843f.jar" />
+        sha1="17ce838d72d16356bc4ae6dca9f440345ed6ba4a">
+        <dex dex="F:\AndroidStudio\workspace\bbm\build\intermediates\pre-dexed\debug\classes_6cbeb77f55d7cc26da37be7b30045750faf29218.jar" />
     </item>
 
 </items>

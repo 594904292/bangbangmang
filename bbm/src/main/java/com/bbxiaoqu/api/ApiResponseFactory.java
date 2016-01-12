@@ -141,9 +141,13 @@ public class ApiResponseFactory {
 		    // 很多条消息
 		    requestMethod = "ACTION_GETINFOS";
 		    result = parseGetFriendsResult(in);
-		    break;      
-		    
-		default:
+		    break;
+		case MarketAPI.ACTION_GETXIAOQUS:
+				// 很多条消息
+				requestMethod = "ACTION_GETXIAOQUS";
+				result = parseGetXiaoqusResult(in);
+				break;
+			default:
 		    break;
 		}
         if (result != null) {
@@ -277,8 +281,23 @@ public class ApiResponseFactory {
               
         return result;
     }
-    
-    
+
+
+	private static HashMap<String, String> parseGetXiaoqusResult(InputStream jsonStream) {
+		byte[] data = null;
+		try {
+			data = read(jsonStream);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		HashMap<String, String> result = new HashMap<String, String>();
+		String JsonContext = new String(data);
+		result.put("xiaoqus", JsonContext);
+
+		return result;
+	}
+
 	/*
      * 获取所有分类列表
      

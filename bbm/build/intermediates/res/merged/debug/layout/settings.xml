@@ -113,12 +113,11 @@
                         style="@style/setting_item_center" >
 
                         <TextView
-                            android:id="@+id/update_text"
+                            android:id="@+id/glsuggest"
                             style="@style/setting_item_text"
                             android:text="@string/setting_suggest" />
 
                         <ImageView
-                            android:id="@+id/version_new"
                             style="@style/setting_item_text"
                             android:visibility="gone" />
 
@@ -128,11 +127,11 @@
                             android:layout_weight="1.0" />
 
                         <TextView
-                            android:id="@+id/current_version"
+
                             style="@style/setting_item_text" />
 
                         <ImageView
-                            android:id="@+id/update_arrow"
+
                             style="@style/setting_arrow" />
                     </LinearLayout>
 
