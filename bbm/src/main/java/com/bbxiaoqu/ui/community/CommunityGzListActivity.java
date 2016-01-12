@@ -180,12 +180,7 @@ public class CommunityGzListActivity extends BaseActivity implements ApiAsyncTas
 					Utils.makeEventToast(CommunityGzListActivity.this, "请输入关键词",false);
 					return;
 				}
-				new Thread(new Runnable() {
-					@Override
-					public void run(){
-						LoadData();
-					}
-				}).start();
+				LoadData();
 			}
 		});
 	}
