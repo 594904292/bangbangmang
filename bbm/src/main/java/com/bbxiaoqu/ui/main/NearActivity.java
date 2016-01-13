@@ -80,7 +80,6 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 	private ListViewAdapter adapter;
 	private List<Map<String, Object>> dataList = new ArrayList<Map<String, Object>>();
 	private DatabaseHelper dbHelper;
-
 	private View allLayout;
 	private View mySosLayout;
 	private ImageView allImage;
@@ -162,11 +161,7 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 				MarketAPI.getINfos(getApplicationContext(), this, myapplication.getUserId(), "xiaoqufw", "1", start, limit);				
 			}
 		}
-	
 	}
-	
-	
-	
 	
 	private void clearSelection() {
 		allImage.setImageResource(R.mipmap.t12);
@@ -206,9 +201,7 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 			serviceText.setTextColor(Color.GRAY);
 			loadData(AutoListView.REFRESH);
 			break;			
-		
-	
-		}		
+		}
 	}
 	
 	private void initView() {
@@ -218,25 +211,20 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 		right_text.setClickable(true);		
 		top_more = (ImageView) findViewById(R.id.top_more);	
 		top_more.setVisibility(View.VISIBLE);
-		
-		top_add = (ImageView) findViewById(R.id.top_add);	
+		top_add = (ImageView) findViewById(R.id.top_add);
 		top_add.setVisibility(View.VISIBLE);
-		
 		allLayout = findViewById(R.id.all_layout);
 		mySosLayout = findViewById(R.id.mysos_layout);
 		sosLayout = findViewById(R.id.sos_layout);
 		serviceLayout = findViewById(R.id.service_layout);
-		
 		allImage = (ImageView) findViewById(R.id.all_image);
 		mySosImage = (ImageView) findViewById(R.id.mysos_image);
 		sosImage = (ImageView) findViewById(R.id.sos_image);
 		serviceImage = (ImageView) findViewById(R.id.service_image);
-		
 		allText = (TextView) findViewById(R.id.all_text);
 		mySosText = (TextView) findViewById(R.id.mysos_text);
 		sosText = (TextView) findViewById(R.id.sos_text);
 		serviceText = (TextView) findViewById(R.id.service_text);
-		
 		allLayout.setOnClickListener(this);
 		mySosLayout.setOnClickListener(this);
 		sosLayout.setOnClickListener(this);
@@ -272,7 +260,6 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 				bundle.putInt("infocatagroy", 3);
 				intent.putExtras(bundle);
 				startActivity(intent);
-				
 			}
 		});
 	}
