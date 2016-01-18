@@ -99,8 +99,7 @@ public class ListViewAdapter extends BaseAdapter {
 			holder_img = new ViewHolderimg();
 			if(list.get(position).get("icon").toString().trim().length()>0)
 			{
-				convertView = LayoutInflater.from(context).inflate(
-						R.layout.listview_item, null);
+				convertView = LayoutInflater.from(context).inflate(R.layout.listview_item, null);
 				holder_img.imageView = (ImageView) convertView.findViewById(R.id.imageView);
 				holder_img.infocatagroy = (TextView) convertView.findViewById(R.id.infocatagroy);
 				holder_img.senduser = (TextView) convertView.findViewById(R.id.senduser);
@@ -114,8 +113,7 @@ public class ListViewAdapter extends BaseAdapter {
 				
 			}else
 			{
-				convertView = LayoutInflater.from(context).inflate(
-						R.layout.listview_noimg_item, null);		
+				convertView = LayoutInflater.from(context).inflate(R.layout.listview_noimg_item, null);
 				holder_img.imageView = (ImageView) convertView.findViewById(R.id.imageView);
 				holder_img.infocatagroy = (TextView) convertView.findViewById(R.id.infocatagroy);
 				holder_img.senduser = (TextView) convertView.findViewById(R.id.senduser);
@@ -127,7 +125,8 @@ public class ListViewAdapter extends BaseAdapter {
 				//holder_img.tag3 = (TextView) convertView.findViewById(R.id.tag3);		
 				holder_img.status = (TextView) convertView.findViewById(R.id.status);
 			}
-			convertView.setTag(holder_img);
+			//convertView.setTag(holder_img);
+			convertView.setTag(list.get(position).get("guid").toString().trim());
 		} else {
 			holder_img = (ViewHolderimg) convertView.getTag();
 		}
