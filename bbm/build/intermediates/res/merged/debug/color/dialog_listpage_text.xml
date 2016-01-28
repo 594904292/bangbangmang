@@ -3,4 +3,4 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_pressed="true" android:color="#ffa3a3a3" />
     <item android:color="#ffffffff" />
-</selector>
+</selector><!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/color/dialog_listpage_text.xml -->

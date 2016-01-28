@@ -5,4 +5,4 @@
         android:duration="200"
         android:fromYDelta="0"
         android:toYDelta="50%p" />
-</set>
+</set><!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/anim/push_bottom_out.xml -->

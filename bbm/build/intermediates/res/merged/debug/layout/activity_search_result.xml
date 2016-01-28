@@ -86,4 +86,4 @@
          android:layout_alignParentLeft="true"
          android1:layout_below="@+id/headbar" />
    
-</RelativeLayout>
+</RelativeLayout><!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/layout/activity_search_result.xml -->

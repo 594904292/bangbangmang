@@ -46,4 +46,4 @@
         android:onClick="onClick"
         android:layout_alignParentBottom="true" />
 
-</LinearLayout>
+</LinearLayout><!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/layout/sdk2_api.xml -->

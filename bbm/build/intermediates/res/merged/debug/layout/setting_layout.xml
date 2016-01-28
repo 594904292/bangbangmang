@@ -80,4 +80,4 @@ android:background="#fff"
         <ImageView style="@style/left_drawer_item_line" />
     </LinearLayout>
 
-</LinearLayout>
+</LinearLayout><!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/layout/setting_layout.xml -->

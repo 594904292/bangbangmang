@@ -3,4 +3,4 @@
     <item android:drawable="@drawable/gallery_radio_on" android:state_checked="true"></item>
     <item android:drawable="@drawable/gallery_radio_off" android:state_checked="false"></item>
 
-</selector>
+</selector><!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/mipmap-hdpi/gallery_icon_bg.xml -->

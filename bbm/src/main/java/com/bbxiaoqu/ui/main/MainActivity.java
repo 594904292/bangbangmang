@@ -84,10 +84,12 @@ import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -292,9 +294,17 @@ public class MainActivity extends BaseActivity implements OnClickListener ,onNew
 			public void onItemClick(AdapterView<?> arg0, View arg1,
 					int location, long arg3) {								
 				
-				if(dataList.get(location).get("actionname").toString().equals("publish"))
+				if(dataList.get(location).get("actionname").toString().equals("publishfw"))
 				{//查看信息
-					Intent Intent1=new Intent(MainActivity.this,ViewActivity.class);	
+					Intent Intent1=new Intent(MainActivity.this,ViewFwActivity.class);
+					Bundle arguments = new Bundle();
+					arguments.putString("put", "false");
+					arguments.putString("guid",dataList.get(location).get("guid").toString());
+					Intent1.putExtras(arguments);
+					startActivity(Intent1);
+				}else if(dataList.get(location).get("actionname").toString().equals("publish"))
+				{//查看信息
+					Intent Intent1=new Intent(MainActivity.this,ViewActivity.class);
 					Bundle arguments = new Bundle();
 					arguments.putString("put", "false");
 					arguments.putString("guid",dataList.get(location).get("guid").toString());
@@ -475,10 +485,25 @@ public class MainActivity extends BaseActivity implements OnClickListener ,onNew
 						}else{  
 							if(Double.parseDouble(OldVersionName)<Double.parseDouble(info.getVersion()))
 							{
-								Intent intent = new Intent(MainActivity.this,UpdateService.class);
-								intent.putExtra("Key_App_Name",appName);
-								intent.putExtra("Key_Down_Url",myapplication.getlocalhost()+downUrl);						
-								startService(intent);
+
+								new AlertDialog.Builder(MainActivity.this).setTitle("确认升级吗？")
+										.setIcon(android.R.drawable.ic_dialog_info)
+										.setPositiveButton("升级", new DialogInterface.OnClickListener() {
+											@Override
+											public void onClick(DialogInterface dialog, int which) {
+												Intent intent = new Intent(MainActivity.this,UpdateService.class);
+												intent.putExtra("Key_App_Name",appName);
+												intent.putExtra("Key_Down_Url",myapplication.getlocalhost()+downUrl);
+												startService(intent);
+											}
+										})
+										.setNegativeButton("暂不升级", new DialogInterface.OnClickListener() {
+											@Override
+											public void onClick(DialogInterface dialog, int which) {
+												// 点击“返回”后的操作,这里不设置没有任何操作
+											}
+										}).show();
+
 								
 							}  
 						}

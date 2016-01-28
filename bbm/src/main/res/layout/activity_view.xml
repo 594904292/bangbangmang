@@ -206,19 +206,35 @@
         android:layout_marginTop="10dp"
         android:text="暂无评论" />
 
-    <ListView
-        android:id="@+id/view_group_discuss_list"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/body_info"
-        android:layout_marginBottom="50dp"
-        android:layout_marginTop="10dp"
-        android:divider="#b5b5b5"
-        android:dividerHeight="1dp"
-        android:listSelector="@drawable/list_selector" />
 
-    
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fadingEdge = "none"
+        android:background="#FFF4F4F4"
+        android:layout_below="@+id/body_info"
+        >
+        <LinearLayout
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:background="#fff4f4f4"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            >
+            <ListView
+                android:id="@+id/view_group_discuss_list"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="50dp"
+                android:layout_marginTop="10dp"
+                android:divider="#b5b5b5"
+                android:dividerHeight="1dp"
+                android:listSelector="@drawable/list_selector" />
+        </LinearLayout>
+    </ScrollView>
+    3. [图片] scrollview_listview.jpg
     <RelativeLayout
         android:id="@+id/view_rl_bottom"
         android:layout_width="fill_parent"

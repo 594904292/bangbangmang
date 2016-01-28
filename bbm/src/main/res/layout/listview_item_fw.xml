@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="100dp"
+  	android:background="#f5f5f5"
+    android:padding="1dp"
+    android:descendantFocusability="blocksDescendants"
+    >
+<RelativeLayout
+    android:layout_width="fill_parent"
+    android:layout_height="100dp"
+    android:background="#FFFFFF"
+    android:padding="1dp" >
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:padding="8dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/t3"
+        android:layout_centerVertical="true" />
+    <TextView
+        android:id="@+id/senduser"
+        style="@style/TextView16"
+
+        android:layout_toRightOf="@id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="用户名"
+        android:layout_alignParentTop="false"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentBottom="false"
+        android:layout_alignWithParentIfMissing="false"
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:id="@+id/usertags"
+        android:layout_marginTop="5dp"
+        style="@style/TextView12"
+        android:layout_toRightOf="@id/imageView"
+        android:layout_below="@id/senduser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="服务项目:开锁,快递,搬家,维修,送水"
+        android:alpha="0.6" />
+
+    <TextView
+        android:id="@+id/sendcontent"
+        android:layout_marginTop="5dp"
+        style="@style/TextView10"
+        android:layout_toRightOf="@+id/imageView"
+        android:layout_toLeftOf="@+id/zan"
+        android:layout_below="@+id/usertags"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="正文"
+        />
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:id="@+id/zan"
+        android:layout_toLeftOf="@+id/zannum"
+        android:src="@android:drawable/btn_star_big_on"
+        android:focusable="false"
+        android:layout_centerVertical="true" />
+
+    <TextView
+        android:id="@+id/zannum"
+        android:layout_marginTop="2dp"
+        style="@style/TextView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="16"
+        android:alpha="0.8"
+        android:layout_toLeftOf="@id/telphone"
+        android:layout_marginRight="20dp"
+        android:focusable="false"
+        android:layout_centerVertical="true" />
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/telphone"
+        android:minHeight="40dp"
+        android:maxWidth="40dp"
+        android:layout_alignParentRight="true"
+        android:focusable="false"
+    android:src="@android:drawable/sym_action_call"
+        android:layout_centerVertical="true" />
+
+
+</RelativeLayout>
+     
+    
+
+</RelativeLayout>

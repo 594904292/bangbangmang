@@ -18,4 +18,4 @@
          android:layout_below="@+id/title_bar"
        />
 
-</RelativeLayout>
+</RelativeLayout><!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/layout/activity_notice.xml -->

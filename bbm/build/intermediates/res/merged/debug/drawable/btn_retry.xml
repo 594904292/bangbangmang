@@ -5,3 +5,4 @@
         android:drawable="@mipmap/refresh_pressed" />
     <item android:drawable="@mipmap/refresh_normal" />
 </selector>
+<!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/drawable/btn_retry.xml -->

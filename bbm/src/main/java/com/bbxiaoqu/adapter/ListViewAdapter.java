@@ -95,7 +95,7 @@ public class ListViewAdapter extends BaseAdapter {
 	}
 
 	private View haveimg(int position, View convertView) {
-		if (convertView == null) {
+		//if (convertView == null) {
 			holder_img = new ViewHolderimg();
 			if(list.get(position).get("icon").toString().trim().length()>0)
 			{
@@ -126,10 +126,10 @@ public class ListViewAdapter extends BaseAdapter {
 				holder_img.status = (TextView) convertView.findViewById(R.id.status);
 			}
 			//convertView.setTag(holder_img);
-			convertView.setTag(list.get(position).get("guid").toString().trim());
-		} else {
+			//convertView.setTag(list.get(position).get("guid").toString().trim());
+		/*} else {
 			holder_img = (ViewHolderimg) convertView.getTag();
-		}
+		}*/
 		
 		holder_img.imageView.setTag(list.get(position).get("icon").toString());//设置标签
 		if(list.get(position).get("icon").toString().trim().length()>0)
@@ -196,7 +196,7 @@ public class ListViewAdapter extends BaseAdapter {
 		}
 		holder_img.senduser.setText(list.get(position).get("sendnickname").toString());
 		holder_img.sendtimer.setText(list.get(position).get("date").toString());
-		holder_img.sendcontent.setText(list.get(position).get("message").toString());
+		holder_img.sendcontent.setText(list.get(position).get("content").toString());
 		holder_img.sendaddress.setText(list.get(position).get("address").toString());
 		
 		holder_img.tag1.setText(list.get(position).get("tag1").toString());

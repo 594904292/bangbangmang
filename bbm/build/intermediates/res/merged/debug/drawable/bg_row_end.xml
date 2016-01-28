@@ -16,4 +16,4 @@
             <padding android:bottom="@dimen/bg_row_padding_bottom" android:left="@dimen/bg_row_padding_left" android:right="@dimen/bg_row_padding_right" android:top="@dimen/bg_row_padding_top" />
         </shape></item>
 
-</selector>
+</selector><!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/drawable/bg_row_end.xml -->

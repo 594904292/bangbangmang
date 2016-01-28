@@ -6,3 +6,4 @@
     <item android:state_focused="true" android:drawable="@mipmap/chat_bottom_send_pressed" />
     <item android:drawable="@mipmap/chat_bottom_send_normal" />
 </selector>
+<!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/drawable/chat_send_button_bg.xml -->

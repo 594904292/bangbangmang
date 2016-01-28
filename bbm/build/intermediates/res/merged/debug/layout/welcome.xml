@@ -10,4 +10,4 @@
         android:scaleType="fitXY"
         android:src="@mipmap/splash" />
 
-</RelativeLayout>
+</RelativeLayout><!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/layout/welcome.xml -->

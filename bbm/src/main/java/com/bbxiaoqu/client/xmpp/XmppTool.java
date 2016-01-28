@@ -63,7 +63,11 @@ public class XmppTool {
 	            	if(!con.isConnected())
 	            	{//未连接
 	            		con.connect();
-	            		con.addConnectionListener(connectionListener);//放在连接后,要不出错
+						if(con!=null)
+						{
+							con.addConnectionListener(connectionListener);//放在连接后,要不出错
+						}
+
 	            	}
 				}
 			} catch (IllegalStateException e) {

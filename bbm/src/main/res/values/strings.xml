@@ -38,6 +38,7 @@
     
   
     <string name="pic">照片</string>
+    <string name="servicename">请输入您的服务名称</string>
     <string name="bangbanginfo">请输入您的帮帮信息-字数5-500以内</string>
     <string name="send">发送</string>
     <string name="text_btn_init">百度账号绑定</string>

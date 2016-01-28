@@ -21,4 +21,4 @@
         android:layout_marginRight="10dp"
         android:background="@mipmap/croppictrue_bg" />
 
-</RelativeLayout>
+</RelativeLayout><!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/layout/activity_crop.xml -->

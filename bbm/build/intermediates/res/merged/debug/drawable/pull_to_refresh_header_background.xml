@@ -19,4 +19,4 @@
         android:startColor="#ffffff"
         android:endColor="#EDEDED"
         android:angle="-90" />
-</shape>
+</shape><!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/drawable/pull_to_refresh_header_background.xml -->

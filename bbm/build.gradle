@@ -33,4 +33,5 @@ dependencies {
     compile files('libs/smackx.jar')
     compile files('libs/universal-image-loader-1.9.4.jar')
     compile files('libs/VoiceRecognition.jar')
+    compile 'com.google.android.gms:play-services-appindexing:8.1.0'
 }

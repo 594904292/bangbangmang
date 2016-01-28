@@ -2,4 +2,4 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android" >
    	<item android:state_pressed="true" android:drawable="@drawable/iv_face_pressed"/>
 
-</selector>
+</selector><!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/mipmap-hdpi/iv_face.xml -->

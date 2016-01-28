@@ -3,4 +3,4 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <corners android:radius="@dimen/detail_title_bar_edit_corner" />
     <solid android:color="#7f55b3fc" />
-</shape>
+</shape><!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/drawable/detail_title_bar_progress.xml -->

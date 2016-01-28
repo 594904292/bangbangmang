@@ -15,4 +15,4 @@
             <padding android:left="@dimen/bg_row_padding_left" android:top="@dimen/bg_row_padding_top" android:right="@dimen/bg_row_padding_right" android:bottom="@dimen/bg_row_padding_bottom" />
         </shape>
     </item>
-</selector>
+</selector><!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/drawable/bg_row_head.xml -->

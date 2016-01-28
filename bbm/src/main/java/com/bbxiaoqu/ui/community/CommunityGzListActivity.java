@@ -447,7 +447,15 @@ public class CommunityGzListActivity extends BaseActivity implements ApiAsyncTas
 			
 
 			String fileName = listCommunity.get(position).getPic();
-			ImageLoader.getInstance().displayImage(fileName, holder.imageView,ImageOptions.getOptions());
+			if(!fileName.equals("null")&&fileName.length()>4) {
+				ImageLoader.getInstance().displayImage(fileName, holder.imageView, ImageOptions.getOptions());
+			}else
+			{
+				Drawable drawable = context.getResources().getDrawable(R.mipmap.ic_launcher);
+				holder.imageView.setImageDrawable(drawable);
+			}
+
+			//ImageLoader.getInstance().displayImage(fileName, holder.imageView,ImageOptions.getOptions());
 			holder.distance.setText(listCommunity.get(position).getDistance()+ "米");
 			holder.homenumber.setText(listCommunity.get(position).getHomenumber());
 			holder.name.setText(listCommunity.get(position).getName());

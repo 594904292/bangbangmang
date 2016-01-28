@@ -57,8 +57,7 @@
             </RelativeLayout>
       </RelativeLayout>
       <ListView
-        android:id="@+id/lvnear"
-          android:layout_below="@+id/top"
+        android:id="@+id/lvnear" android:layout_below="@+id/top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -68,4 +67,4 @@
 
   
 
-</RelativeLayout>
+</RelativeLayout><!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/layout/activity_gz_community.xml -->

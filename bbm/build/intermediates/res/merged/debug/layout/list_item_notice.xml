@@ -30,4 +30,4 @@
         android:text="TextView"
          android:textColor="@color/black" />
 
-</RelativeLayout>
+</RelativeLayout><!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/layout/list_item_notice.xml -->

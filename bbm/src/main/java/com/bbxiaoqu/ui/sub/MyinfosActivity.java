@@ -38,6 +38,7 @@ import com.bbxiaoqu.comm.tool.StreamTool;
 import com.bbxiaoqu.comm.tool.T;
 import com.bbxiaoqu.ui.SearchActivity;
 import com.bbxiaoqu.ui.main.ViewActivity;
+import com.bbxiaoqu.ui.main.ViewFwActivity;
 import com.bbxiaoqu.widget.AutoListView;
 import com.bbxiaoqu.widget.AutoListView.OnLoadListener;
 import com.bbxiaoqu.widget.AutoListView.OnRefreshListener;
@@ -86,7 +87,12 @@ public class MyinfosActivity extends Activity  implements OnRefreshListener,OnLo
 			public void onItemClick(AdapterView<?> arg0, View arg1,int location, long arg3) 
 			{
 				Intent Intent1 = new Intent();
-				Intent1.setClass(MyinfosActivity.this, ViewActivity.class);
+				if(dataList.get(location - 1).get("infocatagroy").toString().equals("3")) {
+					Intent1.setClass(MyinfosActivity.this, ViewFwActivity.class);
+				}else
+				{
+					Intent1.setClass(MyinfosActivity.this, ViewActivity.class);
+				}
 				Bundle arguments = new Bundle();
 				arguments.putString("put", "false");
 				arguments.putString("guid",dataList.get(location - 1).get("guid").toString());

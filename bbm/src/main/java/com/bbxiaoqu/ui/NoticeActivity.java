@@ -31,6 +31,7 @@ import com.bbxiaoqu.comm.tool.NetworkUtils;
 import com.bbxiaoqu.comm.tool.StreamTool;
 import com.bbxiaoqu.comm.tool.T;
 import com.bbxiaoqu.ui.main.ViewActivity;
+import com.bbxiaoqu.ui.main.ViewFwActivity;
 import com.bbxiaoqu.ui.sub.ChattingActivity;
 import com.bbxiaoqu.ui.sub.InfoGzActivity;
 import com.bbxiaoqu.ui.sub.ViewUserInfoActivity;
@@ -109,6 +110,15 @@ public class NoticeActivity extends BaseActivity {
 					arguments.putString("guid",dataList.get(location).get("relativeid").toString());
 					Intent1.putExtras(arguments);
 					startActivity(Intent1);
+				}else if(dataList.get(location).get("catagory").toString().equals("服务"))
+				{
+					Intent Intent1 = new Intent();
+					Intent1.setClass(NoticeActivity.this, ViewFwActivity.class);
+					Bundle arguments = new Bundle();
+					arguments.putString("put", "false");
+					arguments.putString("guid",dataList.get(location).get("relativeid").toString());
+					Intent1.putExtras(arguments);
+					startActivity(Intent1);
 				}else if(dataList.get(location).get("catagory").toString().equals("私信"))
 				{
 					
@@ -133,13 +143,8 @@ public class NoticeActivity extends BaseActivity {
 					arguments.putString("guid",dataList.get(location).get("relativeid").toString());
 					Intent1.putExtras(arguments);
 					startActivity(Intent1);
-					
-					/*Bundle arguments = new Bundle();
-					arguments.putString("to", dataList.get(location).get("relativeid").toString());
-					arguments.putString("my",myapplication.getUserId());
-					intent.putExtras(arguments);					
-					startActivity(intent);	*/				
-				}
+
+ 				}
 			}
 		}); 
 		adapter = new NoticeAdapter(this.getApplicationContext());			

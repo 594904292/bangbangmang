@@ -2,4 +2,4 @@
 <shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <solid android:color="#BC99FF" />
-</shape>
+</shape><!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/drawable/bg_sub_titlebar.xml -->

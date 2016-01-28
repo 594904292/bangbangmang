@@ -42,4 +42,4 @@
             android:paddingBottom="8dip"
             android:text="@string/app_list_header_refresh_last_update"/>
     </RelativeLayout>
-</LinearLayout>
+</LinearLayout><!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/layout/refresh_list_header.xml -->

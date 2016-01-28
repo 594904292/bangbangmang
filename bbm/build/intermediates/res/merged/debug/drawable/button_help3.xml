@@ -3,4 +3,4 @@
     <item android:state_pressed="true" android:drawable="@mipmap/help3_pressed" />
     <item android:state_enabled="false" android:drawable="@mipmap/help3_pressed" />
     <item android:drawable="@mipmap/help3_normal" />
-</selector>
+</selector><!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/drawable/button_help3.xml -->

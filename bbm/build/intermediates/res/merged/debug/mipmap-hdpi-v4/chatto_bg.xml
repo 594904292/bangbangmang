@@ -5,4 +5,4 @@
     <item android:state_pressed="true" android:drawable="@drawable/chatto_bg_normal" />
     <item android:state_selected="true" android:drawable="@drawable/chatto_bg_normal" />
     <item android:drawable="@drawable/chatto_bg_normal" />
-</selector>
+</selector><!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/mipmap-hdpi/chatto_bg.xml -->

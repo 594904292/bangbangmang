@@ -6,4 +6,4 @@
     <item   
     android:state_checked="true"   
     android:drawable="@mipmap/tabswitcher_short" />
-</selector>   
+</selector>   <!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/drawable/radio.xml -->

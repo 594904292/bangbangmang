@@ -15,4 +15,4 @@
         android:layout_height="fill_parent"
         android:layout_below="@+id/title_bar" />
 
-</RelativeLayout>
+</RelativeLayout><!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/layout/activity_gzinfo.xml -->

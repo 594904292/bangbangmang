@@ -195,6 +195,21 @@ public class BbPushMessageReceiver extends PushMessageReceiver {
 		        noticedb.add(customJson.getString("date").toString(), "评论", customJson.getString("guid").toString(), "一条新评论","0");
 		        for (int i = 0; i < msgListeners.size(); i++)
 		        	msgListeners.get(i).onNewMessage(mess);
+			}else  if(!customJson.isNull("catagory")&&customJson.getString("catagory").equals("info"))
+			{//新闻:知道具体哪条新闻
+				BbMessage mess=new BbMessage();
+				mess.setGuid(customJson.getString("guid").toString());
+				if(!noticedb.isexit(mess.getGuid()))
+				{
+					if(customJson.getString("infocatagroy").equals("3"))
+					{
+						noticedb.add(customJson.getString("date").toString(), "服务", customJson.getString("guid").toString(), "一条新服务", "0");
+					}else {
+						noticedb.add(customJson.getString("date").toString(), "消息", customJson.getString("guid").toString(), "一条新消息", "0");
+					}
+				}
+				for (int i = 0; i < msgListeners.size(); i++)
+					msgListeners.get(i).onNewMessage(new BbMessage());
 			}else
 			{//新闻:知道具体哪条新闻					
 				  	BbMessage mess=new BbMessage();			       

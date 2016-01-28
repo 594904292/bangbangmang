@@ -12,3 +12,4 @@
         android:padding="12dip"
         android:text="@string/app_loading_fail"/>
 </LinearLayout>
+<!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/layout/list_empty_fail.xml -->

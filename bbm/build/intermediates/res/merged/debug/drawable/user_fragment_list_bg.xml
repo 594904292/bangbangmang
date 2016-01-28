@@ -4,4 +4,4 @@
     <item android:drawable="@color/user_list_public_bg" android:state_pressed="true"></item>
     <item android:drawable="@color/user_list_public_bg" android:state_selected="true"></item>
 
-</selector>
+</selector><!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/drawable/user_fragment_list_bg.xml -->

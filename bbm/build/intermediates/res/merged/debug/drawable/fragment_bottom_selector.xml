@@ -5,4 +5,4 @@
     <item android:state_enabled="true" android:state_pressed="true" android:drawable="@drawable/fragment_bottom_normal" />
     <item android:state_enabled="true" android:state_checked="true" android:drawable="@drawable/fragment_bottom_selected" /> 
     <item android:drawable="@drawable/fragment_bottom_normal" />
-</selector>
+</selector><!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/drawable/fragment_bottom_selector.xml -->

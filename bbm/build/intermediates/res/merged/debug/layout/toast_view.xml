@@ -21,4 +21,4 @@
         android:indeterminateOnly="true"
         android:visibility="gone" />
     
-</LinearLayout>
+</LinearLayout><!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/layout/toast_view.xml -->

@@ -3,4 +3,4 @@
    	<item android:state_pressed="true" android:drawable="@drawable/face_del_ico_pressed"/>
    	<item android:drawable="@drawable/face_del_ico_dafeult"/>
 
-</selector>
+</selector><!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/mipmap-hdpi/face_del_icon.xml -->

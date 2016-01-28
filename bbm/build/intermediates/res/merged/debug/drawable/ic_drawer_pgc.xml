@@ -4,4 +4,4 @@
     <item android:state_selected="true" android:drawable="@mipmap/left_drawer_pgc_pressed" />
     <item android:state_pressed="true" android:drawable="@mipmap/left_drawer_pgc_pressed" />
     <item android:drawable="@mipmap/left_drawer_pgc_normal" />
-</selector>
+</selector><!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/drawable/ic_drawer_pgc.xml -->

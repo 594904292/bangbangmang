@@ -69,7 +69,9 @@ public class MarketAPI {
             // ACTION_GETINFOS
             API_BASE_URL + "getfriends.php",
 
-             API_BASE_URL + "getxiaoqu.php"
+             API_BASE_URL + "getxiaoqu.php",
+             // ACTION_GETFWINFOS
+             API_BASE_URL + "getfwinfos.php"
                        
            };
     
@@ -91,6 +93,8 @@ public class MarketAPI {
     public static final int ACTION_GETFRIENDS =7;
     /**获取小区 */
     public static final int ACTION_GETXIAOQUS =8;
+    /**获取服务 */
+    public static final int ACTION_GETFWINFOS = 9;
     
     /**
 	 * Register API<br>
@@ -213,7 +217,25 @@ public class MarketAPI {
 
 
     }
-   
+
+
+    /**
+     * getinfos API<br>
+     * Do the login process, UserName, Password must be provided.<br>
+     */
+    public static void getFwINfos(Context context, ApiRequestListener handler,String userid,String rang,String status,int start,int limit) {
+        final HashMap<String, Object> params = new HashMap<String, Object>(2);
+
+        params.put("_userid", userid);
+        params.put("_rang", rang);
+        params.put("_status", status);
+        params.put("_start", String.valueOf(start));
+        params.put("_limit", String.valueOf(limit));
+
+        new ApiAsyncTask(context,ACTION_GETFWINFOS, handler, params).execute();
+
+
+    }
    /* *//**
      * Get Search Keywords API<br>
      * Default size is 10.

@@ -13,6 +13,8 @@ import com.bbxiaoqu.update.UpdateManager;
 import com.bbxiaoqu.update.UpdateService;
 import com.bbxiaoqu.view.BaseActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -79,11 +81,24 @@ public class SettingsActivity extends BaseActivity implements OnClickListener{
 					mIntent.putExtra("Key_Down_Url",myapplication.getlocalhost()+downUrl);
 					mIntent.setPackage(getPackageName());//这里你需要设置你应用的包名
 					myapplication.startService(mIntent);*/
-				
-					Intent intent = new Intent(SettingsActivity.this,UpdateService.class);
-					intent.putExtra("Key_App_Name",appName);
-					intent.putExtra("Key_Down_Url",myapplication.getlocalhost()+downUrl);						
-					startService(intent);
+					new AlertDialog.Builder(SettingsActivity.this).setTitle("确认升级吗？")
+							.setIcon(android.R.drawable.ic_dialog_info)
+							.setPositiveButton("升级", new DialogInterface.OnClickListener() {
+								@Override
+								public void onClick(DialogInterface dialog, int which) {
+									Intent intent = new Intent(SettingsActivity.this,UpdateService.class);
+									intent.putExtra("Key_App_Name",appName);
+									intent.putExtra("Key_Down_Url",myapplication.getlocalhost()+downUrl);
+									startService(intent);
+								}
+							})
+							.setNegativeButton("暂不升级", new DialogInterface.OnClickListener() {
+								@Override
+								public void onClick(DialogInterface dialog, int which) {
+									// 点击“返回”后的操作,这里不设置没有任何操作
+								}
+							}).show();
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

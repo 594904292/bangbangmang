@@ -21,3 +21,4 @@
         android:layout_toLeftOf="@id/drag_list_item_image"
         android:gravity="center_vertical"/>
 </RelativeLayout>
+<!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/layout/drag_list_item.xml -->

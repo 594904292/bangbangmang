@@ -147,6 +147,11 @@ public class ApiResponseFactory {
 				requestMethod = "ACTION_GETXIAOQUS";
 				result = parseGetXiaoqusResult(in);
 				break;
+		case MarketAPI.ACTION_GETFWINFOS:
+				// 很多条消息
+				requestMethod = "ACTION_GETFWINFOS";
+				result = parseGetFwInfosResult(in);
+				break;
 			default:
 		    break;
 		}
@@ -297,6 +302,22 @@ public class ApiResponseFactory {
 
 		return result;
 	}
+
+	private static HashMap<String, String> parseGetFwInfosResult(InputStream jsonStream) {
+		byte[] data = null;
+		try {
+			data = read(jsonStream);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		HashMap<String, String> result = new HashMap<String, String>();
+		String JsonContext = new String(data);
+		result.put("infos", JsonContext);
+
+		return result;
+	}
+
 
 	/*
      * 获取所有分类列表

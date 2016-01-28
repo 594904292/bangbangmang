@@ -35,4 +35,4 @@
         android:id="@+id/loading"
         style="@style/customProgressBar" />
 
-</LinearLayout>
+</LinearLayout><!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/layout/listview_footer.xml -->

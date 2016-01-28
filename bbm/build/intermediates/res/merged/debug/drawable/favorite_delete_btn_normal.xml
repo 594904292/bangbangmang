@@ -3,4 +3,4 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <corners android:radius="4.0dip" />
     <solid android:color="#ffa40000" />
-</shape>
+</shape><!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/drawable/favorite_delete_btn_normal.xml -->

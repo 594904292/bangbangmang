@@ -99,7 +99,6 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 	private String[] items = new String[] { "选择本地图片", "拍照" };
 	/** 头像名称 */
 	private static final String IMAGE_FILE_NAME = "image.jpg";
-
 	private static final int SelXq_REQUEST_CODE=100;
 	private static final int GzXq_REQUEST_CODE=101;
 	/** 请求码 */

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/values/strings.xml -->
+    <eat-comment/>
     <string-array name="language">
         <item>@string/language_default</item>
         <item>cmn-Hans-CN, 普通话(中国)</item>
@@ -49,6 +51,8 @@
         <item>search, 适用输入搜索关键字(默认值)</item>
         <item>input, 适用于输入短信、微博等长句输入</item>
     </string-array>
+    <!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/values/colors.xml -->
+    <eat-comment/>
     <color name="abc_search_url_text_normal">#ff7fa87f</color>
     <item name="abc_search_url_text_pressed" type="color">@*android:color/black</item>
     <item name="abc_search_url_text_selected" type="color">@*android:color/black</item>
@@ -129,6 +133,20 @@
     <item name="comment_dlg_text_night" type="color">@color/default_text_night</item>
     <color name="comment_line">#ffe7e7e7</color>
     <color name="comment_line_night">#ff303030</color>
+    <!-- From: file:/F:/AndroidStudio/workspace/bbm/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.1.0/res/values/common_colors.xml -->
+    <eat-comment/>
+    <color name="common_action_bar_splitter">#d2d2d2</color>
+    <color name="common_signin_btn_dark_text_default">@android:color/white</color>
+    <color name="common_signin_btn_dark_text_disabled">#FFAAAAAA</color>
+    <color name="common_signin_btn_dark_text_focused">@android:color/white</color>
+    <color name="common_signin_btn_dark_text_pressed">@android:color/white</color>
+    <color name="common_signin_btn_default_background">#FFDD4B39</color>
+    <color name="common_signin_btn_light_text_default">#FF737373</color>
+    <color name="common_signin_btn_light_text_disabled">#FFAAAAAA</color>
+    <color name="common_signin_btn_light_text_focused">#FF737373</color>
+    <color name="common_signin_btn_light_text_pressed">@android:color/white</color>
+    <!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/values/colors.xml -->
+    <eat-comment/>
     <color name="darkgray">#ffa9a9a9</color>
     <color name="default_desc">#ff747474</color>
     <color name="default_desc_night">#ff505050</color>
@@ -622,9 +640,12 @@
     <color name="why_indicator_unselected">#ffcecece</color>
     <color name="write_comment_hint_text">#ff999999</color>
     <item name="write_comment_hint_text_night" type="color">@color/default_text_night</item>
+    <declare-styleable name="LoadingImageView"><attr format="enum" name="imageAspectRatioAdjust"><enum name="none" value="0"/><enum name="adjust_width" value="1"/><enum name="adjust_height" value="2"/></attr><attr format="float" name="imageAspectRatio"/><attr format="boolean" name="circleCrop"/></declare-styleable>
     <declare-styleable name="RoundAngleImageView"><attr format="dimension" name="roundWidth"/><attr format="dimension" name="roundHeight"/></declare-styleable>
     <declare-styleable name="SlidingMenu"><attr name="mode"><enum name="left" value="0"/><enum name="right" value="1"/></attr><attr format="reference" name="viewAbove"/><attr format="reference" name="viewBehind"/><attr format="dimension" name="behindOffset"/><attr format="dimension" name="behindWidth"/><attr format="float" name="behindScrollScale"/><attr name="touchModeAbove"><enum name="margin" value="0"/><enum name="fullscreen" value="1"/></attr><attr name="touchModeBehind"><enum name="margin" value="0"/><enum name="fullscreen" value="1"/></attr><attr format="reference" name="shadowDrawable"/><attr format="dimension" name="shadowWidth"/><attr format="boolean" name="fadeEnabled"/><attr format="float" name="fadeDegree"/><attr format="boolean" name="selectorEnabled"/><attr format="reference" name="selectorDrawable"/></declare-styleable>
     <declare-styleable name="roundedimageview"><attr format="dimension" name="border_thickness"/><attr format="color" name="border_inside_color"/><attr format="color" name="border_outside_color"/></declare-styleable>
+    <!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/values/dimens.xml -->
+    <eat-comment/>
     <dimen name="abc_action_bar_default_height">48.0dip</dimen>
     <dimen name="abc_action_bar_icon_vertical_padding">8.0dip</dimen>
     <dimen name="abc_action_bar_stacked_max_height">48.0dip</dimen>
@@ -750,14 +771,27 @@
     <dimen name="top_category_scroll_item_margin">8.0dip</dimen>
     <dimen name="top_category_scroll_text_padding">5.0dip</dimen>
     <dimen name="widget_margin">8.0dip</dimen>
+    <!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/values/colors.xml -->
+    <eat-comment/>
     <drawable name="button_backward_normal">#0000</drawable>
     <drawable name="button_backward_pressed">#40F64C99</drawable>
     <drawable name="nopressed_bg">#fff</drawable>
     <drawable name="pressed_bg">#ef509d</drawable>
+    <!-- From: file:/F:/AndroidStudio/workspace/bbm/build/intermediates/exploded-aar/workspace/slidingmenu_library/unspecified/res/values/values.xml -->
+    <eat-comment/>
     <item name="selected_view" type="id"/>
+    <!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/values/integers.xml -->
+    <eat-comment/>
     <integer name="abc_max_action_buttons">2</integer>
     <integer name="config_slideAnimTime">300</integer>
+    <!-- From: file:/F:/AndroidStudio/workspace/bbm/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.1.0/res/values/version.xml -->
+    <eat-comment/>
+    <integer name="google_play_services_version">8115000</integer>
+    <!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/values/dimens.xml -->
+    <eat-comment/>
     <integer name="num_cols">1</integer>
+    <!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/values/strings.xml -->
+    <eat-comment/>
     <string name="action_day_mode">日间模式</string>
     <string name="action_night_mode">夜间模式</string>
     <string name="action_settings">Settings</string>
@@ -782,6 +816,12 @@
     <string name="app_upgrade_confirm">确定</string>
     <string name="app_upgrade_download_fail">新版本下载失败，请稍后再试.</string>
     <string name="app_upgrade_download_sucess">新版本下载成功,开始安装.</string>
+    <!-- From: file:/F:/AndroidStudio/workspace/bbm/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.1.0/res/values/auth_strings.xml -->
+    <eat-comment/>
+    <string name="auth_google_play_services_client_facebook_display_name">Facebook</string>
+    <string name="auth_google_play_services_client_google_display_name">Google</string>
+    <!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/values/strings.xml -->
+    <eat-comment/>
     <string name="bangbanginfo">请输入您的帮帮信息-字数5-500以内</string>
     <string name="check_network">正在检测网络</string>
     <string name="check_new_version">发现新版本,确定更新吗?</string>
@@ -795,6 +835,40 @@
     <string name="city_category_list_hint">选择城市，立即查看本地新闻</string>
     <string name="city_category_list_notify_no_city">请先选择您关注的城市</string>
     <string name="clear_log">清除日志</string>
+    <!-- From: file:/F:/AndroidStudio/workspace/bbm/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.1.0/res/values/common_strings.xml -->
+    <eat-comment/>
+    <string name="common_android_wear_notification_needs_update_text"><ns1:g id="app_name">%1$s</ns1:g> requires an update to the Android Wear app.</string>
+    <string name="common_android_wear_update_text"><ns1:g id="app_name">%1$s</ns1:g> won\'t run unless you update the Android Wear app.</string>
+    <string msgid="6006316683626838685" name="common_android_wear_update_title">Update Android Wear</string>
+    <string name="common_google_play_services_api_unavailable_text"><ns1:g id="app_name">%1$s</ns1:g> requires one or more Google Play services that are not currently available. Please contact the developer for assistance.</string>
+    <string msgid="2523291102206661146" name="common_google_play_services_enable_button">Enable Google Play services</string>
+    <string msgid="227660514972886228" name="common_google_play_services_enable_text"><ns1:g id="app_name">%1$s</ns1:g> won\'t work unless you enable Google Play services.</string>
+    <string msgid="5122002158466380389" name="common_google_play_services_enable_title">Enable Google Play services</string>
+    <string name="common_google_play_services_error_notification_requested_by_msg">Requested by <ns1:g id="app_name">%1$s</ns1:g></string>
+    <string msgid="7153882981874058840" name="common_google_play_services_install_button">Get Google Play services</string>
+    <string msgid="2122112764540849864" name="common_google_play_services_install_text_phone"><ns1:g id="app_name">%1$s</ns1:g> won\'t run without Google Play services, which are missing from your phone.</string>
+    <string msgid="7351599665250191022" name="common_google_play_services_install_text_tablet"><ns1:g id="app_name">%1$s</ns1:g> won\'t run without Google Play services, which are missing from your tablet.</string>
+    <string msgid="7215213145546190223" name="common_google_play_services_install_title">Get Google Play services</string>
+    <string name="common_google_play_services_invalid_account_text">The specified account does not exist on this device. Please choose a different account.</string>
+    <string name="common_google_play_services_invalid_account_title">Invalid Account</string>
+    <string name="common_google_play_services_needs_enabling_title">An application requires Google Play services to be enabled.</string>
+    <string name="common_google_play_services_network_error_text">A data connection is required to connect to Google Play services.</string>
+    <string name="common_google_play_services_network_error_title">Network Error</string>
+    <string name="common_google_play_services_notification_needs_update_title">An application requires an update for Google Play services.</string>
+    <string name="common_google_play_services_notification_ticker">Google Play services error</string>
+    <string name="common_google_play_services_sign_in_failed_text">Error signing in the specified account. Please choose a different account.</string>
+    <string name="common_google_play_services_sign_in_failed_title">Sign in failed</string>
+    <string name="common_google_play_services_unknown_issue">Unknown issue with Google Play services.</string>
+    <string name="common_google_play_services_unsupported_text"><ns1:g id="app_name">%1$s</ns1:g> relies on Google Play services, which is not supported by your device. Contact the manufacturer for assistance.</string>
+    <string name="common_google_play_services_unsupported_title">Google Play services</string>
+    <string msgid="6556509956452265614" name="common_google_play_services_update_button">Update</string>
+    <string msgid="9053896323427875356" name="common_google_play_services_update_text"><ns1:g id="app_name">%1$s</ns1:g> won\'t run unless you update Google Play services.</string>
+    <string msgid="6006316683626838685" name="common_google_play_services_update_title">Update Google Play services</string>
+    <string name="common_google_play_services_updating_text"><ns1:g id="app_name">%1$s</ns1:g> won\'t run without Google Play services, which are currently updating.</string>
+    <string name="common_google_play_services_updating_title">Google Play services are updating</string>
+    <string name="common_open_on_phone">Open on phone</string>
+    <!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/values/strings.xml -->
+    <eat-comment/>
     <string name="custom_text_hint">用户自定义行为打开的Activity</string>
     <string name="d">图片描述</string>
     <string name="day_before">前天</string>
@@ -895,6 +969,7 @@
     <string name="sample_default"/>
     <string name="search_count_fmt">发现%1$s篇文章</string>
     <string name="send">发送</string>
+    <string name="servicename">请输入您的服务名称</string>
     <string name="setting">设置</string>
     <string name="setting_about">关于我们</string>
     <string name="setting_clear">清理缓存</string>
@@ -949,6 +1024,8 @@
     <string name="text_toast">设置成功，免打扰时段为：\n%1$s - %2$s</string>
     <string name="vad_default"/>
     <string name="warning_password_is_empty">密码不能为空</string>
+    <!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/values/styles.xml -->
+    <eat-comment/>
     <style name="AnimBottom" parent="@android:style/Animation">
         <item name="android:windowEnterAnimation">@anim/push_bottom_in</item>
         <item name="android:windowExitAnimation">@anim/push_bottom_out</item>

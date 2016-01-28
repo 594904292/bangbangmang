@@ -4,4 +4,4 @@
     <item android:drawable="@drawable/comment_bg_right" android:state_pressed="true"></item>
     <item android:drawable="@drawable/comment_bg" android:state_pressed="false"></item>
 
-</selector>
+</selector><!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/drawable/select_comment_right.xml -->

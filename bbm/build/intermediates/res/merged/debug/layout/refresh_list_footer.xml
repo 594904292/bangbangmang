@@ -18,4 +18,4 @@
         style="?android:attr/progressBarStyleSmall"
         android:visibility="gone">
     </ProgressBar>
-</LinearLayout>
+</LinearLayout><!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/layout/refresh_list_footer.xml -->

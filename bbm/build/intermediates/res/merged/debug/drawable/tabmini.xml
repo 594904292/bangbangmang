@@ -3,4 +3,4 @@
     <item android:drawable="@drawable/app_btn_green" android:state_selected="true"/>
     <item android:drawable="@drawable/app_btn_gray" android:state_selected="false"/>
 
-</selector>
+</selector><!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/drawable/tabmini.xml -->

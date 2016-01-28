@@ -737,8 +737,7 @@ public class ViewActivity extends BaseActivity implements OnItemClickListener,Ap
 			String target = myapplication.getlocalhost() + "addusergzinfo.php";
 			HttpPost httprequest = new HttpPost(target);
 			List<NameValuePair> paramsList = new ArrayList<NameValuePair>();
-			paramsList.add(new BasicNameValuePair("_userid", myapplication
-					.getUserId()));// 本人
+			paramsList.add(new BasicNameValuePair("_userid", myapplication.getUserId()));// 本人
 			paramsList.add(new BasicNameValuePair("_infoid", infoid));// 本人
 			paramsList.add(new BasicNameValuePair("_guid", guid));// 本人
 			paramsList.add(new BasicNameValuePair("_action", gzaction));// 本人

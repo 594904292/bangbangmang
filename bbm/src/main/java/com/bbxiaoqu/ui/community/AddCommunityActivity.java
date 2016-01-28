@@ -32,6 +32,7 @@ import org.json.JSONObject;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -75,13 +76,16 @@ import com.baidu.mapapi.search.geocode.GeoCoder;
 import com.baidu.mapapi.search.geocode.OnGetGeoCoderResultListener;
 import com.baidu.mapapi.search.geocode.ReverseGeoCodeOption;
 import com.baidu.mapapi.search.geocode.ReverseGeoCodeResult;
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.common.api.GoogleApiClient;
 
 public class AddCommunityActivity extends BaseActivity implements
-OnGetGeoCoderResultListener {
+		OnGetGeoCoderResultListener {
 	private DemoApplication myapplication;
 	// 初始化全局 bitmap 信息，不用时及时 recycle
 	private BitmapDescriptor mIconMaker;
-	
+
 	/**
 	 * MapView 是地图主控件
 	 */
@@ -113,8 +117,8 @@ OnGetGeoCoderResultListener {
 	/**
 	 * 地图定位的模式
 	 */
-	private String[] mStyles = new String[] { "地图模式【正常】", "地图模式【跟随】",
-			"地图模式【罗盘】" };
+	private String[] mStyles = new String[]{"地图模式【正常】", "地图模式【跟随】",
+			"地图模式【罗盘】"};
 	private int mCurrentStyle = 0;
 
 
@@ -126,20 +130,25 @@ OnGetGeoCoderResultListener {
 	EditText propertymanagement;
 	EditText address;
 	Button save;
-	
-	
-	String nameStr="";
-	String latStr="";
-	String lngStr="";
-	String addressStr="";
-	String businessStr="";
-	String countryStr="";
-	String provinceStr="";
-	String cityStr="";
-	String districtStr="";
-	String streetStr="";
-	String streetNumberStr="";
-	String propertymanagementStr="";
+
+
+	String nameStr = "";
+	String latStr = "";
+	String lngStr = "";
+	String addressStr = "";
+	String businessStr = "";
+	String countryStr = "";
+	String provinceStr = "";
+	String cityStr = "";
+	String districtStr = "";
+	String streetStr = "";
+	String streetNumberStr = "";
+	String propertymanagementStr = "";
+	/**
+	 * ATTENTION: This was auto-generated to implement the App Indexing API.
+	 * See https://g.co/AppIndexing/AndroidStudio for more information.
+	 */
+	private GoogleApiClient client;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -148,8 +157,7 @@ OnGetGeoCoderResultListener {
 		// 注意该方法要再setContentView方法之前实现
 		SDKInitializer.initialize(getApplicationContext());
 		setContentView(R.layout.activity_add_community);
-		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
-				.permitAll().build();
+		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 		StrictMode.setThreadPolicy(policy);
 		initView();
 		initData();
@@ -157,11 +165,10 @@ OnGetGeoCoderResultListener {
 		isFristLocation = true;
 		// 获取地图控件引用
 		mMapView = (MapView) findViewById(R.id.bmapView);
-		latlngtip= (TextView) findViewById(R.id.latlngtip);
-		name= (EditText) findViewById(R.id.name);
-		propertymanagement= (EditText) findViewById(R.id.propertymanagement);
-		address= (EditText) findViewById(R.id.address);
-		save= (Button) findViewById(R.id.save);
+		latlngtip = (TextView) findViewById(R.id.latlngtip);
+		name = (EditText) findViewById(R.id.name);
+		address = (EditText) findViewById(R.id.address);
+		save = (Button) findViewById(R.id.save);
 		// 获得地图的实例
 		mBaiduMap = mMapView.getMap();
 		mBaiduMap.setOnMapClickListener(onmaplistener);
@@ -172,45 +179,39 @@ OnGetGeoCoderResultListener {
 		initMyLocation();
 		// 初始化传感器
 		//initOritationListener();
-		
-		
+
 		// 初始化搜索模块，注册事件监听
 		mSearch = GeoCoder.newInstance();
 		mSearch.setOnGetGeoCodeResultListener(this);
-		
+
+		// ATTENTION: This was auto-generated to implement the App Indexing API.
+		// See https://g.co/AppIndexing/AndroidStudio for more information.
+		client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
 	}
 
-	
+
 	private void initView() {
 		title = (TextView) findViewById(R.id.title);
 		right_text = (TextView) findViewById(R.id.right_text);
 		right_text.setVisibility(View.VISIBLE);
-		topmore=(ImageView)findViewById(R.id.top_more);
+		topmore = (ImageView) findViewById(R.id.top_more);
 		topmore.setVisibility(View.GONE);
-
 	}
+
 	private void initData() {
 		title.setText("添加小区 ");
 		right_text.setText("保存");
 		right_text.setOnClickListener(new OnClickListener() {
-			
-			
+
+
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				
-				if(name.getText().toString().trim().length()==0)
-				{
+				if (name.getText().toString().trim().length() == 0) {
 					T.showShort(myapplication, "小区名称不能为空！");
 					return;
 				}
-				if(propertymanagement.getText().toString().trim().length()==0)
-				{
-					T.showShort(myapplication, "物业公司不能为空！");
-					return;
-				}
-				
-				if (!NetworkUtils.isNetConnected(myapplication)) {			
+				if (!NetworkUtils.isNetConnected(myapplication)) {
 					T.showShort(myapplication, "当前无网络连接,请稍后再试！");
 					return;
 				}
@@ -219,37 +220,33 @@ OnGetGeoCoderResultListener {
 		});
 	}
 
-	
-Runnable saveRun = new Runnable(){  
-		
-		@Override  
-		public void run() {  
-		    // TODO Auto-generated method stub  
-			
-			String target = myapplication.getlocalhost()+"savexiaoqu.php";
+
+	Runnable saveRun = new Runnable() {
+
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			String target = myapplication.getlocalhost() + "savexiaoqu.php";
 			HttpPost httprequest = new HttpPost(target);
 			List<NameValuePair> paramsList = new ArrayList<NameValuePair>();
 			paramsList.add(new BasicNameValuePair("name", name.getText().toString()));
-			paramsList.add(new BasicNameValuePair("propertymanagement", propertymanagement.getText().toString()));
-			paramsList.add(new BasicNameValuePair("lat", String.valueOf(mCurrentLantitude)));	
-			paramsList.add(new BasicNameValuePair("lng", String.valueOf(mCurrentLongitude)));	
-			
-			paramsList.add(new BasicNameValuePair("address", addressStr));	
-			paramsList.add(new BasicNameValuePair("business", businessStr));	
-			paramsList.add(new BasicNameValuePair("country", countryStr));	
-			paramsList.add(new BasicNameValuePair("province", provinceStr));	
-			paramsList.add(new BasicNameValuePair("city", cityStr));	
-			paramsList.add(new BasicNameValuePair("district", districtStr));	
-			paramsList.add(new BasicNameValuePair("street", streetStr));	
-			paramsList.add(new BasicNameValuePair("streetNumber", streetNumberStr));	
-			
+			paramsList.add(new BasicNameValuePair("propertymanagement", ""));
+			paramsList.add(new BasicNameValuePair("lat", String.valueOf(mCurrentLantitude)));
+			paramsList.add(new BasicNameValuePair("lng", String.valueOf(mCurrentLongitude)));
+			paramsList.add(new BasicNameValuePair("address", addressStr));
+			paramsList.add(new BasicNameValuePair("business", businessStr));
+			paramsList.add(new BasicNameValuePair("country", countryStr));
+			paramsList.add(new BasicNameValuePair("province", provinceStr));
+			paramsList.add(new BasicNameValuePair("city", cityStr));
+			paramsList.add(new BasicNameValuePair("district", districtStr));
+			paramsList.add(new BasicNameValuePair("street", streetStr));
+			paramsList.add(new BasicNameValuePair("streetNumber", streetNumberStr));
 			try {
 				httprequest.setEntity(new UrlEncodedFormEntity(paramsList, "UTF-8"));
 				HttpClient HttpClient1 = CustomerHttpClient.getHttpClient();
 				HttpResponse httpResponse = HttpClient1.execute(httprequest);
-				if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) 
-				{
-					InputStream  jsonStream = httpResponse.getEntity().getContent();
+				if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+					InputStream jsonStream = httpResponse.getEntity().getContent();
 					byte[] data = null;
 					try {
 						data = StreamTool.read(jsonStream);
@@ -257,51 +254,46 @@ Runnable saveRun = new Runnable(){
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-					
 					Message msg = new Message();
 					Bundle msgbundle = new Bundle();
 					msgbundle.putString("reason", "保存成功");
 					msg.setData(msgbundle);
-					savehandler.sendMessage(msg);							 
-							
-				} else {		
+					savehandler.sendMessage(msg);
+
+				} else {
 					Message msg = new Message();
 					Bundle msgbundle = new Bundle();
 					msgbundle.putString("reason", "访问服务器异常,稍后再试...");
 					msg.setData(msgbundle);
-					savehandler.sendMessage(msg);					
+					savehandler.sendMessage(msg);
 				}
 			} catch (ClientProtocolException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			
+		}
+	};
 
-		}  
-	 }; 
-	 
-	 
-	 Handler savehandler = new Handler() {
-			@Override
-			public void handleMessage(Message msg) {
-				super.handleMessage(msg);
-				Bundle data = msg.getData();
-				Toast.makeText(AddCommunityActivity.this, data.getString("reason"), Toast.LENGTH_LONG).show();
-				finish();
-			}
-		};
+
+	Handler savehandler = new Handler() {
+		@Override
+		public void handleMessage(Message msg) {
+			super.handleMessage(msg);
+			Bundle data = msg.getData();
+			Toast.makeText(AddCommunityActivity.this, data.getString("reason"), Toast.LENGTH_LONG).show();
+			finish();
+		}
+	};
 
 	OnMapClickListener onmaplistener = new OnMapClickListener() {
-
 		@Override
 		public void onMapClick(LatLng ll) {
 			// TODO Auto-generated method stub
 			mBaiduMap.clear();
 			overlayOptions = new MarkerOptions().position(ll).icon(BitmapDescriptorFactory.fromResource(R.mipmap.pin_blue)).zIndex(5);
 			marker = (Marker) (mBaiduMap.addOverlay(overlayOptions));
-			latlngtip.setText("经度:"+ll.latitude+",纬度:"+ll.longitude);
-			
+			latlngtip.setText("经度:" + ll.latitude + ",纬度:" + ll.longitude);
 			mSearch.reverseGeoCode(new ReverseGeoCodeOption().location(ll));
 		}
 
@@ -310,10 +302,7 @@ Runnable saveRun = new Runnable(){
 			// TODO Auto-generated method stub
 			return false;
 		}
-		
 	};
-
-	
 
 
 	/**
@@ -335,40 +324,31 @@ Runnable saveRun = new Runnable(){
 	/**
 	 * 实现实位回调监听
 	 */
-	OverlayOptions overlayOptions = null;
-	Marker marker = null;
+	private OverlayOptions overlayOptions = null;
+	private Marker marker = null;
 	public class MyLocationListener implements BDLocationListener {
 		@Override
 		public void onReceiveLocation(BDLocation location) {
 			// map view 销毁后不在处理新接收的位置
 			if (location == null || mMapView == null)
 				return;
-			/*// 构造定位数据
-			MyLocationData locData = new MyLocationData.Builder()
-					.accuracy(location.getRadius())
-					// 此处设置开发者获取到的方向信息，顺时针0-360
-					.direction(mXDirection).latitude(location.getLatitude())
-					.longitude(location.getLongitude()).build();
-			mCurrentAccracy = location.getRadius();*/
-			// 设置定位数据
-			//mBaiduMap.setMyLocationData(locData);
 			mCurrentLantitude = location.getLatitude();
 			mCurrentLongitude = location.getLongitude();
 			mLocationClient.stop();
-			if (isFristLocation) { 
-				isFristLocation = false; 
+			if (isFristLocation) {
+				isFristLocation = false;
 				LatLng ll = new LatLng(location.getLatitude(), location.getLongitude());
-				latlngtip.setText("经度:"+ll.latitude+",纬度:"+ll.longitude);
+				latlngtip.setText("经度:" + ll.latitude + ",纬度:" + ll.longitude);
 				mSearch.reverseGeoCode(new ReverseGeoCodeOption().location(ll));
-								
+
 				overlayOptions = new MarkerOptions().position(ll).icon(BitmapDescriptorFactory.fromResource(R.mipmap.pin_blue)).zIndex(5);
 				marker = (Marker) (mBaiduMap.addOverlay(overlayOptions));
 				MapStatusUpdate u = MapStatusUpdateFactory.newLatLng(ll);
-				mBaiduMap.animateMapStatus(u); 
+				mBaiduMap.animateMapStatus(u);
 			}
 		}
 	}
-	
+
 	/**
 	 * 地图移动到我的位置,此处可以重新发定位请求，然后定位； 直接拿最近一次经纬度，如果长时间没有定位成功，可能会显示效果不好
 	 */
@@ -444,17 +424,17 @@ Runnable saveRun = new Runnable(){
 					.show();
 			return;
 		}
-				
-		addressStr=result.getAddress();
-		businessStr=result.getBusinessCircle();
-		countryStr="中国";
-		provinceStr=result.getAddressDetail().province;
-		cityStr=result.getAddressDetail().city;
-		districtStr=result.getAddressDetail().district;
-		streetStr=result.getAddressDetail().street;
-		streetNumberStr=result.getAddressDetail().streetNumber;
-		
-		
+
+		addressStr = result.getAddress();
+		businessStr = result.getBusinessCircle();
+		countryStr = "中国";
+		provinceStr = result.getAddressDetail().province;
+		cityStr = result.getAddressDetail().city;
+		districtStr = result.getAddressDetail().district;
+		streetStr = result.getAddressDetail().street;
+		streetNumberStr = result.getAddressDetail().streetNumber;
+
+
 		address.setText(result.getAddress());
 	}
 

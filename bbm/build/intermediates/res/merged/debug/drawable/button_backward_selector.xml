@@ -4,4 +4,4 @@
     <item android:drawable="@drawable/button_backward_pressed" android:state_pressed="true"/>
     <item android:drawable="@drawable/button_backward_normal"/>
 
-</selector>
+</selector><!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/drawable/button_backward_selector.xml -->

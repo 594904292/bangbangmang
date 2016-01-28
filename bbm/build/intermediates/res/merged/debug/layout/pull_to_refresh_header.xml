@@ -53,4 +53,4 @@
         android:background="@mipmap/h_line"
         android:contentDescription="@string/d" />
 
-</LinearLayout>
+</LinearLayout><!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/layout/pull_to_refresh_header.xml -->

@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-
     <include
         android:id="@+id/title_bar"
         layout="@layout/title_bar" />
@@ -34,16 +33,6 @@
                 android:hint="小区名称" />
 
             <EditText
-                android:id="@+id/propertymanagement"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/address"
-                android:hint="物业公司名称" >
-
-                <requestFocus />
-            </EditText>
-
-            <EditText
                 android:id="@+id/address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -52,7 +41,6 @@
                 android:ems="10"
                 android:hint="地址" />
 
-         
         </LinearLayout>
     </ScrollView>
 

@@ -49,4 +49,4 @@
         android:gravity="center"
         android:scaleType="centerInside"
         android:background="@mipmap/ic_drawer_search_normal" />
-</RelativeLayout>
+</RelativeLayout><!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/layout/title_bar.xml -->

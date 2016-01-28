@@ -27,6 +27,7 @@ import com.bbxiaoqu.DemoApplication;
 import com.bbxiaoqu.ImageOptions;
 import com.bbxiaoqu.R;
 import com.bbxiaoqu.comm.service.db.UserService;
+import com.bbxiaoqu.comm.service.db.XiaoquService;
 import com.bbxiaoqu.comm.tool.CustomerHttpClient;
 import com.bbxiaoqu.comm.tool.NetworkUtils;
 import com.bbxiaoqu.comm.tool.StreamTool;
@@ -85,6 +86,7 @@ public class UserInfoViewActivity extends BaseActivity implements OnClickListene
 	private TextView username;
 	private TextView age;
 	private TextView community;
+	private TextView gzcommunity_eidt;
 	private TextView telphone;
 	
 	private String sex_str = "1";
@@ -122,20 +124,17 @@ public class UserInfoViewActivity extends BaseActivity implements OnClickListene
 		username = (TextView) findViewById(R.id.username);
 		age = (TextView) findViewById(R.id.age);
 		community = (TextView) findViewById(R.id.community);
+		gzcommunity_eidt= (TextView) findViewById(R.id.gz_community);
 		telphone = (TextView) findViewById(R.id.telphone);
 		save = (Button) findViewById(R.id.save);
 		score_btn  = (Button) findViewById(R.id.score_btn);
-		
-
 		txt_userid=(TextView) findViewById(R.id.txt_userid);
 		tv_score=(TextView) findViewById(R.id.score_tv);
-		
 		this.txt=(TextView) super.findViewById(R.id.txt);
 		this.sex=(RadioGroup) super.findViewById(R.id.sex);
 		this.male=(RadioButton) super.findViewById(R.id.male);
 		this.female=(RadioButton) super.findViewById(R.id.female);
-		
-		top_more = (ImageView) findViewById(R.id.top_more);	
+		top_more = (ImageView) findViewById(R.id.top_more);
 		top_more.setVisibility(View.VISIBLE);
 		top_more.setOnClickListener(new OnClickListener() {
 			@Override
@@ -143,12 +142,8 @@ public class UserInfoViewActivity extends BaseActivity implements OnClickListene
 				// TODO Auto-generated method stub
 				Intent intent=new Intent(UserInfoViewActivity.this,SearchActivity.class);									
 				startActivity(intent);
-				
-				
 			}
 		});
-		
-		
 		score_btn.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				Intent intent=new Intent(UserInfoViewActivity.this,PayActivity.class);
@@ -166,12 +161,11 @@ public class UserInfoViewActivity extends BaseActivity implements OnClickListene
 			}
 		});
 		iv_photo = (RoundAngleImageView) findViewById(R.id.iv_photo);
+		XiaoquService xiaoquService = new XiaoquService(this);
+		String names=xiaoquService.allxiaoqu();
+		gzcommunity_eidt.setText(names);
 	}
 
-	
-	
-
-	
 	private void initData() {
 		title.setText("用户中心");
 		if (!NetworkUtils.isNetConnected(myapplication)) {			
@@ -181,10 +175,6 @@ public class UserInfoViewActivity extends BaseActivity implements OnClickListene
 		new Thread(loaduserinfo).start();		
 	}
 
-	
-
-	
-	//String remote_headface = "";
 	Runnable loaduserinfo = new Runnable() {
 
 		@Override
@@ -230,10 +220,8 @@ public class UserInfoViewActivity extends BaseActivity implements OnClickListene
 						community_id = jsonobject.getString("community_id");
 						community_lat = jsonobject.getString("community_lat");
 						community_lng = jsonobject.getString("community_lng");
-								
 						uService.updatenickname(username, myapplication.getUserId());
 						uService.updateheadface(remote_headface, myapplication.getUserId());
-						
 					} catch (JSONException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -260,7 +248,6 @@ public class UserInfoViewActivity extends BaseActivity implements OnClickListene
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-
 		}
 	};
 
@@ -286,22 +273,15 @@ public class UserInfoViewActivity extends BaseActivity implements OnClickListene
 				community.setText("");
 			}
 			telphone.setText(data.getString("telphone"));
-			
-			
 			txt_userid.setText("用户ID:"+data.getString("userid"));
 			tv_score.setText("积分:"+data.getString("score").toString());
-			
 			if(data.getString("headface")!=null&&data.getString("headface").length()>0)
 			{
 				String fileName = myapplication.getlocalhost()+"uploads/"+ data.getString("headface");
 				ImageLoader.getInstance().displayImage(fileName, iv_photo, ImageOptions.getOptions());
 			}
-			 
-		
 		}
 	};
-
-	
 
 	@Override
 	public void onBackPressed() {
@@ -314,7 +294,6 @@ public class UserInfoViewActivity extends BaseActivity implements OnClickListene
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.right_text:
-
 			break;
 		default:
 			break;

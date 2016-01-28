@@ -26,6 +26,7 @@ import org.json.JSONObject;
 
 import com.bbxiaoqu.DemoApplication;
 import com.bbxiaoqu.R;
+import com.bbxiaoqu.adapter.FwListViewAdapter;
 import com.bbxiaoqu.adapter.ListViewAdapter;
 import com.bbxiaoqu.api.MarketAPI;
 import com.bbxiaoqu.api.ApiAsyncTask.ApiRequestListener;
@@ -42,6 +43,7 @@ import com.bbxiaoqu.comm.tool.NetworkUtils;
 import com.bbxiaoqu.comm.tool.StreamTool;
 import com.bbxiaoqu.comm.tool.T;
 import com.bbxiaoqu.ui.PublishActivity;
+import com.bbxiaoqu.ui.PublishFwActivity;
 import com.bbxiaoqu.ui.SearchActivity;
 import com.bbxiaoqu.view.BaseActivity;
 import com.bbxiaoqu.widget.AutoListView;
@@ -64,6 +66,7 @@ import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -71,13 +74,12 @@ import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class NearActivity extends BaseActivity  implements OnRefreshListener,OnLoadListener,OnClickListener,ApiRequestListener {
-	
 	TextView title;
 	TextView right_text;
 	public ImageView top_more;
 	public ImageView top_add;
 	private AutoListView lstv;
-	private ListViewAdapter adapter;
+	private BaseAdapter adapter;
 	private List<Map<String, Object>> dataList = new ArrayList<Map<String, Object>>();
 	private DatabaseHelper dbHelper;
 	private View allLayout;
@@ -89,14 +91,9 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 	private View sosLayout;
 	private ImageView sosImage;
 	private TextView sosText;
-	
-	
 	private View serviceLayout;
 	private ImageView serviceImage;
 	private TextView serviceText;
-	
-	
-	
 	private int current_sel=0;
 	private DemoApplication myapplication;
 	private static final int DIALOG_PROGRESS = 0;
@@ -113,8 +110,6 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 		initView();
 		initData();
 	}
-
-
 
 	int action=0;
 	private void loadData(final int what) {
@@ -140,7 +135,7 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 				MarketAPI.getINfos(getApplicationContext(), this, myapplication.getUserId(), "self", "1", start, limit);
 			}else if(current_sel==3)
 			{
-				MarketAPI.getINfos(getApplicationContext(), this, myapplication.getUserId(), "xiaoqufw", "1", start, limit);				
+				MarketAPI.getFwINfos(getApplicationContext(), this, myapplication.getUserId(), "xiaoqufw", "1", start, limit);
 			}
 		}else
 		{
@@ -158,7 +153,7 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 				MarketAPI.getINfos(getApplicationContext(), this, myapplication.getUserId(), "self", "1", start, limit);
 			}else if(current_sel==3)
 			{
-				MarketAPI.getINfos(getApplicationContext(), this, myapplication.getUserId(), "xiaoqufw", "1", start, limit);				
+				MarketAPI.getFwINfos(getApplicationContext(), this, myapplication.getUserId(), "xiaoqufw", "1", start, limit);
 			}
 		}
 	}
@@ -175,32 +170,50 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 	}
 	
 	private void setTabSelection(int index) {
-		clearSelection();		
+		clearSelection();
+		dataList.clear();
 		switch (index) {
 		case 0:
 			// 当点击了消息tab时，改变控件的图片和文字颜色
+			adapter = new ListViewAdapter(NearActivity.this, dataList);
+			lstv.setAdapter(adapter);
+			lstv.setOnRefreshListener(this);
+			lstv.setOnLoadListener(this);
 			allImage.setImageResource(R.mipmap.t1);
 			allText.setTextColor(Color.GRAY);
 			loadData(AutoListView.REFRESH);
 			break;
 		case 1:
 			// 当点击了联系人tab时，改变控件的图片和文字颜色
+			adapter = new ListViewAdapter(NearActivity.this, dataList);
+			lstv.setAdapter(adapter);
+			lstv.setOnRefreshListener(this);
+			lstv.setOnLoadListener(this);
 			mySosImage.setImageResource(R.mipmap.t2);
 			mySosText.setTextColor(Color.GRAY);
 			loadData(AutoListView.REFRESH);
 			break;
 		case 2:
 			// 当点击了动态tab时，改变控件的图片和文字颜色
+			adapter = new ListViewAdapter(NearActivity.this, dataList);
+			lstv.setAdapter(adapter);
+			lstv.setOnRefreshListener(this);
+			lstv.setOnLoadListener(this);
 			sosImage.setImageResource(R.mipmap.t3);
 			sosText.setTextColor(Color.GRAY);
 			loadData(AutoListView.REFRESH);
 			break;
 		case 3:
 			// 当点击了动态tab时，改变控件的图片和文字颜色
+
+			adapter = new FwListViewAdapter(NearActivity.this, dataList);
+			lstv.setAdapter(adapter);
+			lstv.setOnRefreshListener(this);
+			lstv.setOnLoadListener(this);
 			serviceImage.setImageResource(R.mipmap.t4);
 			serviceText.setTextColor(Color.GRAY);
 			loadData(AutoListView.REFRESH);
-			break;			
+			break;
 		}
 	}
 	
@@ -234,13 +247,24 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1,int location, long arg3) 
 			{
-				Intent Intent1 = new Intent();
-				Intent1.setClass(NearActivity.this, ViewActivity.class);
-				Bundle arguments = new Bundle();
-				arguments.putString("put", "false");
-				arguments.putString("guid",dataList.get(location - 1).get("guid").toString());
-				Intent1.putExtras(arguments);
-				startActivity(Intent1);
+				if(dataList.get(location - 1).get("infocatagroy").toString().equals("3"))
+				{
+					Intent Intent1 = new Intent();
+					Intent1.setClass(NearActivity.this, ViewFwActivity.class);
+					Bundle arguments = new Bundle();
+					arguments.putString("put", "false");
+					arguments.putString("guid", dataList.get(location - 1).get("guid").toString());
+					Intent1.putExtras(arguments);
+					startActivity(Intent1);
+				}else {
+					Intent Intent1 = new Intent();
+					Intent1.setClass(NearActivity.this, ViewActivity.class);
+					Bundle arguments = new Bundle();
+					arguments.putString("put", "false");
+					arguments.putString("guid", dataList.get(location - 1).get("guid").toString());
+					Intent1.putExtras(arguments);
+					startActivity(Intent1);
+				}
 			}
 		});
 		top_more.setOnClickListener(new OnClickListener() {
@@ -255,7 +279,7 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent=new Intent(NearActivity.this,PublishActivity.class);
+				Intent intent=new Intent(NearActivity.this, PublishFwActivity.class);
 				Bundle bundle = new Bundle();
 				bundle.putInt("infocatagroy", 3);
 				intent.putExtras(bundle);
@@ -267,10 +291,6 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 	private void initData() {
 		title.setText("我能帮");
 		right_text.setText("");
-		adapter = new ListViewAdapter(NearActivity.this, dataList);
-		lstv.setAdapter(adapter);
-		lstv.setOnRefreshListener(this);
-		lstv.setOnLoadListener(this);
 		current_sel=0;
 		setTabSelection(current_sel);	
 		dbHelper = new DatabaseHelper(NearActivity.this);
@@ -281,8 +301,6 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 	public void doBack(View view) {
 		onBackPressed();
 	}
-
-	
 
 	@Override
 	public void onRefresh() {
@@ -314,7 +332,6 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 			current_sel=3;
 			setTabSelection(current_sel);			
 			break;
-
 		default:
 			break;
 		}
@@ -322,21 +339,19 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 	@Override
     protected void onPrepareDialog(int id, Dialog dialog) {
         super.onPrepareDialog(id, dialog);
-
         if (dialog.isShowing()) {
             dialog.dismiss();
         }
     }	
- @Override
-    protected Dialog onCreateDialog(int id) {
 
+	@Override
+    protected Dialog onCreateDialog(int id) {
         switch (id) {
         case DIALOG_PROGRESS:
             ProgressDialog mProgressDialog = new ProgressDialog(this);
             mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             mProgressDialog.setMessage(getString(R.string.init_data));
             return mProgressDialog;
-
         default:
             return super.onCreateDialog(id);
         }
@@ -345,15 +360,11 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 	@Override
 	public void onSuccess(int method, Object obj) {
 		// TODO Auto-generated method stub
+		List<Map<String, Object>> smalldataList = new ArrayList<Map<String, Object>>();
+		HashMap<String, String> result = (HashMap<String, String>) obj;
+		String json=result.get("infos");
 		 switch (method) {
 	        case MarketAPI.ACTION_GETINFOS:
-	        	 try{
-	                 dismissDialog(DIALOG_PROGRESS);
-	             }catch (IllegalArgumentException e) {
-	             }
-	        	 List<Map<String, Object>> smalldataList = new ArrayList<Map<String, Object>>();
-	            HashMap<String, String> result = (HashMap<String, String>) obj;
-	            String json=result.get("infos");           	           
 				if(json.length()>0)
 				{
 					JSONArray jsonarray = null;
@@ -370,7 +381,7 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 							item.put("lat", String.valueOf(customJson.getString("lat").toString()));
 							item.put("guid", String.valueOf(customJson.getString("guid").toString()));
 							item.put("infocatagroy", String.valueOf(customJson.getString("infocatagroy").toString()));
-							item.put("message", String.valueOf(customJson.getString("content").toString()));
+							item.put("content", String.valueOf(customJson.getString("content").toString()));
 							item.put("icon", String.valueOf(customJson.getString("photo").toString()));
 							item.put("date", String.valueOf(customJson.getString("sendtime").toString()));
 							item.put("status", String.valueOf(customJson.getString("status").toString()));
@@ -396,11 +407,65 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 				}
 				lstv.setResultSize(dataList.size());
 				adapter.notifyDataSetChanged();
-	            break; 
-	      
-	        default:
+	            break;
+			 case MarketAPI.ACTION_GETFWINFOS:
+				 if(json.length()>0)
+				 {
+					 JSONArray jsonarray = null;
+					 try {
+						 jsonarray = new JSONArray(json);
+						 for (int i = 0; i < jsonarray.length(); i++) {
+							 JSONObject customJson = jsonarray.getJSONObject(i);
+							 HashMap<String, Object> item = new HashMap<String, Object>();
+							 item.put("senduserid", String.valueOf(customJson.getString("senduser").toString()));
+							 item.put("sendnickname", String.valueOf(customJson.getString("username").toString()));
+							 item.put("community", String.valueOf(customJson.getString("community").toString()));
+							 item.put("address", String.valueOf(customJson.getString("address").toString()));
+							 item.put("lng", String.valueOf(customJson.getString("lng").toString()));
+							 item.put("lat", String.valueOf(customJson.getString("lat").toString()));
+							 item.put("guid", String.valueOf(customJson.getString("guid").toString()));
+							 item.put("infocatagroy", String.valueOf(customJson.getString("infocatagroy").toString()));
+							 item.put("title", String.valueOf(customJson.getString("title").toString()));
+							 item.put("content", String.valueOf(customJson.getString("content").toString()));
+							 item.put("icon", String.valueOf(customJson.getString("photo").toString()));
+							 item.put("date", String.valueOf(customJson.getString("sendtime").toString()));
+							 item.put("status", String.valueOf(customJson.getString("status").toString()));
+							 item.put("visit", String.valueOf(customJson.getString("visit").toString()));
+							 item.put("tag1", String.valueOf(customJson.getString("visit").toString()));
+							 item.put("tag2", "评论数:"+String.valueOf(customJson.getString("plnum").toString()));
+
+							 //item.put("headface", String.valueOf(customJson.getString("headface").toString()));
+							 item.put("telphone", String.valueOf(customJson.getString("telphone").toString()));
+							 item.put("zannum", String.valueOf(customJson.getString("zannum").toString()));
+							 item.put("tags", String.valueOf(customJson.getString("tags").toString()));
+							 smalldataList.add(item);
+						 }
+					 } catch (JSONException e1) {
+						 // TODO Auto-generated catch block
+						 e1.printStackTrace();
+					 }
+				 }
+				 if(action==AutoListView.REFRESH)
+				 {
+					 lstv.onRefreshComplete();
+					 dataList.clear();
+					 dataList.addAll(smalldataList);
+				 }else if(action==AutoListView.LOAD)
+				 {
+					 lstv.onLoadComplete();
+					 dataList.addAll(smalldataList);
+				 }
+				 lstv.setResultSize(dataList.size());
+				 adapter.notifyDataSetChanged();
+				 break;
+
+			 default:
 	            break;
 	        }
+		try{
+			dismissDialog(DIALOG_PROGRESS);
+		}catch (IllegalArgumentException e) {
+		}
 	}
 
 	@Override

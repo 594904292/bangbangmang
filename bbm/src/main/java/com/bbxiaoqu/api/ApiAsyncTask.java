@@ -179,6 +179,18 @@ public class ApiAsyncTask extends AsyncTask<Void, Void, Object> {
             {
                 requestUrl = requestUrl + "?latitude=" + latitude + "&longitude=" + longitude;
             }
+        }else if(mReuqestAction==MarketAPI.ACTION_GETFWINFOS)
+        {
+            HashMap<String, Object> requestParams = null;
+            if (Parameter instanceof HashMap) {
+                requestParams = (HashMap<String, Object>) Parameter;
+            }
+            String userid=requestParams.get("_userid").toString();
+            String rang=requestParams.get("_rang").toString();
+            String status=requestParams.get("_status").toString();
+            String start=requestParams.get("_start").toString();
+            String limit=requestParams.get("_limit").toString();
+            requestUrl=requestUrl+"?userid="+userid+"&rang="+rang+"&status="+status+"&start="+start+"&limit="+limit;
         }
 		return requestUrl;
 	}

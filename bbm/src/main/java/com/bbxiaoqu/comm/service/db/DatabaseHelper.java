@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 	static String name="bangbang.db";
-	static int dbVersion=38;
+	static int dbVersion=39;
 	public DatabaseHelper(Context context) {
 		super(context, name, null, dbVersion);
 	}
@@ -21,9 +21,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		db.execSQL(sql1);
 		
 		
-		String sql2 = "create table  IF NOT EXISTS  [messagegz] (_id integer primary key autoincrement, infoid varchar(50), userid varchar(50))";
-		db.execSQL(sql2);
-		
+		String gzsql = "create table  IF NOT EXISTS  [messagegz] (_id integer primary key autoincrement, infoid varchar(50), userid varchar(50))";
+		db.execSQL(gzsql);
+
+		String zansql = "create table  IF NOT EXISTS  [messagezan] (_id integer primary key autoincrement, infoid varchar(50), userid varchar(50))";
+		db.execSQL(zansql);
+
 		String sql3 = "create table  IF NOT EXISTS [messagebm] (_id integer primary key autoincrement, infoid varchar(50), userid varchar(50))";
 		db.execSQL(sql3);
 		

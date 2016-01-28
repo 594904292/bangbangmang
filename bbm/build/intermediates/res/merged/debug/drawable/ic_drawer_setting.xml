@@ -4,4 +4,4 @@
     <item android:state_selected="true" android:drawable="@mipmap/ic_drawer_setting_pressed" />
     <item android:state_pressed="true" android:drawable="@mipmap/ic_drawer_setting_pressed" />
     <item android:drawable="@mipmap/ic_drawer_setting_normal" />
-</selector>
+</selector><!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/drawable/ic_drawer_setting.xml -->
