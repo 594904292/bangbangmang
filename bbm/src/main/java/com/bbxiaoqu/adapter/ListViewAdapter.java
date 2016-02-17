@@ -196,7 +196,13 @@ public class ListViewAdapter extends BaseAdapter {
 		}
 		holder_img.senduser.setText(list.get(position).get("sendnickname").toString());
 		holder_img.sendtimer.setText(list.get(position).get("date").toString());
-		holder_img.sendcontent.setText(list.get(position).get("content").toString());
+
+		if(list.get(position).get("content")!=null) {
+			holder_img.sendcontent.setText(list.get(position).get("content").toString());
+		}else
+		{
+			holder_img.sendcontent.setText("");
+		}
 		holder_img.sendaddress.setText(list.get(position).get("address").toString());
 		
 		holder_img.tag1.setText(list.get(position).get("tag1").toString());
