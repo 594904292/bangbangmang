@@ -409,7 +409,17 @@ public class ViewActivity extends BaseActivity implements OnItemClickListener,Ap
 					long arg3) {
 				Intent intent = new Intent(ViewActivity.this,
 						BigImgActivity.class);
+				StringBuilder sb=new StringBuilder();
+				for(int i=0;i<potolist.size();i++)
+				{
+					sb.append(potolist.get(i).toString());
+					if(i<potolist.size()-1)
+					{
+						sb.append(",");
+					}
+				}
 				intent.putExtra("imageName", arg1.getTag().toString());
+				intent.putExtra("imageNames", sb.toString());
 				startActivity(intent);
 			}
 		});
@@ -630,6 +640,7 @@ public class ViewActivity extends BaseActivity implements OnItemClickListener,Ap
 			ListLazyAdapter adapter = new ListLazyAdapter(this, discussList,
 					this, senduserid, this.issolution, this.solutionid);
 			listView.setAdapter(adapter);
+			new Utility().setListViewHeightBasedOnChildren(listView);
 		}
 	}
 

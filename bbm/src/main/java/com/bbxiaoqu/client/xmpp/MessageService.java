@@ -25,7 +25,7 @@ public class MessageService extends Service {
 
 	private ChatManager cm;
 	private OfflineMessageManager offlineManager;
-	public static XMPPConnection con = null;
+	XMPPConnection connection=null;
 	static {
 		try {
 			Class.forName("org.jivesoftware.smack.ReconnectionManager");
@@ -38,13 +38,10 @@ public class MessageService extends Service {
 	public IBinder onBind(Intent arg0) {
 		return null;
 	}
-	XMPPConnection connection=null;
+
 	@Override
 	public void onCreate() {
 		// Log.d(TAG, "============> TService.onCreate");
-		/*notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-		showNotification();*/
-		// connection = XmppTool.getInstance().getConnection();
 		super.onCreate();
 		
 	}
@@ -56,36 +53,15 @@ public class MessageService extends Service {
 					while(true)
 					{
 						if (NetworkUtils.isNetConnected(MessageService.this)) 
-						{							
-							System.out.println("-----------");								
-							connection = XmppTool.getInstance(MessageService.this).getConnection();
-							XmppTool.getInstance(MessageService.this).login();
-							/*if(connection!=null)
-							{
-								if (connection.isConnected() && connection.isAuthenticated()) {	
-									Presence presence = new Presence(Presence.Type.available);
-									connection.sendPacket(presence);//在线
-									
-									ChatManager cm = connection.getChatManager(); // 取得聊天管理器
-									cm.addChatListener(ChatListener.getInstance(MessageService.this));
-								}
-							}else
-							{
-								try {
-									Thread.sleep(1000*5);
-								} catch (InterruptedException e) {
-									// TODO Auto-generated catch block
-									e.printStackTrace();
-								}
-								continue;
-							}*/
-							
-							try {
-								Thread.sleep(1000*5);
-							} catch (InterruptedException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
+						{//网络正常
+							System.out.println("-----------");
+							if(connection==null) {
+								connection = XmppTool.getInstance(MessageService.this).getConnection();
 							}
+							if(connection!=null&&!connection.isConnected()) {
+								connection = XmppTool.getInstance(MessageService.this).getConnection();
+							}
+							XmppTool.getInstance(MessageService.this).login();//里面会判断
 						}
 						try {
 							Thread.sleep(1000*60*5);
@@ -126,7 +102,7 @@ public class MessageService extends Service {
 	public void onDestroy() {
 		//notificationManager.cancel(1000);
 		//objHandler.removeCallbacks(mTasks);
-		if(connection!=null)
+		if(connection!=null&&connection.isConnected())
 		{
 			XmppTool.getInstance(MessageService.this).closeConnection();
 		}

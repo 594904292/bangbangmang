@@ -203,7 +203,17 @@ public class ViewFwActivity extends BaseActivity implements OnItemClickListener,
 					long arg3) {
 				Intent intent = new Intent(ViewFwActivity.this,
 						BigImgActivity.class);
+				StringBuilder sb=new StringBuilder();
+				for(int i=0;i<potolist.size();i++)
+				{
+					sb.append(potolist.get(i).toString());
+					if(i<potolist.size()-1)
+					{
+						sb.append(",");
+					}
+				}
 				intent.putExtra("imageName", arg1.getTag().toString());
+				intent.putExtra("imageNames", sb.toString());
 				startActivity(intent);
 			}
 		});

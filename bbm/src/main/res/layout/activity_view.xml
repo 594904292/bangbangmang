@@ -234,7 +234,6 @@
                 android:listSelector="@drawable/list_selector" />
         </LinearLayout>
     </ScrollView>
-    3. [图片] scrollview_listview.jpg
     <RelativeLayout
         android:id="@+id/view_rl_bottom"
         android:layout_width="fill_parent"

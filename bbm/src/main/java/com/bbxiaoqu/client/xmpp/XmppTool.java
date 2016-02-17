@@ -53,7 +53,7 @@ public class XmppTool {
     	if (NetworkUtils.isNetConnected(DemoApplication.getInstance())) 
     	{
             ConnectionConfiguration connConfig = new ConnectionConfiguration(DemoApplication.getInstance().xmpphost, DemoApplication.getInstance().xmppport);
-            connConfig.setReconnectionAllowed(true);              
+            connConfig.setReconnectionAllowed(false);//要么就不用自己实现重连操作。
             con = new XMPPConnection(connConfig);                       
             connectionListener = new ViConnectionListener(mContext);
             chatlistener=ChatListener.getInstance(mContext);
