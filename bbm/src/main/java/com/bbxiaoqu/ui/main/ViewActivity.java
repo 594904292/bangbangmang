@@ -156,126 +156,10 @@ import android.widget.Gallery;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bbxiaoqu.DemoApplication;
-import com.bbxiaoqu.ImageOptions;
-import com.bbxiaoqu.R;
-import com.bbxiaoqu.bean.InfoBase;
-import com.bbxiaoqu.comm.gallery.BigImgActivity;
-import com.bbxiaoqu.comm.gallery.DetailGallery;
-import com.bbxiaoqu.comm.gallery.TaoBaoImgShowActivity;
-import com.bbxiaoqu.comm.gallery.Tool;
-import com.bbxiaoqu.comm.gallery.ImgSwitchActivity.GalleryIndexAdapter;
-import com.bbxiaoqu.comm.jsonservices.GetJson;
-import com.bbxiaoqu.ui.popup.ActionItem;
-import com.bbxiaoqu.ui.popup.Constants.HINT;
-import com.bbxiaoqu.ui.popup.DateUtils;
-import com.bbxiaoqu.ui.popup.ListLazyAdapter;
-import com.bbxiaoqu.ui.popup.TitlePopup;
-import com.bbxiaoqu.ui.popup.TitlePopup.OnItemOnClickListener;
-import com.bbxiaoqu.ui.popup.Utils;
-import com.bbxiaoqu.comm.service.User;
-import com.bbxiaoqu.comm.service.db.MessBmService;
-import com.bbxiaoqu.comm.service.db.MessGzService;
-import com.bbxiaoqu.comm.service.db.UserService;
-import com.bbxiaoqu.comm.tool.CustomerHttpClient;
-import com.bbxiaoqu.comm.tool.NetworkUtils;
-import com.bbxiaoqu.comm.tool.ScreenUtils;
-import com.bbxiaoqu.comm.tool.T;
-import com.bbxiaoqu.ui.Constants;
-import com.bbxiaoqu.view.BaseActivity;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.tencent.mm.sdk.openapi.IWXAPI;
-import com.tencent.mm.sdk.openapi.SendMessageToWX;
-import com.tencent.mm.sdk.openapi.WXAPIFactory;
-import com.tencent.mm.sdk.openapi.WXMediaMessage;
-import com.tencent.mm.sdk.openapi.WXWebpageObject;
-
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.security.MessageDigest;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.params.CoreConnectionPNames;
-import org.apache.http.util.EntityUtils;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.AssetManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.PixelFormat;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.os.Environment;
-import android.os.Handler;
-import android.os.Message;
-import android.os.SystemClock;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ImageButton;
-import android.widget.ImageView.ScaleType;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Gallery;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 public class ViewActivity extends BaseActivity implements OnItemClickListener,ApiRequestListener,
 		Callback {
@@ -764,11 +648,6 @@ public class ViewActivity extends BaseActivity implements OnItemClickListener,Ap
 				} else {
 					result = 0;
 				}
-				/*
-				 * Message msg = new Message(); Bundle data = new Bundle();
-				 * data.putInt("result", result); msg.setData(data);
-				 * savehandler.sendMessage(msg);
-				 */
 			} catch (UnsupportedEncodingException e1) {
 				e1.printStackTrace();
 			} catch (ClientProtocolException e) {
@@ -814,8 +693,7 @@ public class ViewActivity extends BaseActivity implements OnItemClickListener,Ap
 
 			String itemuid = map.get("uid").toString();
 			if (itemuid.equals(myapplication.getUserId())) {
-				Toast.makeText(ViewActivity.this, "不能与本人聊天", Toast.LENGTH_SHORT)
-						.show();
+				Toast.makeText(ViewActivity.this, "不能与本人聊天", Toast.LENGTH_SHORT).show();
 			} else {
 				// 获取头像的id
 				Intent intent = new Intent(ViewActivity.this,

@@ -97,9 +97,9 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 	private int current_sel=0;
 	private DemoApplication myapplication;
 	private static final int DIALOG_PROGRESS = 0;
-	// 用户不存在（用户名错误）
+	//用户不存在（用户名错误）
 	private static final int ERROR_CODE_USERNAME_NOT_EXIST = 211;
-	// 用户密码错误
+	//用户密码错误
 	private static final int ERROR_CODE_PASSWORD_INVALID = 212;
 
 	@Override
@@ -205,7 +205,6 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 			break;
 		case 3:
 			// 当点击了动态tab时，改变控件的图片和文字颜色
-
 			adapter = new FwListViewAdapter(NearActivity.this, dataList);
 			lstv.setAdapter(adapter);
 			lstv.setOnRefreshListener(this);
@@ -336,13 +335,14 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 			break;
 		}
 	}
+
 	@Override
     protected void onPrepareDialog(int id, Dialog dialog) {
         super.onPrepareDialog(id, dialog);
         if (dialog.isShowing()) {
             dialog.dismiss();
         }
-    }	
+    }
 
 	@Override
     protected Dialog onCreateDialog(int id) {
@@ -433,8 +433,7 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 							 item.put("visit", String.valueOf(customJson.getString("visit").toString()));
 							 item.put("tag1", String.valueOf(customJson.getString("visit").toString()));
 							 item.put("tag2", "评论数:"+String.valueOf(customJson.getString("plnum").toString()));
-
-							 //item.put("headface", String.valueOf(customJson.getString("headface").toString()));
+							 item.put("headface", String.valueOf(customJson.getString("headface").toString()));
 							 item.put("telphone", String.valueOf(customJson.getString("telphone").toString()));
 							 item.put("zannum", String.valueOf(customJson.getString("zannum").toString()));
 							 item.put("tags", String.valueOf(customJson.getString("tags").toString()));
