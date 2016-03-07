@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape android:shape="rectangle"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#9b66ff" />
+</shape><!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/drawable/bg_titlebar.xml -->

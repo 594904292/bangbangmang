@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android1="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff" >
+
+    <LinearLayout
+        android1:id="@+id/nav"
+        android1:layout_width="match_parent"
+        android1:layout_height="60dp"
+        android1:background="@drawable/bg_sub_titlebar" >
+
+        <RelativeLayout
+            android1:id="@+id/all_layout"
+            android1:layout_width="0dp"
+            android1:layout_height="match_parent"
+            android1:layout_weight="1" >
+
+            <LinearLayout
+                android1:layout_width="match_parent"
+                android1:layout_height="wrap_content"
+                android1:layout_centerVertical="true"
+                android1:orientation="vertical" >
+
+                <ImageView
+                    android1:id="@+id/all_image"
+                    android1:layout_width="wrap_content"
+                    android1:layout_height="wrap_content"
+                    android1:layout_gravity="center_horizontal"
+                    android1:src="@mipmap/tab_sub_all_sel" />
+
+                <TextView
+                    android1:id="@+id/all_text"
+                    android1:layout_width="wrap_content"
+                    android1:layout_height="wrap_content"
+                    android1:layout_gravity="center_horizontal"
+                    android1:text="全部"
+                    android1:textColor="#ffffff" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android1:id="@+id/mysos_layout"
+            android1:layout_width="0dp"
+            android1:layout_height="match_parent"
+            android1:layout_weight="1" >
+
+            <LinearLayout
+                android1:layout_width="match_parent"
+                android1:layout_height="wrap_content"
+                android1:layout_centerVertical="true"
+                android1:orientation="vertical" >
+
+                <ImageView
+                    android1:id="@+id/mysos_image"
+                    android1:layout_width="wrap_content"
+                    android1:layout_height="wrap_content"
+                    android1:layout_gravity="center_horizontal"
+                    android1:src="@mipmap/tab_sub_sos_my_sel" />
+
+                <TextView
+                    android1:id="@+id/mysos_text"
+                    android1:layout_width="wrap_content"
+                    android1:layout_height="wrap_content"
+                    android1:layout_gravity="center_horizontal"
+                    android1:text="我要帮"
+                    android1:textColor="#ffffff" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android1:id="@+id/sos_layout"
+            android1:layout_width="0dp"
+            android1:layout_height="match_parent"
+            android1:layout_weight="1" >
+
+            <LinearLayout
+                android1:layout_width="match_parent"
+                android1:layout_height="wrap_content"
+                android1:layout_centerVertical="true"
+                android1:orientation="vertical" >
+
+                <ImageView
+                    android1:id="@+id/sos_image"
+                    android1:layout_width="wrap_content"
+                    android1:layout_height="wrap_content"
+                    android1:layout_gravity="center_horizontal"
+                    android1:src="@mipmap/tab_sub_sos_sel" />
+
+                <TextView
+                    android1:id="@+id/sos_text"
+                    android1:layout_width="wrap_content"
+                    android1:layout_height="wrap_content"
+                    android1:layout_gravity="center_horizontal"
+                    android1:text="我能帮"
+                    android1:textColor="#ffffff" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android1:id="@+id/market_layout"
+            android1:layout_width="0dp"
+            android1:layout_height="match_parent"
+            android1:layout_weight="1" >
+
+            <LinearLayout
+                android1:layout_width="match_parent"
+                android1:layout_height="wrap_content"
+                android1:layout_centerVertical="true"
+                android1:orientation="vertical" >
+
+                <ImageView
+                    android1:id="@+id/market_image"
+                    android1:layout_width="wrap_content"
+                    android1:layout_height="wrap_content"
+                    android1:layout_gravity="center_horizontal"
+                    android1:src="@mipmap/tab_sub_market_sel" />
+
+                <TextView
+                    android1:id="@+id/market_text"
+                    android1:layout_width="wrap_content"
+                    android1:layout_height="wrap_content"
+                    android1:layout_gravity="center_horizontal"
+                    android1:text="跳蚤"
+                    android1:textColor="#ffffff" />
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+    
+     <com.bbxiaoqu.widget.AutoListView
+	        android:id="@+id/lstv"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android1:layout_below="@+id/nav"
+	        android:layout_alignParentLeft="true"
+	         />
+   
+</RelativeLayout><!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/layout/message_layout.xml -->

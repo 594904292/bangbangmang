@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" >
+
+   <solid android:color="#FFFFFF" />   
+   <corners
+        android:bottomLeftRadius="50.0dip"
+        android:bottomRightRadius="50.0dip"
+        android:topLeftRadius="50.0dip"
+        android:topRightRadius="50.0dip" />
+   
+   
+</shape><!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/drawable/corners_bg.xml -->

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="100dp"
+  	android:background="#f5f5f5"
+    android:padding="1dp" >
+<RelativeLayout
+    android:layout_width="fill_parent"
+    android:layout_height="100dp"
+    android:background="#FFFFFF"
+    android:padding="1dp" >
+  <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:padding="8dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/ic_launcher"
+        android:visibility="gone" />
+ 
+
+    <TextView
+        android:id="@+id/infocatagroy"
+        android:layout_width="22dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:scaleType="fitXY"
+        android:text="卖"
+        android:textColor="@color/green" />
+
+    <TextView
+        android:id="@+id/senduser"
+        style="@style/TextView10"
+         android:layout_toRightOf="@id/infocatagroy"
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"       
+        android:text="user" />
+
+    <TextView
+        android:id="@+id/sendtimer"
+        style="@style/TextView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="time" />
+
+  <TextView
+      android:id="@+id/sendaddress"
+   	  android:layout_marginTop="5dp"
+      style="@style/TextView10"
+       android:paddingLeft="8px"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/senduser"      
+      android:text="地址" />
+
+    <TextView
+        android:id="@+id/sendcontent"
+        android:layout_marginTop="5dp"
+          android:paddingLeft="8px"
+        style="@style/TextView16"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sendaddress"
+       
+        android:text="正文" />
+
+  
+
+    <RelativeLayout
+         android:id="@+id/number_summer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sendcontent"       
+       
+         >
+
+        <TextView
+            android:id="@+id/tag1"
+            style="@style/TextView10"
+              android:paddingLeft="8px"
+            android:layout_width="wrap_content"
+            android:layout_height="15dp"
+            android:text="关注数:0" />
+        <TextView
+            android:id="@+id/tag2"
+             android:layout_toRightOf="@id/tag1"
+            style="@style/TextView10"
+            android:layout_marginLeft="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="15dp"
+            android:text="评论数:0" />
+        
+        <!--TextView
+            android:id="@+id/tag3"
+             android:layout_toRightOf="@id/tag2"
+            style="@style/TextView10"
+            android:layout_marginLeft="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="15dp"
+            android:text="报名数:0" /-->
+       
+          <TextView
+            android:id="@+id/status"
+            style="@style/TextView10"
+            android:layout_width="wrap_content"
+            android:layout_height="15dp"
+            android:layout_alignParentRight="true"
+            android:text="状态:未结束" />
+    </RelativeLayout>
+  
+    </RelativeLayout>
+</RelativeLayout><!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/layout/listview_noimg_item.xml -->

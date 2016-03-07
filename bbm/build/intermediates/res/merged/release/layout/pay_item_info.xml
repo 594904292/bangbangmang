@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" 
+    android:background="@drawable/user_fragment_list_bg"
+    android:orientation="vertical">
+
+    <RelativeLayout       
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dip" >
+
+        
+
+        <TextView
+            android:id="@+id/txt_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="10dip"
+            android:text="2012-12-12 10:10:10"
+            android:textColor="#acabab" />
+
+      
+
+        
+
+        <TextView
+            android:id="@+id/txt_tool"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dip"
+            android:layout_alignParentTop="true"
+            android:text="支付宝"
+            android:textColor="#333333"
+            android:textSize="16dip" />
+        
+        <TextView
+            android:id="@+id/txt_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_date"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="5dip"
+            android:layout_marginTop="10dip"       
+            android:maxLines="2"
+            android:singleLine="true"
+            android:text="积分"
+            android:textColor="#504f4f"
+            android:textSize="14dip" />
+        
+        <TextView
+            android:id="@+id/txt_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_date"
+            android:layout_marginLeft="10dip"
+             android:layout_alignParentRight="true"
+            android:layout_marginRight="5dip"
+            android:layout_marginTop="10dip"       
+            android:maxLines="2"
+            android:singleLine="true"
+            android:text="交易状态"
+            android:textColor="#504f4f"
+            android:textSize="14dip" />
+    </RelativeLayout>
+
+</LinearLayout><!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/layout/pay_item_info.xml -->

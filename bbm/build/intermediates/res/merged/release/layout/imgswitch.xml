@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:gravity="center|top"
+ 	android:background="@mipmap/bottom_bg"
+     >
+    <RelativeLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        >
+         <com.bbxiaoqu.comm.gallery.DetailGallery
+        android:id="@+id/myGallery"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:fadingEdgeLength="0dp"
+         android:layout_marginBottom="5dp"
+        android:soundEffectsEnabled="false"
+        android:unselectedAlpha="0.0" />
+	<RadioGroup
+        android:id="@+id/galleryRaidoGroup"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+         android:layout_alignBottom="@+id/myGallery"
+        android:gravity="center"
+        android:orientation="horizontal" />
+    </RelativeLayout>
+</LinearLayout><!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/layout/imgswitch.xml -->

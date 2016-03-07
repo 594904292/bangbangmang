@@ -1,0 +1,6 @@
+<selector
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true" android:drawable="@mipmap/help_pressed" />
+    <item android:state_enabled="false" android:drawable="@mipmap/help_pressed" />
+    <item android:drawable="@mipmap/help_normal" />
+</selector><!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/drawable/button_help.xml -->

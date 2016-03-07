@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"  
+    android:id="@+id/menu_left_frag"  
+    android:layout_width="match_parent"  
+    android:layout_height="match_parent" >  
+  
+    <ScrollView  
+        android:layout_width="match_parent"  
+        android:layout_height="match_parent" >  
+  
+        <LinearLayout  
+            android:layout_width="match_parent"  
+            android:layout_height="wrap_content"  
+        
+            android:orientation="vertical" >  
+  
+            <TextView  
+                android:id="@+id/tab_news"  
+                style="@style/tab_style"  
+               
+                android:text="新闻" />  
+  
+          
+        </LinearLayout>  
+    </ScrollView>  
+  
+</FrameLayout> <!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/layout/frame_menu.xml -->
