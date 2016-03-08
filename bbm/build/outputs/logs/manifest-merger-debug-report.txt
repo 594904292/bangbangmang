@@ -170,14 +170,14 @@ ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:87:8-91:2
 		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:90:13-53
 	android:name
 		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:88:13-67
-activity#com.bbxiaoqu.ui.RegisterActivity
+activity#com.bbxiaoqu.ui.user.RegisterActivity
 ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:92:9-96:20
 	android:label
 		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:95:13-45
 	android:configChanges
 		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:94:13-63
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:93:13-60
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:93:13-53
 activity#com.bbxiaoqu.ui.PublishActivity
 ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:97:9-101:20
 	android:label
@@ -274,22 +274,22 @@ ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:153:9-157
 		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:155:13-63
 	android:name
 		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:154:13-64
-activity#com.bbxiaoqu.ui.sub.UserInfoActivity
+activity#com.bbxiaoqu.ui.user.UserInfoActivity
 ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:161:11-165:20
 	android:label
 		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:164:13-45
 	android:configChanges
 		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:163:13-63
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:162:13-64
-activity#com.bbxiaoqu.ui.sub.UserInfoViewActivity
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:162:13-53
+activity#com.bbxiaoqu.ui.user.UserInfoViewActivity
 ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:166:15-170:20
 	android:label
 		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:169:13-45
 	android:configChanges
 		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:168:13-63
 	android:name
-		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:167:13-68
+		ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:167:13-57
 activity#com.bbxiaoqu.ui.community.SubscribeCommunityMapActivity
 ADDED from F:\AndroidStudio\workspace\bbm\src\main\AndroidManifest.xml:171:10-175:20
 	android:label
