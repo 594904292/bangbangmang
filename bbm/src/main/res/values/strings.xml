@@ -269,5 +269,8 @@
     <string name="notification_update_info">今天更新%1$s款软件,您有%2$s款需要更新。</string>
     <string name="notification_server_error">服务器暂时无法访问，请稍候重试。</string>
     <string name="notification_client_error">客户端访问错误，请检查设置。</string>
-    
+    <string name="login_btn">登陆</string>
+    <string name="register_btn">注册</string>
+    <string name="foundpass_btn">忘记</string>
+
 </resources>

@@ -5,26 +5,11 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.params.CoreConnectionPNames;
-import org.jivesoftware.smack.Chat;
-import org.jivesoftware.smack.ChatManager;
-import org.jivesoftware.smack.ChatManagerListener;
-import org.jivesoftware.smack.MessageListener;
-import org.jivesoftware.smack.XMPPConnection;
-import org.jivesoftware.smack.XMPPException;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -38,55 +23,32 @@ import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.baidu.location.LocationClientOption.LocationMode;
 import com.bbxiaoqu.DemoApplication;
-import com.bbxiaoqu.ImageOptions;
 import com.bbxiaoqu.R;
-import com.bbxiaoqu.adapter.ChatMessageAdapter;
 import com.bbxiaoqu.adapter.DynamicListViewAdapter;
-import com.bbxiaoqu.adapter.ListViewAdapter;
 import com.bbxiaoqu.api.MarketAPI;
 import com.bbxiaoqu.api.ApiAsyncTask.ApiRequestListener;
 import com.bbxiaoqu.bean.BbMessage;
-import com.bbxiaoqu.bean.InfoBase;
 import com.bbxiaoqu.client.baidu.BbPushMessageReceiver;
 import com.bbxiaoqu.client.baidu.Utils;
 import com.bbxiaoqu.client.baidu.BbPushMessageReceiver.onMessageReadListener;
 import com.bbxiaoqu.client.baidu.BbPushMessageReceiver.onNewMessageListener;
-import com.bbxiaoqu.comm.service.User;
-import com.bbxiaoqu.comm.service.db.DatabaseHelper;
-import com.bbxiaoqu.comm.service.db.MessGzService;
 import com.bbxiaoqu.comm.service.db.NoticeDB;
 import com.bbxiaoqu.comm.service.db.UserService;
-import com.bbxiaoqu.comm.tool.BuileGestureExt;
-import com.bbxiaoqu.comm.tool.CustomerHttpClient;
-import com.bbxiaoqu.comm.tool.NetworkUtils;
-import com.bbxiaoqu.comm.tool.StreamTool;
-import com.bbxiaoqu.comm.tool.T;
 import com.bbxiaoqu.ui.LoginActivity;
 import com.bbxiaoqu.ui.NoticeActivity;
 import com.bbxiaoqu.ui.PublishActivity;
-import com.bbxiaoqu.ui.NoticeActivity.NoticeAdapter;
-import com.bbxiaoqu.ui.NoticeActivity.ViewHolder;
 import com.bbxiaoqu.ui.SearchActivity;
-import com.bbxiaoqu.ui.fragment.HomeActivity;
-import com.bbxiaoqu.ui.sub.ChattingActivity;
-import com.bbxiaoqu.ui.sub.InfoGzActivity;
-import com.bbxiaoqu.ui.sub.UserInfoActivity;
+import com.bbxiaoqu.ui.user.UserInfoActivity;
 import com.bbxiaoqu.ui.sub.ViewUserInfoActivity;
 import com.bbxiaoqu.update.UpdataInfo;
 import com.bbxiaoqu.update.UpdateService;
 import com.bbxiaoqu.view.BaseActivity;
 import com.bbxiaoqu.view.DrawerView;
-import com.bbxiaoqu.client.xmpp.ChatListener;
-import com.bbxiaoqu.client.xmpp.MessageService;
-import com.bbxiaoqu.client.xmpp.ViConnectionListener;
 import com.bbxiaoqu.client.xmpp.XmppTool;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
-import com.nostra13.universalimageloader.core.ImageLoader;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -94,36 +56,22 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Color;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.os.StrictMode;
-import android.util.Log;
 import android.util.Xml;
 import android.view.Display;
-import android.view.GestureDetector;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
 import android.view.WindowManager;
 import android.widget.AdapterView;
-import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
@@ -148,7 +96,6 @@ public class MainActivity extends BaseActivity implements OnClickListener ,onNew
 	private LinearLayout linearlayout_body2;
 	private LinearLayout linearlayout_body3;
 	private TextView gonggao;
-	
 	private DynamicListViewAdapter adapter;
 	private List<Map<String, Object>> dataList = new ArrayList<Map<String, Object>>();
 	ListView lstv;
@@ -158,7 +105,6 @@ public class MainActivity extends BaseActivity implements OnClickListener ,onNew
 	// 用户密码错误
 	private static final int ERROR_CODE_PASSWORD_INVALID = 212;
 
-	
 	NoticeDB db=new NoticeDB(this);
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -203,7 +149,6 @@ public class MainActivity extends BaseActivity implements OnClickListener ,onNew
 	    }
 		MarketAPI.dynamics(getApplicationContext(), this, myapplication.getUserId(), "xiaoqu","0","10");//		
 		MarketAPI.gonggao(getApplicationContext(), this);
-		//new Thread(xmppstartRun).start();
 	}
 
 
@@ -213,24 +158,18 @@ public class MainActivity extends BaseActivity implements OnClickListener ,onNew
 	}
 	
 	private void initViews() {
-	
 		linearlayout_body1= (LinearLayout) this.findViewById(R.id.body1);
 		linearlayout_body2= (LinearLayout) this.findViewById(R.id.body2);
 		linearlayout_body3= (LinearLayout) this.findViewById(R.id.body3);
-		
 		top_head = (ImageView) findViewById(R.id.top_head);
 		top_more = (ImageView) findViewById(R.id.top_more);	
 		top_more.setVisibility(View.VISIBLE);
-		
 		sos_btn=(Button) findViewById(R.id.sos_btn);
 		can_sos_btnmap=(Button) findViewById(R.id.can_sos_btnmap);
-		
 		headtop_left_count = (TextView) findViewById(R.id.headtop_left_count);
 		gonggao=(TextView) findViewById(R.id.gonggao);
 		lstv = (ListView) findViewById(R.id.nearnewlv);
-
-		
-		headtop_left_count.setOnClickListener(this);		
+		headtop_left_count.setOnClickListener(this);
 		headtop_left_count.setVisibility(View.GONE);		
 		top_head.setOnClickListener(new OnClickListener() {
 			@Override
@@ -265,8 +204,7 @@ public class MainActivity extends BaseActivity implements OnClickListener ,onNew
 				startActivity(intent);
 			}
 		});
-		
-		
+
 		//我能帮
 		can_sos_btnmap.setOnClickListener(new OnClickListener() {
 			@Override
@@ -535,12 +473,6 @@ public class MainActivity extends BaseActivity implements OnClickListener ,onNew
 		};
 	};
 	
-	
-	
-	
-	
-	
-	
 	@Override
 	public void onNewMessage(BbMessage message) {
 		// TODO Auto-generated method stub		
@@ -714,9 +646,6 @@ public class MainActivity extends BaseActivity implements OnClickListener ,onNew
 		        case MarketAPI.ACTION_GONGGAO:     
 		            // 隐藏登录框		                    		            
 		            break;
-		            
-		       
-
 		        default:
 		            break;
 		        }

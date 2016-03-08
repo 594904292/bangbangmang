@@ -1,4 +1,4 @@
-package com.bbxiaoqu.ui;
+package com.bbxiaoqu.ui.user;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -17,26 +17,19 @@ import org.apache.http.util.EntityUtils;
 
 import com.bbxiaoqu.DemoApplication;
 import com.bbxiaoqu.R;
-import com.bbxiaoqu.R.id;
-import com.bbxiaoqu.R.layout;
 import com.bbxiaoqu.comm.service.User;
 import com.bbxiaoqu.comm.service.db.UserService;
 import com.bbxiaoqu.comm.tool.CustomerHttpClient;
-import com.bbxiaoqu.comm.tool.UserLocationFound;
-import com.bbxiaoqu.client.xmpp.XmppTool;
+import com.bbxiaoqu.ui.LoginActivity;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Message;
-import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;

@@ -74,36 +74,52 @@
         android:orientation="horizontal" >
 
         <!--android:text=" "-->
+        <Button
+            android:id="@+id/searchpass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button"
+            android:layout_marginLeft="20dp"
+            android:paddingBottom="8dp"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            android:paddingTop="8dp"
+            android:text="@string/foundpass_btn"
+            android:textColor="@color/btn_common_text"
+            android:textSize="18sp" />
+        <Button
+            android:id="@+id/register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button"
+            android:layout_marginLeft="20dp"
+            android:paddingBottom="8dp"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            android:paddingTop="8dp"
+            android:text="@string/register_btn"
+            android:textColor="@color/btn_common_text"
+            android:textSize="18sp" />
 
-<Button  
+        <Button
             android:id="@+id/login"  
             android:layout_width="wrap_content"  
             android:layout_height="wrap_content"  
             android:layout_marginTop="10dp"  
-            android:background="@drawable/button_green"  
-            android:paddingBottom="8dp"  
-            android:paddingLeft="25dp"  
-            android:paddingRight="25dp"  
-            android:paddingTop="8dp"  
-            android:text="登陆"  
-            android:textColor="@color/btn_common_text"  
-            android:textSize="18sp" />  
-            
-    
-<Button  
-            android:id="@+id/register"  
-            android:layout_width="wrap_content"  
-            android:layout_height="wrap_content"  
-            android:layout_marginTop="10dp"  
-            android:background="@drawable/button"  
+            android:background="@drawable/button_green"
             android:layout_marginLeft="20dp"
             android:paddingBottom="8dp"  
             android:paddingLeft="25dp"  
             android:paddingRight="25dp"  
             android:paddingTop="8dp"  
-            android:text="注册"  
+            android:text="@string/login_btn"
             android:textColor="@color/btn_common_text"  
-            android:textSize="18sp" /> 
+            android:textSize="18sp" />  
+            
+    
+
        
 
         </LinearLayout>

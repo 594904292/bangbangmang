@@ -115,8 +115,7 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 	private void loadData(final int what) {
 		if (!isFinishing()) {
             showDialog(DIALOG_PROGRESS);
-	    } else {
-	            // 如果当前页面已经关闭，不进行登录操作
+	    } else {// 如果当前页面已经关闭，不进行登录操作
 	       return;
 	    }
 		if(what==AutoListView.REFRESH)

@@ -1,71 +1,34 @@
 package com.bbxiaoqu.ui;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Rect;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnFocusChangeListener;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.baidu.android.pushservice.PushConstants;
-import com.baidu.android.pushservice.PushManager;
 import com.bbxiaoqu.DemoApplication;
 import com.bbxiaoqu.R;
-import com.bbxiaoqu.Session;
 import com.bbxiaoqu.api.ApiAsyncTask.ApiRequestListener;
 import com.bbxiaoqu.api.MarketAPI;
 import com.bbxiaoqu.client.baidu.Utils;
-import com.bbxiaoqu.comm.service.ServiceSyncLocation;
 import com.bbxiaoqu.comm.service.User;
 import com.bbxiaoqu.comm.service.db.UserService;
-import com.bbxiaoqu.comm.tool.CustomerHttpClient;
-import com.bbxiaoqu.comm.tool.NetworkUtils;
-import com.bbxiaoqu.comm.tool.StreamTool;
-import com.bbxiaoqu.comm.tool.T;
-import com.bbxiaoqu.ui.fragment.HomeActivity;
 import com.bbxiaoqu.ui.main.MainActivity;
+import com.bbxiaoqu.ui.user.RegisterActivity;
 import com.bbxiaoqu.view.BaseActivity;
-import com.tencent.mm.sdk.openapi.IWXAPI;
-import com.tencent.mm.sdk.openapi.SendMessageToWX;
-import com.tencent.mm.sdk.openapi.WXAPIFactory;
-import com.tencent.mm.sdk.openapi.WXMediaMessage;
-import com.tencent.mm.sdk.openapi.WXWebpageObject;
 
 public class LoginActivity extends BaseActivity implements OnFocusChangeListener,ApiRequestListener {
 	private DemoApplication myapplication;
@@ -144,27 +107,25 @@ public class LoginActivity extends BaseActivity implements OnFocusChangeListener
 			MarketAPI.login(getApplicationContext(), this, userName, passWord);
 		}
 
-		   @Override
-		    protected void onPrepareDialog(int id, Dialog dialog) {
-		        super.onPrepareDialog(id, dialog);
-
-		        if (dialog.isShowing()) {
-		            dialog.dismiss();
-		        }
-		    }	
-		 @Override
-		    protected Dialog onCreateDialog(int id) {
-
-		        switch (id) {
-		        case DIALOG_PROGRESS:
-		            ProgressDialog mProgressDialog = new ProgressDialog(this);
-		            mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-		            mProgressDialog.setMessage(getString(R.string.singin));
-		            return mProgressDialog;
-		        default:
-		            return super.onCreateDialog(id);
-		        }
+		@Override
+		protected void onPrepareDialog(int id, Dialog dialog) {
+			super.onPrepareDialog(id, dialog);
+		    if (dialog.isShowing()) {
+		    	dialog.dismiss();
 		    }
+		}
+		 @Override
+		 protected Dialog onCreateDialog(int id) {
+			 switch (id) {
+		     case DIALOG_PROGRESS:
+		        ProgressDialog mProgressDialog = new ProgressDialog(this);
+		        mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+		        mProgressDialog.setMessage(getString(R.string.singin));
+		        return mProgressDialog;
+		     default:
+		     	return super.onCreateDialog(id);
+		     }
+		 }
 	
 
 	protected void onDestroy() {
@@ -174,10 +135,7 @@ public class LoginActivity extends BaseActivity implements OnFocusChangeListener
 		}
 	}
 
-	
-	
-
-	public void onSuccess(int method, Object obj) {		
+	public void onSuccess(int method, Object obj) {
 	    switch (method) {
         case MarketAPI.ACTION_LOGIN:   
         	 try{
@@ -238,7 +196,6 @@ public class LoginActivity extends BaseActivity implements OnFocusChangeListener
 
 	@Override
     public void onError(int method, int statusCode) {
-
 	    switch (method) {
         case MarketAPI.ACTION_LOGIN:            
             // 隐藏登录框
@@ -256,9 +213,6 @@ public class LoginActivity extends BaseActivity implements OnFocusChangeListener
             }
             Utils.makeEventToast(getApplicationContext(), msg, false);
             break;
-            
-       
-
         default:
             break;
         }

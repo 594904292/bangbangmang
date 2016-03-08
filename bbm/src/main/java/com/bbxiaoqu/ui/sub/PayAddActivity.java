@@ -20,19 +20,8 @@ import android.widget.Toast;
 
 import com.bbxiaoqu.DemoApplication;
 import com.bbxiaoqu.R;
-import com.bbxiaoqu.comm.service.User;
-import com.bbxiaoqu.comm.service.db.UserService;
 import com.bbxiaoqu.comm.tool.CustomerHttpClient;
-import com.bbxiaoqu.ui.LoginActivity;
-import com.bbxiaoqu.ui.RegisterActivity;
 import com.bbxiaoqu.view.BaseActivity;
-
-import java.util.ArrayList;  
-import java.util.List;  
-  
-
-
-
 
 
 import org.apache.http.HttpResponse;
@@ -45,16 +34,9 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
-import android.app.Activity;  
 import android.content.Intent;
-import android.os.Bundle;  
-import android.view.MotionEvent;  
-import android.view.View;  
+import android.view.MotionEvent;
 import android.view.View.OnClickListener;
-import android.widget.AdapterView;  
-import android.widget.ArrayAdapter;  
-import android.widget.Spinner;  
-import android.widget.TextView;  
 
 public class PayAddActivity extends BaseActivity {
 	private DemoApplication myapplication;

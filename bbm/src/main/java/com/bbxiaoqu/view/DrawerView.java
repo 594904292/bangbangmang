@@ -24,7 +24,7 @@ import com.bbxiaoqu.ui.sub.InfoGzActivity;
 import com.bbxiaoqu.ui.sub.MyinfosActivity;
 import com.bbxiaoqu.ui.sub.RecentActivity;
 import com.bbxiaoqu.ui.sub.SettingsActivity;
-import com.bbxiaoqu.ui.sub.UserInfoViewActivity;
+import com.bbxiaoqu.ui.user.UserInfoViewActivity;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu.OnClosedListener;
 import com.nostra13.universalimageloader.core.ImageLoader;

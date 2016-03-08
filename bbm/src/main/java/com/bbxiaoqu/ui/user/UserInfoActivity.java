@@ -1,4 +1,4 @@
-package com.bbxiaoqu.ui.sub;
+package com.bbxiaoqu.ui.user;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -34,6 +34,8 @@ import com.bbxiaoqu.comm.tool.T;
 import com.bbxiaoqu.ui.SearchActivity;
 import com.bbxiaoqu.ui.community.SelCommunityActivity;
 import com.bbxiaoqu.ui.community.CommunityGzListActivity;
+import com.bbxiaoqu.ui.sub.PayActivity;
+import com.bbxiaoqu.ui.sub.RoundAngleImageView;
 import com.bbxiaoqu.view.BaseActivity;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;

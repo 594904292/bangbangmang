@@ -3,7 +3,7 @@ package com.bbxiaoqu.ui.fragment;
 
 
 import com.bbxiaoqu.R;
-import com.bbxiaoqu.ui.sub.UserInfoActivity;
+import com.bbxiaoqu.ui.user.UserInfoActivity;
 
 import android.annotation.SuppressLint;
 import android.app.Fragment;

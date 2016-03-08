@@ -90,7 +90,7 @@
             android:theme="@style/DialogStyleBottom" >
         </activity>
         <activity
-            android:name="com.bbxiaoqu.ui.RegisterActivity"
+            android:name=".ui.user.RegisterActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name" >
         </activity>
@@ -159,12 +159,12 @@
         
         
           <activity
-            android:name="com.bbxiaoqu.ui.sub.UserInfoActivity"
+            android:name=".ui.user.UserInfoActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name" >
         </activity>
               <activity
-            android:name="com.bbxiaoqu.ui.sub.UserInfoViewActivity"
+            android:name=".ui.user.UserInfoViewActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name" >
         </activity>
