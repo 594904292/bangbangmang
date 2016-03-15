@@ -407,18 +407,19 @@
             android:name="com.baidu.speech.SECRET_KEY"
             android:value="NGO4k0pwf9rcbIiVimMkzEN58bAZtUbh" />
         <!-- service android:name="com.baidu.speech.VoiceRecognitionService" android:exported="false" / -->
-        <activity
-            android:name="com.baidu.voicerecognition.android.ui.BaiduASRDigitalDialog"
-            android:configChanges="orientation|keyboardHidden|screenLayout"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Dialog" >
+        <!--
+        activity
+                android:name="com.baidu.voicerecognition.android.ui.BaiduASRDigitalDialog"
+                android:configChanges="orientation|keyboardHidden|screenLayout"
+                android:theme="@android:style/Theme.Dialog"
+                android:exported="false"
+                android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="com.baidu.action.RECOGNIZE_SPEECH" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-        </activity>
+        </activity
+        -->
         <!--
  ATTENTION: This was auto-generated to add Google Play services to your project for
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.

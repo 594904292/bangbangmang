@@ -42,7 +42,7 @@ public class DrawerView implements OnClickListener{
 	private RelativeLayout message_btn_bm;
 	private RelativeLayout setting_btn;
 	private RelativeLayout favorite_btn;
-	private RelativeLayout  feedback_btn;
+	//private RelativeLayout  feedback_btn;
 	private RelativeLayout  offline_btn;
 	private List<Map<String, Object>> data;
 	private ListView lv;	
@@ -99,9 +99,9 @@ public class DrawerView implements OnClickListener{
 		favorite_btn.setOnClickListener(this);
 		
 		
-		feedback_btn =(RelativeLayout)localSlidingMenu.findViewById(R.id.feedback_btn);
+		/*feedback_btn =(RelativeLayout)localSlidingMenu.findViewById(R.id.feedback_btn);
 		feedback_btn.setOnClickListener(this);
-		
+		*/
 		message_btn =(RelativeLayout)localSlidingMenu.findViewById(R.id.message_btn);
 		message_btn.setOnClickListener(this);
 		
@@ -153,10 +153,10 @@ public class DrawerView implements OnClickListener{
 				activity.startActivity(new Intent(activity,FriendsActivity.class));				
 				activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 				break;
-			case R.id.feedback_btn:
+		/*	case R.id.feedback_btn:
 				activity.startActivity(new Intent(activity,MyinfosActivity.class));
 				activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-				break;
+				break;*/
 			case R.id.message_btn:
 				activity.startActivity(new Intent(activity,InfoGzActivity.class));
 				activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);			
