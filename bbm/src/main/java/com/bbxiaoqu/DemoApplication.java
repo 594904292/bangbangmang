@@ -125,7 +125,9 @@ public class DemoApplication extends Application {
 		mSession = Session.get(this);	
 		CrashHandler.getInstance().init(this);
 	    Log.v(TAG, "application created");
+		// 在使用 SDK 各组间之前初始化 context 信息，传入 ApplicationContext
 		SDKInitializer.initialize(this);
+
 		File cacheDir = StorageUtils.getCacheDirectory(this); // 缓存文件夹路径
 		ImageLoaderConfiguration configuration = new ImageLoaderConfiguration.Builder(this)
 				.threadPoolSize(10) // default 线程池内加载的数量
@@ -253,7 +255,7 @@ public class DemoApplication extends Application {
 	
 
 	public String getlocalhost() {
-		return "http://www.bbxiaoqu.com/";
+		return "http://api.bbxiaoqu.com/";
 	}
 	
 
@@ -305,11 +307,9 @@ public class DemoApplication extends Application {
 			HttpPost httprequest = new HttpPost(target);
 			List<NameValuePair> paramsList = new ArrayList<NameValuePair>();
 			paramsList.add(new BasicNameValuePair("_userId", getUserId()));// 公司代号
-			paramsList
-					.add(new BasicNameValuePair("_channelId", getChannelId()));// 公司代号
+			paramsList.add(new BasicNameValuePair("_channelId", getChannelId()));// 公司代号
 			try {
-				httprequest.setEntity(new UrlEncodedFormEntity(paramsList,
-						"UTF-8"));
+				httprequest.setEntity(new UrlEncodedFormEntity(paramsList,"UTF-8"));
 				HttpClient HttpClient1 = CustomerHttpClient.getHttpClient();
 				HttpResponse httpResponse = HttpClient1.execute(httprequest);
 				if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {

@@ -12,6 +12,12 @@
     android:background="#FFFFFF"
     android:padding="1dp" >
     <ImageView
+        android:id="@+id/fwtag"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:scaleType="fitXY"
+        android:src="@mipmap/dynamic_info_left" />
+    <ImageView
         android:id="@+id/imageView"
         android:layout_width="75dp"
         android:layout_height="75dp"

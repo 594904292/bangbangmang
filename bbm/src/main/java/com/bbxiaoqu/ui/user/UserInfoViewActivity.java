@@ -148,8 +148,7 @@ public class UserInfoViewActivity extends BaseActivity implements OnClickListene
 			String telphone = "";
 			String remote_headface = "";
 			String community="";
-			String target = myapplication.getlocalhost()+"getuserinfo.php?userid="
-					+ myapplication.getUserId();
+			String target = myapplication.getlocalhost()+"getuserinfo.php?userid="+ myapplication.getUserId();
 			HttpGet httprequest = new HttpGet(target);
 			try {
 				HttpClient HttpClient1 = CustomerHttpClient.getHttpClient();

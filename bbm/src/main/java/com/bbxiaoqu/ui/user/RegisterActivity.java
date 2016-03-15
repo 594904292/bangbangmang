@@ -21,6 +21,7 @@ import com.bbxiaoqu.comm.service.User;
 import com.bbxiaoqu.comm.service.db.UserService;
 import com.bbxiaoqu.comm.tool.CustomerHttpClient;
 import com.bbxiaoqu.ui.LoginActivity;
+import com.bbxiaoqu.view.BaseActivity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -35,24 +36,28 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
 
-public class RegisterActivity extends Activity {
+public class RegisterActivity extends BaseActivity {
 	private DemoApplication myapplication;
 	EditText password_edit;
-	EditText telphone_edit;	
+	EditText telphone_edit;
 	EditText authoncode_edit;
 	Button register_btn,btn_verf,login_btn;
 	String pass;
 	String tlephone;
 	private TimeCount time;
-	
+	public ImageView top_more;
+	private TextView title;
+	private TextView right_text;
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_register);
-		 myapplication = (DemoApplication) this.getApplication();
+		myapplication = (DemoApplication) this.getApplication();
 		loadui();
 		time = new TimeCount(60000, 1000);//构造CountDownTimer对象
 		//////////////////////
@@ -70,14 +75,14 @@ public class RegisterActivity extends Activity {
 				time.start();//开始计时
 			}
 		});
-		
-		
+
+
 		register_btn.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-			
+
 				pass = password_edit.getText().toString().trim();
 				tlephone = telphone_edit.getText().toString().trim();
-				
+
 				if(pass.equals(""))
 				{
 					Toast.makeText(RegisterActivity.this, "请填写用户密码", Toast.LENGTH_LONG);
@@ -88,40 +93,49 @@ public class RegisterActivity extends Activity {
 					Toast.makeText(RegisterActivity.this, "请填写电话号码", Toast.LENGTH_LONG);
 					return;
 				}
-				Log.i("TAG", pass + "_" + tlephone);				
+				Log.i("TAG", pass + "_" + tlephone);
 				new Thread(saveRun).start();
 			}
 		});
-		
+
 		login_btn.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				
+
 				Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
 				startActivity(intent);
 			}
 		});
-		
-	}
-	
-	
 
-	private LocationManager locationManager;  
-	private String locationProvider;  
+	}
+
+
+
+	private LocationManager locationManager;
+	private String locationProvider;
 	private Location location;
 	private void loadui() {
+		title = (TextView) findViewById(R.id.title);
+		right_text = (TextView) findViewById(R.id.right_text);
+		right_text.setVisibility(View.VISIBLE);
+		right_text.setClickable(true);
+		top_more = (ImageView) findViewById(R.id.top_more);
+		top_more.setVisibility(View.GONE);
+		title.setText("注册");
+		right_text.setText("");
+
 		//nicknameRegister_edit= (EditText) findViewById(R.id.nicknameRegister);
 		password_edit = (EditText) findViewById(R.id.passwordRegister);
-		telphone_edit = (EditText) findViewById(R.id.tlephoneRegister);	
-		authoncode_edit= (EditText) findViewById(R.id.authoncode_edit);	
-		
+		telphone_edit = (EditText) findViewById(R.id.tlephoneRegister);
+		authoncode_edit= (EditText) findViewById(R.id.authoncode_edit);
+
 		register_btn = (Button) findViewById(R.id.registerok);
 		btn_verf= (Button) findViewById(R.id.btn_verf);
 		login_btn= (Button) findViewById(R.id.login);
 	}
-	
+
 	Runnable getauthcodeRun = new Runnable() {
 		public void run() {
-			
+
 			String target = myapplication.getlocalhost()+"getauthcode.php";
 			HttpPost httprequest = new HttpPost(target);
 			List<NameValuePair> paramsList = new ArrayList<NameValuePair>();
@@ -134,7 +148,7 @@ public class RegisterActivity extends Activity {
 				String authcode="";
 				if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
 					authcode = EntityUtils.toString(httpResponse.getEntity());
-					
+
 				} else {
 					authcode ="";
 				}
@@ -160,12 +174,12 @@ public class RegisterActivity extends Activity {
 			authoncode_edit.setText(data.getString("authcode").trim());
 		}
 	};
-	
+
 	Runnable saveRun = new Runnable() {
 		@Override
 		public void run() {
 			// TODO Auto-generated method stub
-			
+
 			String pass = password_edit.getText().toString().trim();
 			String telnum = telphone_edit.getText().toString().trim();
 			String authoncode = authoncode_edit.getText().toString().trim();
@@ -207,8 +221,8 @@ public class RegisterActivity extends Activity {
 		}
 	};
 
-	
-	
+
+
 	Handler savehandler = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {
@@ -218,17 +232,17 @@ public class RegisterActivity extends Activity {
 			Log.i("mylog", "请求结果-->" + result);
 			if (result == 1) {
 				Toast.makeText(RegisterActivity.this, "保存成功",Toast.LENGTH_SHORT).show();
-				
+
 				UserService uService = new UserService(RegisterActivity.this);
 				User user = new User();
 				user.setUsername(tlephone);
 				user.setPassword(pass);
-				user.setTelphone(tlephone);	
+				user.setTelphone(tlephone);
 				user.setHeadface("");
-				uService.register(user);	
+				uService.register(user);
 				new Thread(sysncxmpp).start();
-				Toast.makeText(RegisterActivity.this, "注册成功", Toast.LENGTH_LONG).show();	
-				
+				Toast.makeText(RegisterActivity.this, "注册成功", Toast.LENGTH_LONG).show();
+
 				Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
 				startActivity(intent);
 			}else if (result == 2) {
@@ -243,10 +257,10 @@ public class RegisterActivity extends Activity {
 		}
 	};
 
-Runnable sysncxmpp = new Runnable(){  
-		
-		@Override  
-		public void run() {  
+	Runnable sysncxmpp = new Runnable(){
+
+		@Override
+		public void run() {
 			//XmppTool.getInstance().createAccount(tlephone, pass);//向xmpp服务器注册帐号
 		}};
 	class TimeCount extends CountDownTimer {

@@ -42,7 +42,7 @@
         android:src="@mipmap/dynamic_info_icon" />
 
   <TextView
-      android:id="@+id/lastinfo"
+      android:id="@+id/evaluate"
    	  android:layout_marginTop="10dp"      
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
@@ -76,7 +76,7 @@
       android:layout_height="wrap_content"
       android:layout_alignParentRight="true"   
       android:layout_alignBottom="@+id/usercatagory"
-      android:layout_alignRight="@+id/lastinfo"
+      android:layout_alignRight="@+id/evaluate"
       android:text="2015-10-30 10:09:22"
       android:textSize="12sp" />
 

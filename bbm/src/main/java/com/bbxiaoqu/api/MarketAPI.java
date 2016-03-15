@@ -42,13 +42,13 @@ public class MarketAPI {
     /** 机锋市场API host地址 */
     public static final String API_BASE_URL = 
         // real host
-      "http://www.bbxiaoqu.com/";
+      "http://api.bbxiaoqu.com/";
         // test host
 
     
     // User Center URL HOST
     //public static final String API_HOST_CLOUD = "http://passport.gfan.com/gfan_center/";
-    public static final String API_HOST_CLOUD = "http://www.bbxiaoqu.com/mark/";
+    //public static final String API_HOST_CLOUD = "http://api.bbxiaoqu.com/mark/";
     
      // 机锋市场 API URLS
     static final String[] API_URLS = {
@@ -178,10 +178,12 @@ public class MarketAPI {
     * getinfos API<br>
     * Do the login process, UserName, Password must be provided.<br>
     */
-   public static void getINfos(Context context, ApiRequestListener handler,String userid,String rang,String status,int start,int limit) {
+   public static void getINfos(Context context, ApiRequestListener handler,String userid,String latitude,String longitude,String rang,String status,int start,int limit) {
        final HashMap<String, Object> params = new HashMap<String, Object>(2); 
       
        params.put("_userid", userid);
+       params.put("latitude", latitude);
+       params.put("longitude", longitude);
        params.put("_rang", rang);
        params.put("_status", status);
        params.put("_start", String.valueOf(start));
@@ -223,10 +225,12 @@ public class MarketAPI {
      * getinfos API<br>
      * Do the login process, UserName, Password must be provided.<br>
      */
-    public static void getFwINfos(Context context, ApiRequestListener handler,String userid,String rang,String status,int start,int limit) {
+    public static void getFwINfos(Context context, ApiRequestListener handler,String userid,String latitude,String longitude,String rang,String status,int start,int limit) {
         final HashMap<String, Object> params = new HashMap<String, Object>(2);
 
         params.put("_userid", userid);
+        params.put("latitude", latitude);
+        params.put("longitude", longitude);
         params.put("_rang", rang);
         params.put("_status", status);
         params.put("_start", String.valueOf(start));

@@ -58,8 +58,13 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RatingBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Toast;
@@ -71,13 +76,11 @@ import android.widget.Toast;
 
 
 
-public class BmUserActivity extends Activity implements OnItemClickListener, Callback{
+public class BmUserActivity extends Activity implements  Callback{
 	private DemoApplication myapplication;
-	
 	ListView lstv;
 	private List<Map<String, Object>> data;
 	private List<Map<String, Object>> dataList = new ArrayList<Map<String, Object>>();
-	
 	//Context mContext;
 	BmUserAdapter adapter;	
 	TextView title;
@@ -86,6 +89,13 @@ public class BmUserActivity extends Activity implements OnItemClickListener, Cal
 	private ProgressDialog progressDialog = null;
 	private String guid = "";
 	private boolean isbm = false;
+
+	private RatingBar ratingBar;
+	private EditText content;
+	private Button submit;
+	private ImageButton closebtn;
+	private RelativeLayout id_info;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -98,18 +108,28 @@ public class BmUserActivity extends Activity implements OnItemClickListener, Cal
 		initView();
 		initData();
 		myapplication = (DemoApplication) this.getApplication();			
-		
 		init();
-		
-		
-	
 	}
+
 	private void init() {
 		lstv = (ListView) findViewById(R.id.lvbmuser);
 		getData() ;
 		adapter= new BmUserAdapter(this, dataList, this,this.isbm);
 		lstv.setAdapter(adapter);
-		lstv.setOnItemClickListener(this);
+		lstv.setOnItemClickListener(new OnItemClickListener(){
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int position, long id) {
+				// TODO Auto-generated method stub
+				//Toast.makeText(BmUserActivity.this, "listview的item被点击了！，点击的位置是-->" + position, Toast.LENGTH_SHORT).show();
+				Intent Intent1 = new Intent();
+				Intent1.setClass(BmUserActivity.this, ViewUserInfoActivity.class);
+				Bundle arguments = new Bundle();
+				Map<String, Object> map=dataList.get(position);
+				arguments.putString("userid", map.get("uerid").toString());
+				Intent1.putExtras(arguments);
+				startActivity(Intent1);
+			}
+		});
 	}
 
 	private void initView() {
@@ -117,10 +137,28 @@ public class BmUserActivity extends Activity implements OnItemClickListener, Cal
 		right_text = (TextView) findViewById(R.id.right_text);
 		right_text.setVisibility(View.GONE);
 
+		id_info=(RelativeLayout) findViewById(R.id.id_info);
+		ratingBar=(RatingBar) findViewById(R.id.ratingBar);
+		content=(EditText) findViewById(R.id.content);
+		submit=(Button) findViewById(R.id.submit);
+		closebtn=(ImageButton) findViewById(R.id.close_btn);
+		closebtn.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				id_info.setVisibility(View.GONE);
+			}
+		});
+
+		submit.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				id_info.setVisibility(View.GONE);
+				updateorder(selpos);//完毕
+			}
+		});
+
 	}
 
 	private void initData() {
-		title.setText("报名人员");
+		title.setText("人员列表");
 		right_text.setText("");
 	}
 	
@@ -166,7 +204,6 @@ public class BmUserActivity extends Activity implements OnItemClickListener, Cal
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-	  		
 		}
 
 	
@@ -184,11 +221,11 @@ public class BmUserActivity extends Activity implements OnItemClickListener, Cal
 			String _telphone = jsonobject.getString("telphone");
 			String _headface = jsonobject.getString("headface");
 			String _status = jsonobject.getString("status");
+			_username=_username+"_"+_status;
 			if(!_status.equals("0"))
 			{//只要其中一个状态不为零,就说明不是报名,就是交易已经完成
 				this.isbm = true;
 			}
-			
 			HashMap<String, Object> item = new HashMap<String, Object>();
 			item.put("id",_id);
 			item.put("uerid",_uerid);
@@ -197,36 +234,44 @@ public class BmUserActivity extends Activity implements OnItemClickListener, Cal
 			item.put("headface",_headface);
 			item.put("status",_status);
 			list.add(item);
-			
 		}
 		return list;
 	}
 
 
-	@Override
+	/*@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int position, long id) {
 		// TODO Auto-generated method stub
-		 //Toast.makeText(this, "listview的item被点击了！，点击的位置是-->" + position,Toast.LENGTH_SHORT).show();
+		 Toast.makeText(this, "listview的item被点击了！，点击的位置是-->" + position,Toast.LENGTH_SHORT).show();
 	}
-	
-
+	*/
+		int selpos=-1;
 	     public void click(View v) {
 	    	 String tag=v.getTag().toString();
 	    	 String[] arr=tag.split("_");
-	    	 int pos=Integer.parseInt(arr[0]);
+	    	 selpos=Integer.parseInt(arr[0]);
 	    	 String id=arr[1];
-	    	 if(id.equals("tel"))
+	    	/* if(id.equals("tel"))
 	    	 {
-		    	  Intent intent = new Intent(Intent.ACTION_CALL,Uri.parse("tel:"+dataList.get(pos).get("telphone")));	    	    
+		    	  Intent intent = new Intent(Intent.ACTION_CALL,Uri.parse("tel:"+dataList.get(selpos).get("telphone")));
 		    	  BmUserActivity.this.startActivity(intent);
 	    	 }else  if(id.equals("order"))	    	 
 	    	 {
-	    		 genorder(pos);//生成状态变1
+	    		 //genorder(pos);//生成状态变1
+				 updateorder(selpos);//完毕
 	    	 }else  if(id.equals("finsh"))	    	 
 	    	 {
-	    		 updateorder(pos);//完毕
-	    	 }
+	    		 updateorder(selpos);//完毕
+	    	 }*/
+			 //Toast.makeText(BmUserActivity.this, "listview的按钮被点击了！，点击的位置是-->" + selpos, Toast.LENGTH_SHORT).show();
+			 id_info.setVisibility(View.VISIBLE);
 	     }
+
+/*
+	private RatingBar ratingBar;
+	private EditText content;
+*/
+
 		private void updateorder(int pos) {
 			//SELECT * FROM `info_act` where action=2 
 			 //生成订单
@@ -234,15 +279,17 @@ public class BmUserActivity extends Activity implements OnItemClickListener, Cal
 			 //用户id:dataList.get((Integer) v.getTag()).get("uerid")
 			 String userid=dataList.get(pos).get("uerid").toString();
 			 //更改状态 status=1
-			 
-			String target = myapplication.getlocalhost()+"genorder.php";
+			String target = myapplication.getlocalhost()+"genfinshorder.php";
 			HttpPost httprequest = new HttpPost(target);
 			List<NameValuePair> paramsList = new ArrayList<NameValuePair>();
 			paramsList.add(new BasicNameValuePair("_guid", guid));//产品id
 			paramsList.add(new BasicNameValuePair("_fromuser", myapplication.getUserId()));//求助人确定订单是否完成
 			paramsList.add(new BasicNameValuePair("_userid", userid));//用户id
 			paramsList.add(new BasicNameValuePair("_status", "2"));//用户id
-			
+
+
+			paramsList.add(new BasicNameValuePair("_rating", String.valueOf(ratingBar.getRating())));//用户id
+			paramsList.add(new BasicNameValuePair("_content", content.getText().toString()));//用户id
 			try {
 				httprequest.setEntity(new UrlEncodedFormEntity(paramsList,
 						"UTF-8"));
@@ -275,7 +322,6 @@ public class BmUserActivity extends Activity implements OnItemClickListener, Cal
 			 //用户id:dataList.get((Integer) v.getTag()).get("uerid")
 			 String userid=dataList.get(pos).get("uerid").toString();
 			 //更改状态 status=1
-			 
 			String target = myapplication.getlocalhost()+"genorder.php";
 			HttpPost httprequest = new HttpPost(target);
 			List<NameValuePair> paramsList = new ArrayList<NameValuePair>();
@@ -309,14 +355,13 @@ public class BmUserActivity extends Activity implements OnItemClickListener, Cal
 				e.printStackTrace();
 			}
 		}
-		
+
 		
 		public void rsload()
 		{
 			getData() ;
 		    adapter= new BmUserAdapter(this, dataList, this,true);
 			lstv.setAdapter(adapter);
-			
 		}
 	    	 
 	    	 
@@ -324,8 +369,6 @@ public class BmUserActivity extends Activity implements OnItemClickListener, Cal
 	    			@Override
 	    			public void handleMessage(Message msg) {
 	    				super.handleMessage(msg);
-	    				
-	    				
 	    				rsload();
 	    			
 	    			}
@@ -335,6 +378,5 @@ public class BmUserActivity extends Activity implements OnItemClickListener, Cal
 	 		onBackPressed();
 	 	}
 
-	   
 }
 

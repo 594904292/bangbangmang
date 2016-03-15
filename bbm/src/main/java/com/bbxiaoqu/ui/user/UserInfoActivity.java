@@ -339,8 +339,7 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 
 	/**
 	 * 保存裁剪之后的图片数据
-	 * 
-	 * @param picdata
+	 *
 	 */
 	private void getImageToView(Intent data) {
 		Bundle extras = data.getExtras();
@@ -397,25 +396,17 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 			paramsList.add(new BasicNameValuePair("username", username.getText().toString()));
  			paramsList.add(new BasicNameValuePair("age", age.getText()	.toString()));
 			paramsList.add(new BasicNameValuePair("sex", sex_str));
-			
 			paramsList.add(new BasicNameValuePair("telphone", telphone.getText().toString()));
-
-
 			paramsList.add(new BasicNameValuePair("community", community_eidt.getText().toString()));
 			paramsList.add(new BasicNameValuePair("community_id", community_id));
 			paramsList.add(new BasicNameValuePair("community_lat", community_lat));
 			paramsList.add(new BasicNameValuePair("community_lng", community_lng));
-			
-		
 			try {
-				httprequest.setEntity(new UrlEncodedFormEntity(paramsList,
-						"UTF-8"));
+				httprequest.setEntity(new UrlEncodedFormEntity(paramsList,"UTF-8"));
 				HttpClient HttpClient1 = CustomerHttpClient.getHttpClient();
 				HttpResponse httpResponse = HttpClient1.execute(httprequest);
 				if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
-					String json = EntityUtils
-							.toString(httpResponse.getEntity());
-					System.out.println(json);
+					String json = EntityUtils.toString(httpResponse.getEntity());
 					String target1 = myapplication.getlocalhost()+"upload.php";
 					if(headfacepath!=null&&headfacepath.length()>0)
 					{
@@ -589,8 +580,6 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 				String fileName = myapplication.getlocalhost()+"uploads/"+ data.getString("headface");
 				ImageLoader.getInstance().displayImage(fileName, iv_photo, ImageOptions.getOptions());
 			}
-			 
-		
 		}
 	};
 

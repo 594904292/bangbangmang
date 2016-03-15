@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
+	android:descendantFocusability="blocksDescendants"
+	android:layout_width="fill_parent"
     android:layout_height="wrap_content" >
 
     <ImageView
@@ -34,7 +35,7 @@
                  android:layout_toRightOf="@id/imageView"     
                 android:gravity="right" >
 
-                <Button
+                <!--Button
                     android:id="@+id/button1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -44,7 +45,7 @@
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
                     android:paddingTop="8dp"
-                    android:text="拨打电话" />
+                    android:text="拨打电话" /-->
 			        
              <Button
 			        android:id="@+id/button2"
@@ -56,7 +57,9 @@
 				    android:paddingTop="8dp"
 				    android:paddingBottom="8dp"
 			        android:background="@drawable/button_green"
-			        android:text="接受帮助" /> 
+				 android:clickable="true"
+				 android:focusable="false"
+				 android:text="雷锋" />
             </LinearLayout>
    
   

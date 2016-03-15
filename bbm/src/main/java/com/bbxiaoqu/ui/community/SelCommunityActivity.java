@@ -124,89 +124,7 @@ public class SelCommunityActivity extends BaseActivity implements ApiAsyncTask.A
 		}
 	}
 
-	/*Runnable SyncSubscribe = new Runnable() {
-		@Override
-		public void run() {
-			String target = myapplication.getlocalhost()+"getsubscribe.php?userid="
-					+ myapplication.getUserId();
-			List<InfoBase> bfjllist = null;
-			HttpGet httprequest = new HttpGet(target);
-			HttpClient HttpClient1 = new DefaultHttpClient();
-			// 请求超时
-			HttpClient1.getParams().setParameter(
-					CoreConnectionPNames.CONNECTION_TIMEOUT, 20000);
-			// 读取超时
-			HttpClient1.getParams().setParameter(
-					CoreConnectionPNames.SO_TIMEOUT, 20000);
-			HttpResponse httpResponse = null;
-			try {
-				httpResponse = HttpClient1.execute(httprequest);
-			} catch (ClientProtocolException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
-				InputStream jsonStream = null;
-				try {
-					jsonStream = httpResponse.getEntity().getContent();
-					byte[] data = StreamTool.read(jsonStream);
-					String json = new String(data);
-					Message msg = new Message();
-					Bundle msgbundle = new Bundle();
-					msgbundle.putString("json", json);
-					msg.setData(msgbundle);
-					msg.what = MESSAGETYPE_01;
-					savejsonhandler.sendMessage(msg);
-				} catch (IllegalStateException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
 
-		}
-	};*/
-
-//	Handler savejsonhandler = new Handler() {
-//		@Override
-//		public void handleMessage(Message msg) {
-//			switch (msg.what) {
-//			case MESSAGETYPE_01:
-//				// super.handleMessage(msg);
-//				Bundle data = msg.getData();
-//				String json = data.getString("json");
-//				JSONArray jsonarray = null;
-//				try {
-//					jsonarray = new JSONArray(json);
-//					for (int i = 0; i < jsonarray.length(); i++) {
-//						JSONObject customJson = jsonarray.getJSONObject(i);
-//						String community = customJson.getString("community")
-//								.toString();
-//						String userid = myapplication.getUserId();
-//						XiaoquService xiaoquService = new XiaoquService(myapplication.getApplicationContext());
-//						if (!xiaoquService.isexit(community)) {
-//							xiaoquService.addxiaoqu(community);
-//						}
-//					}
-//				} catch (JSONException e1) {
-//					// TODO Auto-generated catch block
-//					e1.printStackTrace();
-//				}
-//				progressDialog.dismiss(); // 关闭进度条
-//				break;
-//			}
-//
-//		}
-//
-//	};
 	String keyword="";
 	private void initView() {
 		title = (TextView) findViewById(R.id.title);
@@ -413,96 +331,7 @@ public class SelCommunityActivity extends BaseActivity implements ApiAsyncTask.A
 				break;
 		}
 	}
-//	private void getData() {
-//		if (!NetworkUtils.isNetConnected(myapplication)) {
-//			T.showShort(myapplication, "当前无网络连接,请稍后再试！");
-//			return;
-//		}
-//		String target = myapplication.getlocalhost()+"getxiaoqu.php?latitude="
-//				+ myapplication.getLat() + "&longitude="
-//				+ myapplication.getLng();
-//		try {
-//			// /////////////////////////////
-//			List<InfoBase> bfjllist = null;
-//			HttpGet httprequest = new HttpGet(target);
-//			HttpClient HttpClient1 = new DefaultHttpClient();
-//			// 请求超时
-//			HttpClient1.getParams().setParameter(
-//					CoreConnectionPNames.CONNECTION_TIMEOUT, 20000);
-//			// 读取超时
-//			HttpClient1.getParams().setParameter(
-//					CoreConnectionPNames.SO_TIMEOUT, 20000);
-//			HttpResponse httpResponse = null;
-//			try {
-//				httpResponse = HttpClient1.execute(httprequest);
-//			} catch (ClientProtocolException e1) {
-//				// TODO Auto-generated catch block
-//				e1.printStackTrace();
-//			} catch (IOException e1) {
-//				// TODO Auto-generated catch block
-//				e1.printStackTrace();
-//			}
-//			if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
-//				InputStream jsonStream = null;
-//				try {
-//					jsonStream = httpResponse.getEntity().getContent();
-//					byte[] data = StreamTool.read(jsonStream);
-//					String json = new String(data);
-//					Community mcommunity;
-//					JSONArray jsonarray = new JSONArray(json);
-//					for (int i = 0; i < jsonarray.length(); i++) {
-//						JSONObject jsonobject = jsonarray.getJSONObject(i);
-//						double distance = InfoBean
-//								.getDistance(Double.parseDouble(myapplication
-//										.getLat()), Double
-//										.parseDouble(myapplication.getLng()),
-//										Double.parseDouble(jsonobject
-//												.getString("lat")), Double
-//												.parseDouble(jsonobject
-//														.getString("lng")));
-//						mcommunity = new Community();
-//						mcommunity.setId(jsonobject.getString("id"));
-//						mcommunity.setName(jsonobject.getString("name"));
-//						mcommunity.setAddress(jsonobject.getString("address"));
-//						mcommunity.setLat(jsonobject.getString("lat"));
-//						mcommunity.setLng(jsonobject.getString("lng"));
-//						mcommunity.setPic(jsonobject.getString("pic"));
-//						mcommunity
-//								.setBusiness(jsonobject.getString("business"));
-//						mcommunity.setDevelop(jsonobject.getString("develop"));
-//						mcommunity.setPropertymanagement(jsonobject
-//								.getString("propertymanagement"));
-//						mcommunity.setPropertytype(jsonobject
-//								.getString("propertytype"));
-//						mcommunity.setHomenumber(jsonobject
-//								.getString("homenumber"));
-//						mcommunity.setBuildyear(jsonobject
-//								.getString("buildyear"));
-//						XiaoquService xiaoquService = new XiaoquService(this);
-//					/*	boolean ishavezhan = xiaoquService.isexit(mcommunity
-//								.getId());
-//						if (ishavezhan) {
-//							mcommunity.setIsgz(1);
-//						} else {
-//							mcommunity.setIsgz(0);
-//						}*/
-//						mcommunity.setIsgz(0);
-//						mcommunity.setDistance(String.valueOf(distance));
-//						communitylist.add(mcommunity);
-//					}
-//				} catch (IllegalStateException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				} catch (IOException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//			}
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
+
 
 	// 自定义ListView适配器
 	class MyListAdapter extends BaseAdapter {
@@ -550,7 +379,7 @@ public class SelCommunityActivity extends BaseActivity implements ApiAsyncTask.A
 				map.put(position, view);
 				view.setTag(holder);
 			} else {
-				Log.e("SubscribeCommunityActivity", "position2 = " + position);
+				Log.e("SubscribeCommunity", "position2 = " + position);
 				view = map.get(position);
 				holder = (ViewHolder) view.getTag();
 			}

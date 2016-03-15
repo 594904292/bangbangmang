@@ -68,7 +68,7 @@ public class BmUserAdapter extends BaseAdapter implements OnClickListener {
 					.findViewById(R.id.username);
 			holder.telphone = (TextView) convertView
 					.findViewById(R.id.telphone);
-			holder.button = (Button) convertView.findViewById(R.id.button1);
+			//holder.button = (Button) convertView.findViewById(R.id.button1);
 			holder.button2 = (Button) convertView.findViewById(R.id.button2);
 			convertView.setTag(holder);
 		} else {
@@ -98,8 +98,8 @@ public class BmUserAdapter extends BaseAdapter implements OnClickListener {
 		holder.telphone.setText(dataList.get(position).get("telphone")
 				.toString());
 
-		holder.button.setOnClickListener(this);
-		holder.button.setTag(position+"_tel");
+		/*holder.button.setOnClickListener(this);
+		holder.button.setTag(position+"_tel");*/
 
 		if(this.isbm)
 		{//确定有人报名
@@ -119,7 +119,7 @@ public class BmUserAdapter extends BaseAdapter implements OnClickListener {
 				holder.button2.setOnClickListener(this);
 				holder.button2.setTag(position+"_end");
 				holder.button2.setEnabled(false);//禁用
-			}else 
+			}else
 			{
 				holder.button2.setVisibility(View.GONE);
 				holder.button2.setEnabled(false);//禁用
@@ -127,7 +127,8 @@ public class BmUserAdapter extends BaseAdapter implements OnClickListener {
 		}else
 		{//没有任务人报名			
 			holder.button2.setOnClickListener(this);
-			holder.button2.setTag(position+"_order");
+			//holder.button2.setTag(position+"_order");
+			holder.button2.setTag(position+"_finsh");
 		}
 		return convertView;
 	}
@@ -137,7 +138,7 @@ public class BmUserAdapter extends BaseAdapter implements OnClickListener {
 		ImageView imageView;
 		TextView username;
 		TextView telphone;
-		Button button;
+		//Button button;
 		Button button2;
 	}
 

@@ -1,12 +1,11 @@
 package com.bbxiaoqu.ui.sub;
 
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.http.HttpResponse;
@@ -17,6 +16,7 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
@@ -26,6 +26,7 @@ import org.json.JSONObject;
 import com.bbxiaoqu.DemoApplication;
 import com.bbxiaoqu.ImageOptions;
 import com.bbxiaoqu.R;
+import com.bbxiaoqu.adapter.EvaluateAdapter;
 import com.bbxiaoqu.comm.jsonservices.GetJson;
 import com.bbxiaoqu.comm.tool.CustomerHttpClient;
 import com.bbxiaoqu.comm.tool.NetworkUtils;
@@ -38,78 +39,40 @@ import com.loopj.android.http.RequestParams;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.io.File;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.util.Map;
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import android.widget.Spinner;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class ViewUserInfoActivity extends BaseActivity implements OnClickListener {
 	private DemoApplication myapplication;
-	TextView title;
-
+	private TextView title;
 	private TextView username_tv;
 	private TextView score_tv;
-	private TextView age_tv;
-	private TextView sex_tv;
-	private String sex_str = "1";
-	private TextView community_tv;
 	private TextView telphone_tv;
-	Button save,chat;
-	
-	String username = "";
-	String age = "";
-	String sex = "";
-	String telphone = "";
-	String headface = "";
-	String community="";
-	String score="";
-	
-	
+	private Button save,chat;
+	private String username = "";
+	private String telphone = "";
+	private String headface = "";
+	private String score="";
 	private String headfacepath = "";
-	private String headfacename = "";
-	private String community_id="";
-	private String community_lat="";
-	private String community_lng="";
+	private ListView listview;
 	/** ImageView对象 */
 	private ImageView iv_photo;
-	private String[] items = new String[] { "选择本地图片", "拍照" };
-	/** 头像名称 */
-	private static final String IMAGE_FILE_NAME = "image.jpg";
-
-	private static final int SelXq_REQUEST_CODE=100;
-	/** 请求码 */
-	private static final int IMAGE_REQUEST_CODE = 0;
-	private static final int CAMERA_REQUEST_CODE = 1;
-	private static final int RESULT_REQUEST_CODE = 2;
 	private  String userid;
+	private final String TAG = "UserInfoActivity";
+	private AsyncHttpClient client;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -117,23 +80,26 @@ public class ViewUserInfoActivity extends BaseActivity implements OnClickListene
 		myapplication = (DemoApplication) this.getApplication();
 		Bundle Bundle1 = this.getIntent().getExtras();		
 		userid = Bundle1.getString("userid");
-		
+
 		initView();
 		initData();
+		loadlist();
 	}
-	
-	
-	
+	EvaluateAdapter adapter;
+	private List<Map<String, Object>> dataList = new ArrayList<Map<String, Object>>();
 	private static final String[] sexs ={ " 男 " , "女" };
 	private void initView() {
 		title = (TextView) findViewById(R.id.title);
 		username_tv = (TextView) findViewById(R.id.username);
 		score_tv = (TextView) findViewById(R.id.score);
-		age_tv = (TextView) findViewById(R.id.age);
-		sex_tv = (TextView) findViewById(R.id.sex);
-		community_tv = (TextView) findViewById(R.id.community);
 		telphone_tv = (TextView) findViewById(R.id.telphone);
 		save = (Button) findViewById(R.id.save);
+		listview= (ListView) findViewById(R.id.evaluatelist);//列表
+
+
+		/*listview.setAdapter(new ArrayAdapter<String>(this,
+				android.R.layout.simple_list_item_1, strs));*/
+
 		save.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				if (!NetworkUtils.isNetConnected(myapplication)) {			
@@ -147,7 +113,6 @@ public class ViewUserInfoActivity extends BaseActivity implements OnClickListene
 		chat.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				Intent intent = new Intent(ViewUserInfoActivity.this,ChattingActivity.class);
-				
 				Bundle arguments = new Bundle();
 				arguments.putString("to", userid);
 				arguments.putString("my",myapplication.getUserId());
@@ -157,10 +122,110 @@ public class ViewUserInfoActivity extends BaseActivity implements OnClickListene
 			}
 		});
 		iv_photo = (ImageView) findViewById(R.id.iv_photo);
-		
+
+
+
 	}
 
-	
+	private void loadlist() {
+
+		dataList = new ArrayList<Map<String, Object>>();
+
+
+		if (listview == null) {
+			return;
+		}
+		getData();
+		adapter= new EvaluateAdapter(this, dataList);
+		listview.setAdapter(adapter);
+	}
+/*	private void getData() {
+		HashMap<String, Object> item = new HashMap<String, Object>();
+		item.put("id","1");
+		item.put("guid","54fa2405-ad6f-4f8e-8ddc-f2610b2c3dcf");
+		item.put("infouser","369");
+		item.put("userid","13601194810");
+		item.put("score","4");
+		item.put("evaluate","真是个好人，晚上九点还送我上医院");
+		item.put("addtime","2016-03-15 10:32:07");
+		dataList.add(item);
+	}*/
+
+
+	private void getData() {
+		if (!NetworkUtils.isNetConnected(myapplication)) {
+			T.showShort(myapplication, "当前无网络连接！");
+			return;
+		}
+		String target=myapplication.getlocalhost()+"getmemberevaluates.php?userid="+userid;
+		dataList = new ArrayList<Map<String, Object>>();
+		try {
+			List<Map<String, Object>> bfjllist=null;
+			HttpGet httprequest = new HttpGet(target);
+			HttpClient HttpClient1 = new DefaultHttpClient();
+			HttpResponse httpResponse = null;
+			try {
+				httpResponse = HttpClient1.execute(httprequest);
+			} catch (ClientProtocolException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+				InputStream json = null;
+				try {
+					json = httpResponse.getEntity().getContent();
+					bfjllist= parsejson(json);
+				} catch (IllegalStateException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			for (Map map: bfjllist) {
+				dataList.add(map);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+
+	private List<Map<String, Object>> parsejson(InputStream jsonStream)
+			throws Exception {
+		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+		byte[] data = StreamTool.read(jsonStream);
+		String json = new String(data);
+		JSONArray jsonarray = new JSONArray(json);
+		for (int i = 0; i < jsonarray.length(); i++) {
+			JSONObject jsonobject = jsonarray.getJSONObject(i);
+			int id = jsonobject.getInt("id");
+			String guid = jsonobject.getString("guid");
+			String infouser = jsonobject.getString("infouser");
+			String userid = jsonobject.getString("userid");
+			String score = jsonobject.getString("score");
+			String evaluate = jsonobject.getString("evaluate");
+			String addtime = jsonobject.getString("addtime");
+
+			HashMap<String, Object> item = new HashMap<String, Object>();
+			item.put("id",id);
+			item.put("guid",guid);
+			item.put("infouser",infouser);
+			item.put("userid",userid);
+			item.put("score",score);
+			item.put("evaluate",evaluate);
+			item.put("addtime",addtime);
+			list.add(item);
+		}
+		return list;
+	}
+
+
 	Runnable addfriends = new Runnable() {
 		@Override
 		public void run() {
@@ -230,8 +295,7 @@ public class ViewUserInfoActivity extends BaseActivity implements OnClickListene
 			}
 		}
 	};
-	
-	
+
 	private void initData() {
 		title.setText("用户中心");
 		if (!NetworkUtils.isNetConnected(myapplication)) {			
@@ -241,14 +305,9 @@ public class ViewUserInfoActivity extends BaseActivity implements OnClickListene
 		new Thread(loaduserinfo).start();
 	}
 
-	
-	private final String TAG = "UserInfoActivity";
-	private AsyncHttpClient client;
-
 	private void upLoadByAsyncHttpClient(String uploadUrl)
 			throws FileNotFoundException {
 		AsyncBody(uploadUrl, headfacepath);
-
 	}
 
 	private void AsyncBody(String uploadUrl, String localpath)
@@ -264,8 +323,6 @@ public class ViewUserInfoActivity extends BaseActivity implements OnClickListene
 			}
 		});
 	}
-
-	
 
 	Runnable loaduserinfo = new Runnable() {
 		@Override
@@ -293,17 +350,9 @@ public class ViewUserInfoActivity extends BaseActivity implements OnClickListene
 						jsonarray = new JSONArray(json);
 						JSONObject jsonobject = jsonarray.getJSONObject(0);
 						username = jsonobject.getString("username");
-						age = jsonobject.getString("age");
-						sex = jsonobject.getString("sex");
 						telphone = jsonobject.getString("telphone");
 						headface = jsonobject.getString("headface");
-						community = jsonobject.getString("community");
 						score = jsonobject.getString("score");
-						
-						community_id = jsonobject.getString("community_id");
-						community_lat = jsonobject.getString("community_lat");
-						community_lng = jsonobject.getString("community_lng");
-												
 					} catch (JSONException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -316,14 +365,9 @@ public class ViewUserInfoActivity extends BaseActivity implements OnClickListene
 				Message msg = new Message();
 				Bundle data = new Bundle();
 				data.putString("username", username);
-				data.putString("age", age);
 				data.putString("score", score);
-				data.putString("sex", sex);
 				data.putString("telphone", telphone);
 				data.putString("headface", headface);
-				data.putString("community", community);
-				
-				
 				msg.setData(data);
 				laodhandler.sendMessage(msg);
 			} catch (ClientProtocolException e) {
@@ -331,7 +375,6 @@ public class ViewUserInfoActivity extends BaseActivity implements OnClickListene
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-
 		}
 	};
 
@@ -342,25 +385,10 @@ public class ViewUserInfoActivity extends BaseActivity implements OnClickListene
 			Bundle data = msg.getData();
 			username_tv.setText("名称:"+data.getString("username"));
 			score_tv.setText("积分:"+data.getString("score"));
-			age_tv.setText("年龄："+data.getString("age"));
-			if(data.getString("sex").equals("1"))
-			{
-				//male.setChecked(true);
-				sex_tv.setText("性别:男");
-			}else
-			{
-				sex_tv.setText("性别:女");
-			}
-			//sex.setText(data.getString("sex"));
-			community_tv.setText("小区："+data.getString("community"));
 			telphone_tv.setText("电话："+data.getString("telphone"));
 			String fileName = myapplication.getlocalhost()+"uploads/"+ data.getString("headface");
-			
-			
-			
-			 ImageLoader.getInstance().displayImage(fileName, iv_photo, ImageOptions.getOptions());  
-			 new Thread(ajaxloadfriend).start();//得到是否关注
-		
+			ImageLoader.getInstance().displayImage(fileName, iv_photo, ImageOptions.getOptions());
+			new Thread(ajaxloadfriend).start();//得到是否关注
 		}
 	};
 
@@ -400,7 +428,6 @@ public class ViewUserInfoActivity extends BaseActivity implements OnClickListene
 			@Override
 			public void handleMessage(Message msg) {
 				super.handleMessage(msg);
-
 				Bundle data = msg.getData();
 				if(data.getString("isfriend").equals("yes"))
 				{
@@ -411,8 +438,8 @@ public class ViewUserInfoActivity extends BaseActivity implements OnClickListene
 					save.setText("关注");
 					save.setTag("关注");
 				}
-				
 			}};
+
 	@Override
 	public void onBackPressed() {
 		// TODO Auto-generated method stub
@@ -424,13 +451,10 @@ public class ViewUserInfoActivity extends BaseActivity implements OnClickListene
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.right_text:
-
 			break;
 		default:
 			break;
 		}
 	}
-	
-	
 	
 }

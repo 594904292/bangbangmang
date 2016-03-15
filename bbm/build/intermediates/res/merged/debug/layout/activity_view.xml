@@ -40,7 +40,7 @@
                 android:typeface="sans" />
             
             <Button
-                android:id="@+id/chat"
+                android:id="@+id/chat_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_green"
@@ -48,7 +48,7 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:paddingTop="8dp"
-                android:text="私聊"
+                android:text="我来帮"
                 android:textColor="@color/btn_common_text" />
 
         </LinearLayout>
@@ -146,18 +146,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="right" >
-   <!-- Button
+                 <!-- Button
                     android:id="@+id/info_plbutton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    
 	                android:paddingLeft="10dp"
 	                android:paddingRight="10dp"
 	                android:paddingTop="8dp"
 	                android:paddingBottom="8dp"
-	                
-	                
                     android:background="@drawable/button_green"
                     android:text="暂无评论"
                     android:textSize="12sp" 
@@ -167,13 +164,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    
 	                android:paddingLeft="10dp"
 	                android:paddingRight="10dp"
 	                android:paddingTop="8dp"
 	                android:paddingBottom="8dp"
-	                
-	                
                     android:background="@drawable/button_green"
                     android:text="收藏"
                     android:textSize="12sp" 
@@ -184,16 +178,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    
-                      android:paddingLeft="10dp"
+                    android:paddingLeft="10dp"
 	                android:paddingRight="10dp"
 	                android:paddingTop="8dp"
 	                android:paddingBottom="8dp"
-	                
                     android:background="@drawable/button_green"
                     android:text="接单"
                     android:textSize="12sp" 
                     android:visibility="gone"/-->
+
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
@@ -205,25 +198,36 @@
         android:layout_below="@+id/body_info"
         android:layout_marginTop="10dp"
         android:text="暂无评论" />
-
-    <ListView
-        android:id="@+id/view_group_discuss_list"
+    <ScrollView
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+        android:layout_height="fill_parent"
+        android:fadingEdge = "none"
+        android:background="#FFF4F4F4"
         android:layout_below="@+id/body_info"
-        android:layout_marginBottom="50dp"
-        android:layout_marginTop="10dp"
-        android:divider="#b5b5b5"
-        android:dividerHeight="1dp"
-        android:listSelector="@drawable/list_selector" />
-
-    
+        >
+        <LinearLayout
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:background="#fff4f4f4"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            >
+            <ListView
+                android:id="@+id/view_group_discuss_list"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="50dp"
+                android:layout_marginTop="10dp"
+                android:divider="#b5b5b5"
+                android:dividerHeight="1dp"
+                android:listSelector="@drawable/list_selector" />
+        </LinearLayout>
+    </ScrollView>
     <RelativeLayout
         android:id="@+id/view_rl_bottom"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/view_group_discuss_list"
         android:layout_alignParentBottom="true"
         android:background="@drawable/chat_footer_bg" >
 
@@ -248,7 +252,7 @@
             android:layout_marginRight="10dp"
             android:layout_toLeftOf="@id/view_group_discuss_submit"
             android:hint="评论"
-               android:background="@drawable/login_edit_normal"
+            android:background="@drawable/login_edit_normal"
             android:singleLine="true"
             android:textColor="#000"
             android:textSize="18sp" >
@@ -256,17 +260,4 @@
             <requestFocus />
         </EditText>
     </RelativeLayout>
- <!--LinearLayout
-        android:id="@+id/rl_bottom"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true" >
-
-       
-        <include
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            layout="@layout/custom_facerelativelayout" />
-    </LinearLayout-->
-    
 </RelativeLayout><!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/layout/activity_view.xml -->

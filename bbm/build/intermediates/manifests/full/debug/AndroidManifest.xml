@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.bbxiaoqu"
-    android:versionCode="5"
-    android:versionName="1.20160121" >
+    android:versionCode="7"
+    android:versionName="1.20160217" >
 
     <uses-sdk
         android:minSdkVersion="14"
@@ -83,12 +83,26 @@
             android:windowSoftInputMode="stateVisible|adjustResize" >
         </activity>
         <activity
+            android:name="com.bbxiaoqu.ui.SearchPassActivity"
+            android:label="找回密码"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateVisible|adjustResize" >
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.ui.ResetPassActivity"
+            android:label="重置密码"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateVisible|adjustResize" >
+        </activity>
+        <activity
             android:name="com.bbxiaoqu.ui.sub.SelectPhotoActivity"
             android:screenOrientation="portrait"
             android:theme="@style/DialogStyleBottom" >
         </activity>
         <activity
-            android:name="com.bbxiaoqu.ui.RegisterActivity"
+            android:name="com.bbxiaoqu.ui.user.RegisterActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name" >
         </activity>
@@ -153,12 +167,12 @@
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name="com.bbxiaoqu.ui.sub.UserInfoActivity"
+            android:name="com.bbxiaoqu.ui.user.UserInfoActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name="com.bbxiaoqu.ui.sub.UserInfoViewActivity"
+            android:name="com.bbxiaoqu.ui.user.UserInfoViewActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name" >
         </activity>
@@ -392,11 +406,7 @@
         <meta-data
             android:name="com.baidu.speech.SECRET_KEY"
             android:value="NGO4k0pwf9rcbIiVimMkzEN58bAZtUbh" />
-
-        <service
-            android:name="com.baidu.speech.VoiceRecognitionService"
-            android:exported="false" />
-
+        <!-- service android:name="com.baidu.speech.VoiceRecognitionService" android:exported="false" / -->
         <activity
             android:name="com.baidu.voicerecognition.android.ui.BaiduASRDigitalDialog"
             android:configChanges="orientation|keyboardHidden|screenLayout"

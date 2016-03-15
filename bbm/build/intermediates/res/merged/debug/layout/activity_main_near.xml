@@ -149,7 +149,7 @@
                     android1:textColor="@color/gray" />
             </LinearLayout>
         </RelativeLayout>
-<RelativeLayout
+<!--RelativeLayout
             android1:id="@+id/service_layout"
             android1:layout_width="0dp"
             android1:layout_height="match_parent"
@@ -176,7 +176,7 @@
                     android1:text="服务"
                     android1:textColor="@color/gray" />
             </LinearLayout>
-        </RelativeLayout>
+        </RelativeLayout-->
        
     </LinearLayout>
     <View

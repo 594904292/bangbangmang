@@ -104,6 +104,7 @@ import static android.support.v4.app.ActivityCompat.startActivity;
 			holder_img = new ViewHolderimg();
 			//可以理解为从vlist获取view  之后把view返回给ListView
 			convertView = LayoutInflater.from(context).inflate(R.layout.listview_item_fw, null);
+			holder_img.tag = (ImageView) convertView.findViewById(R.id.fwtag);
 			holder_img.imageView = (ImageView) convertView.findViewById(R.id.imageView);
 			holder_img.senduser = (TextView) convertView.findViewById(R.id.senduser);
 			holder_img.sendcontent = (TextView) convertView.findViewById(R.id.sendcontent);
@@ -213,11 +214,12 @@ import static android.support.v4.app.ActivityCompat.startActivity;
 		{
 			holder_img.sendcontent.setText(list.get(position).get("title").toString());
 		}
+
 		holder_img.zannum.setText(list.get(position).get("zannum").toString());
 		holder_img.usertag.setText(list.get(position).get("tags").toString());
 		holder_img.tel.setTag(list.get(position).get("telphone").toString());
 		holder_img.tel.setOnClickListener(listener);
-
+		holder_img.tag.setImageResource(R.mipmap.dynamic_join_left);
 		boolean ishavezhan = messgzService.isexit(list.get(position).get("guid").toString(),myapplication.getUserId());
 		Log.v(TAG,list.get(position).get("guid").toString()+"____"+myapplication.getUserId()+"____"+ishavezhan);
 		if(ishavezhan)
@@ -270,6 +272,7 @@ import static android.support.v4.app.ActivityCompat.startActivity;
 	};
 
 	private static class ViewHolderimg {
+		ImageView tag;
 		ImageView imageView;
 		TextView senduser;
 		TextView sendcontent;

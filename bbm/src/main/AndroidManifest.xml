@@ -84,6 +84,22 @@
             android:screenOrientation="portrait"               
             android:label="@string/login" >
         </activity>
+
+         <activity
+             android:name="com.bbxiaoqu.ui.SearchPassActivity"
+             android:windowSoftInputMode="stateVisible|adjustResize"
+             android:launchMode="singleTask"
+             android:screenOrientation="portrait"
+             android:label="找回密码" >
+         </activity>
+
+         <activity
+             android:name="com.bbxiaoqu.ui.ResetPassActivity"
+             android:windowSoftInputMode="stateVisible|adjustResize"
+             android:launchMode="singleTask"
+             android:screenOrientation="portrait"
+             android:label="重置密码" >
+         </activity>
        <activity
             android:name="com.bbxiaoqu.ui.sub.SelectPhotoActivity"         
            android:screenOrientation="portrait"
@@ -391,8 +407,8 @@
   		<!-- begin: baidu 语音 sdk-->
         <meta-data android:name="com.baidu.speech.API_KEY" android:value="a9iBkVoUQAH78XCTnLdL6PoY"/>
         <meta-data android:name="com.baidu.speech.SECRET_KEY" android:value="NGO4k0pwf9rcbIiVimMkzEN58bAZtUbh"/>
-        <service android:name="com.baidu.speech.VoiceRecognitionService" android:exported="false" />
-        <activity
+        <!--service android:name="com.baidu.speech.VoiceRecognitionService" android:exported="false" /-->
+        <!--activity
                 android:name="com.baidu.voicerecognition.android.ui.BaiduASRDigitalDialog"
                 android:configChanges="orientation|keyboardHidden|screenLayout"
                 android:theme="@android:style/Theme.Dialog"
@@ -402,7 +418,7 @@
                 <action android:name="com.baidu.action.RECOGNIZE_SPEECH" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-        </activity><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
+        </activity--><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
          <meta-data
              android:name="com.google.android.gms.version"

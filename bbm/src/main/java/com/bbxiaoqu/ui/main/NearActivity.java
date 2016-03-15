@@ -91,9 +91,9 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 	private View sosLayout;
 	private ImageView sosImage;
 	private TextView sosText;
-	private View serviceLayout;
+	/*private View serviceLayout;
 	private ImageView serviceImage;
-	private TextView serviceText;
+	private TextView serviceText;*/
 	private int current_sel=0;
 	private DemoApplication myapplication;
 	private static final int DIALOG_PROGRESS = 0;
@@ -125,17 +125,17 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 			int limit=10;
 			if(current_sel==0)
 			{
-				MarketAPI.getINfos(getApplicationContext(), this, myapplication.getUserId(), "xiaoqu", "0", start, limit);
+				MarketAPI.getINfos(getApplicationContext(), this, myapplication.getUserId(), myapplication.getLat(),myapplication.getLng(),"xiaoqu", "0", start, limit);
 			}else if(current_sel==1)
 			{
-				MarketAPI.getINfos(getApplicationContext(), this, myapplication.getUserId(), "xiaoqu", "1", start, limit);				
+				MarketAPI.getINfos(getApplicationContext(), this, myapplication.getUserId(),myapplication.getLat(),myapplication.getLng(), "xiaoqu", "1", start, limit);
 			}else if(current_sel==2)
 			{
-				MarketAPI.getINfos(getApplicationContext(), this, myapplication.getUserId(), "self", "1", start, limit);
-			}else if(current_sel==3)
+				MarketAPI.getINfos(getApplicationContext(), this, myapplication.getUserId(),myapplication.getLat(),myapplication.getLng(), "self", "1", start, limit);
+			}/*else if(current_sel==3)
 			{
-				MarketAPI.getFwINfos(getApplicationContext(), this, myapplication.getUserId(), "xiaoqufw", "1", start, limit);
-			}
+				MarketAPI.getFwINfos(getApplicationContext(), this, myapplication.getUserId(), myapplication.getLat(),myapplication.getLng(),"xiaoqufw", "1", start, limit);
+			}*/
 		}else
 		{
 			action=AutoListView.LOAD;
@@ -143,17 +143,17 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 			int limit=10;
 			if(current_sel==0)
 			{
-				MarketAPI.getINfos(getApplicationContext(), this, myapplication.getUserId(), "xiaoqu", "0", start, limit);
+				MarketAPI.getINfos(getApplicationContext(), this, myapplication.getUserId(), myapplication.getLat(), myapplication.getLng(), "xiaoqu", "0", start, limit);
 			}else if(current_sel==1)
 			{
-				MarketAPI.getINfos(getApplicationContext(), this, myapplication.getUserId(), "xiaoqu", "1", start, limit);				
+				MarketAPI.getINfos(getApplicationContext(), this, myapplication.getUserId(),  myapplication.getLat(), myapplication.getLng(),"xiaoqu", "1", start, limit);
 			}else if(current_sel==2)
 			{
-				MarketAPI.getINfos(getApplicationContext(), this, myapplication.getUserId(), "self", "1", start, limit);
-			}else if(current_sel==3)
+				MarketAPI.getINfos(getApplicationContext(), this, myapplication.getUserId(), myapplication.getLat(), myapplication.getLng(), "self", "1", start, limit);
+			}/*else if(current_sel==3)
 			{
-				MarketAPI.getFwINfos(getApplicationContext(), this, myapplication.getUserId(), "xiaoqufw", "1", start, limit);
-			}
+				MarketAPI.getFwINfos(getApplicationContext(), this, myapplication.getUserId(), myapplication.getLat(), myapplication.getLng(), "xiaoqufw", "1", start, limit);
+			}*/
 		}
 	}
 	
@@ -164,8 +164,8 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 		mySosText.setTextColor(Color.GRAY);
 		sosImage.setImageResource(R.mipmap.t32);
 		sosText.setTextColor(Color.GRAY);
-		serviceImage.setImageResource(R.mipmap.t42);
-		serviceText.setTextColor(Color.GRAY);
+		/*serviceImage.setImageResource(R.mipmap.t42);
+		serviceText.setTextColor(Color.GRAY);*/
 	}
 	
 	private void setTabSelection(int index) {
@@ -202,7 +202,7 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 			sosText.setTextColor(Color.GRAY);
 			loadData(AutoListView.REFRESH);
 			break;
-		case 3:
+		/*case 3:
 			// 当点击了动态tab时，改变控件的图片和文字颜色
 			adapter = new FwListViewAdapter(NearActivity.this, dataList);
 			lstv.setAdapter(adapter);
@@ -211,7 +211,7 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 			serviceImage.setImageResource(R.mipmap.t4);
 			serviceText.setTextColor(Color.GRAY);
 			loadData(AutoListView.REFRESH);
-			break;
+			break;*/
 		}
 	}
 	
@@ -227,19 +227,19 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 		allLayout = findViewById(R.id.all_layout);
 		mySosLayout = findViewById(R.id.mysos_layout);
 		sosLayout = findViewById(R.id.sos_layout);
-		serviceLayout = findViewById(R.id.service_layout);
+		/*serviceLayout = findViewById(R.id.service_layout);*/
 		allImage = (ImageView) findViewById(R.id.all_image);
 		mySosImage = (ImageView) findViewById(R.id.mysos_image);
 		sosImage = (ImageView) findViewById(R.id.sos_image);
-		serviceImage = (ImageView) findViewById(R.id.service_image);
+		/*serviceImage = (ImageView) findViewById(R.id.service_image);*/
 		allText = (TextView) findViewById(R.id.all_text);
 		mySosText = (TextView) findViewById(R.id.mysos_text);
 		sosText = (TextView) findViewById(R.id.sos_text);
-		serviceText = (TextView) findViewById(R.id.service_text);
+		/*serviceText = (TextView) findViewById(R.id.service_text);*/
 		allLayout.setOnClickListener(this);
 		mySosLayout.setOnClickListener(this);
 		sosLayout.setOnClickListener(this);
-		serviceLayout.setOnClickListener(this);
+		//serviceLayout.setOnClickListener(this);
 		lstv = (AutoListView) findViewById(R.id.lstv);
 		lstv.setOnItemClickListener(new OnItemClickListener() {
 			@Override
@@ -277,9 +277,15 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent=new Intent(NearActivity.this, PublishFwActivity.class);
+				/*Intent intent=new Intent(NearActivity.this, PublishFwActivity.class);
 				Bundle bundle = new Bundle();
 				bundle.putInt("infocatagroy", 3);
+				intent.putExtras(bundle);
+				startActivity(intent);*/
+
+				Intent intent=new Intent(NearActivity.this, PublishActivity.class);
+				Bundle bundle = new Bundle();
+				bundle.putInt("infocatagroy", 0);
 				intent.putExtras(bundle);
 				startActivity(intent);
 			}
@@ -326,10 +332,10 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 			current_sel=2;
 			setTabSelection(current_sel);			
 			break;
-		case R.id.service_layout:
+		/*case R.id.service_layout:
 			current_sel=3;
 			setTabSelection(current_sel);			
-			break;
+			break;*/
 		default:
 			break;
 		}
@@ -372,12 +378,30 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 						for (int i = 0; i < jsonarray.length(); i++) {
 							JSONObject customJson = jsonarray.getJSONObject(i);
 							HashMap<String, Object> item = new HashMap<String, Object>();
+							double len=getDistance(
+									Double.parseDouble(myapplication.getLat()),
+									Double.parseDouble(myapplication.getLng()),
+									Double.parseDouble(customJson.getString("lat").toString()),
+									Double.parseDouble(customJson.getString("lng").toString())
+							);
+							String  len1="";
+							if(len>1000)
+							{
+								len1=String.valueOf(Math.round( len / 100d) / 10d)+"千米";
+							}else
+							{
+								len1=String.valueOf(len)+"米";
+							}
+
 							item.put("senduserid", String.valueOf(customJson.getString("senduser").toString()));
 							item.put("sendnickname", String.valueOf(customJson.getString("username").toString()));
 							item.put("community", String.valueOf(customJson.getString("community").toString()));
-							item.put("address", String.valueOf(customJson.getString("address").toString()));
+							//item.put("address", String.valueOf(customJson.getString("address").toString()));
+							item.put("address",String.valueOf(len1));
 							item.put("lng", String.valueOf(customJson.getString("lng").toString()));
 							item.put("lat", String.valueOf(customJson.getString("lat").toString()));
+
+
 							item.put("guid", String.valueOf(customJson.getString("guid").toString()));
 							item.put("infocatagroy", String.valueOf(customJson.getString("infocatagroy").toString()));
 							item.put("content", String.valueOf(customJson.getString("content").toString()));
@@ -416,10 +440,25 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 						 for (int i = 0; i < jsonarray.length(); i++) {
 							 JSONObject customJson = jsonarray.getJSONObject(i);
 							 HashMap<String, Object> item = new HashMap<String, Object>();
+							 double len=getDistance(
+									 Double.parseDouble(myapplication.getLat()),
+									 Double.parseDouble(myapplication.getLng()),
+									 Double.parseDouble(customJson.getString("lat").toString()),
+									 Double.parseDouble(customJson.getString("lng").toString())
+							 );
+							 String  len1="";
+							 if(len>1000)
+							 {
+								 len1=String.valueOf(Math.round( len / 100d) / 10d)+"千米";
+							 }else
+							 {
+								 len1=String.valueOf(len)+"米";
+							 }
 							 item.put("senduserid", String.valueOf(customJson.getString("senduser").toString()));
 							 item.put("sendnickname", String.valueOf(customJson.getString("username").toString()));
 							 item.put("community", String.valueOf(customJson.getString("community").toString()));
-							 item.put("address", String.valueOf(customJson.getString("address").toString()));
+							 //item.put("address", String.valueOf(customJson.getString("address").toString()));
+							 item.put("address",String.valueOf(len1));
 							 item.put("lng", String.valueOf(customJson.getString("lng").toString()));
 							 item.put("lat", String.valueOf(customJson.getString("lat").toString()));
 							 item.put("guid", String.valueOf(customJson.getString("guid").toString()));
@@ -481,4 +520,36 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
             break;
         }
 	}
+
+
+	public static double getDistance(double lat1, double lng1, double lat2, double lng2)
+	{
+		double earthRadius = 6367000; //approximate radius of earth in meters
+		/*
+		Convert these degrees to radians
+		to work with the formula
+		*/
+
+		lat1 = (lat1 * Math.PI ) / 180;
+		lng1 = (lng1 * Math.PI) / 180;
+
+		lat2 = (lat2 * Math.PI ) / 180;
+		lng2 = (lng2 * Math.PI ) / 180;
+
+		/*
+		Using the
+		Haversine formula
+		http://en.wikipedia.org/wiki/Haversine_formula
+		calculate the distance
+		*/
+		double calcLongitude = lng2 - lng1;
+		double calcLatitude = lat2 - lat1;
+		double stepOne = Math.pow(Math.sin(calcLatitude/2), 2) + Math.cos(lat1) * Math.cos(lat2) * Math.pow(Math.sin(calcLongitude / 2), 2);
+
+		double stepTwo = 2 * Math.asin(Math.min(1, Math.sqrt(stepOne)));
+		double calculatedDistance = earthRadius * stepTwo;
+
+		return Math.round(calculatedDistance); //四舍五入
+	}
+
 }

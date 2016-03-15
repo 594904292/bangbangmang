@@ -9,6 +9,12 @@
     android:layout_height="100dp"
     android:background="#FFFFFF"
     android:padding="1dp" >
+    <ImageView
+        android:id="@+id/infotag"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:scaleType="fitXY"
+        android:src="@mipmap/dynamic_info_left" />
  <TextView
         android:id="@+id/infocatagroy"
         android:layout_width="22dp"
@@ -44,15 +50,7 @@
         android:layout_alignParentRight="true"
         android:text="time" />
 
-  <TextView
-      android:id="@+id/sendaddress"
-   	  android:layout_marginTop="5dp"
-      style="@style/TextView10"
-      android:layout_width="fill_parent"
-      android:layout_height="wrap_content"
-      android:layout_below="@id/senduser"
-      android:layout_toRightOf="@id/imageView"
-      android:text="地址" />
+
 
     <TextView
         android:id="@+id/sendcontent"
@@ -60,7 +58,7 @@
         style="@style/TextView16"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/sendaddress"
+        android:layout_below="@id/senduser"
         android:layout_toRightOf="@id/imageView"
         android:text="正文" />
 
@@ -75,21 +73,8 @@
         
          >
 
-        <TextView
-            android:id="@+id/tag1"
-            style="@style/TextView10"
-            android:layout_width="wrap_content"
-            android:layout_height="15dp"
-            android:text="浏览数:0" />
-        <TextView
-            android:id="@+id/tag2"
-             android:layout_toRightOf="@id/tag1"
-            style="@style/TextView10"
-            android:layout_marginLeft="15dp"
-            android:layout_width="wrap_content"
-            android:layout_height="15dp"
-            android:text="评论数:0" />
-        
+
+
         <!--TextView
             android:id="@+id/tag3"
              android:layout_toRightOf="@id/tag2"
@@ -98,7 +83,7 @@
             android:layout_width="wrap_content"
             android:layout_height="15dp"
             android:text="报名数:0" /-->
-        
+
         <TextView
             android:id="@+id/status"
             style="@style/TextView10"
@@ -106,8 +91,42 @@
             android:layout_height="15dp"
             android:layout_alignParentRight="true"
             android:text="状态:求助中" />
-       
+
+
     </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/endrow"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_toRightOf="@+id/imageView"
+        android:paddingRight="0dp">
+        <TextView
+            android:id="@+id/tag1"
+            style="@style/TextView10"
+            android:layout_width="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_height="15dp"
+            android:text="浏览数:0" />
+        <TextView
+            android:id="@+id/tag2"
+            android:layout_toRightOf="@id/tag1"
+            style="@style/TextView10"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="15dp"
+            android:text="评论数:0" />
+        <TextView
+            android:id="@+id/sendaddress"
+            android:layout_alignParentRight="false"
+            style="@style/TextView10"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="地址"
+            android:layout_alignParentBottom="true"
+            android:gravity="right" />
+        </RelativeLayout>
     </RelativeLayout>
      
     

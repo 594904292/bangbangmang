@@ -34,7 +34,7 @@ public class LoginActivity extends BaseActivity implements OnFocusChangeListener
 	private DemoApplication myapplication;
 	EditText etUsername;
 	EditText etPassword;
-	Button login, register;
+	Button login, register,searchpass;
 	UserService uService = new UserService(LoginActivity.this);
 	private static final int DIALOG_PROGRESS = 0;
 	//用户不存在（用户名错误）
@@ -65,6 +65,7 @@ public class LoginActivity extends BaseActivity implements OnFocusChangeListener
 		etUsername.setText(userid);
 		login = (Button) findViewById(R.id.login);
 		register = (Button) findViewById(R.id.register);
+		searchpass = (Button) findViewById(R.id.searchpass);
 		login.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				String userid = etUsername.getText().toString();
@@ -89,6 +90,13 @@ public class LoginActivity extends BaseActivity implements OnFocusChangeListener
 		register.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				Intent intent = new Intent(LoginActivity.this,	RegisterActivity.class);
+				startActivity(intent);
+			}
+		});
+
+		searchpass.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				Intent intent = new Intent(LoginActivity.this,	SearchPassActivity.class);
 				startActivity(intent);
 			}
 		});

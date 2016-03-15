@@ -179,7 +179,7 @@ public class PublishActivity extends Activity implements OnClickListener {
 		myapplication = (DemoApplication) this.getApplication();
 		mScreenWidth = ScreenUtils.getWindowsWidth(this);
 		mItemWidth = mScreenWidth / 3;// 一个Item宽度为屏幕的1/7
-		//initbaidu(resource, pkgName);
+		initbaidu(resource, pkgName);
 		initlsb();
 
 		mImageButtonList = new ArrayList<ImageButton>();
@@ -295,7 +295,7 @@ public class PublishActivity extends Activity implements OnClickListener {
 				EditText edit =new EditText(this);
 				edit.setTag(tag[i]);
 				edit.setBackgroundResource(R.drawable.bg_edittext);	
-				edit.setTextColor(R.color.black);
+				//edit.setTextColor(R.color.black);
 				edit.setText("");						
 				edit.setLayoutParams(new LinearLayout.LayoutParams(mItemWidth*2, LayoutParams.WRAP_CONTENT, 1.0f));
 				row.addView(tv);
@@ -322,7 +322,7 @@ public class PublishActivity extends Activity implements OnClickListener {
 				EditText edit =new EditText(this);
 				edit.setTag(tag[i]);
 				edit.setBackgroundResource(R.drawable.bg_edittext);	
-				edit.setTextColor(R.color.black);
+				//edit.setTextColor(R.color.black);
 				edit.setText("");						
 				edit.setLayoutParams(new LinearLayout.LayoutParams(mItemWidth*2, LayoutParams.WRAP_CONTENT, 1.0f));
 				row.addView(tv);
@@ -499,9 +499,6 @@ public class PublishActivity extends Activity implements OnClickListener {
 			// TODO Auto-generated method stub
 			int result;
 			String content = content_edit.getText().toString();
-			//RadioButton radioButton = (RadioButton)findViewById(radioGroup.getCheckedRadioButtonId());
-			//String fee = radioButton.getText().toString();
-			//fee=fee.replaceAll("元", "");
 			String fee="0";
 			String target = myapplication.getlocalhost()+"send.php";
 			HttpPost httprequest = new HttpPost(target);

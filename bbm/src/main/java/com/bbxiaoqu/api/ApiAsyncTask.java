@@ -152,12 +152,16 @@ public class ApiAsyncTask extends AsyncTask<Void, Void, Object> {
            if (Parameter instanceof HashMap) {
                requestParams = (HashMap<String, Object>) Parameter;
            } 
+
+
            String userid=requestParams.get("_userid").toString();
+           String latitude=requestParams.get("latitude").toString();
+           String longitude=requestParams.get("longitude").toString();
            String rang=requestParams.get("_rang").toString();
-           String status=requestParams.get("_status").toString();
+            String status=requestParams.get("_status").toString();
            String start=requestParams.get("_start").toString();
            String limit=requestParams.get("_limit").toString();
-           requestUrl=requestUrl+"?userid="+userid+"&rang="+rang+"&status="+status+"&start="+start+"&limit="+limit;
+           requestUrl=requestUrl+"?userid="+userid+"&latitude="+latitude+"&longitude="+longitude+"&rang="+rang+"&status="+status+"&start="+start+"&limit="+limit;
       }else if(mReuqestAction==MarketAPI.ACTION_GETFRIENDS)
       {
     	 	HashMap<String, Object> requestParams = null;
@@ -189,11 +193,14 @@ public class ApiAsyncTask extends AsyncTask<Void, Void, Object> {
                 requestParams = (HashMap<String, Object>) Parameter;
             }
             String userid=requestParams.get("_userid").toString();
+            String latitude=requestParams.get("latitude").toString();
+            String longitude=requestParams.get("longitude").toString();
+
             String rang=requestParams.get("_rang").toString();
             String status=requestParams.get("_status").toString();
             String start=requestParams.get("_start").toString();
             String limit=requestParams.get("_limit").toString();
-            requestUrl=requestUrl+"?userid="+userid+"&rang="+rang+"&status="+status+"&start="+start+"&limit="+limit;
+            requestUrl=requestUrl+"?userid="+userid+"&latitude="+latitude+"&longitude="+longitude+"&rang="+rang+"&status="+status+"&start="+start+"&limit="+limit;
         }
 		return requestUrl;
 	}
@@ -252,8 +259,7 @@ public class ApiAsyncTask extends AsyncTask<Void, Void, Object> {
 
 		/**
 		 * The CALLBACK for success aMarket API HTTP response
-		 * 
-		 * @param response
+		 *
 		 *            the HTTP response
 		 */
 		void onSuccess(int method, Object obj);

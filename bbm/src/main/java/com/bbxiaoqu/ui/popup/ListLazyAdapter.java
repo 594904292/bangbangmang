@@ -117,8 +117,6 @@ public class ListLazyAdapter extends BaseAdapter implements OnClickListener {
 				holder.button.setVisibility(View.GONE);
 			}
 			holder.button.setEnabled(false);//禁用
-			
-			
 		}else
 		{
 			if(this.username.equals(DemoApplication.getInstance().getUserId()))

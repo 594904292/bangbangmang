@@ -1,64 +1,26 @@
 package com.bbxiaoqu.ui.main;
 
-import com.baidu.location.BDLocation;
-import com.baidu.location.BDLocationListener;
-import com.baidu.location.LocationClient;
-import com.baidu.location.LocationClientOption;
-import com.baidu.mapapi.map.BaiduMap;
-import com.baidu.mapapi.map.BitmapDescriptor;
-import com.baidu.mapapi.map.BitmapDescriptorFactory;
-import com.baidu.mapapi.map.InfoWindow;
-import com.baidu.mapapi.map.MapPoi;
-import com.baidu.mapapi.map.MapStatus;
-import com.baidu.mapapi.map.MapStatusUpdate;
-import com.baidu.mapapi.map.MapStatusUpdateFactory;
-import com.baidu.mapapi.map.MapView;
-import com.baidu.mapapi.map.Marker;
-import com.baidu.mapapi.map.MarkerOptions;
-import com.baidu.mapapi.map.MyLocationData;
-import com.baidu.mapapi.map.OverlayOptions;
-import com.baidu.mapapi.map.Projection;
-import com.baidu.mapapi.map.BaiduMap.OnMapClickListener;
-import com.baidu.mapapi.map.BaiduMap.OnMapStatusChangeListener;
-import com.baidu.mapapi.map.BaiduMap.OnMarkerClickListener;
-import com.baidu.mapapi.map.InfoWindow.OnInfoWindowClickListener;
-import com.baidu.mapapi.map.MyLocationConfiguration.LocationMode;
-import com.baidu.mapapi.model.LatLng;
-import com.baidu.mapapi.search.geocode.ReverseGeoCodeOption;
+
 import com.bbxiaoqu.DemoApplication;
 import com.bbxiaoqu.ImageOptions;
 import com.bbxiaoqu.R;
 import com.bbxiaoqu.adapter.BmUserAdapter.Callback;
 import com.bbxiaoqu.api.MarketAPI;
 import com.bbxiaoqu.api.ApiAsyncTask.ApiRequestListener;
-import com.bbxiaoqu.bean.InfoBase;
 import com.bbxiaoqu.comm.gallery.BigImgActivity;
 import com.bbxiaoqu.comm.gallery.DetailGallery;
-import com.bbxiaoqu.comm.gallery.TaoBaoImgShowActivity;
-import com.bbxiaoqu.comm.gallery.Tool;
-import com.bbxiaoqu.comm.gallery.ImgSwitchActivity.GalleryIndexAdapter;
 import com.bbxiaoqu.comm.jsonservices.GetJson;
-import com.bbxiaoqu.ui.popup.ActionItem;
 import com.bbxiaoqu.ui.popup.Constants.HINT;
 import com.bbxiaoqu.ui.popup.DateUtils;
 import com.bbxiaoqu.ui.popup.ListLazyAdapter;
 import com.bbxiaoqu.ui.popup.TitlePopup;
-import com.bbxiaoqu.ui.popup.TitlePopup.OnItemOnClickListener;
-import com.bbxiaoqu.ui.popup.Utils;
-import com.bbxiaoqu.comm.service.User;
-import com.bbxiaoqu.comm.service.db.DatabaseHelper;
-import com.bbxiaoqu.comm.service.db.MessBmService;
 import com.bbxiaoqu.comm.service.db.MessGzService;
 import com.bbxiaoqu.comm.service.db.UserService;
 import com.bbxiaoqu.comm.tool.CustomerHttpClient;
 import com.bbxiaoqu.comm.tool.ImageManage;
 import com.bbxiaoqu.comm.tool.NetworkUtils;
-import com.bbxiaoqu.comm.tool.ScreenUtils;
-import com.bbxiaoqu.comm.tool.StreamTool;
 import com.bbxiaoqu.comm.tool.T;
-import com.bbxiaoqu.ui.Constants;
 import com.bbxiaoqu.ui.SearchActivity;
-import com.bbxiaoqu.ui.main.MapActivity.MyLocationListener;
 import com.bbxiaoqu.ui.sub.BmUserActivity;
 import com.bbxiaoqu.ui.sub.ChattingActivity;
 import com.bbxiaoqu.ui.sub.GalleryAdapter;
@@ -66,24 +28,9 @@ import com.bbxiaoqu.ui.sub.MessageInfoBean;
 import com.bbxiaoqu.ui.sub.ViewUserInfoActivity;
 import com.bbxiaoqu.view.BaseActivity;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.FailReason;
-import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
-import com.tencent.mm.sdk.openapi.IWXAPI;
-import com.tencent.mm.sdk.openapi.SendMessageToWX;
-import com.tencent.mm.sdk.openapi.WXAPIFactory;
-import com.tencent.mm.sdk.openapi.WXMediaMessage;
-import com.tencent.mm.sdk.openapi.WXWebpageObject;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.security.MessageDigest;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -210,7 +157,7 @@ public class ViewActivity extends BaseActivity implements OnItemClickListener,Ap
 	private TextView statustv ;
 	private TextView sendtimetv ;
 	private TextView sendaddresstv ;
-	private Button chat;
+	private Button chat_btn;
 	private boolean issolution = false;// 是否解决
 	private String solutionid = "0";// 解决ID
 	private static final int DIALOG_PROGRESS = 0;
@@ -249,7 +196,6 @@ public class ViewActivity extends BaseActivity implements OnItemClickListener,Ap
 	
 	private Handler basehandler = new Handler() {
 		public void handleMessage(Message msg) {
-
 			switch (msg.what) {
 			case 1:
 				findViewById(R.id.info_sendname).setVisibility(View.GONE);
@@ -366,21 +312,25 @@ public class ViewActivity extends BaseActivity implements OnItemClickListener,Ap
 				// TODO Auto-generated method stub
 				Intent intent=new Intent(ViewActivity.this,SearchActivity.class);									
 				startActivity(intent);
-				
-				
 			}
 		});
 
-		chat = (Button) findViewById(R.id.chat);
-		chat.setVisibility(View.GONE);
-		chat.setOnClickListener(new OnClickListener() {
+		chat_btn = (Button) findViewById(R.id.chat_btn);
+		//chat.setVisibility(View.VISIBLE);//显示
+		chat_btn.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				if (senduserid.equals(myapplication.getUserId())) {
-					Toast.makeText(ViewActivity.this, "不能与本人聊天",
-							Toast.LENGTH_SHORT).show();
+					Intent intent = new Intent(ViewActivity.this,BmUserActivity.class);
+					Bundle arguments = new Bundle();
+					arguments.putString("guid", guid);
+					intent.putExtras(arguments);
+					startActivity(intent);
 				} else {
-					Intent intent = new Intent(ViewActivity.this,
-							ChattingActivity.class);
+					//开线程做会话存储,被认为是做了一次报名动作
+					bmaction="add";
+					new Thread(savebmThread).start();
+
+					Intent intent = new Intent(ViewActivity.this,ChattingActivity.class);
 					Bundle arguments = new Bundle();
 					arguments.putString("to", senduserid);
 					arguments.putString("my", myapplication.getUserId());
@@ -389,33 +339,8 @@ public class ViewActivity extends BaseActivity implements OnItemClickListener,Ap
 				}
 			}
 		});
-
-		//btn_pl = (Button) findViewById(R.id.info_plbutton);
 		btn_gz = (Button) findViewById(R.id.info_gzbutton1);
 		// btn_bm=(Button)findViewById(R.id.info__Bmbutton2);
-		/*btn_pl.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				String name = v.getTag().toString();
-				if (name.equals("暂无评论")) {
-					Intent Intent1 = new Intent();
-					Intent1.setClass(ViewActivity.this, ViewListActivity.class);
-					Bundle arguments = new Bundle();
-					arguments.putString("put", "false");
-					arguments.putString("guid", guid);
-					Intent1.putExtras(arguments);
-					startActivity(Intent1);
-
-				} else {
-					Intent Intent1 = new Intent();
-					Intent1.setClass(ViewActivity.this, ViewListActivity.class);
-					Bundle arguments = new Bundle();
-					arguments.putString("put", "false");
-					arguments.putString("guid", guid);
-					Intent1.putExtras(arguments);
-					startActivity(Intent1);
-				}
-			}
-		});*/
 		btn_gz.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				String name = v.getTag().toString();
@@ -442,6 +367,46 @@ public class ViewActivity extends BaseActivity implements OnItemClickListener,Ap
 
 	}
 
+	/*针对用户第一次会话做一次报名记录*/
+	Runnable savebmThread = new Runnable() {
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			if (!NetworkUtils.isNetConnected(myapplication)) {
+				T.showShort(myapplication, "当前无网络连接！");
+				return;
+			}
+			int result;
+			String target = myapplication.getlocalhost()+"adduserbminfo.php";
+			HttpPost httprequest = new HttpPost(target);
+			List<NameValuePair> paramsList = new ArrayList<NameValuePair>();
+			paramsList.add(new BasicNameValuePair("_userid", myapplication.getUserId()));// 本人
+			paramsList.add(new BasicNameValuePair("_infoid", infoid));// 本人
+			paramsList.add(new BasicNameValuePair("_guid", guid));// 本人
+			paramsList.add(new BasicNameValuePair("_action", bmaction));// 本人
+
+			try {
+				httprequest.setEntity(new UrlEncodedFormEntity(paramsList,
+						"UTF-8"));
+				HttpClient HttpClient1 = CustomerHttpClient.getHttpClient();
+				HttpResponse httpResponse = HttpClient1.execute(httprequest);
+				if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+					String json = EntityUtils
+							.toString(httpResponse.getEntity());
+					result = Integer.parseInt(json);
+				} else {
+					result = 0;
+				}
+			} catch (UnsupportedEncodingException e1) {
+				e1.printStackTrace();
+			} catch (ClientProtocolException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+
+	};
 	private void initData() {
 		title_tv.setText("查看");
 		right_text_tv.setText("");
@@ -566,6 +531,9 @@ public class ViewActivity extends BaseActivity implements OnItemClickListener,Ap
 
 		showhiddendiscuss();
 		new Thread(savediscussThread).start();
+		//关联关系
+		bmaction="add";
+		new Thread(savebmThread).start();
 	}
 
 	private void alertDialog(Context context, String title, String message) {
@@ -690,20 +658,26 @@ public class ViewActivity extends BaseActivity implements OnItemClickListener,Ap
 			new Thread(solutionThread).start();
 		} else if (cat.startsWith("head")) {// 聊天
 			Map<String, String> map = discussList.get(Integer.parseInt(pos));
-
 			String itemuid = map.get("uid").toString();
 			if (itemuid.equals(myapplication.getUserId())) {
 				Toast.makeText(ViewActivity.this, "不能与本人聊天", Toast.LENGTH_SHORT).show();
 			} else {
 				// 获取头像的id
-				Intent intent = new Intent(ViewActivity.this,
+				/*Intent intent = new Intent(ViewActivity.this,
 						ChattingActivity.class);
 				Bundle arguments = new Bundle();
 				arguments.putString("guid", guid);
 				arguments.putString("to", itemuid);
 				arguments.putString("my", myapplication.getUserId());
 				intent.putExtras(arguments);
-				startActivity(intent);
+				startActivity(intent);*/
+
+				Intent Intent1 = new Intent();
+				Intent1.setClass(ViewActivity.this, ViewUserInfoActivity.class);
+				Bundle arguments = new Bundle();
+				arguments.putString("userid",itemuid);
+				Intent1.putExtras(arguments);
+				startActivity(Intent1);
 			}
 		}
 	}
@@ -829,10 +803,12 @@ public class ViewActivity extends BaseActivity implements OnItemClickListener,Ap
 					current_login_usernickname = myapplication.getNickname();
 					senduserid = jsonobject.getString("senduser");
 					if (senduserid.equals(myapplication.getUserId())) {
-						chat.setVisibility(View.GONE);//隐藏
+						//chat.setVisibility(View.GONE);//隐藏
+						//chat.setVisibility(View.VISIBLE);//显示
+						chat_btn.setText("评价");
 					}else
 					{
-						chat.setVisibility(View.VISIBLE);//显示
+						//chat_btn.setVisibility(View.VISIBLE);//显示
 					}
 					sendusername = jsonobject.getString("username");
 					if (jsonobject.getString("issolution").equals("1")) {
@@ -902,35 +878,7 @@ public class ViewActivity extends BaseActivity implements OnItemClickListener,Ap
 				}								
 				new Thread(loaddiscuzzThread).start();
 			}
-            break; 
-        /*case MarketAPI.ACTION_GETITEMNUM:
-        	 HashMap<String, String> result1 = (HashMap<String, String>) obj;
-	         String JsonContext1=result1.get("guidnums");   
-	         if(JsonContext1!=null&&JsonContext1.length()>0)
-	         {
-	        	 JSONObject jsonobj;
-	            	try {
-	            		jsonobj = new JSONObject(JsonContext1);
-						String[] nums = new String[3];
-						nums[0] = jsonobj.getString("bmnum");
-						nums[1] = jsonobj.getString("dicussnum");
-						nums[2] = jsonobj.getString("gznum");
-						String num = nums[1];
-	            		if(num=="0")
-	            		{
-		    				btn_pl.setText("暂无评论");
-		    				btn_pl.setTag("暂无评论");
-	            		}else
-	            		{
-		    				btn_pl.setTag("有评论");
-		    				btn_pl.setText("评论:" + num);
-	            		}
-					} catch (JSONException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();						
-					}					
-				}
-        	break;*/
+            break;
         default:
             break;
         }
@@ -947,14 +895,6 @@ public class ViewActivity extends BaseActivity implements OnItemClickListener,Ap
 	            }catch (IllegalArgumentException e) {
 	            }            		            
 	            break;
-	            
-	     /*   case MarketAPI.ACTION_GETITEMNUM: 
-	            // 隐藏登录框
-	            try{
-	                dismissDialog(DIALOG_PROGRESS);
-	            }catch (IllegalArgumentException e) {
-	            }            		            
-	            break;*/
 	        default:
 	            break;
 	        }

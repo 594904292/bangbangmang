@@ -46,6 +46,7 @@ import com.bbxiaoqu.view.BaseActivity;
 import com.bbxiaoqu.view.DrawerView;
 import com.bbxiaoqu.client.xmpp.XmppTool;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -56,27 +57,37 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.util.Log;
 import android.util.Xml;
 import android.view.Display;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ViewSwitcher;
 
-public class MainActivity extends BaseActivity implements OnClickListener ,onNewMessageListener,onMessageReadListener,ApiRequestListener{
+public class MainActivity extends BaseActivity  implements ViewSwitcher.ViewFactory, View.OnTouchListener,OnClickListener ,onNewMessageListener,onMessageReadListener,ApiRequestListener{
 	
 	private DemoApplication myapplication;
 	public ImageView top_head;
@@ -94,11 +105,11 @@ public class MainActivity extends BaseActivity implements OnClickListener ,onNew
 	private String NewVersionName="";
 	private LinearLayout linearlayout_body1;
 	private LinearLayout linearlayout_body2;
-	private LinearLayout linearlayout_body3;
+	//private LinearLayout linearlayout_body3;
 	private TextView gonggao;
 	private DynamicListViewAdapter adapter;
 	private List<Map<String, Object>> dataList = new ArrayList<Map<String, Object>>();
-	ListView lstv;
+	//ListView lstv;
 	private static final int DIALOG_PROGRESS = 0;
 	// 用户不存在（用户名错误）
 	private static final int ERROR_CODE_USERNAME_NOT_EXIST = 211;
@@ -106,6 +117,33 @@ public class MainActivity extends BaseActivity implements OnClickListener ,onNew
 	private static final int ERROR_CODE_PASSWORD_INVALID = 212;
 
 	NoticeDB db=new NoticeDB(this);
+
+
+
+	/**
+	 * ImagaSwitcher 的引用
+	 */
+	private ImageSwitcher mImageSwitcher;
+	/**
+	 * 图片id数组
+	 */
+	private int[] imgIds;
+	/**
+	 * 当前选中的图片id序号
+	 */
+	private int currentPosition;
+	/**
+	 * 按下点的X坐标
+	 */
+	private float downX;
+	/**
+	 * 装载点点的容器
+	 */
+	private LinearLayout linearLayout;
+	/**
+	 * 点点数组
+	 */
+	private ImageView[] tips;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -113,8 +151,11 @@ public class MainActivity extends BaseActivity implements OnClickListener ,onNew
 		BbPushMessageReceiver.msgReadListeners.add(this);//点了阅读
 		setContentView(R.layout.activity_main_main);		
 		myapplication = (DemoApplication) this.getApplication();
-		myapplication.getInstance().addActivity(this);		
+		myapplication.getInstance().addActivity(this);
+		Resources resource = this.getResources();
+		String pkgName = this.getPackageName();
 		/*位置:服务中无法初始位置，先在界面中实现定位*/
+		initbaidu(resource, pkgName);
 		initlsb();
 	    PushManager.startWork(getApplicationContext(),
 	    PushConstants.LOGIN_TYPE_API_KEY,
@@ -138,6 +179,110 @@ public class MainActivity extends BaseActivity implements OnClickListener ,onNew
 			return;
 		}		
  		LoadData();
+
+		imgIds = new int[]{R.mipmap.banner1,R.mipmap.banner2,R.mipmap.banner3,R.mipmap.banner4};
+		//实例化ImageSwitcher
+		mImageSwitcher  = (ImageSwitcher) findViewById(R.id.imageSwitcher1);
+		//设置Factory
+		mImageSwitcher.setFactory(this);
+		//设置OnTouchListener，我们通过Touch事件来切换图片
+		mImageSwitcher.setOnTouchListener(this);
+
+		linearLayout = (LinearLayout) findViewById(R.id.viewGroup);
+
+		tips = new ImageView[imgIds.length];
+		for(int i=0; i<imgIds.length; i++){
+			ImageView mImageView = new ImageView(this);
+			tips[i] = mImageView;
+			LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(new ViewGroup.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,
+					RelativeLayout.LayoutParams.WRAP_CONTENT));
+			layoutParams.rightMargin = 3;
+			layoutParams.leftMargin = 3;
+
+			mImageView.setBackgroundResource(R.mipmap.page_indicator_unfocused);
+			linearLayout.addView(mImageView, layoutParams);
+		}
+
+		//这个我是从上一个界面传过来的，上一个界面是一个GridView
+		currentPosition = getIntent().getIntExtra("position", 0);
+		mImageSwitcher.setImageResource(imgIds[currentPosition]);
+		//Bitmap bitmap = ImageLoader.getInstance().loadImageSync(imgIds[currentPosition]);
+		//mImageSwitcher.setImageDrawable(new BitmapDrawable(bitmap));
+
+		setImageBackground(currentPosition);
+	}
+
+	/**
+	 * 设置选中的tip的背景
+	 * @param selectItems
+	 */
+	private void setImageBackground(int selectItems){
+		for(int i=0; i<tips.length; i++){
+			if(i == selectItems){
+				tips[i].setBackgroundResource(R.mipmap.page_indicator_focused);
+			}else{
+				tips[i].setBackgroundResource(R.mipmap.page_indicator_unfocused);
+			}
+		}
+	}
+
+
+	@Override
+	public View makeView() {
+		final ImageView i = new ImageView(this);
+		i.setBackgroundColor(0xff000000);
+		i.setScaleType(ImageView.ScaleType.CENTER_CROP);
+		i.setLayoutParams(new ImageSwitcher.LayoutParams(RelativeLayout.LayoutParams.FILL_PARENT, RelativeLayout.LayoutParams.FILL_PARENT));
+		return i ;
+	}
+
+	@Override
+	public boolean onTouch(View v, MotionEvent event) {
+		switch (event.getAction()) {
+			case MotionEvent.ACTION_DOWN:{
+				//手指按下的X坐标
+				downX = event.getX();
+				break;
+			}
+			case MotionEvent.ACTION_UP:{
+				float lastX = event.getX();
+				//抬起的时候的X坐标大于按下的时候就显示上一张图片
+				if(lastX > downX){
+					if(currentPosition > 0){
+						//设置动画，这里的动画比较简单，不明白的去网上看看相关内容
+						mImageSwitcher.setInAnimation(AnimationUtils.loadAnimation(getApplication(), R.anim.left_in));
+						mImageSwitcher.setOutAnimation(AnimationUtils.loadAnimation(getApplication(), R.anim.right_out));
+						currentPosition --;
+						//Bitmap bitmap = ImageLoader.getInstance().loadImageSync(imgIds[currentPosition % imgIds.length]);
+						//mImageSwitcher.setImageDrawable(new BitmapDrawable(bitmap));
+
+						mImageSwitcher.setImageResource(imgIds[currentPosition % imgIds.length]);
+						setImageBackground(currentPosition);
+					}else{
+						Toast.makeText(getApplication(), "已经是第一张", Toast.LENGTH_SHORT).show();
+					}
+				}
+
+				if(lastX < downX){
+					if(currentPosition < imgIds.length - 1){
+						mImageSwitcher.setInAnimation(AnimationUtils.loadAnimation(getApplication(), R.anim.right_in));
+						mImageSwitcher.setOutAnimation(AnimationUtils.loadAnimation(getApplication(), R.anim.lift_out));
+						currentPosition ++ ;
+						//Bitmap bitmap = ImageLoader.getInstance().loadImageSync(imgIds[currentPosition]);
+						//mImageSwitcher.setImageDrawable(new BitmapDrawable(bitmap));
+
+						mImageSwitcher.setImageResource(imgIds[currentPosition]);
+						setImageBackground(currentPosition);
+					}else{
+						Toast.makeText(getApplication(), "到了最后一张", Toast.LENGTH_SHORT).show();
+					}
+				}
+			}
+
+			break;
+		}
+
+		return true;
 	}
 
 	private void LoadData() {
@@ -147,7 +292,7 @@ public class MainActivity extends BaseActivity implements OnClickListener ,onNew
 	            // 如果当前页面已经关闭，不进行登录操作
 	       return;
 	    }
-		MarketAPI.dynamics(getApplicationContext(), this, myapplication.getUserId(), "xiaoqu","0","10");//		
+		//MarketAPI.dynamics(getApplicationContext(), this, myapplication.getUserId(), "xiaoqu","0","10");//
 		MarketAPI.gonggao(getApplicationContext(), this);
 	}
 
@@ -160,7 +305,7 @@ public class MainActivity extends BaseActivity implements OnClickListener ,onNew
 	private void initViews() {
 		linearlayout_body1= (LinearLayout) this.findViewById(R.id.body1);
 		linearlayout_body2= (LinearLayout) this.findViewById(R.id.body2);
-		linearlayout_body3= (LinearLayout) this.findViewById(R.id.body3);
+		//linearlayout_body3= (LinearLayout) this.findViewById(R.id.body3);
 		top_head = (ImageView) findViewById(R.id.top_head);
 		top_more = (ImageView) findViewById(R.id.top_more);	
 		top_more.setVisibility(View.VISIBLE);
@@ -168,7 +313,7 @@ public class MainActivity extends BaseActivity implements OnClickListener ,onNew
 		can_sos_btnmap=(Button) findViewById(R.id.can_sos_btnmap);
 		headtop_left_count = (TextView) findViewById(R.id.headtop_left_count);
 		gonggao=(TextView) findViewById(R.id.gonggao);
-		lstv = (ListView) findViewById(R.id.nearnewlv);
+		//lstv = (ListView) findViewById(R.id.nearnewlv);
 		headtop_left_count.setOnClickListener(this);
 		headtop_left_count.setVisibility(View.GONE);		
 		top_head.setOnClickListener(new OnClickListener() {
@@ -227,7 +372,7 @@ public class MainActivity extends BaseActivity implements OnClickListener ,onNew
 				startActivity(it);
 			}
 		});
-		lstv.setOnItemClickListener(new OnItemClickListener(){
+		/*lstv.setOnItemClickListener(new OnItemClickListener(){
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1,
 					int location, long arg3) {								
@@ -258,11 +403,40 @@ public class MainActivity extends BaseActivity implements OnClickListener ,onNew
 					startActivity(Intent1);
 				}
 			}
-		});
+		});*/
 	}
 
 
-	
+	private void initbaidu(Resources resource, String pkgName) {
+		// Push: 以apikey的方式登录，一般放在主Activity的onCreate中。
+		// 这里把apikey存放于manifest文件中，只是一种存放方式，
+		// 您可以用自定义常量等其它方式实现，来替换参数中的Utils.getMetaValue(PushDemoActivity.this,
+		// "api_key")
+		PushManager.startWork(this.myapplication,
+				PushConstants.LOGIN_TYPE_API_KEY, DemoApplication.API_KEY);
+		// Push: 如果想基于地理位置推送，可以打开支持地理位置的推送的开关
+		// PushManager.enableLbs(getApplicationContext());
+
+		// Push: 设置自定义的通知样式，具体API介绍见用户手册，如果想使用系统默认的可以不加这段代码
+		// 请在通知推送界面中，高级设置->通知栏样式->自定义样式，选中并且填写值：1，
+		// 与下方代码中 PushManager.setNotificationBuilder(this, 1, cBuilder)中的第二个参数对应
+		/*
+		 * CustomPushNotificationBuilder cBuilder = new
+		 * CustomPushNotificationBuilder( this.getApplicationContext(),
+		 * resource.getIdentifier( "notification_custom_builder", "layout",
+		 * pkgName), resource.getIdentifier("notification_icon", "id", pkgName),
+		 * resource.getIdentifier("notification_title", "id", pkgName),
+		 * resource.getIdentifier("notification_text", "id", pkgName));
+		 * cBuilder.setNotificationFlags(Notification.FLAG_AUTO_CANCEL);
+		 * cBuilder.setNotificationDefaults(Notification.DEFAULT_SOUND |
+		 * Notification.DEFAULT_VIBRATE);
+		 * cBuilder.setStatusbarIcon(this.getApplicationInfo().icon);
+		 * cBuilder.setLayoutDrawable(resource.getIdentifier(
+		 * "simple_notification_icon", "drawable", pkgName));
+		 * PushManager.setNotificationBuilder(this, 1, cBuilder);
+		 */
+	}
+
 	private void initlsb() {
 		// TODO Auto-generated method stub
 		mLocationClient = new LocationClient(this.myapplication);
@@ -286,7 +460,7 @@ public class MainActivity extends BaseActivity implements OnClickListener ,onNew
 				}
 				nLatitude = location.getLatitude();
 				nLontitude = location.getLongitude();
- 
+				Log.i("mylog", nLatitude+"-" + nLontitude);
 				myapplication.setLat(String.valueOf(nLatitude));
 				myapplication.setLng(String.valueOf(nLontitude));
 				myapplication.updatelocation();
@@ -464,9 +638,9 @@ public class MainActivity extends BaseActivity implements OnClickListener ,onNew
 			   //下面的也要更新吗
 				
 				break;
-			case 3:
+	/*		case 3:
 				adapter = new DynamicListViewAdapter(MainActivity.this, dataList);
-			    lstv.setAdapter(adapter);
+			    lstv.setAdapter(adapter);*/
 			default:
 				break;
 			}			
@@ -565,13 +739,13 @@ public class MainActivity extends BaseActivity implements OnClickListener ,onNew
 		public void onSuccess(int method, Object obj) {
 			// TODO Auto-generated method stub
 			  switch (method) {
-		        case MarketAPI.ACTION_GETDYNAMICS:
+		    /*    case MarketAPI.ACTION_GETDYNAMICS:
 		        	 try{
 		                 dismissDialog(DIALOG_PROGRESS);
 		             }catch (IllegalArgumentException e) {
 		             }
 		            HashMap<String, String> result = (HashMap<String, String>) obj;
-		            String JsonContext=result.get("daymic");           
+		            String JsonContext=result.get("daymic");
 		            if(JsonContext.length()>0)
     				{
     					JSONArray jsonarray = null;
@@ -587,7 +761,7 @@ public class MainActivity extends BaseActivity implements OnClickListener ,onNew
     							item.put("actionname", String.valueOf(customJson.getString("actionname").toString()));
     							item.put("actiontime", String.valueOf(customJson.getString("actiontime").toString()));
     							item.put("guid", String.valueOf(customJson.getString("guid").toString()));
-    							item.put("messdesc", String.valueOf(customJson.getString("messdesc").toString()));    							
+    							item.put("messdesc", String.valueOf(customJson.getString("messdesc").toString()));
     							dataList.add(item);
     						}
     					} catch (JSONException e1) {
@@ -595,11 +769,11 @@ public class MainActivity extends BaseActivity implements OnClickListener ,onNew
     						Utils.makeEventToast(MainActivity.this, "daymic xml解释错误",false);
     						e1.printStackTrace();
     					}
-    					Message msg = handler.obtainMessage();			
-    					msg.what = 3;			
+    					Message msg = handler.obtainMessage();
+    					msg.what = 3;
     					handler.sendMessage(msg);
     				}
-		            break; 
+		            break; */
 		        case MarketAPI.ACTION_GONGGAO:
 		        	 try{
 		                 dismissDialog(DIALOG_PROGRESS);

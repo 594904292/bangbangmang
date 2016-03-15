@@ -100,6 +100,7 @@ public class ListViewAdapter extends BaseAdapter {
 			if(list.get(position).get("icon").toString().trim().length()>0)
 			{
 				convertView = LayoutInflater.from(context).inflate(R.layout.listview_item, null);
+				holder_img.tag = (ImageView) convertView.findViewById(R.id.infotag);
 				holder_img.imageView = (ImageView) convertView.findViewById(R.id.imageView);
 				holder_img.infocatagroy = (TextView) convertView.findViewById(R.id.infocatagroy);
 				holder_img.senduser = (TextView) convertView.findViewById(R.id.senduser);
@@ -114,6 +115,7 @@ public class ListViewAdapter extends BaseAdapter {
 			}else
 			{
 				convertView = LayoutInflater.from(context).inflate(R.layout.listview_noimg_item, null);
+				holder_img.tag = (ImageView) convertView.findViewById(R.id.infotag);
 				holder_img.imageView = (ImageView) convertView.findViewById(R.id.imageView);
 				holder_img.infocatagroy = (TextView) convertView.findViewById(R.id.infocatagroy);
 				holder_img.senduser = (TextView) convertView.findViewById(R.id.senduser);
@@ -125,8 +127,8 @@ public class ListViewAdapter extends BaseAdapter {
 				//holder_img.tag3 = (TextView) convertView.findViewById(R.id.tag3);		
 				holder_img.status = (TextView) convertView.findViewById(R.id.status);
 			}
-			//convertView.setTag(holder_img);
-			//convertView.setTag(list.get(position).get("guid").toString().trim());
+			convertView.setTag(holder_img);
+			convertView.setTag(list.get(position).get("guid").toString().trim());
 		/*} else {
 			holder_img = (ViewHolderimg) convertView.getTag();
 		}*/
@@ -184,14 +186,16 @@ public class ListViewAdapter extends BaseAdapter {
 		if(list.get(position).get("infocatagroy").toString().equals("0"))
 		{//求帮助
 			holder_img.infocatagroy.setText("求");
-		}else if(list.get(position).get("infocatagroy").toString().equals("1"))
+			holder_img.tag.setImageResource(R.mipmap.dynamic_join_left);
+		}/*else if(list.get(position).get("infocatagroy").toString().equals("1"))
 		{//寻宝贝
 			holder_img.infocatagroy.setText("寻");
 		}else if(list.get(position).get("infocatagroy").toString().equals("2"))
 		{//大转让
 			holder_img.infocatagroy.setText("转");
-		}else if(list.get(position).get("infocatagroy").toString().equals("3"))
+		}*/else if(list.get(position).get("infocatagroy").toString().equals("3"))
 		{//我能帮
+			holder_img.tag.setImageResource(R.mipmap.dynamic_join_left);
 			holder_img.infocatagroy.setText("帮");
 		}
 		holder_img.senduser.setText(list.get(position).get("sendnickname").toString());
@@ -230,6 +234,7 @@ public class ListViewAdapter extends BaseAdapter {
 	
 
 	private static class ViewHolderimg {
+		ImageView tag;
 		ImageView imageView;
 		TextView infocatagroy;
 		TextView senduser;
