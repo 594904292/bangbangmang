@@ -38,6 +38,9 @@ import com.bbxiaoqu.ui.LoginActivity;
 import com.bbxiaoqu.ui.NoticeActivity;
 import com.bbxiaoqu.ui.PublishActivity;
 import com.bbxiaoqu.ui.SearchActivity;
+import com.bbxiaoqu.ui.report.DayActivity;
+import com.bbxiaoqu.ui.report.MonthActivity;
+import com.bbxiaoqu.ui.report.WeekActivity;
 import com.bbxiaoqu.ui.user.UserInfoActivity;
 import com.bbxiaoqu.ui.sub.ViewUserInfoActivity;
 import com.bbxiaoqu.update.UpdataInfo;
@@ -120,6 +123,7 @@ public class MainActivity extends BaseActivity  implements ViewSwitcher.ViewFact
 
 
 
+
 	/**
 	 * ImagaSwitcher 的引用
 	 */
@@ -144,6 +148,11 @@ public class MainActivity extends BaseActivity  implements ViewSwitcher.ViewFact
 	 * 点点数组
 	 */
 	private ImageView[] tips;
+
+	public Button reportday_btn;
+	/*public Button reportweek_btn;
+	public Button reportmonth_btn;*/
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -402,6 +411,37 @@ public class MainActivity extends BaseActivity  implements ViewSwitcher.ViewFact
 					Intent1.putExtras(arguments);
 					startActivity(Intent1);
 				}
+			}
+		});*/
+
+		reportday_btn= (Button) this.findViewById(R.id.day_button);
+		reportday_btn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+
+			/*	Bundle bundle = new Bundle();
+				bundle.putInt("infocatagroy", 3);
+				intent.putExtras(bundle);*/
+				Intent intent=new Intent(MainActivity.this,DayActivity.class);
+				startActivity(intent);
+
+			}
+		});
+		/*reportweek_btn= (Button) this.findViewById(R.id.week_button);
+		reportweek_btn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+
+				Intent intent=new Intent(MainActivity.this,WeekActivity.class);
+				startActivity(intent);
+			}
+		});
+		reportmonth_btn = (Button) this.findViewById(R.id.month_button);
+		reportmonth_btn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent=new Intent(MainActivity.this,MonthActivity.class);
+				startActivity(intent);
 			}
 		});*/
 	}

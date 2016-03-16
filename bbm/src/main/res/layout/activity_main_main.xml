@@ -150,7 +150,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="日榜"
+            android:text="雷锋榜"
             android:id="@+id/day_button"
             android:background="@drawable/button_green"
             android:layout_marginLeft="20dp"
@@ -161,7 +161,7 @@
             android:layout_gravity="bottom"
             android:layout_marginRight="10dp" />
 
-        <Button
+      <!--  <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="周榜"
@@ -186,7 +186,7 @@
             android:paddingLeft="25dp"
             android:paddingRight="25dp"
             android:id="@+id/month_button"
-            android:layout_gravity="bottom" />
+            android:layout_gravity="bottom" />-->
     </LinearLayout>
 
 
