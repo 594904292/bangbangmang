@@ -28,10 +28,10 @@ dependencies {
     compile files('libs/galaxy_mini.jar')
     compile files('libs/libammsdk.jar')
     compile files('libs/locSDK_5.2.jar')
-    compile files('libs/pushservice-4.5.1.8.jar')
     compile files('libs/smack.jar')
     compile files('libs/smackx.jar')
     compile files('libs/universal-image-loader-1.9.4.jar')
     compile files('libs/VoiceRecognition.jar')
+    compile files('libs/pushservice-4.6.2.39.jar')
     compile 'com.google.android.gms:play-services-appindexing:8.1.0'
 }

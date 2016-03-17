@@ -93,10 +93,10 @@
     <orderEntry type="library" exported="" name="crittercism_v3_0_3_sdkonly" level="project" />
     <orderEntry type="library" exported="" name="galaxy_mini" level="project" />
     <orderEntry type="library" exported="" name="locSDK_5.2" level="project" />
+    <orderEntry type="library" exported="" name="pushservice-4.6.2.39" level="project" />
     <orderEntry type="library" exported="" name="baidumapapi_v3_5_0" level="project" />
     <orderEntry type="library" exported="" name="libammsdk" level="project" />
     <orderEntry type="library" exported="" name="android_api_1.1_forsdk" level="project" />
-    <orderEntry type="library" exported="" name="pushservice-4.5.1.8" level="project" />
     <orderEntry type="library" exported="" name="play-services-basement-8.1.0" level="project" />
     <orderEntry type="library" exported="" name="smack" level="project" />
     <orderEntry type="library" exported="" name="support-v4-22.2.0" level="project" />

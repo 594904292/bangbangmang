@@ -114,13 +114,19 @@ public class FriendsActivity extends Activity implements ApiRequestListener {
 					int location, long arg3) {								
 					
 					//提取用户id
-					Intent intent = new Intent(FriendsActivity.this,ChattingActivity.class);					
+					/*Intent intent = new Intent(FriendsActivity.this,ChattingActivity.class);
 					Bundle arguments = new Bundle();
 					arguments.putString("to", dataList.get(location).get("userid").toString());
 					arguments.putString("my",myapplication.getUserId());
 					intent.putExtras(arguments);					
-					startActivity(intent);
-					
+					startActivity(intent);*/
+
+				Intent Intent1 = new Intent();
+				Intent1.setClass(FriendsActivity.this, ViewUserInfoActivity.class);
+				Bundle arguments = new Bundle();
+				arguments.putString("userid",dataList.get(location).get("userid").toString());
+				Intent1.putExtras(arguments);
+				startActivity(Intent1);
 					
 			}
 		}); 	

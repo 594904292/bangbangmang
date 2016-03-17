@@ -157,7 +157,7 @@ public class SearchActivity extends Activity{
 			public void onItemClick(AdapterView<?> arg0, View arg1,int location, long arg3) 
 			{
 				Intent Intent1 = new Intent();
-				if(dataList.get(location - 1).get("infocatagroy").toString().equals("3")) {
+				if(dataList.get(location).get("infocatagroy").toString().equals("3")) {
 					Intent1.setClass(SearchActivity.this, ViewFwActivity.class);
 				}else
 				{
@@ -303,8 +303,10 @@ public class SearchActivity extends Activity{
 		dataList.clear();
 		int start=0;
 		int limit=10;
-		//String keyword=etSearch.getText().toString();			
-		url="http://www.bbxiaoqu.com/getinfos.php?userid="+myapplication.getUserId()+"&rang=xiaoqu&keyword="+keyword+"&start="+start+"&limit="+limit;
+		//String keyword=etSearch.getText().toString();
+		//myapplication.getLat(),myapplication.getLng()
+				//+"&latitude="+latitude+"&longitude="+longitude+"
+		url="http://www.bbxiaoqu.com/getinfos.php?userid="+myapplication.getUserId()+"&latitude="+myapplication.getLat()+"&longitude="+myapplication.getLng()+"&rang=xiaoqu&keyword="+keyword+"&start="+start+"&limit="+limit;
 					
 		HttpGet httprequest = new HttpGet(url);
 		HttpClient HttpClient1 = new DefaultHttpClient();

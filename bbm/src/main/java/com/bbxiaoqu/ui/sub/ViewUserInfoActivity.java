@@ -7,7 +7,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
@@ -22,7 +21,6 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import com.bbxiaoqu.DemoApplication;
 import com.bbxiaoqu.ImageOptions;
 import com.bbxiaoqu.R;
@@ -37,10 +35,8 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.nostra13.universalimageloader.core.ImageLoader;
-
 import java.io.File;
 import java.util.Map;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -48,7 +44,6 @@ import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -80,11 +75,11 @@ public class ViewUserInfoActivity extends BaseActivity implements OnClickListene
 		myapplication = (DemoApplication) this.getApplication();
 		Bundle Bundle1 = this.getIntent().getExtras();		
 		userid = Bundle1.getString("userid");
-
 		initView();
 		initData();
 		loadlist();
 	}
+
 	EvaluateAdapter adapter;
 	private List<Map<String, Object>> dataList = new ArrayList<Map<String, Object>>();
 	private static final String[] sexs ={ " 男 " , "女" };
@@ -95,11 +90,6 @@ public class ViewUserInfoActivity extends BaseActivity implements OnClickListene
 		telphone_tv = (TextView) findViewById(R.id.telphone);
 		save = (Button) findViewById(R.id.save);
 		listview= (ListView) findViewById(R.id.evaluatelist);//列表
-
-
-		/*listview.setAdapter(new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, strs));*/
-
 		save.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				if (!NetworkUtils.isNetConnected(myapplication)) {			
@@ -122,16 +112,10 @@ public class ViewUserInfoActivity extends BaseActivity implements OnClickListene
 			}
 		});
 		iv_photo = (ImageView) findViewById(R.id.iv_photo);
-
-
-
 	}
 
 	private void loadlist() {
-
 		dataList = new ArrayList<Map<String, Object>>();
-
-
 		if (listview == null) {
 			return;
 		}
@@ -139,18 +123,6 @@ public class ViewUserInfoActivity extends BaseActivity implements OnClickListene
 		adapter= new EvaluateAdapter(this, dataList);
 		listview.setAdapter(adapter);
 	}
-/*	private void getData() {
-		HashMap<String, Object> item = new HashMap<String, Object>();
-		item.put("id","1");
-		item.put("guid","54fa2405-ad6f-4f8e-8ddc-f2610b2c3dcf");
-		item.put("infouser","369");
-		item.put("userid","13601194810");
-		item.put("score","4");
-		item.put("evaluate","真是个好人，晚上九点还送我上医院");
-		item.put("addtime","2016-03-15 10:32:07");
-		dataList.add(item);
-	}*/
-
 
 	private void getData() {
 		if (!NetworkUtils.isNetConnected(myapplication)) {
@@ -195,7 +167,6 @@ public class ViewUserInfoActivity extends BaseActivity implements OnClickListene
 		}
 	}
 
-
 	private List<Map<String, Object>> parsejson(InputStream jsonStream)
 			throws Exception {
 		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
@@ -218,7 +189,7 @@ public class ViewUserInfoActivity extends BaseActivity implements OnClickListene
 			item.put("infouser",infouser);
 			item.put("userid",userid);
 			item.put("score",score);
-			item.put("evaluate",evaluate);
+			item.put("evaluate",evaluate.trim());
 			item.put("addtime",addtime);
 			list.add(item);
 		}

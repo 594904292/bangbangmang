@@ -56,6 +56,7 @@ public class DemoApplication extends Application {
 
 	static DemoApplication mApplication;
 	public static final String TAG = "DemoApplication";
+	//6111438
 	public final static String API_KEY = "zGbL7fLxRVOu5ccPb3G57DdM";
 	public final static String SECRIT_KEY = "kpjjzLA89QWY5cKGDHsoeUajsR2CCqQ1";
 	public static final String SP_FILE_NAME = "push_msg_sp";
@@ -329,28 +330,45 @@ public class DemoApplication extends Application {
 
 		}
 	};
-	
-	/*public void startxmpp() {
-		new Thread(xmppstartRun).start();
+	XMPPConnection connection=null;
+	ChatManager cm=null;
+	public void startxmpp() {
+		//new Thread(xmppstartRun).start();
+		try {
+			connection=XmppTool.getConnection();
+			if (connection.isConnected() && !connection.isAuthenticated())
+			{
+				connection.login(getUserId(), getPassword());
+			}
+			cm = connection.getChatManager();    //取得聊天管理器
+			if(cm.getChatListeners().size()==0) {
+				cm.addChatListener(new ChatListener(mApplication));
+			}
+		} catch (XMPPException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 	}
 
 	Runnable xmppstartRun = new Runnable() {
 		@Override
 		public void run() {
 			try {
-				XMPPConnection connection=XmppTool.getInstance().getConnection();	
+				XMPPConnection connection=XmppTool.getConnection();
 				if (connection.isConnected() && !connection.isAuthenticated()) 
 				{
 					connection.login(getUserId(), getPassword());
 				}
-				ChatManager cm = connection.getChatManager(); 	//取得聊天管理器
-				cm.addChatListener(new ChatListener(mApplication));				
+				ChatManager cm = connection.getChatManager();    //取得聊天管理器
+
+					cm.addChatListener(new ChatListener(mApplication));
 			} catch (XMPPException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}		
 		}
-	};*/
+	};
+
 	public void updatelocation() {
 		new Thread(savelocationIdRun).start();
 	}

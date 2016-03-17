@@ -49,7 +49,6 @@ import com.bbxiaoqu.view.BaseActivity;
 import com.bbxiaoqu.view.DrawerView;
 import com.bbxiaoqu.client.xmpp.XmppTool;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
-import com.nostra13.universalimageloader.core.ImageLoader;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -219,6 +218,8 @@ public class MainActivity extends BaseActivity  implements ViewSwitcher.ViewFact
 		//mImageSwitcher.setImageDrawable(new BitmapDrawable(bitmap));
 
 		setImageBackground(currentPosition);
+
+		//myapplication.getInstance().startxmpp();
 	}
 
 	/**

@@ -146,7 +146,7 @@ public class ChattingActivity extends Activity implements onNewMessageListener
 		}		
 		new Thread(loaduserinfo).start();
 		new Thread(ajaxloadinfo).start();
-		//myapplication.getInstance().startxmpp();
+		myapplication.getInstance().startxmpp();
 		//清掉通知里的消息
 		ChatDB cdb=new ChatDB(ChattingActivity.this);
 		cdb.readchat(from, myself);//标记已读

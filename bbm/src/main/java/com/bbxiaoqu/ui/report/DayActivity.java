@@ -28,6 +28,7 @@ import com.bbxiaoqu.comm.tool.StreamTool;
 import com.bbxiaoqu.comm.tool.T;
 import com.bbxiaoqu.ui.SearchActivity;
 import com.bbxiaoqu.ui.sub.ChattingActivity;
+import com.bbxiaoqu.ui.sub.ViewUserInfoActivity;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -96,6 +97,18 @@ public class DayActivity extends Activity {
 		top_more = (ImageView) findViewById(R.id.top_more);
 		top_more.setVisibility(View.GONE);
 		lstv = (ListView) findViewById(R.id.orderlv);
+		lstv.setOnItemClickListener(new OnItemClickListener(){
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1,
+									int location, long arg3) {
+				Intent Intent1 = new Intent();
+				Intent1.setClass(DayActivity.this, ViewUserInfoActivity.class);
+				Bundle arguments = new Bundle();
+				arguments.putString("userid",dataList.get(location).get("username").toString());
+				Intent1.putExtras(arguments);
+				startActivity(Intent1);
+			}
+		});
 	}
 
 	private void initData() {
@@ -142,7 +155,6 @@ public class DayActivity extends Activity {
 					message.what = 1;
 					message.obj=json;
 					handler.sendMessage(message);
-
 				} catch (IllegalStateException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -168,7 +180,6 @@ public class DayActivity extends Activity {
 			}
 			super.handleMessage(msg);
 		}
-
 	};
 
 
