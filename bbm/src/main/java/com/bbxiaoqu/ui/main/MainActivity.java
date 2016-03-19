@@ -34,6 +34,8 @@ import com.bbxiaoqu.client.baidu.BbPushMessageReceiver.onMessageReadListener;
 import com.bbxiaoqu.client.baidu.BbPushMessageReceiver.onNewMessageListener;
 import com.bbxiaoqu.comm.service.db.NoticeDB;
 import com.bbxiaoqu.comm.service.db.UserService;
+import com.bbxiaoqu.comm.tool.NetworkUtils;
+import com.bbxiaoqu.comm.tool.T;
 import com.bbxiaoqu.ui.LoginActivity;
 import com.bbxiaoqu.ui.NoticeActivity;
 import com.bbxiaoqu.ui.PublishActivity;
@@ -67,6 +69,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.os.StrictMode;
 import android.util.Log;
 import android.util.Xml;
 import android.view.Display;
@@ -155,6 +158,10 @@ public class MainActivity extends BaseActivity  implements ViewSwitcher.ViewFact
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		if (android.os.Build.VERSION.SDK_INT > 9) {
+			StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+			StrictMode.setThreadPolicy(policy);
+		}
 		BbPushMessageReceiver.msgListeners.add(this);//新消息
 		BbPushMessageReceiver.msgReadListeners.add(this);//点了阅读
 		setContentView(R.layout.activity_main_main);		
@@ -219,8 +226,21 @@ public class MainActivity extends BaseActivity  implements ViewSwitcher.ViewFact
 
 		setImageBackground(currentPosition);
 
-		//myapplication.getInstance().startxmpp();
+		new Thread(xmpprunnable).start();
 	}
+
+
+	Runnable xmpprunnable = new Runnable(){
+		@Override
+		public void run() {
+			// TODO: http request.
+			Message msg = new Message();
+			msg.what=4;
+			handler.sendMessage(msg);
+		}
+	};
+
+
 
 	/**
 	 * 设置选中的tip的背景
@@ -357,6 +377,19 @@ public class MainActivity extends BaseActivity  implements ViewSwitcher.ViewFact
 				bundle.putInt("infocatagroy", 0);
 				intent.putExtras(bundle);
 				startActivity(intent);
+
+			/*	Intent intent=new Intent(MainActivity.this,ActivityTouch.class);
+				Bundle bundle = new Bundle();
+				bundle.putInt("infocatagroy", 0);
+				intent.putExtras(bundle);
+				startActivity(intent);*/
+
+//				Intent intent=new Intent(MainActivity.this,ApiActivity.class);
+//				Bundle bundle = new Bundle();
+//				bundle.putInt("infocatagroy", 0);
+//				intent.putExtras(bundle);
+//				startActivity(intent);
+
 			}
 		});
 
@@ -678,6 +711,13 @@ public class MainActivity extends BaseActivity  implements ViewSwitcher.ViewFact
 			    headtop_left_count.setText(String.valueOf(num));
 			   //下面的也要更新吗
 				
+				break;
+			case 4:
+					if (!NetworkUtils.isNetConnected(myapplication)) {
+						T.showShort(myapplication, "当前无网络连接！");
+						return;
+					}
+					myapplication.getInstance().startxmpp();
 				break;
 	/*		case 3:
 				adapter = new DynamicListViewAdapter(MainActivity.this, dataList);

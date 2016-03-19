@@ -10,6 +10,12 @@
     android:background="#FFFFFF"
     android:padding="1dp" >
   <ImageView
+      android:id="@+id/infotag"
+      android:layout_width="wrap_content"
+      android:layout_height="fill_parent"
+      android:scaleType="fitXY"
+      android:src="@mipmap/dynamic_info_left" />
+  <ImageView
         android:id="@+id/imageView"
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -45,15 +51,6 @@
         android:layout_alignParentRight="true"
         android:text="time" />
 
-  <TextView
-      android:id="@+id/sendaddress"
-   	  android:layout_marginTop="5dp"
-      style="@style/TextView10"
-       android:paddingLeft="8px"
-      android:layout_width="fill_parent"
-      android:layout_height="wrap_content"
-      android:layout_below="@id/senduser"      
-      android:text="地址" />
 
     <TextView
         android:id="@+id/sendcontent"
@@ -62,7 +59,7 @@
         style="@style/TextView16"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/sendaddress"
+        android:layout_below="@id/senduser"
        
         android:text="正文" />
 
@@ -76,21 +73,7 @@
        
          >
 
-        <TextView
-            android:id="@+id/tag1"
-            style="@style/TextView10"
-              android:paddingLeft="8px"
-            android:layout_width="wrap_content"
-            android:layout_height="15dp"
-            android:text="关注数:0" />
-        <TextView
-            android:id="@+id/tag2"
-             android:layout_toRightOf="@id/tag1"
-            style="@style/TextView10"
-            android:layout_marginLeft="15dp"
-            android:layout_width="wrap_content"
-            android:layout_height="15dp"
-            android:text="评论数:0" />
+
         
         <!--TextView
             android:id="@+id/tag3"
@@ -109,6 +92,42 @@
             android:layout_alignParentRight="true"
             android:text="状态:未结束" />
     </RelativeLayout>
-  
-    </RelativeLayout>
+
+  <RelativeLayout
+      android:id="@+id/endrow"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:paddingRight="0dp"
+      android:layout_alignParentBottom="true">
+    <TextView
+        android:id="@+id/tag1"
+        style="@style/TextView10"
+        android:paddingLeft="8px"
+        android:layout_width="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_height="15dp"
+        android:text="关注数:0" />
+    <TextView
+        android:id="@+id/tag2"
+        android:layout_toRightOf="@id/tag1"
+        style="@style/TextView10"
+        android:layout_marginLeft="15dp"
+        android:layout_width="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_height="15dp"
+        android:text="评论数:0" />
+  <TextView
+      android:id="@+id/sendaddress"
+      android:layout_marginTop="5dp"
+      style="@style/TextView10"
+      android:paddingLeft="8px"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:text="地址"
+      android:gravity="right" />
+
+</RelativeLayout>
+
+</RelativeLayout>
 </RelativeLayout><!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/layout/listview_noimg_item.xml -->

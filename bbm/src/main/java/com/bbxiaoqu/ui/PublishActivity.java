@@ -97,13 +97,13 @@ import android.widget.ImageView.ScaleType;
 import android.widget.ToggleButton;
 
 public class PublishActivity extends Activity implements OnClickListener {
-    private static final String TAG = "demoActivity";
+	private static final String TAG = "demoActivity";
 
 	/** 头像 */
 	public ImageView top_head;
 	/** 更多 */
 	public ImageView top_more;
-	
+
 	private DemoApplication myapplication;
 	EditText content_edit;
 	//EditText fee_edit;
@@ -131,7 +131,7 @@ public class PublishActivity extends Activity implements OnClickListener {
 	public String direction = "";
 	public String radius = "";
 	public String speed = "";
-	
+
 	public static final int STATUS_None = 0;
 	public static final int STATUS_WaitingReady = 2;
 	public static final int STATUS_Ready = 3;
@@ -140,7 +140,7 @@ public class PublishActivity extends Activity implements OnClickListener {
 	private SpeechRecognizer speechRecognizer;
 	private int status = STATUS_None;
 	private long speechEndTime = -1;
-	private static final int EVENT_ERROR = 11;	
+	private static final int EVENT_ERROR = 11;
 	private LayoutInflater mInflater;
 
 
@@ -160,22 +160,22 @@ public class PublishActivity extends Activity implements OnClickListener {
 	boolean isaddpic = false;
 	private ProgressBar pb;
 	private TextView pbtip;
-	private TextView pbtip1;	
+	private TextView pbtip1;
 	private BaiduASRDigitalDialog mDialog = null;
 	private DialogRecognitionListener mRecognitionListener;
 	private int mCurrentTheme = Config.DIALOG_THEME;
-	    
+
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_publish);
 		getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 		Resources resource = this.getResources();
 		String pkgName = this.getPackageName();
-		PushManager.startWork(getApplicationContext(),PushConstants.LOGIN_TYPE_API_KEY, Constants.API_KEY);	
+		PushManager.startWork(getApplicationContext(),PushConstants.LOGIN_TYPE_API_KEY, Constants.API_KEY);
 		TextView title = (TextView) findViewById(R.id.title);
 		title.setText("发送消息");
 		Bundle b = this.getIntent().getExtras();
-		infocatagroy = b.getInt("infocatagroy");	
+		infocatagroy = b.getInt("infocatagroy");
 		myapplication = (DemoApplication) this.getApplication();
 		mScreenWidth = ScreenUtils.getWindowsWidth(this);
 		mItemWidth = mScreenWidth / 3;// 一个Item宽度为屏幕的1/7
@@ -189,37 +189,37 @@ public class PublishActivity extends Activity implements OnClickListener {
 		send = (Button) findViewById(R.id.sendmessage);
 		if (infocatagroy == 0) {
 			content_edit.setHint("请输入您的求助信息");
-			Resources resources = PublishActivity.this.getResources();   
-			Drawable btnDrawable = resources.getDrawable(R.drawable.button_help);  
-			send.setBackgroundDrawable(btnDrawable);   
+			Resources resources = PublishActivity.this.getResources();
+			Drawable btnDrawable = resources.getDrawable(R.drawable.button_help);
+			send.setBackgroundDrawable(btnDrawable);
 		} else if (infocatagroy == 1) {
 			content_edit.setHint("请输入您的需求信息");
 		} else if (infocatagroy == 2) {
 			content_edit.setHint("请输入您的转让信息");
 		} else if (infocatagroy == 3) {
 			content_edit.setHint("请输入您的能帮助信息");
-			Resources resources = PublishActivity.this.getResources();   
-			Drawable btnDrawable = resources.getDrawable(R.drawable.button_help3);  
-			send.setBackgroundDrawable(btnDrawable);   
+			Resources resources = PublishActivity.this.getResources();
+			Drawable btnDrawable = resources.getDrawable(R.drawable.button_help3);
+			send.setBackgroundDrawable(btnDrawable);
 
 		}
-		
+
 		mLayout = (LinearLayout) findViewById(R.id.layout_container);
 		ext_mLayout = (LinearLayout) findViewById(R.id.layout_container_ext);
 		//mpirceLayout= (LinearLayout) findViewById(R.id.layout_container_price);
 		mLayout.setVisibility(View.GONE);
-		
+
 		addimg = (Button) findViewById(R.id.addimg);
 		btn = (Button) findViewById(R.id.yybtn);
 		//togglebutton = (ToggleButton) findViewById(R.id.repayable_switch);//是否有偿
-		
+
 		pb = (ProgressBar) findViewById(R.id.myProgressBar1);
 		pbtip=(TextView) findViewById(R.id.myProgressBar1Tip);
 		pbtip1=(TextView) findViewById(R.id.myProgressBar1Tip1);
 		pb.setVisibility(View.GONE);
 		pbtip.setVisibility(View.GONE);
 		pbtip1.setVisibility(View.GONE);
-		
+
 
 		addimg.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
@@ -241,7 +241,7 @@ public class PublishActivity extends Activity implements OnClickListener {
 					return;
 				}
 				String content = content_edit.getText().toString();
-				if (content.length() > 0) {		
+				if (content.length() > 0) {
 					pb.setVisibility(View.VISIBLE);
 					pbtip.setVisibility(View.VISIBLE);
 					pbtip1.setVisibility(View.VISIBLE);
@@ -257,21 +257,21 @@ public class PublishActivity extends Activity implements OnClickListener {
 
 		mCurrent = 0;
 		init_imgui();
-		 mRecognitionListener = new DialogRecognitionListener() {
+		mRecognitionListener = new DialogRecognitionListener() {
 
-	            @Override
-	            public void onResults(Bundle results) {
-	                ArrayList<String> rs = results != null ? results
-	                        .getStringArrayList(RESULTS_RECOGNITION) : null;
-	                if (rs != null && rs.size() > 0) {
-	                	content_edit.setText(rs.get(0));
-	                }
+			@Override
+			public void onResults(Bundle results) {
+				ArrayList<String> rs = results != null ? results
+						.getStringArrayList(RESULTS_RECOGNITION) : null;
+				if (rs != null && rs.size() > 0) {
+					content_edit.setText(content_edit.getText().toString()+rs.get(0));
+				}
 
-	            }
-	        };
+			}
+		};
 
 	}
-	
+
 	String[] tag;
 	String[] name;
 	@SuppressLint("ResourceAsColor")
@@ -286,23 +286,23 @@ public class PublishActivity extends Activity implements OnClickListener {
 				LinearLayout row=new LinearLayout(this);
 				row.setOrientation(LinearLayout.HORIZONTAL);
 				row.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT, 1.0f));
-				
+
 				TextView tv=new TextView(this);
 				tv.setText(name[i]);
-				tv.setLayoutParams(new LinearLayout.LayoutParams(mItemWidth, LayoutParams.WRAP_CONTENT, 1.0f));  
-	
+				tv.setLayoutParams(new LinearLayout.LayoutParams(mItemWidth, LayoutParams.WRAP_CONTENT, 1.0f));
+
 				//android:layout_weight
 				EditText edit =new EditText(this);
 				edit.setTag(tag[i]);
-				edit.setBackgroundResource(R.drawable.bg_edittext);	
+				edit.setBackgroundResource(R.drawable.bg_edittext);
 				//edit.setTextColor(R.color.black);
-				edit.setText("");						
+				edit.setText("");
 				edit.setLayoutParams(new LinearLayout.LayoutParams(mItemWidth*2, LayoutParams.WRAP_CONTENT, 1.0f));
 				row.addView(tv);
 				row.addView(edit);
-				
+
 				this.ext_mLayout.addView(row);
-				
+
 			}
 		}else if(infocatagroy==2)
 		{
@@ -313,25 +313,25 @@ public class PublishActivity extends Activity implements OnClickListener {
 				LinearLayout row=new LinearLayout(this);
 				row.setOrientation(LinearLayout.HORIZONTAL);
 				row.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT, 1.0f));
-				
+
 				TextView tv=new TextView(this);
 				tv.setText(name[i]);
-				tv.setLayoutParams(new LinearLayout.LayoutParams(mItemWidth, LayoutParams.WRAP_CONTENT, 1.0f));  
-	
+				tv.setLayoutParams(new LinearLayout.LayoutParams(mItemWidth, LayoutParams.WRAP_CONTENT, 1.0f));
+
 				//android:layout_weight
 				EditText edit =new EditText(this);
 				edit.setTag(tag[i]);
-				edit.setBackgroundResource(R.drawable.bg_edittext);	
+				edit.setBackgroundResource(R.drawable.bg_edittext);
 				//edit.setTextColor(R.color.black);
-				edit.setText("");						
+				edit.setText("");
 				edit.setLayoutParams(new LinearLayout.LayoutParams(mItemWidth*2, LayoutParams.WRAP_CONTENT, 1.0f));
 				row.addView(tv);
 				row.addView(edit);
-				
+
 				this.ext_mLayout.addView(row);
-			}	
+			}
 		}
-		
+
 	}
 
 	private void init_imgui() {
@@ -517,22 +517,22 @@ public class PublishActivity extends Activity implements OnClickListener {
 			paramsList.add(new BasicNameValuePair("district", District));
 			paramsList.add(new BasicNameValuePair("street", Street));
 			paramsList.add(new BasicNameValuePair("guid", UUID.randomUUID().toString()));
-			paramsList.add(new BasicNameValuePair("infocatagroy", String.valueOf(infocatagroy)));			
-			paramsList.add(new BasicNameValuePair("fee", String.valueOf(fee)));			
+			paramsList.add(new BasicNameValuePair("infocatagroy", String.valueOf(infocatagroy)));
+			paramsList.add(new BasicNameValuePair("fee", String.valueOf(fee)));
 			/*统一压缩*/
 			for (int i = 0; i < mPicturePathList.size(); i++) {
 				if (mPicturePathList.get(i).length() > 0) {
 					String localpicpath = mPicturePathList.get(i);
-					String compresslocalpicpath=compressBmpToFile(localpicpath,i);					
+					String compresslocalpicpath=compressBmpToFile(localpicpath,i);
 					compmPicturePathList.add(compresslocalpicpath);
 				}
 			}
-			
+
 			/*用户目录+压缩后的文件名*/
 			picPath = "";
 			for (int i = 0; i < compmPicturePathList.size(); i++) {
 				if (compmPicturePathList.get(i).length() > 0) {
-					String path = compmPicturePathList.get(i);					
+					String path = compmPicturePathList.get(i);
 					String picname ="/"+myapplication.getUserId()+"/"+path.substring(path.lastIndexOf("/") + 1);
 					picPath = picPath + picname;
 					if (i < compmPicturePathList.size() - 1) {
@@ -559,7 +559,7 @@ public class PublishActivity extends Activity implements OnClickListener {
 				HttpResponse httpResponse = HttpClient1.execute(httprequest);
 				if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
 					String json = EntityUtils.toString(httpResponse.getEntity());
-					System.out.println(json);					
+					System.out.println(json);
 					result = 1;
 				} else {
 					result = 0;
@@ -576,42 +576,42 @@ public class PublishActivity extends Activity implements OnClickListener {
 			}
 
 		}
-		
+
 		boolean isFolderExists(String strFolder) {
-	        File file = new File(strFolder);        
-	        if (!file.exists()) {
-	            if (file.mkdirs()) {                
-	                return true;
-	            } else {
-	                return false;
+			File file = new File(strFolder);
+			if (!file.exists()) {
+				if (file.mkdirs()) {
+					return true;
+				} else {
+					return false;
 
-	            }
-	        }
-	        return true;
+				}
+			}
+			return true;
 
-	    }
-		
+		}
+
 		public String compressBmpToFile(String filePath,int pos){
-			
-			SimpleDateFormat bartDateFormat = new SimpleDateFormat("yyyyMMddHHmmss"); 
-			Date date = new Date(); 
-			
+
+			SimpleDateFormat bartDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+			Date date = new Date();
+
 			File afile =new File(filePath);
-			String fileName=afile.getName();  
-			String[] token = fileName.split("\\.");  
-			String ext = token[1];  
-			
+			String fileName=afile.getName();
+			String[] token = fileName.split("\\.");
+			String ext = token[1];
+
 			String tofilePath="";
 			if(!isFolderExists(getApplicationContext().getFilesDir().getAbsolutePath()+"/temp/"))
 			{
 				//判断的时候已经创建
 			}
 			tofilePath =getApplicationContext().getFilesDir().getAbsolutePath()+"/temp/"+ bartDateFormat.format(date)+String.valueOf(pos)+"."+ext;
-			Bitmap bmp=BitmapFactory.decodeFile(filePath);			
+			Bitmap bmp=BitmapFactory.decodeFile(filePath);
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			int options = 80;//个人喜欢从80开始,
 			bmp.compress(Bitmap.CompressFormat.JPEG, options, baos);
-			while (baos.toByteArray().length / 1024 > 100) { 
+			while (baos.toByteArray().length / 1024 > 100) {
 				baos.reset();
 				options -= 10;
 				bmp.compress(Bitmap.CompressFormat.JPEG, options, baos);
@@ -667,11 +667,11 @@ public class PublishActivity extends Activity implements OnClickListener {
 				pbtip1.setText("");
 				pb.setVisibility(View.GONE);
 			}
-			
+
 		}
 	};
-	
-	
+
+
 	Handler showtiphandler = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {
@@ -708,41 +708,41 @@ public class PublishActivity extends Activity implements OnClickListener {
 			public void onSuccess(int arg0, String arg1) {
 				super.onSuccess(arg0, arg1);
 				Log.v("upload", arg1);
-				 //progress.setProgress(0);
+				//progress.setProgress(0);
 				/*progressDialog.setProgress(0);
 				progressDialog.dismiss();*/
 				Message msg = new Message();
-		        msg.what=2;
+				msg.what=2;
 				Bundle data = new Bundle();
 				data.putString("tip", "已完成");
 				msg.setData(data);
 				showtiphandler.sendMessage(msg);
 			}
-			
-			@Override  
-	        public void onProgress(int bytesWritten, int totalSize) {  
-	            // TODO Auto-generated method stub  
-	            super.onProgress(bytesWritten, totalSize);  
-	            int count = (int) ((bytesWritten * 1.0 / totalSize) * 100);  
-	            // 上传进度显示  	           
-	            //progressDialog.setProgress(count);
-	            Log.e("上传 Progress>>>>>", bytesWritten + " / " + totalSize);  
-	            
-	            Message msg = new Message();
-	            msg.what=2;
+
+			@Override
+			public void onProgress(int bytesWritten, int totalSize) {
+				// TODO Auto-generated method stub
+				super.onProgress(bytesWritten, totalSize);
+				int count = (int) ((bytesWritten * 1.0 / totalSize) * 100);
+				// 上传进度显示
+				//progressDialog.setProgress(count);
+				Log.e("上传 Progress>>>>>", bytesWritten + " / " + totalSize);
+
+				Message msg = new Message();
+				msg.what=2;
 				Bundle data = new Bundle();
 				data.putString("tip", "已上传:"+bytesWritten + " / " + totalSize);
 				msg.setData(data);
 				showtiphandler.sendMessage(msg);
-	        }  
+			}
 		});
 	}
 
 	@Override
 	public void onDestroy() {
-		 if (mDialog != null) {
-	            mDialog.dismiss();
-	        }
+		if (mDialog != null) {
+			mDialog.dismiss();
+		}
 		super.onDestroy();
 	}
 
@@ -754,15 +754,15 @@ public class PublishActivity extends Activity implements OnClickListener {
 			String selpicPath = data
 					.getStringExtra(SelectPhotoActivity.KEY_PHOTO_PATH);
 
-			
-			 String PATH_HOME = Environment.getExternalStorageDirectory().getPath()+"/temp/"; 
-			 File dir = new File(PATH_HOME);
-				if (!dir.exists()) {
-					dir.mkdirs();
-				}
-			 String targetPath = PATH_HOME + StringUtils.toRegularHashCode(selpicPath) + ".jpg";
-			 BitmapUtils.compressBitmap(selpicPath, targetPath, 640);
-			
+
+			String PATH_HOME = Environment.getExternalStorageDirectory().getPath()+"/temp/";
+			File dir = new File(PATH_HOME);
+			if (!dir.exists()) {
+				dir.mkdirs();
+			}
+			String targetPath = PATH_HOME + StringUtils.toRegularHashCode(selpicPath) + ".jpg";
+			BitmapUtils.compressBitmap(selpicPath, targetPath, 640);
+
 			mPicturePathList.add(targetPath);
 
 			Bitmap bitmap = BitmapUtils.decodeBitmap(targetPath, 150);// 压缩大小
@@ -777,21 +777,21 @@ public class PublishActivity extends Activity implements OnClickListener {
 				final ImageButton nextImageButton = mImageButtonList
 						.get(mCurrent);
 				nextImageButton.setImageResource(R.mipmap.ic_add_picture);
-				
+
 				nextImageButton.setScaleType(ScaleType.CENTER);
 				nextImageButton.setEnabled(true);
 			}
 
-		} 
+		}
 	}
 
-	
-
-	
-	
 
 
-	
+
+
+
+
+
 
 
 
@@ -802,42 +802,42 @@ public class PublishActivity extends Activity implements OnClickListener {
 		Log.d(TAG, "----" + msg);
 	}
 
-	
+
 
 	public void doBack(View view) {
 		onBackPressed();
 	}
 
-	
-	 @Override
-	    public void onClick(View v) {
-	        switch (v.getId()) {
-	            case R.id.yybtn:
-	            	content_edit.setText(null);
-//	                if (mDialog == null || mCurrentTheme != Config.DIALOG_THEME) {
-	                    mCurrentTheme = Config.DIALOG_THEME;
-	                    if (mDialog != null) {
-	                        mDialog.dismiss();
-	                    }
-	                    Bundle params = new Bundle();
-	                    params.putString(BaiduASRDigitalDialog.PARAM_API_KEY, Constants.API_KEY);
-	                    params.putString(BaiduASRDigitalDialog.PARAM_SECRET_KEY, Constants.SECRET_KEY);
-	                    params.putInt(BaiduASRDigitalDialog.PARAM_DIALOG_THEME, Config.DIALOG_THEME);
-	                    mDialog = new BaiduASRDigitalDialog(this, params);
-	                    mDialog.setDialogRecognitionListener(mRecognitionListener);
-//	                }
-	                mDialog.getParams().putInt(BaiduASRDigitalDialog.PARAM_PROP, Config.CURRENT_PROP);
-	                mDialog.getParams().putString(BaiduASRDigitalDialog.PARAM_LANGUAGE,
-	                        Config.getCurrentLanguage());
-	                Log.e("DEBUG", "Config.PLAY_START_SOUND = "+Config.PLAY_START_SOUND);
-	                mDialog.getParams().putBoolean(BaiduASRDigitalDialog.PARAM_START_TONE_ENABLE, Config.PLAY_START_SOUND);
-	                mDialog.getParams().putBoolean(BaiduASRDigitalDialog.PARAM_END_TONE_ENABLE, Config.PLAY_END_SOUND);
-	                mDialog.getParams().putBoolean(BaiduASRDigitalDialog.PARAM_TIPS_TONE_ENABLE, Config.DIALOG_TIPS_SOUND);
-	                mDialog.show();
-	                break;	         
-	            default:
-	                break;
-	        }
 
-	    }
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+			case R.id.yybtn:
+				///content_edit.setText(null);
+//	                if (mDialog == null || mCurrentTheme != Config.DIALOG_THEME) {
+				mCurrentTheme = Config.DIALOG_THEME;
+				if (mDialog != null) {
+					mDialog.dismiss();
+				}
+				Bundle params = new Bundle();
+				params.putString(BaiduASRDigitalDialog.PARAM_API_KEY, Constants.API_KEY);
+				params.putString(BaiduASRDigitalDialog.PARAM_SECRET_KEY, Constants.SECRET_KEY);
+				params.putInt(BaiduASRDigitalDialog.PARAM_DIALOG_THEME, Config.DIALOG_THEME);
+				mDialog = new BaiduASRDigitalDialog(this, params);
+				mDialog.setDialogRecognitionListener(mRecognitionListener);
+//	                }
+				mDialog.getParams().putInt(BaiduASRDigitalDialog.PARAM_PROP, Config.CURRENT_PROP);
+				mDialog.getParams().putString(BaiduASRDigitalDialog.PARAM_LANGUAGE,
+						Config.getCurrentLanguage());
+				Log.e("DEBUG", "Config.PLAY_START_SOUND = "+Config.PLAY_START_SOUND);
+				mDialog.getParams().putBoolean(BaiduASRDigitalDialog.PARAM_START_TONE_ENABLE, Config.PLAY_START_SOUND);
+				mDialog.getParams().putBoolean(BaiduASRDigitalDialog.PARAM_END_TONE_ENABLE, Config.PLAY_END_SOUND);
+				mDialog.getParams().putBoolean(BaiduASRDigitalDialog.PARAM_TIPS_TONE_ENABLE, Config.DIALOG_TIPS_SOUND);
+				mDialog.show();
+				break;
+			default:
+				break;
+		}
+
+	}
 }

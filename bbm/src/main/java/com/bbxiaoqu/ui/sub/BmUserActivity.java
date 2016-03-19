@@ -221,7 +221,7 @@ public class BmUserActivity extends Activity implements  Callback{
 			String _telphone = jsonobject.getString("telphone");
 			String _headface = jsonobject.getString("headface");
 			String _status = jsonobject.getString("status");
-			_username=_username+"_"+_status;
+			//_username=_username+"_"+_status;
 			if(!_status.equals("0"))
 			{//只要其中一个状态不为零,就说明不是报名,就是交易已经完成
 				this.isbm = true;

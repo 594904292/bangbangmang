@@ -33,11 +33,7 @@ import com.bbxiaoqu.ui.sub.GalleryAdapter;
 import com.bbxiaoqu.ui.sub.ViewUserInfoActivity;
 import com.bbxiaoqu.view.BaseActivity;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.tencent.mm.sdk.openapi.IWXAPI;
-import com.tencent.mm.sdk.openapi.SendMessageToWX;
-import com.tencent.mm.sdk.openapi.WXAPIFactory;
-import com.tencent.mm.sdk.openapi.WXMediaMessage;
-import com.tencent.mm.sdk.openapi.WXWebpageObject;
+
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;

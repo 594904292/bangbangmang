@@ -77,7 +77,7 @@ public class RecentAdapter extends BaseAdapter {
 		//holder_img.userhead.setImageResource(R.drawable.dynamic_info_icon);
 	
 	   	
-		String fileName =  "http://www.bbxiaoqu.com/uploads/" + list.get(position).get("usericon").toString();
+		String fileName =  "http://api.bbxiaoqu.com/uploads/" + list.get(position).get("usericon").toString();
 
 		ImageLoader.getInstance().displayImage(fileName,holder_img.userhead,
 				ImageOptions.getOptions());

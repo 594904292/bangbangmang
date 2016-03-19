@@ -30,7 +30,7 @@ public class GetUserThread extends Thread{
 	    }
 	    public void run()
 	    {
-	    	String target =  "http://www.bbxiaoqu.com/getuserinfo.php?userid="+this.userid;
+	    	String target =  "http://api.bbxiaoqu.com/getuserinfo.php?userid="+this.userid;
 			HttpPost httprequest = new HttpPost(target);
 			try {
 				//httprequest.setEntity(new UrlEncodedFormEntity(null,"UTF-8"));

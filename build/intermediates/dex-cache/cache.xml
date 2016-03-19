@@ -2,18 +2,11 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\dzy\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.2.4\a60a5e993c98c864010053cb901b7eab25306568\gson-2.2.4.jar"
+        jar="F:\AndroidStudio\workspace\bbm\src\main\jniLibs\VoiceRecognition.jar"
         jumboMode="false"
         revision="20.0.0"
-        sha1="a60a5e993c98c864010053cb901b7eab25306568">
-        <dex dex="F:\AndroidStudio\workspace\bbm\build\intermediates\pre-dexed\debug\gson-2.2.4-cf239e4b44d436a7f3fc7876af123b4df5a55319.jar" />
-    </item>
-    <item
-        jar="F:\AndroidStudio\workspace\bbm\libs\pushservice-4.6.2.39.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="c3dbe0fdd31a38b3defc63f78f8fccabd50e2ddd">
-        <dex dex="F:\AndroidStudio\workspace\bbm\build\intermediates\pre-dexed\debug\pushservice-4.6.2.39-54ed21455189fe93634fc10143ca5a544fe678ed.jar" />
+        sha1="99844d9e4943e9f0d59e94423ec9c2cef5d36db8">
+        <dex dex="F:\AndroidStudio\workspace\bbm\build\intermediates\pre-dexed\release\VoiceRecognition-692315bb7f098d241c7d82097dbec64080d3a2d8.jar" />
     </item>
 
 </items>

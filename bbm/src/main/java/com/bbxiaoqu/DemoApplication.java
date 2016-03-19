@@ -25,9 +25,11 @@ import android.app.Application;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.app.Service;
 import android.content.Intent;
 import android.content.res.Resources.Theme;
 import android.os.Handler;
+import android.os.Vibrator;
 import android.util.Log;
 import android.widget.RemoteViews;
 
@@ -51,7 +53,6 @@ import com.nostra13.universalimageloader.core.decode.BaseImageDecoder;
 import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 import com.nostra13.universalimageloader.utils.StorageUtils;
-
 public class DemoApplication extends Application {
 
 	static DemoApplication mApplication;
@@ -127,6 +128,8 @@ public class DemoApplication extends Application {
 		CrashHandler.getInstance().init(this);
 	    Log.v(TAG, "application created");
 		// 在使用 SDK 各组间之前初始化 context 信息，传入 ApplicationContext
+
+
 		SDKInitializer.initialize(this);
 
 		File cacheDir = StorageUtils.getCacheDirectory(this); // 缓存文件夹路径
@@ -333,40 +336,68 @@ public class DemoApplication extends Application {
 	XMPPConnection connection=null;
 	ChatManager cm=null;
 	public void startxmpp() {
-		//new Thread(xmppstartRun).start();
-		try {
+		new Thread(xmppstartRun).start();
+		/*try {
 			connection=XmppTool.getConnection();
-			if (connection.isConnected() && !connection.isAuthenticated())
-			{
-				connection.login(getUserId(), getPassword());
-			}
-			cm = connection.getChatManager();    //取得聊天管理器
-			if(cm.getChatListeners().size()==0) {
-				cm.addChatListener(new ChatListener(mApplication));
+			if(connection!=null) {
+				if (connection.isConnected() && !connection.isAuthenticated()) {
+					connection.login(getUserId(), getPassword());
+				}
+				cm = connection.getChatManager();    //取得聊天管理器
+				if (cm.getChatListeners().size() == 0) {
+					cm.addChatListener(new ChatListener(mApplication));
+				}
 			}
 		} catch (XMPPException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-		}
+		}*/
+
+		/*new Thread(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					XMPPConnection connection=XmppTool.getInstance(mApplication).getConnection();
+					if (connection.isConnected() && !connection.isAuthenticated())
+					{
+						connection.login(getUserId(), getPassword());
+					}
+					ChatManager cm = connection.getChatManager();    //取得聊天管理器
+
+					cm.addChatListener(new ChatListener(mApplication));
+
+				} catch (XMPPException e) {
+					XmppTool.getInstance(mApplication).closeConnection();
+				}
+			}
+		}).start();*/
 	}
 
 	Runnable xmppstartRun = new Runnable() {
 		@Override
 		public void run() {
-			try {
-				XMPPConnection connection=XmppTool.getConnection();
-				if (connection.isConnected() && !connection.isAuthenticated()) 
-				{
-					connection.login(getUserId(), getPassword());
-				}
-				ChatManager cm = connection.getChatManager();    //取得聊天管理器
+			connection=XmppTool.getInstance(mApplication).getConnection();
+			XmppTool.getInstance(mApplication).login();
 
-					cm.addChatListener(new ChatListener(mApplication));
+		}
+			/*try {
+				connection=XmppTool.getInstance(mApplication).getConnection();
+				if(connection!=null) {
+					if (connection.isConnected() && !connection.isAuthenticated()) {
+						String a = getUserId();
+						String b = getPassword();
+						XmppTool.getInstance(mApplication).getConnection().login(a, b);
+					}
+					cm = connection.getChatManager();    //取得聊天管理器
+					if (cm.getChatListeners().size() == 0) {
+						cm.addChatListener(new ChatListener(mApplication));
+					}
+				}
 			} catch (XMPPException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}		
-		}
+		}*/
 	};
 
 	public void updatelocation() {

@@ -202,12 +202,12 @@ public class MyinfosActivity extends Activity  implements OnRefreshListener,OnLo
 			dataList.clear();
 			int start=0;
 			int limit=10;						
-			url="http://www.bbxiaoqu.com/getinfos.php?userid="+myapplication.getUserId()+"&rang=self&start="+start+"&limit="+limit;						
+			url="http://api.bbxiaoqu.com/getinfos.php?userid="+myapplication.getUserId()+"&rang=self&start="+start+"&limit="+limit;
 		}else
 		{
 			int start=dataList.size() ;
 			int limit=10;						
-			url="http://www.bbxiaoqu.com/getinfos.php?userid="+myapplication.getUserId()+"&rang=self&start="+start+"&limit="+limit;						
+			url="http://api.bbxiaoqu.com/getinfos.php?userid="+myapplication.getUserId()+"&rang=self&start="+start+"&limit="+limit;
 		}
 		HttpGet httprequest = new HttpGet(url);
 		HttpClient HttpClient1 = new DefaultHttpClient();

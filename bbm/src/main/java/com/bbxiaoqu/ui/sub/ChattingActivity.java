@@ -41,6 +41,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.StrictMode;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -125,6 +126,10 @@ public class ChattingActivity extends Activity implements onNewMessageListener
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
+		if (android.os.Build.VERSION.SDK_INT > 9) {
+			StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+			StrictMode.setThreadPolicy(policy);
+		}
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.main_chatting);
 		BbPushMessageReceiver.msgListeners.add(this);//新消息
@@ -146,7 +151,8 @@ public class ChattingActivity extends Activity implements onNewMessageListener
 		}		
 		new Thread(loaduserinfo).start();
 		new Thread(ajaxloadinfo).start();
-		myapplication.getInstance().startxmpp();
+
+		new Thread(xmpprunnable).start();
 		//清掉通知里的消息
 		ChatDB cdb=new ChatDB(ChattingActivity.this);
 		cdb.readchat(from, myself);//标记已读
@@ -154,7 +160,32 @@ public class ChattingActivity extends Activity implements onNewMessageListener
 		NoticeDB ndb=new NoticeDB(ChattingActivity.this);
 		ndb.delnotice(from, "私信");//从通知栏删除
 	}
-	
+
+	Runnable xmpprunnable = new Runnable(){
+		@Override
+		public void run() {
+			// TODO: http request.
+			Message msg = new Message();
+			msg.what=1;
+			handler.sendMessage(msg);
+		}
+	};
+
+	Handler handler = new Handler(){
+		@Override
+		public void handleMessage(Message msg) {
+			super.handleMessage(msg);
+			if(msg.what==1) {
+				if (!NetworkUtils.isNetConnected(myapplication)) {
+					T.showShort(myapplication, "当前无网络连接！");
+					return;
+				}
+				myapplication.getInstance().startxmpp();
+			}
+		}
+	};
+
+
 	private JSONObject jsonobject;//通过GUID获取的消息
 	Runnable ajaxloadinfo = new Runnable() {
 		@Override

@@ -18,11 +18,7 @@ import com.bbxiaoqu.R;
 import com.bbxiaoqu.ui.sub.SettingsActivity;
 import com.bbxiaoqu.view.BaseActivity;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.tencent.mm.sdk.openapi.IWXAPI;
-import com.tencent.mm.sdk.openapi.SendMessageToWX;
-import com.tencent.mm.sdk.openapi.WXAPIFactory;
-import com.tencent.mm.sdk.openapi.WXMediaMessage;
-import com.tencent.mm.sdk.openapi.WXWebpageObject;
+
 
 import android.app.Activity;
 import android.content.Intent;
@@ -48,7 +44,7 @@ public class AboutActivity extends BaseActivity {
 	TextView right_text;
 	ImageView top_more;
 	ImageView qr_android;
-	private IWXAPI wxApi; 
+	//private IWXAPI wxApi;
 	// Bitmap bitmap=null;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -56,17 +52,17 @@ public class AboutActivity extends BaseActivity {
 		setContentView(R.layout.activity_about);	
 		initView();
 		initData();
-		wxApi = WXAPIFactory.createWXAPI(this, Constants.APP_ID);  
-	    wxApi.registerApp(Constants.APP_ID); 
+		//wxApi = WXAPIFactory.createWXAPI(this, Constants.APP_ID);
+	    //wxApi.registerApp(Constants.APP_ID);
 		qr_android =(ImageView)findViewById(R.id.qr_android);
-		 String url = "http://www.bbxiaoqu.com/wap/qr_android.png"; 
+		 String url = "http://api.bbxiaoqu.com/wap/qr_android.png";
 		 ImageLoader.getInstance().displayImage(url, qr_android, ImageOptions.getOptions());  
 		 
 		 qr_android.setDrawingCacheEnabled(true);
  		 qr_android.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Uri uri = Uri.parse("http://www.bbxiaoqu.com/wap/index.php");  
+				Uri uri = Uri.parse("http://api.bbxiaoqu.com/wap/index.php");
 				Intent it = new Intent(Intent.ACTION_VIEW, uri);  
 				startActivity(it);
 			}

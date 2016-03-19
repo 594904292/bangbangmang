@@ -128,5 +128,8 @@
 	<dimen name="font_size_l">18sp</dimen>
 	<dimen name="font_size_m">15sp</dimen>
 	<dimen name="font_size_s">12sp</dimen>
-    
+
+
+
+
 </resources>

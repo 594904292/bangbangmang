@@ -32,13 +32,13 @@ import com.bbxiaoqu.view.BaseActivity;
 public class XmppTool {
 
 	
-	private static XmppTool instance = null;      
+	private static XmppTool instance = null;
 	private static Context mContext;
     private static XMPPConnection con = null;
     private static ViConnectionListener connectionListener=null;
     private static ChatListener chatlistener = null;
     
-	   protected XmppTool(Context context) {      
+	   protected XmppTool(Context context) {
 		   mContext = context;// Exists only to defeat instantiation.      
 	   }      
 	   public static XmppTool getInstance(Context context) {      
@@ -46,11 +46,11 @@ public class XmppTool {
 	         instance = new XmppTool(context);      
 	      }      
 	      return instance;      
-	   }      
+	   }
 	
     private static void openConnection() {
-        
-    	if (NetworkUtils.isNetConnected(DemoApplication.getInstance())) 
+
+    	if (NetworkUtils.isNetConnected(DemoApplication.getInstance()))
     	{
             ConnectionConfiguration connConfig = new ConnectionConfiguration(DemoApplication.getInstance().xmpphost, DemoApplication.getInstance().xmppport);
             connConfig.setReconnectionAllowed(false);//要么就不用自己实现重连操作。
@@ -94,7 +94,7 @@ public class XmppTool {
     	}
         return con;
     }
-    
+	static ChatManager cm = null;
     public static void login() {
 		if(con!=null&&con.isConnected())
         {
@@ -109,8 +109,10 @@ public class XmppTool {
 							Presence presence = new Presence(Presence.Type.available);
 							con.sendPacket(presence);//在线
 							
-							ChatManager cm = con.getChatManager(); // 取得聊天管理器
-							cm.addChatListener(chatlistener);
+							cm = con.getChatManager(); // 取得聊天管理器
+							if(cm.getChatListeners().size()==0) {
+								cm.addChatListener(chatlistener);
+							}
 						}
 					} catch (IllegalStateException e) {
 						// TODO Auto-generated catch block
@@ -140,14 +142,14 @@ public class XmppTool {
     
    
     
-    /** 
+    /**
      * 获取好友列表 
      *  
      * @param username 
      * @param pass 
      * @return 
      * @throws XMPPException 
-     */  
+     */
     public List<RosterEntry> getRosterList(String username, String pass)  
             throws XMPPException {  
         con = XmppTool.getInstance(mContext).getConnection();  
@@ -162,14 +164,14 @@ public class XmppTool {
         return null;  
     }  
   
-    /** 
+    /**
      * 获取用户列表（含组信息） 
      *  
      * @param username 
      * @param pass 
      * @return 
      * @throws XMPPException 
-     */  
+     */
     public List<RosterEntry> getRoster(String username, String pass)  
             throws XMPPException {  
         con = XmppTool.getInstance(mContext).getConnection();  
@@ -183,7 +185,7 @@ public class XmppTool {
             EntriesList.add(i.next());  
         }  
         return EntriesList;  
-    }  
+    }
     
  
 }

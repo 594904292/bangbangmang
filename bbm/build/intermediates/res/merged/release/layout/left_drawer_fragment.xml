@@ -95,13 +95,13 @@
 
                 <TextView
                     style="@style/left_drawer_item_text"
-                    android:drawableLeft="@drawable/ic_drawer_pgc"
+                    android:drawableLeft="@drawable/ic_drawer_feedback"
                      android:textColor="@color/left_drawer_item_text"
                     android:text="好友列表" />
             </RelativeLayout>
             
             
-            	<ImageView style="@style/left_drawer_item_line" />
+            	<!--ImageView style="@style/left_drawer_item_line" />
             <RelativeLayout
                 android:id="@+id/feedback_btn"
                 style="@style/left_drawer_item_layout" >
@@ -111,7 +111,7 @@
                     android:drawableLeft="@drawable/ic_drawer_feedback"
                      android:textColor="@color/left_drawer_item_text"
                     android:text="我的求助" />
-            </RelativeLayout>
+            </RelativeLayout-->
             
             <ImageView style="@style/left_drawer_item_line" />
             <RelativeLayout

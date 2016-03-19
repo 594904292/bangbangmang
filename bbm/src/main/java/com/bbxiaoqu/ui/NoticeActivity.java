@@ -40,6 +40,7 @@ import com.bbxiaoqu.ui.sub.InfoGzActivity.ViewHolder;
 import com.bbxiaoqu.view.BaseActivity;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -83,8 +84,7 @@ public class NoticeActivity extends BaseActivity {
 		myapplication = (DemoApplication) this.getApplication();
 		xiaoquService = new XiaoquService(this);
 		
-		/*ProgressDataInitAsyncTask task=new ProgressDataInitAsyncTask();//初始化数据
-		task.execute(1000);*/
+
 		
 		lstv = (ListView) findViewById(R.id.lvnotice);
 		lstv.setOnItemClickListener(new OnItemClickListener(){
@@ -93,7 +93,8 @@ public class NoticeActivity extends BaseActivity {
 					int location, long arg3) {		
 				//T.showShort(NoticeActivity.this, dataList.get(location).get("relativeid").toString());
 				if(dataList.get(location).get("catagory").toString().equals("评论"))
-				{					
+				{
+					rnotice(dataList.get(location).get("relativeid").toString());
 					Intent Intent1 = new Intent();
 					Intent1.setClass(NoticeActivity.this, ViewActivity.class);
 					Bundle arguments = new Bundle();
@@ -103,6 +104,7 @@ public class NoticeActivity extends BaseActivity {
 					startActivity(Intent1);
 				}else if(dataList.get(location).get("catagory").toString().equals("消息"))
 				{
+					rnotice(dataList.get(location).get("relativeid").toString());
 					Intent Intent1 = new Intent();
 					Intent1.setClass(NoticeActivity.this, ViewActivity.class);
 					Bundle arguments = new Bundle();
@@ -112,6 +114,7 @@ public class NoticeActivity extends BaseActivity {
 					startActivity(Intent1);
 				}else if(dataList.get(location).get("catagory").toString().equals("服务"))
 				{
+					rnotice(dataList.get(location).get("relativeid").toString());
 					Intent Intent1 = new Intent();
 					Intent1.setClass(NoticeActivity.this, ViewFwActivity.class);
 					Bundle arguments = new Bundle();
@@ -121,7 +124,7 @@ public class NoticeActivity extends BaseActivity {
 					startActivity(Intent1);
 				}else if(dataList.get(location).get("catagory").toString().equals("私信"))
 				{
-					
+					rnotice(dataList.get(location).get("relativeid").toString());
 					Intent intent = new Intent(NoticeActivity.this,ChattingActivity.class);
 					
 					Bundle arguments = new Bundle();
@@ -133,6 +136,7 @@ public class NoticeActivity extends BaseActivity {
 				}
 				else if(dataList.get(location).get("catagory").toString().equals("订单"))
 				{
+					rnotice(dataList.get(location).get("relativeid").toString());
 					Intent intent = new Intent(NoticeActivity.this,ChattingActivity.class);
 					System.out.println("订单跳到对应的guidViewActivity");
 					
@@ -181,13 +185,24 @@ public class NoticeActivity extends BaseActivity {
 	    getData() ;      
 	    lstv.setAdapter(adapter);
 	}
-	
+
+	public void rnotice(String relativeid)
+	{
+		DatabaseHelper dbHelper=new DatabaseHelper(this);
+		SQLiteDatabase sdb = dbHelper.getReadableDatabase();
+		ContentValues cv = new ContentValues();
+		cv.put("readed" , 1);
+		String[] args = {String.valueOf(relativeid)};
+		sdb.update("notice", cv, "relativeid=?" ,args);
+		sdb.close();
+	}
+
 	private void getData() {
 		
 		DatabaseHelper dbHelper=new DatabaseHelper(this);
 		SQLiteDatabase sdb = dbHelper.getReadableDatabase();
 		String sql="";
-		sql = "select * from  [notice] order by date  desc limit 0,10";
+		sql = "select * from  [notice] where readed=0 order by date  desc limit 0,10";
 			Cursor c = sdb.rawQuery(sql, null);
 			while (c.moveToNext()) {				
 				//Message message = new Message(to,to,System.currentTimeMillis(), str);

@@ -39,7 +39,6 @@ import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.baidu.location.LocationClientOption.LocationMode;
 import com.baidu.voicerecognition.android.ui.BaiduASRDigitalDialog;
-import com.baidu.voicerecognition.android.ui.DialogRecognitionListener;
 import com.bbxiaoqu.DemoApplication;
 import com.bbxiaoqu.R;
 import com.bbxiaoqu.adapter.ListViewAdapter;
@@ -306,7 +305,7 @@ public class SearchActivity extends Activity{
 		//String keyword=etSearch.getText().toString();
 		//myapplication.getLat(),myapplication.getLng()
 				//+"&latitude="+latitude+"&longitude="+longitude+"
-		url="http://www.bbxiaoqu.com/getinfos.php?userid="+myapplication.getUserId()+"&latitude="+myapplication.getLat()+"&longitude="+myapplication.getLng()+"&rang=xiaoqu&keyword="+keyword+"&start="+start+"&limit="+limit;
+		url="http://api.bbxiaoqu.com/getinfos.php?userid="+myapplication.getUserId()+"&latitude="+myapplication.getLat()+"&longitude="+myapplication.getLng()+"&rang=xiaoqu&keyword="+keyword+"&start="+start+"&limit="+limit;
 					
 		HttpGet httprequest = new HttpGet(url);
 		HttpClient HttpClient1 = new DefaultHttpClient();

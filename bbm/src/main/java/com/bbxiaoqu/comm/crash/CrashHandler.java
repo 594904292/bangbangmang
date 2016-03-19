@@ -47,7 +47,7 @@ public class CrashHandler implements UncaughtExceptionHandler{
 	 *  服务器的地址，根据自己的情况进行更改
 	 *  
 	 * */
-	private static final String uploadUrl = "http://www.bbxiaoqu.com/api/ReceiveCrash.php";
+	private static final String uploadUrl = "http://api.bbxiaoqu.com/api/ReceiveCrash.php";
 
 	/**
 	 * localFileUrl

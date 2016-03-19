@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="pushservice-4.6.2.39">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/bbm/libs/pushservice-4.6.2.39.jar!/" />
+      <root url="jar://$PROJECT_DIR$/bbm/src/main/jniLibs/pushservice-4.6.2.39.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

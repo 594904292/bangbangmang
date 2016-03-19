@@ -36,7 +36,6 @@ import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.baidu.location.LocationClientOption.LocationMode;
 import com.baidu.voicerecognition.android.ui.BaiduASRDigitalDialog;
-import com.baidu.voicerecognition.android.ui.DialogRecognitionListener;
 import com.bbxiaoqu.DemoApplication;
 import com.bbxiaoqu.R;
 import com.bbxiaoqu.comm.tool.CustomerHttpClient;
@@ -138,8 +137,6 @@ public class PublishFwActivity extends Activity implements OnClickListener {
 	private TextView pbtip;
 	private TextView pbtip1;
 	private BaiduASRDigitalDialog mDialog = null;
-	private DialogRecognitionListener mRecognitionListener;
-	private int mCurrentTheme = Config.DIALOG_THEME;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -244,17 +241,7 @@ public class PublishFwActivity extends Activity implements OnClickListener {
 
 		mCurrent = 0;
 		init_imgui();
-		 mRecognitionListener = new DialogRecognitionListener() {
 
-	            @Override
-	            public void onResults(Bundle results) {
-	                ArrayList<String> rs = results != null ? results
-	                        .getStringArrayList(RESULTS_RECOGNITION) : null;
-	                if (rs != null && rs.size() > 0) {
-	                	content_edit.setText(rs.get(0));
-	                }
-	            }
-	        };
 	}
 
 	String[] tag;
@@ -730,9 +717,7 @@ public class PublishFwActivity extends Activity implements OnClickListener {
 
 	@Override
 	public void onDestroy() {
-		 if (mDialog != null) {
-	            mDialog.dismiss();
-	        }
+
 		super.onDestroy();
 	}
 
@@ -803,27 +788,6 @@ public class PublishFwActivity extends Activity implements OnClickListener {
 	    public void onClick(View v) {
 	        switch (v.getId()) {
 	            case R.id.yybtn:
-	            	content_edit.setText(null);
-//	                if (mDialog == null || mCurrentTheme != Config.DIALOG_THEME) {
-	                    mCurrentTheme = Config.DIALOG_THEME;
-	                    if (mDialog != null) {
-	                        mDialog.dismiss();
-	                    }
-	                    Bundle params = new Bundle();
-	                    params.putString(BaiduASRDigitalDialog.PARAM_API_KEY, Constants.API_KEY);
-	                    params.putString(BaiduASRDigitalDialog.PARAM_SECRET_KEY, Constants.SECRET_KEY);
-	                    params.putInt(BaiduASRDigitalDialog.PARAM_DIALOG_THEME, Config.DIALOG_THEME);
-	                    mDialog = new BaiduASRDigitalDialog(this, params);
-	                    mDialog.setDialogRecognitionListener(mRecognitionListener);
-//	                }
-	                mDialog.getParams().putInt(BaiduASRDigitalDialog.PARAM_PROP, Config.CURRENT_PROP);
-	                mDialog.getParams().putString(BaiduASRDigitalDialog.PARAM_LANGUAGE,
-	                        Config.getCurrentLanguage());
-	                Log.e("DEBUG", "Config.PLAY_START_SOUND = "+Config.PLAY_START_SOUND);
-	                mDialog.getParams().putBoolean(BaiduASRDigitalDialog.PARAM_START_TONE_ENABLE, Config.PLAY_START_SOUND);
-	                mDialog.getParams().putBoolean(BaiduASRDigitalDialog.PARAM_END_TONE_ENABLE, Config.PLAY_END_SOUND);
-	                mDialog.getParams().putBoolean(BaiduASRDigitalDialog.PARAM_TIPS_TONE_ENABLE, Config.DIALOG_TIPS_SOUND);
-	                mDialog.show();
 	                break;	         
 	            default:
 	                break;

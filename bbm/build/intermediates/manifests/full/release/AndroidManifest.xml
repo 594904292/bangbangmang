@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.bbxiaoqu"
-    android:versionCode="7"
-    android:versionName="1.20160217" >
+    android:versionCode="9"
+    android:versionName="1.20160319" >
 
     <uses-sdk
         android:minSdkVersion="14"
@@ -18,7 +18,6 @@
     <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
     <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" >
     </uses-permission>
@@ -47,11 +46,36 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <!-- Push service 运行需要的权限 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="false"
+        android:resizeable="true"
+        android:smallScreens="true" />
 
     <application
         android:name="com.bbxiaoqu.DemoApplication"
@@ -83,12 +107,26 @@
             android:windowSoftInputMode="stateVisible|adjustResize" >
         </activity>
         <activity
+            android:name="com.bbxiaoqu.ui.SearchPassActivity"
+            android:label="找回密码"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateVisible|adjustResize" >
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.ui.ResetPassActivity"
+            android:label="重置密码"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateVisible|adjustResize" >
+        </activity>
+        <activity
             android:name="com.bbxiaoqu.ui.sub.SelectPhotoActivity"
             android:screenOrientation="portrait"
             android:theme="@style/DialogStyleBottom" >
         </activity>
         <activity
-            android:name="com.bbxiaoqu.ui.RegisterActivity"
+            android:name="com.bbxiaoqu.ui.user.RegisterActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name" >
         </activity>
@@ -153,12 +191,12 @@
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name="com.bbxiaoqu.ui.sub.UserInfoActivity"
+            android:name="com.bbxiaoqu.ui.user.UserInfoActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name="com.bbxiaoqu.ui.sub.UserInfoViewActivity"
+            android:name="com.bbxiaoqu.ui.user.UserInfoViewActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name" >
         </activity>
@@ -274,6 +312,42 @@
             android:theme="@style/myDialogTheme"
             android:windowSoftInputMode="adjustPan" >
         </activity>
+        <activity
+            android:name="com.bbxiaoqu.ui.report.DayActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.ui.report.WeekActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.ui.report.MonthActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.ui.Setting"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.ui.ApiActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.ui.ActivityTouch"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
         <!-- 后台服务 -->
 
         <service android:name="com.bbxiaoqu.update.UpdateService" >
@@ -309,6 +383,11 @@
         -->
 
 
+        <!-- 4.6版本新增的Activity声明，提升Push后台存活率 -->
+        <activity
+            android:name="com.baidu.android.pushservice.PushKeepAlive"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
         <!-- push应用定义消息receiver声明 -->
         <receiver android:name="com.bbxiaoqu.client.baidu.BbPushMessageReceiver" >
             <intent-filter>
@@ -317,11 +396,13 @@
                 <action android:name="com.baidu.android.pushservice.action.MESSAGE" />
                 <!-- 接收bind,unbind,fetch,delete等反馈消息 -->
                 <action android:name="com.baidu.android.pushservice.action.RECEIVE" />
+                <!-- 接收通知点击事件，和通知自定义内容 -->
                 <action android:name="com.baidu.android.pushservice.action.notification.CLICK" />
             </intent-filter>
         </receiver>
 
         <!-- push必须的receviver和service声明 -->
+
         <receiver
             android:name="com.baidu.android.pushservice.PushServiceReceiver"
             android:process=":bdservice_v1" >
@@ -359,6 +440,7 @@
                 <action android:name="com.baidu.android.pushservice.action.PUSH_SERVICE" />
             </intent-filter>
         </service>
+        <!-- 4.4版本新增的CommandService声明，提升小米和魅族手机上的实际推送到达率 -->
         <service
             android:name="com.baidu.android.pushservice.CommandService"
             android:exported="true" />
@@ -385,7 +467,11 @@
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="a9iBkVoUQAH78XCTnLdL6PoY" />
 
-        <!-- begin: baidu 语音 sdk -->
+        <!-- begin: baidu speech sdk -->
+        <!-- 请填写真实的APP_ID API_KEY SECRET_KEY -->
+        <meta-data
+            android:name="com.baidu.speech.APP_ID"
+            android:value="6698096" />
         <meta-data
             android:name="com.baidu.speech.API_KEY"
             android:value="a9iBkVoUQAH78XCTnLdL6PoY" />
@@ -409,15 +495,12 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <!--
- ATTENTION: This was auto-generated to add Google Play services to your project for
-     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
-        -->
+
+        <!-- end : baidu speech sdk -->
+
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-        <!-- end : baidu speech sdk -->
-
     </application>
 
 </manifest>

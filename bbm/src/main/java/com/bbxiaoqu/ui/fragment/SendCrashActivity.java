@@ -35,7 +35,7 @@ public class SendCrashActivity extends BaseActivity {
 	Button upload_btn;
 	Button return_btn;
 	private static String localFileUrl = "";
-	private static final String uploadUrl = "http://www.bbxiaoqu.com/api/ReceiveCrash.php";
+	private static final String uploadUrl = "http://api.bbxiaoqu.com/api/ReceiveCrash.php";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
