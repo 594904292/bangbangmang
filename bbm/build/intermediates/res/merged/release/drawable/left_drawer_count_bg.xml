@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="oval"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#ffffffff" />
-</shape><!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/drawable/left_drawer_count_bg.xml -->

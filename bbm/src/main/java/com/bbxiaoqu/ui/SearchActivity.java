@@ -38,7 +38,6 @@ import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.baidu.location.LocationClientOption.LocationMode;
-import com.baidu.voicerecognition.android.ui.BaiduASRDigitalDialog;
 import com.bbxiaoqu.DemoApplication;
 import com.bbxiaoqu.R;
 import com.bbxiaoqu.adapter.ListViewAdapter;

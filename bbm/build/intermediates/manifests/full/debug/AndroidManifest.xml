@@ -6,7 +6,7 @@
 
     <uses-sdk
         android:minSdkVersion="14"
-        android:targetSdkVersion="22" />
+        android:targetSdkVersion="19" />
     <!-- Push service 运行需要的权限 -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -47,8 +47,8 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
-    <uses-permission android:name="android.permission.BROADCAST_STICKY " />
-    <uses-permission android:name="android.permission.BLUETOOTH " />
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -76,6 +76,13 @@
         android:normalScreens="false"
         android:resizeable="true"
         android:smallScreens="true" />
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name="com.bbxiaoqu.DemoApplication"
@@ -495,8 +502,44 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <!-- end : baidu speech sdk -->
+
+
+        <!--
+        activity
+            android:name="com.bbxiaoqu.voicedemo.ActivityMain"
+            android:configChanges="orientation|keyboardHidden|screenLayout"
+            android:theme="@android:style/Theme.DeviceDefault.Light"
+            android:screenOrientation="portrait">
+
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.voicedemo.ApiActivity"
+            android:configChanges="orientation|keyboardHidden|screenLayout"
+            android:theme="@android:style/Theme.DeviceDefault.Light"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name="com.bbxiaoqu.voicedemo.ActivityTouch"
+            android:configChanges="orientation|keyboardHidden|screenLayout"
+            android:theme="@android:style/Theme.DeviceDefault.Light"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name="com.bbxiaoqu.voicedemo.Setting"
+            android:label="设置"
+            android:configChanges="orientation|keyboardHidden|screenLayout"
+            android:theme="@android:style/Theme.DeviceDefault.Light"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="com.baidu.speech.asr.demo.setting" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity
+        -->
+
+        <uses-library android:name="android.test.runner" />
 
         <meta-data
             android:name="com.google.android.gms.version"

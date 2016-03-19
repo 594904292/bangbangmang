@@ -74,7 +74,6 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/manifests" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/pre-dexed" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/release" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/res" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/rs" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/symbols" />
@@ -85,24 +84,18 @@
     <orderEntry type="jdk" jdkName="Android API 19 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="android-async-http-1.4.4" level="project" />
-    <orderEntry type="library" exported="" name="android-support-v4" level="project" />
     <orderEntry type="library" exported="" name="baidumapapi_util_v3_7_0" level="project" />
     <orderEntry type="library" exported="" name="VoiceRecognition" level="project" />
-    <orderEntry type="library" exported="" name="1_VoiceRecognition" level="project" />
     <orderEntry type="library" exported="" name="baidumapapi_search_v3_7_0" level="project" />
     <orderEntry type="library" exported="" name="gson-2.2.4" level="project" />
     <orderEntry type="library" exported="" name="play-services-appindexing-8.1.0" level="project" />
     <orderEntry type="library" exported="" name="baidumapapi_map_v3_7_0" level="project" />
     <orderEntry type="library" exported="" name="smackx" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-22.2.0" level="project" />
-    <orderEntry type="library" exported="" name="baidumapapi_radar_v3_7_0" level="project" />
     <orderEntry type="library" exported="" name="crittercism_v3_0_3_sdkonly" level="project" />
-    <orderEntry type="library" exported="" name="BaiduLBS_Android" level="project" />
     <orderEntry type="library" exported="" name="locSDK_6.13" level="project" />
-    <orderEntry type="library" exported="" name="VoiceRecognition-2.0.1" level="project" />
     <orderEntry type="library" exported="" name="pushservice-4.6.2.39" level="project" />
     <orderEntry type="library" exported="" name="play-services-basement-8.1.0" level="project" />
-    <orderEntry type="library" exported="" name="baidumapapi_cloud_v3_7_0" level="project" />
     <orderEntry type="library" exported="" name="smack" level="project" />
     <orderEntry type="library" exported="" name="support-v4-22.2.0" level="project" />
     <orderEntry type="library" exported="" name="universal-image-loader-1.9.4" level="project" />

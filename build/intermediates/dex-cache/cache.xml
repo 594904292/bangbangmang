@@ -2,11 +2,130 @@
 <items version="2" >
 
     <item
+        jar="F:\AndroidStudio\workspace\bbm\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="F:\AndroidStudio\workspace\bbm\build\intermediates\pre-dexed\debug\classes-55d3c4f66f791e2dc6885f23b23686a5a06f6ec6.jar" />
+    </item>
+    <item
+        jar="F:\AndroidStudio\workspace\bbm\build\intermediates\exploded-aar\workspace\slidingmenu_library\unspecified\jars\classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="6290e9ce07475d668a694c0cecc3ccc6e716febb">
+        <dex dex="F:\AndroidStudio\workspace\bbm\build\intermediates\pre-dexed\debug\classes-4172d6efe57d89a8354932cc39528b5997f51d6a.jar" />
+    </item>
+    <item
+        jar="C:\Users\dzy\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.2.4\a60a5e993c98c864010053cb901b7eab25306568\gson-2.2.4.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="a60a5e993c98c864010053cb901b7eab25306568">
+        <dex dex="F:\AndroidStudio\workspace\bbm\build\intermediates\pre-dexed\debug\gson-2.2.4-cf239e4b44d436a7f3fc7876af123b4df5a55319.jar" />
+    </item>
+    <item
+        jar="F:\AndroidStudio\workspace\bbm\libs\universal-image-loader-1.9.4.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="dd9eeb557650c4ad7394df23f0f5cf27a7cfc697">
+        <dex dex="F:\AndroidStudio\workspace\bbm\build\intermediates\pre-dexed\debug\universal-image-loader-1.9.4-9871a961b3d1a53bd4c6deb38544b15ff4fda1ff.jar" />
+    </item>
+    <item
+        jar="F:\AndroidStudio\workspace\bbm\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="d0dda274b703dd9c5bb056867649d22b4171ae7d">
+        <dex dex="F:\AndroidStudio\workspace\bbm\build\intermediates\pre-dexed\debug\classes-6ab18e3bd9048d5413eb4844d01166cff4eb5782.jar" />
+    </item>
+    <item
+        jar="F:\AndroidStudio\workspace\bbm\src\main\jniLibs\locSDK_6.13.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="2cdb37444b41b42e1ce5a8a27e5d3c22e1c57479">
+        <dex dex="F:\AndroidStudio\workspace\bbm\build\intermediates\pre-dexed\debug\locSDK_6.13-3c4177e5e0dbeace6846b2e7b2a81f2ef48d9af2.jar" />
+    </item>
+    <item
+        jar="F:\AndroidStudio\workspace\bbm\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="4477ea44f5ec5ad064022a22691732d7638ff197">
+        <dex dex="F:\AndroidStudio\workspace\bbm\build\intermediates\pre-dexed\debug\classes-c057e077ad337ba4231f35baa915f796d4d6a740.jar" />
+    </item>
+    <item
+        jar="F:\AndroidStudio\workspace\bbm\libs\crittercism_v3_0_3_sdkonly.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="17fd8b2c455671bb79b043fe79fa82846881809f">
+        <dex dex="F:\AndroidStudio\workspace\bbm\build\intermediates\pre-dexed\debug\crittercism_v3_0_3_sdkonly-63a9d4e1903a919850c2b7534ce20d4284d24510.jar" />
+    </item>
+    <item
+        jar="F:\AndroidStudio\workspace\bbm\src\main\jniLibs\baidumapapi_base_v3_7_0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="18e10945278df7f556e2e336a826b0db965dce51">
+        <dex dex="F:\AndroidStudio\workspace\bbm\build\intermediates\pre-dexed\debug\baidumapapi_base_v3_7_0-c239ae87147aa95485e18889aa49dfbfaf3f566b.jar" />
+    </item>
+    <item
+        jar="F:\AndroidStudio\workspace\bbm\src\main\jniLibs\pushservice-4.6.2.39.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="c3dbe0fdd31a38b3defc63f78f8fccabd50e2ddd">
+        <dex dex="F:\AndroidStudio\workspace\bbm\build\intermediates\pre-dexed\debug\pushservice-4.6.2.39-e60c0acb10a78e1aa0ac780c751c129493e1d120.jar" />
+    </item>
+    <item
+        jar="F:\AndroidStudio\workspace\bbm\src\main\jniLibs\baidumapapi_map_v3_7_0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="534f8d224f352bba70229230b79028cab1e7859c">
+        <dex dex="F:\AndroidStudio\workspace\bbm\build\intermediates\pre-dexed\debug\baidumapapi_map_v3_7_0-d7e7ac6dd8c347a4948495bf48eff9bfccc3ec54.jar" />
+    </item>
+    <item
+        jar="F:\AndroidStudio\workspace\bbm\src\main\jniLibs\baidumapapi_util_v3_7_0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="72003ec5efa50c2e02266e1ad7ebefaca7d017d6">
+        <dex dex="F:\AndroidStudio\workspace\bbm\build\intermediates\pre-dexed\debug\baidumapapi_util_v3_7_0-3f46fe88be606c8aa3cb00b24f71b0d4397fde8d.jar" />
+    </item>
+    <item
         jar="F:\AndroidStudio\workspace\bbm\src\main\jniLibs\VoiceRecognition.jar"
         jumboMode="false"
         revision="20.0.0"
         sha1="99844d9e4943e9f0d59e94423ec9c2cef5d36db8">
-        <dex dex="F:\AndroidStudio\workspace\bbm\build\intermediates\pre-dexed\release\VoiceRecognition-692315bb7f098d241c7d82097dbec64080d3a2d8.jar" />
+        <dex dex="F:\AndroidStudio\workspace\bbm\build\intermediates\pre-dexed\debug\VoiceRecognition-692315bb7f098d241c7d82097dbec64080d3a2d8.jar" />
+    </item>
+    <item
+        jar="F:\AndroidStudio\workspace\bbm\libs\smackx.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="bd7557b72511ad3de3f8d1c8d3b336226e116622">
+        <dex dex="F:\AndroidStudio\workspace\bbm\build\intermediates\pre-dexed\debug\smackx-fc2259e3310c9feb135b44fe1ed96e14eeb94496.jar" />
+    </item>
+    <item
+        jar="F:\AndroidStudio\workspace\bbm\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\libs\internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="F:\AndroidStudio\workspace\bbm\build\intermediates\pre-dexed\debug\internal_impl-22.2.0-2e88f22ba13eea8295896b687802a54c71ec9dcf.jar" />
+    </item>
+    <item
+        jar="E:\android-sdks\extras\android\m2repository\com\android\support\support-annotations\22.2.0\support-annotations-22.2.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
+        <dex dex="F:\AndroidStudio\workspace\bbm\build\intermediates\pre-dexed\debug\support-annotations-22.2.0-01bdac2d04a7ca200817ae753d6797afb09ad041.jar" />
+    </item>
+    <item
+        jar="F:\AndroidStudio\workspace\bbm\src\main\jniLibs\baidumapapi_search_v3_7_0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="934d5f6ca26f082fbe8bf17767caa530e37d1dfa">
+        <dex dex="F:\AndroidStudio\workspace\bbm\build\intermediates\pre-dexed\debug\baidumapapi_search_v3_7_0-e4fd8029e834879da1f0dfca88c68a12ec80acd9.jar" />
+    </item>
+    <item
+        jar="F:\AndroidStudio\workspace\bbm\libs\smack.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="6c753d9ee1267d5c95f129575963e62ed49860a1">
+        <dex dex="F:\AndroidStudio\workspace\bbm\build\intermediates\pre-dexed\debug\smack-b8fb67cb512b7e27b86df43f1b19bbbd8d451785.jar" />
     </item>
 
 </items>

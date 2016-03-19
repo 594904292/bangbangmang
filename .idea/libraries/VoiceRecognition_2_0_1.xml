@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="VoiceRecognition-2.0.1">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/bbm/src/main/jniLibs/VoiceRecognition-2.0.1.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

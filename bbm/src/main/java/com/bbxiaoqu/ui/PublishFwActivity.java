@@ -35,7 +35,6 @@ import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.baidu.location.LocationClientOption.LocationMode;
-import com.baidu.voicerecognition.android.ui.BaiduASRDigitalDialog;
 import com.bbxiaoqu.DemoApplication;
 import com.bbxiaoqu.R;
 import com.bbxiaoqu.comm.tool.CustomerHttpClient;
@@ -136,7 +135,7 @@ public class PublishFwActivity extends Activity implements OnClickListener {
 	private ProgressBar pb;
 	private TextView pbtip;
 	private TextView pbtip1;
-	private BaiduASRDigitalDialog mDialog = null;
+	//private BaiduASRDigitalDialog mDialog = null;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
