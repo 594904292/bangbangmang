@@ -18,6 +18,8 @@ import android.util.Pair;
 //观察者类 
 public class SessionManager implements Observer {
 	public static final String P_MARKET_ISLOGIN = "pref.islogin";
+	public static final String P_MARKET_ISNOTIC = "pref.isnotic";
+
 	public static final String P_MARKET_USERNAME = "pref.username";
 	public static final String P_MARKET_PASSWORD = "pref.password";
 	public static final String P_MARKET_HEADFACE = "pref.headface";
@@ -26,6 +28,8 @@ public class SessionManager implements Observer {
 	public static final String P_MARKET_XIAOQUNAME = "pref.xiaoquname";
 	public static final String P_MARKET_LAT = "pref.lat";
 	public static final String P_MARKET_LNG = "pref.lng";
+
+
     private static SessionManager mInstance;
     
     //SharedPreferences是Android中最容易理解的数据存储技术，实际上SharedPreferences处理的就是一个key-value（键值对）SharedPreferences常用来存储一些轻量级的数据。
@@ -108,16 +112,7 @@ public class SessionManager implements Observer {
         }
     }
 	
-//    private void logTaskQueue() {
-//        if (mUpdateQueue != null) {
-//            Log.d("hibenate", " task queue is ");
-//            int length = mUpdateQueue.size();
-//            for (int i = 0; i < length; i++) {
-//                Pair p = mUpdateQueue.get(i);
-//                Log.d("hibenate", "key " + p.first + " value " + p.second);
-//            }
-//        }
-//    }
+
 	
 	/*
 	 * Do Hibernation slowly
@@ -205,7 +200,12 @@ public class SessionManager implements Observer {
 		HashMap<String, Object> data = new HashMap<String, Object>();
 		String islogin=mPreference.getString(P_MARKET_ISLOGIN, null);
 		data.put(P_MARKET_ISLOGIN, islogin);
-		
+
+		String isnotice = mPreference.getString(P_MARKET_ISNOTIC, null);
+		data.put(P_MARKET_ISNOTIC, isnotice);
+
+
+
 		String userid = mPreference.getString(P_MARKET_USERID, null);		
 		data.put(P_MARKET_USERID, userid);
 		String username = mPreference.getString(P_MARKET_USERNAME, null);		
@@ -222,6 +222,7 @@ public class SessionManager implements Observer {
 		data.put(P_MARKET_LAT, lat);
 		String lng = mPreference.getString(P_MARKET_LNG, null);		
 		data.put(P_MARKET_LNG, lng);
+
 
 		return data;
 	}

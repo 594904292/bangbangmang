@@ -20,17 +20,21 @@ import com.bbxiaoqu.R;
 import com.bbxiaoqu.comm.service.User;
 import com.bbxiaoqu.comm.service.db.UserService;
 import com.bbxiaoqu.comm.tool.CustomerHttpClient;
-import com.bbxiaoqu.ui.LoginActivity;
+import com.bbxiaoqu.ui.*;
 import com.bbxiaoqu.view.BaseActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.location.Location;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Message;
+import android.text.Html;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -47,9 +51,11 @@ public class RegisterActivity extends BaseActivity {
 	EditText password_edit;
 	EditText telphone_edit;
 	EditText authoncode_edit;
+	TextView agreement;
 	Button register_btn,btn_verf,login_btn;
 	String pass;
 	String tlephone;
+	String authoncode;
 	private TimeCount time;
 	public ImageView top_more;
 	private TextView title;
@@ -82,15 +88,20 @@ public class RegisterActivity extends BaseActivity {
 
 				pass = password_edit.getText().toString().trim();
 				tlephone = telphone_edit.getText().toString().trim();
-
+				authoncode= authoncode_edit.getText().toString().trim();
+				if(tlephone.equals(""))
+				{
+					Toast.makeText(RegisterActivity.this, "请填写电话号码", Toast.LENGTH_LONG);
+					return;
+				}
 				if(pass.equals(""))
 				{
 					Toast.makeText(RegisterActivity.this, "请填写用户密码", Toast.LENGTH_LONG);
 					return;
 				}
-				if(tlephone.equals(""))
+				if(authoncode.equals(""))
 				{
-					Toast.makeText(RegisterActivity.this, "请填写电话号码", Toast.LENGTH_LONG);
+					Toast.makeText(RegisterActivity.this, "请填写验证码", Toast.LENGTH_LONG);
 					return;
 				}
 				Log.i("TAG", pass + "_" + tlephone);
@@ -128,6 +139,20 @@ public class RegisterActivity extends BaseActivity {
 		telphone_edit = (EditText) findViewById(R.id.tlephoneRegister);
 		authoncode_edit= (EditText) findViewById(R.id.authoncode_edit);
 
+		agreement = (TextView) findViewById(R.id.agreement);
+		agreement.setClickable(true);
+		agreement.setFocusable(true);
+		agreement.setText(Html.fromHtml("<u>帮帮忙用户使用协议</u>"));
+		//agreement.getPaint().setFlags(Paint. UNDERLINE_TEXT_FLAG ); //下划线
+		//agreement.getPaint().setAntiAlias(true);//抗锯齿
+		agreement.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+
+				Intent intent = new Intent(RegisterActivity.this,	AgreementActivity.class);
+				startActivity(intent);
+			}
+		});
 		register_btn = (Button) findViewById(R.id.registerok);
 		btn_verf= (Button) findViewById(R.id.btn_verf);
 		login_btn= (Button) findViewById(R.id.login);

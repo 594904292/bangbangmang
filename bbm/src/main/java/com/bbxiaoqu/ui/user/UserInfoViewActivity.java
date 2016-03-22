@@ -47,7 +47,6 @@ public class UserInfoViewActivity extends BaseActivity implements OnClickListene
 	private TextView username;
 	private TextView age;
 	private TextView community;
-	private TextView gzcommunity_eidt;
 	private TextView telphone;
 	
 	private String sex_str = "1";
@@ -85,7 +84,6 @@ public class UserInfoViewActivity extends BaseActivity implements OnClickListene
 		username = (TextView) findViewById(R.id.username);
 		age = (TextView) findViewById(R.id.age);
 		community = (TextView) findViewById(R.id.community);
-		gzcommunity_eidt= (TextView) findViewById(R.id.gz_community);
 		telphone = (TextView) findViewById(R.id.telphone);
 		save = (Button) findViewById(R.id.save);
 		score_btn  = (Button) findViewById(R.id.score_btn);
@@ -122,9 +120,7 @@ public class UserInfoViewActivity extends BaseActivity implements OnClickListene
 			}
 		});
 		iv_photo = (RoundAngleImageView) findViewById(R.id.iv_photo);
-		XiaoquService xiaoquService = new XiaoquService(this);
-		String names=xiaoquService.allxiaoqu();
-		gzcommunity_eidt.setText(names);
+		
 	}
 
 	private void initData() {

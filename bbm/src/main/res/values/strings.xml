@@ -88,8 +88,8 @@
     <string name="drawer_right_logout_hint_text">"登录后 可关注好友评论和收藏"</string>
     <string name="drawer_right_tip_no_login">未登录</string>
     <string name="ss_have_a_rest">暂无更新, 休息一会儿</string>
-    <string name="action_night_mode">夜间模式</string>
-    <string name="action_day_mode">日间模式</string>
+    <string name="action_open_mode">接收消息</string>
+    <string name="action_close_mode">关闭通知</string>
     <string name="setting_list_mode">列表显示摘要</string>
     <string name="setting_font_size">字体大小</string>
     <string name="setting_list_comment">列表页评论</string>

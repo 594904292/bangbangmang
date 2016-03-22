@@ -125,7 +125,7 @@ public class MapActivity extends Activity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		myapplication = (DemoApplication) this.getApplication();
 		dbHelper = new DatabaseHelper(MapActivity.this);
-		// 注意该方法要再setContentView方法之前实现
+		//注意该方法要再setContentView方法之前实现
 		SDKInitializer.initialize(getApplicationContext());
 		setContentView(R.layout.activity_main_map);
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()

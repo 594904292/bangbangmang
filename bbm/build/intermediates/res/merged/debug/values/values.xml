@@ -594,6 +594,11 @@
     <color name="subscribe_seperate_line_night">#ff464646</color>
     <color name="subscribe_tip_text">#ff2e2e2e</color>
     <item name="subscribe_tip_text_night" type="color">@color/default_text_night</item>
+    <!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/values/style_switch.xml -->
+    <eat-comment/>
+    <color name="switchtextcolor">#FFFFFF</color>
+    <!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/values/colors.xml -->
+    <eat-comment/>
     <color name="system_message_name">#fffe3232</color>
     <color name="system_message_name_night">#ffbc494d</color>
     <color name="tabDark">#ff000000</color>
@@ -651,6 +656,9 @@
     <declare-styleable name="LoadingImageView"><attr format="enum" name="imageAspectRatioAdjust"><enum name="none" value="0"/><enum name="adjust_width" value="1"/><enum name="adjust_height" value="2"/></attr><attr format="float" name="imageAspectRatio"/><attr format="boolean" name="circleCrop"/></declare-styleable>
     <declare-styleable name="RoundAngleImageView"><attr format="dimension" name="roundWidth"/><attr format="dimension" name="roundHeight"/></declare-styleable>
     <declare-styleable name="SlidingMenu"><attr name="mode"><enum name="left" value="0"/><enum name="right" value="1"/></attr><attr format="reference" name="viewAbove"/><attr format="reference" name="viewBehind"/><attr format="dimension" name="behindOffset"/><attr format="dimension" name="behindWidth"/><attr format="float" name="behindScrollScale"/><attr name="touchModeAbove"><enum name="margin" value="0"/><enum name="fullscreen" value="1"/></attr><attr name="touchModeBehind"><enum name="margin" value="0"/><enum name="fullscreen" value="1"/></attr><attr format="reference" name="shadowDrawable"/><attr format="dimension" name="shadowWidth"/><attr format="boolean" name="fadeEnabled"/><attr format="float" name="fadeDegree"/><attr format="boolean" name="selectorEnabled"/><attr format="reference" name="selectorDrawable"/></declare-styleable>
+    <declare-styleable name="SwitchButton"><attr format="reference" name="thumb"/><attr format="reference" name="track"/><attr format="string" name="textOn"/><attr format="string" name="textOff"/><attr format="dimension" name="thumbTextPadding"/><attr format="reference" name="switchTextAppearance"/><attr format="dimension" name="switchMinWidth"/><attr format="dimension" name="switchPadding"/></declare-styleable>
+    <declare-styleable name="Switch_Style"><attr format="reference" name="switchStyle"/></declare-styleable>
+    <declare-styleable name="TextAppearance"><attr format="reference|color" name="textColor"/><attr format="dimension" name="textSize"/><attr name="textStyle"><flag name="normal" value="0"/><flag name="bold" value="1"/><flag name="italic" value="2"/></attr><attr name="typeface"><enum name="normal" value="0"/><enum name="sans" value="1"/><enum name="serif" value="2"/><enum name="monospace" value="3"/></attr><attr format="reference|color" name="textColorHighlight"/><attr format="reference|color" name="textColorHint"/><attr format="reference|color" name="textColorLink"/><attr format="boolean" name="textAllCaps"/></declare-styleable>
     <declare-styleable name="roundedimageview"><attr format="dimension" name="border_thickness"/><attr format="color" name="border_inside_color"/><attr format="color" name="border_outside_color"/></declare-styleable>
     <!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/values/dimens.xml -->
     <eat-comment/>
@@ -800,8 +808,8 @@
     <integer name="num_cols">1</integer>
     <!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/values/strings.xml -->
     <eat-comment/>
-    <string name="action_day_mode">日间模式</string>
-    <string name="action_night_mode">夜间模式</string>
+    <string name="action_close_mode">关闭通知</string>
+    <string name="action_open_mode">接收消息</string>
     <string name="action_settings">Settings</string>
     <string name="app_back">返回</string>
     <string name="app_copyright">© 帮帮忙 bbxiaoqu.com</string>
@@ -1014,6 +1022,12 @@
     <string name="subscribe_manager_category_info_2">单击增删频道，长按拖拽排序</string>
     <string name="subscribe_more_category">更多频道</string>
     <string name="subscribe_my_category">我的频道</string>
+    <!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/values/style_switch.xml -->
+    <eat-comment/>
+    <string name="switch_off"/>
+    <string name="switch_on"/>
+    <!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/values/strings.xml -->
+    <eat-comment/>
     <string name="tags_hint">请输入多个标签，以英文逗号隔开</string>
     <string name="text_about">百度Push Android SDK 4.5.1\n\n更新时间:2015年6月18日\nChange Log：\n去除Frontia等相关内容，集成更加简便。\n增强端上加密和解密能力，升级so文件。\n增加重启保护机制，防止频繁调用接口造成的电量流失。\n增加SDK集成错误的提示和回调。\n解决数个引发崩溃的不常见bug。</string>
     <string name="text_btn_aidl">轻应用AIDL</string>
@@ -1071,6 +1085,22 @@
         <item name="android:backgroundDimEnabled">true</item>
         <!-- 模糊 -->
     </style>
+    <!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/values/style_switch.xml -->
+    <eat-comment/>
+    <style name="Switch">
+        <item name="track">@drawable/switch_btn</item>
+        <item name="thumb">@drawable/switch_btn_slipper</item>
+        <item name="switchTextAppearance">@android:style/TextAppearance.Small</item>
+        <item name="textOn">@string/switch_on</item>
+        <item name="textOff">@string/switch_off</item>
+        <item name="thumbTextPadding">16dip</item>
+        <item name="switchMinWidth">60dip</item>
+        <item name="switchPadding">10dip</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:background">#00FFFFFF</item>
+    </style>
+    <!-- From: file:/F:/AndroidStudio/workspace/bbm/src/main/res/values/styles.xml -->
+    <eat-comment/>
     <style name="TextView10">
 	    <item name="android:textSize">10.0sp</item>
         <item name="android:textColor">@color/gray</item>

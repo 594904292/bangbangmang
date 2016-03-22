@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -19,6 +20,7 @@ import android.widget.TextView;
 import com.bbxiaoqu.DemoApplication;
 import com.bbxiaoqu.ImageOptions;
 import com.bbxiaoqu.R;
+import com.bbxiaoqu.Session;
 import com.bbxiaoqu.ui.sub.FriendsActivity;
 import com.bbxiaoqu.ui.sub.InfoGzActivity;
 import com.bbxiaoqu.ui.sub.MyinfosActivity;
@@ -51,10 +53,15 @@ public class DrawerView implements OnClickListener{
 	private Button bt;
 	private ProgressBar pg;
 	private Handler handler;
+
+	private SwitchButton night_mode_btn;
+	private TextView night_mode_text;
+	protected Session mSession;
 	private DemoApplication myapplication;
 	public DrawerView(Activity activity) {
 		this.activity = activity;
 		myapplication = (DemoApplication) this.activity.getApplication();
+		mSession = Session.get(myapplication);
 	}
 
 	public SlidingMenu initSlidingMenu() {
@@ -91,17 +98,43 @@ public class DrawerView implements OnClickListener{
 	}
 
 	private void initView() {
-		
+
+		night_mode_btn = (SwitchButton)localSlidingMenu.findViewById(R.id.night_mode_btn);
+		night_mode_text = (TextView)localSlidingMenu.findViewById(R.id.night_mode_text);
+		night_mode_btn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				// TODO Auto-generated method stub
+				if(isChecked){
+					night_mode_text.setText(activity.getResources().getString(R.string.action_open_mode));
+					mSession.setIsNotic(true);
+				}else{
+					night_mode_text.setText(activity.getResources().getString(R.string.action_close_mode));
+					mSession.setIsNotic(false);
+				}
+			}
+		});
+		if(mSession.getIsNotic())
+		{
+			night_mode_btn.setChecked(true);
+		}else
+		{
+			night_mode_btn.setChecked(false);
+		}
+
+		if(night_mode_btn.isChecked()){
+			night_mode_text.setText(activity.getResources().getString(R.string.action_open_mode));
+		}else{
+			night_mode_text.setText(activity.getResources().getString(R.string.action_close_mode));
+		}
+
 		userinfo_btn =(RelativeLayout)localSlidingMenu.findViewById(R.id.userinfo_btn);
 		userinfo_btn.setOnClickListener(this);
 		
 		favorite_btn =(RelativeLayout)localSlidingMenu.findViewById(R.id.favorite_btn);
 		favorite_btn.setOnClickListener(this);
-		
-		
-		/*feedback_btn =(RelativeLayout)localSlidingMenu.findViewById(R.id.feedback_btn);
-		feedback_btn.setOnClickListener(this);
-		*/
+
 		message_btn =(RelativeLayout)localSlidingMenu.findViewById(R.id.message_btn);
 		message_btn.setOnClickListener(this);
 		
@@ -109,15 +142,7 @@ public class DrawerView implements OnClickListener{
 		friends_btn.setOnClickListener(this);
 		
 		
-		
-		/*message_btn_my =(RelativeLayout)localSlidingMenu.findViewById(R.id.message_btn_my);
-		message_btn_my.setOnClickListener(this);
 
-		
-		message_btn_bm =(RelativeLayout)localSlidingMenu.findViewById(R.id.message_btn_bm);
-		message_btn_bm.setOnClickListener(this);
-*/
-		
 		setting_btn =(RelativeLayout)localSlidingMenu.findViewById(R.id.setting_btn);
 		setting_btn.setOnClickListener(this);
 		
@@ -153,10 +178,6 @@ public class DrawerView implements OnClickListener{
 				activity.startActivity(new Intent(activity,FriendsActivity.class));				
 				activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 				break;
-		/*	case R.id.feedback_btn:
-				activity.startActivity(new Intent(activity,MyinfosActivity.class));
-				activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-				break;*/
 			case R.id.message_btn:
 				activity.startActivity(new Intent(activity,InfoGzActivity.class));
 				activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);			

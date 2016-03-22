@@ -4,7 +4,10 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -43,7 +46,11 @@ import com.loopj.android.http.RequestParams;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.io.File;
+import java.util.Locale;
+
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -60,12 +67,14 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 public class UserInfoActivity extends BaseActivity implements OnClickListener {
@@ -75,19 +84,17 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 	TextView tv_score;
 	private EditText username;
 	private EditText age;
+	private EditText brithday;
 	private String sex_str = "1";
 	private TextView txt=null;
 	private RadioGroup sex=null;
 	private RadioButton male=null;
 	private RadioButton female=null;
-	
 	private EditText community_eidt;
-	private EditText gzcommunity_eidt;
 	private EditText telphone;
 	Button save;
 	Button score_btn;
 	Button SelCommunityBtn;
-	Button GzCommunityBtn;
 	private String headfacepath = "";
 	private String headfacename = "";
 	private String community_id="";
@@ -108,6 +115,58 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 	private static final int CAMERA_REQUEST_CODE = 1;
 	private static final int RESULT_REQUEST_CODE = 2;
 	UserService uService = new UserService(UserInfoActivity.this);
+
+
+	//获取日期格式器对象
+	DateFormat fmtDateAndTime =  new SimpleDateFormat("yyyy-MM-dd");
+	//定义一个TextView控件对象
+	TextView dateAndTimeLabel = null;
+	//获取一个日历对象
+	Calendar dateAndTime = Calendar.getInstance(Locale.CHINA);
+
+
+	//当点击DatePickerDialog控件的设置按钮时，调用该方法
+	DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener()
+	{
+		@Override
+		public void onDateSet(DatePicker view, int year, int monthOfYear,
+							  int dayOfMonth) {
+			//修改日历控件的年，月，日
+			//这里的year,monthOfYear,dayOfMonth的值与DatePickerDialog控件设置的最新值一致
+			dateAndTime.set(Calendar.YEAR, year);
+			dateAndTime.set(Calendar.MONTH, monthOfYear);
+			dateAndTime.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+			//将页面TextView的显示更新为最新时间
+			updateLabel();
+		}
+	};
+
+
+
+	TimePickerDialog.OnTimeSetListener t = new TimePickerDialog.OnTimeSetListener() {
+
+		//同DatePickerDialog控件
+		@Override
+		public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+			dateAndTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
+			dateAndTime.set(Calendar.MINUTE, minute);
+			updateLabel();
+
+		}
+	};
+
+	//更新页面TextView的方法
+	private void updateLabel() {
+
+		brithday.setText(fmtDateAndTime
+				.format(dateAndTime.getTime()));
+		DateFormat fmtDateAndTime1 =  new SimpleDateFormat("yyyy");
+		String agea=fmtDateAndTime1.format(dateAndTime.getTime());
+		String ageb=fmtDateAndTime1.format(new Date().getTime());
+
+		int agecle=Integer.parseInt(ageb)-Integer.parseInt(agea);
+		age.setText(String.valueOf(agecle));
+	}
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -120,17 +179,15 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 	private void initView() {
 		title = (TextView) findViewById(R.id.title);
 		username = (EditText) findViewById(R.id.username);
+		brithday= (EditText) findViewById(R.id.brithday);
 		age = (EditText) findViewById(R.id.age);
 		community_eidt = (EditText) findViewById(R.id.community);
-		gzcommunity_eidt= (EditText) findViewById(R.id.Gzcommunity);
 		telphone = (EditText) findViewById(R.id.telphone);
 		save = (Button) findViewById(R.id.save);
 		score_btn  = (Button) findViewById(R.id.score_btn);
 		SelCommunityBtn = (Button) findViewById(R.id.SelCommunityBtn);
-		GzCommunityBtn = (Button) findViewById(R.id.GzCommunityBtn);
 		txt_userid=(TextView) findViewById(R.id.txt_userid);
 		tv_score=(TextView) findViewById(R.id.score_tv);
-		
 		this.txt=(TextView) super.findViewById(R.id.txt);
 		this.sex=(RadioGroup) super.findViewById(R.id.sex);
 		this.male=(RadioButton) super.findViewById(R.id.male);
@@ -192,14 +249,25 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 		});
 		XiaoquService xiaoquService = new XiaoquService(this);
 		String names=xiaoquService.allxiaoqu();
-		gzcommunity_eidt.setText(names);
-		GzCommunityBtn.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
 
-				Intent intent=new Intent(UserInfoActivity.this,CommunityGzListActivity.class);
-				startActivityForResult(intent, GzXq_REQUEST_CODE);
+
+		//得到页面设定日期的按钮控件对象
+		Button dateBtn = (Button)findViewById(R.id.setDate);
+		//设置按钮的点击事件监听器
+		dateBtn.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				//生成一个DatePickerDialog对象，并显示。显示的DatePickerDialog控件可以选择年月日，并设置
+				new DatePickerDialog(UserInfoActivity.this,
+						d,
+						dateAndTime.get(Calendar.YEAR),
+						dateAndTime.get(Calendar.MONTH),
+						dateAndTime.get(Calendar.DAY_OF_MONTH)).show();
 			}
 		});
+
+
 		iv_photo = (RoundAngleImageView) findViewById(R.id.iv_photo);
 		iv_photo.setOnClickListener(new OnClickListener() {
 			@Override
@@ -285,11 +353,6 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 				community_id=data.getStringExtra("community_id");
 				community_lat=data.getStringExtra("community_lat");
 				community_lng=data.getStringExtra("community_lng");
-				break;
-			case GzXq_REQUEST_CODE:
-				XiaoquService xiaoquService = new XiaoquService(this);
-				String names=xiaoquService.allxiaoqu();
-				gzcommunity_eidt.setText(names);
 				break;
 			case IMAGE_REQUEST_CODE:
 				startPhotoZoom(data.getData());
@@ -394,7 +457,8 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 			paramsList.add(new BasicNameValuePair("userid", myapplication.getUserId()));
 			paramsList.add(new BasicNameValuePair("headface", headfacename));
 			paramsList.add(new BasicNameValuePair("username", username.getText().toString()));
- 			paramsList.add(new BasicNameValuePair("age", age.getText()	.toString()));
+ 			paramsList.add(new BasicNameValuePair("brithday", brithday.getText()	.toString()));
+			paramsList.add(new BasicNameValuePair("age", age.getText()	.toString()));
 			paramsList.add(new BasicNameValuePair("sex", sex_str));
 			paramsList.add(new BasicNameValuePair("telphone", telphone.getText().toString()));
 			paramsList.add(new BasicNameValuePair("community", community_eidt.getText().toString()));
@@ -477,6 +541,7 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 			int result;
 			String username = "";
 			String age = "";
+			String brithday = "";
 			String sex = "";
 			String telphone = "";
 			String remote_headface = "";
@@ -504,6 +569,7 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 						JSONObject jsonobject = jsonarray.getJSONObject(0);
 						username = jsonobject.getString("username");
 						age = jsonobject.getString("age");
+						brithday= jsonobject.getString("brithday");
 						sex = jsonobject.getString("sex");
 						telphone = jsonobject.getString("telphone");
 						remote_headface = jsonobject.getString("headface");
@@ -531,6 +597,7 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 				Bundle data = new Bundle();
 				data.putString("username", username);
 				data.putString("age", age);
+				data.putString("brithday", brithday);
 				data.putString("sex", sex);
 				data.putString("telphone", telphone);
 				data.putString("headface", remote_headface);
@@ -555,6 +622,7 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 			Bundle data = msg.getData();
 			username.setText(data.getString("username"));
 			age.setText(data.getString("age"));
+			brithday.setText(data.getString("brithday"));
 			if(data.getString("sex").equals("1"))
 			{
 				male.setChecked(true);
@@ -602,7 +670,11 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 			break;
 		}
 	}
-	
-	
+
+
+
+
+
+
 	
 }

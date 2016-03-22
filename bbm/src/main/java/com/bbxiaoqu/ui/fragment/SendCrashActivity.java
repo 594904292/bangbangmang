@@ -12,6 +12,7 @@ import com.bbxiaoqu.view.BaseActivity;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Environment;
 import android.util.Log;
 import android.view.View;
@@ -36,6 +37,7 @@ public class SendCrashActivity extends BaseActivity {
 	Button return_btn;
 	private static String localFileUrl = "";
 	private static final String uploadUrl = "http://api.bbxiaoqu.com/api/ReceiveCrash.php";
+	private TimeCount time;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -56,7 +58,11 @@ public class SendCrashActivity extends BaseActivity {
 				finish();
 			}
 		});
-		
+
+
+		time = new TimeCount(10000, 1000);//构造CountDownTimer对象
+
+
 		if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) 
 		{
 			String sdcardPath = Environment.getExternalStorageDirectory().getPath();
@@ -87,6 +93,10 @@ public class SendCrashActivity extends BaseActivity {
 		
 	}
 
+	public void onTick(long millisUntilFinished){//计时过程显示
+		//btn_verf.setClickable(false);
+		//btn_verf.setText(millisUntilFinished /1000+"秒");
+	}
 	private void initView() {
 		title = (TextView)findViewById(R.id.title);
 		right_text = (TextView)findViewById(R.id.right_text);		
@@ -130,5 +140,24 @@ public class SendCrashActivity extends BaseActivity {
 			
 		}
 	}
-	
+
+
+	class TimeCount extends CountDownTimer {
+		public TimeCount(long millisInFuture, long countDownInterval) {
+			super(millisInFuture, countDownInterval);//参数依次为总时长,和计时的时间间隔
+		}
+		@Override
+		public void onFinish() {//计时完毕时触发
+			//btn_verf.setText("重新验证");
+			//btn_verf.setClickable(true);
+			time.cancel();
+			startActivity(new Intent(getApplicationContext(), MainActivity.class));
+			finish();
+		}
+		@Override
+		public void onTick(long millisUntilFinished){//计时过程显示
+			//btn_verf.setClickable(false);
+			return_btn.setText(millisUntilFinished /1000+"秒");
+		}
+	}
 }

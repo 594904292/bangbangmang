@@ -23,8 +23,8 @@ public final class R {
 		public static final int common_signin_btn_light_text_disabled = 0x7f0b005a;
 		public static final int common_signin_btn_light_text_focused = 0x7f0b005b;
 		public static final int common_signin_btn_light_text_pressed = 0x7f0b005c;
-		public static final int common_signin_btn_text_dark = 0x7f0b024b;
-		public static final int common_signin_btn_text_light = 0x7f0b024c;
+		public static final int common_signin_btn_text_dark = 0x7f0b024c;
+		public static final int common_signin_btn_text_light = 0x7f0b024d;
 	}
 	public static final class drawable {
 		public static final int common_full_open_on_phone = 0x7f020063;
@@ -34,6 +34,7 @@ public final class R {
 		public static final int adjust_height = 0x7f0c0002;
 		public static final int adjust_width = 0x7f0c0001;
 		public static final int none = 0x7f0c0000;
+		public static final int normal = 0x7f0c0007;
 	}
 	public static final class integer {
 		public static final int google_play_services_version = 0x7f0d0002;

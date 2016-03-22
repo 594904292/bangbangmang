@@ -22,7 +22,7 @@ dependencies {
     compile project(':slidingmenu_library')
     compile 'com.google.code.gson:gson:2.2.4'
     compile 'com.google.android.gms:play-services-appindexing:8.1.0'
-    provided files('libs/android-async-http-1.4.4.jar')
+    compile files('libs/android-async-http-1.4.4.jar')
     compile files('libs/crittercism_v3_0_3_sdkonly.jar')
     compile files('libs/smack.jar')
     compile files('libs/smackx.jar')

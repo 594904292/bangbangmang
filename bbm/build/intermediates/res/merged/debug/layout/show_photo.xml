@@ -6,13 +6,18 @@
     <include
         android:id="@+id/title_bar"
         layout="@layout/title_bar" />
-
-    <ImageSwitcher
+    <ViewFlipper
+        android:id="@+id/vf"
+        android:layout_below="@+id/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        ></ViewFlipper>
+    <!--ImageSwitcher
         android:id="@+id/imageSwitcher1"
         android:layout_below="@+id/title_bar"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
-    </ImageSwitcher>
+    </ImageSwitcher-->
 
     <RelativeLayout
         android:layout_below="@+id/title_bar"

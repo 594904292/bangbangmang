@@ -30,6 +30,7 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.Pair;
 import static com.bbxiaoqu.SessionManager.P_MARKET_ISLOGIN;
+import static com.bbxiaoqu.SessionManager.P_MARKET_ISNOTIC;
 import static com.bbxiaoqu.SessionManager.P_MARKET_USERID;
 import static com.bbxiaoqu.SessionManager.P_MARKET_USERNAME;
 import static com.bbxiaoqu.SessionManager.P_MARKET_PASSWORD;
@@ -69,9 +70,10 @@ public class Session extends Observable {
 
     /** The application uid */
     private Boolean islogin=false;
-  
+    private Boolean isnotice=false;
 
-	private String userid;
+
+    private String userid;
     private String username;
     private String password;
    	private String headface;
@@ -79,7 +81,8 @@ public class Session extends Observable {
     private String xiaoquname;
     private String lat;
     private String lng;
-     
+
+
     /** Session Manager */
     private SessionManager mSessionManager;
 
@@ -120,6 +123,13 @@ public class Session extends Observable {
                 {
                 	islogin=false;
                 }
+                if(preference.get(P_MARKET_ISNOTIC)!=null&&preference.get(P_MARKET_ISNOTIC).equals("1"))
+                {
+                    isnotice=true;
+                }else
+                {
+                    isnotice=false;
+                }
                 userid = (String) preference.get(P_MARKET_USERID);
                 username = (String) preference.get(P_MARKET_USERNAME);
                 password = (String) preference.get(P_MARKET_PASSWORD);
@@ -130,6 +140,8 @@ public class Session extends Observable {
                 
                 lat = (String) preference.get(P_MARKET_LAT);
                 lng = (String) preference.get(P_MARKET_LNG);
+
+
             };
         }.start();
     }  
@@ -156,6 +168,23 @@ public class Session extends Observable {
   		 }
      
   	}
+
+    public Boolean getIsNotic() {
+        return isnotice;
+    }
+
+    public void setIsNotic(Boolean isnotice) {
+        this.isnotice = isnotice;
+        super.setChanged();
+        if(isnotice)
+        {
+            super.notifyObservers(new Pair<String, Object>(P_MARKET_ISNOTIC, "1"));//方法通知其所有observers
+        }else
+        {
+            super.notifyObservers(new Pair<String, Object>(P_MARKET_ISNOTIC, "0"));//方法通知其所有observers
+        }
+
+    }
   	
     public String getUid() {
         return userid;

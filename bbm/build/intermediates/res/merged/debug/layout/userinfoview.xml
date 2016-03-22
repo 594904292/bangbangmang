@@ -129,16 +129,7 @@
                     android:id="@+id/community"
                     style="@style/setting_item_text" />
             </LinearLayout>
-    <LinearLayout style="@style/setting_item_end" >
-
-        <TextView
-            style="@style/setting_item_text"
-            android:text="关注小区:" />
-
-        <TextView
-            android:id="@+id/gz_community"
-            style="@style/setting_item_text" />
-    </LinearLayout>
+  
             <LinearLayout style="@style/setting_item_end" >
 
                 <TextView

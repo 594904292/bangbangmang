@@ -20,6 +20,7 @@ import com.baidu.android.pushservice.PushConstants;
 import com.baidu.android.pushservice.PushManager;
 import com.baidu.android.pushservice.PushMessageReceiver;
 import com.bbxiaoqu.DemoApplication;
+import com.bbxiaoqu.Session;
 import com.bbxiaoqu.bean.BbMessage;
 import com.bbxiaoqu.bean.ChatMessage;
 import com.bbxiaoqu.comm.service.db.ChatDB;
@@ -268,7 +269,11 @@ public class BbPushMessageReceiver extends PushMessageReceiver {
 		}
 		// Demo更新界面展示代码，应用请在这里加入自己的处理逻辑
 		// 你可以參考 onNotificationClicked中的提示从自定义内容获取具体值
-		popActivity(context, guid);
+
+		Session mSession = Session.get(context);
+		if(mSession.getIsNotic()) {
+			popActivity(context, guid);
+		}
 	}
 
 	/**
