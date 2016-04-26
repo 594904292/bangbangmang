@@ -168,7 +168,7 @@ private void getData() {
 		SQLiteDatabase sdb = dbHelper.getReadableDatabase();
 		String sql = "";
 		//
-		sql = "select userid,nickname,usericon,lastinfo,lasttime,messnum,lastnickname from friend";
+		sql = "select userid,nickname,usericon,lastinfo,lasttime,messnum,lastnickname from friend order by lasttime desc";
 		Cursor c = sdb.rawQuery(sql, null);
 		while (c.moveToNext()) {
 			HashMap<String, Object> item = new HashMap<String, Object>();

@@ -159,14 +159,14 @@ public class BbPushMessageReceiver extends PushMessageReceiver {
 		NoticeDB noticedb=new NoticeDB(context);
 		try {
 			customJson = new JSONObject(message);
-			if(!customJson.isNull("catagory")&&customJson.getString("catagory").equals("pl"))
+			/*if(!customJson.isNull("catagory")&&customJson.getString("catagory").equals("pl"))
 			{//评论:知道具体哪条新闻,评论可以有多条
 				BbMessage mess=new BbMessage();
 				mess.setGuid(customJson.getString("guid").toString());
 				noticedb.add(customJson.getString("date").toString(), "评论", customJson.getString("guid").toString(), "一条新评论","0");
 				for (int i = 0; i < msgListeners.size(); i++)
 					msgListeners.get(i).onNewMessage(mess);
-			}
+			}*/
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -258,7 +258,6 @@ public class BbPushMessageReceiver extends PushMessageReceiver {
 			JSONObject customJson = null;
 			try {
 				customJson = new JSONObject(customContentString);
-
 				if (!customJson.isNull("guid")) {
 					guid = customJson.getString("guid");
 				}

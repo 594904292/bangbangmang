@@ -70,9 +70,7 @@ public class Session extends Observable {
 
     /** The application uid */
     private Boolean islogin=false;
-    private Boolean isnotice=false;
-
-
+    private Boolean isnotice=true;
     private String userid;
     private String username;
     private String password;
@@ -82,16 +80,13 @@ public class Session extends Observable {
     private String lat;
     private String lng;
 
-
-    /** Session Manager */
+     /** Session Manager */
     private SessionManager mSessionManager;
 
     /** The singleton instance */
     private static Session mInstance;
-    
 
-    
-    /**
+     /**
      * default constructor
      * @param context
      */
@@ -140,11 +135,10 @@ public class Session extends Observable {
                 
                 lat = (String) preference.get(P_MARKET_LAT);
                 lng = (String) preference.get(P_MARKET_LNG);
-
-
-            };
+           };
         }.start();
-    }  
+    }
+
     public static Session get(Context context) {
         if (mInstance == null) {
             mInstance = new Session(context);
@@ -166,7 +160,6 @@ public class Session extends Observable {
   		 {
   			super.notifyObservers(new Pair<String, Object>(P_MARKET_ISLOGIN, "0"));//方法通知其所有observers
   		 }
-     
   	}
 
     public Boolean getIsNotic() {
@@ -183,7 +176,6 @@ public class Session extends Observable {
         {
             super.notifyObservers(new Pair<String, Object>(P_MARKET_ISNOTIC, "0"));//方法通知其所有observers
         }
-
     }
   	
     public String getUid() {
@@ -191,7 +183,6 @@ public class Session extends Observable {
     }
 
     public void setUid(String uid) {
-
         this.userid = uid;
         super.setChanged();
         super.notifyObservers(new Pair<String, Object>(P_MARKET_USERID, uid));//方法通知其所有observers
@@ -238,7 +229,6 @@ public class Session extends Observable {
 		this.xiaoquid = xiaoquid;
 		super.setChanged();
 	    super.notifyObservers(new Pair<String, Object>(P_MARKET_XIAOQUID, xiaoquid));
-
 	}
 
 	public String getXiaoquname() {
@@ -249,7 +239,6 @@ public class Session extends Observable {
 		this.xiaoquname = xiaoquname;
 		super.setChanged();
 	    super.notifyObservers(new Pair<String, Object>(P_MARKET_XIAOQUNAME, xiaoquname));
-
 	}
 
 	public String getLat() {
@@ -260,7 +249,6 @@ public class Session extends Observable {
 		this.lat = lat;
 		super.setChanged();
 	    super.notifyObservers(new Pair<String, Object>(P_MARKET_LAT, lat));
-
 	}
 
 	public String getLng() {
@@ -271,7 +259,6 @@ public class Session extends Observable {
 		this.lng = lng;
 		super.setChanged();
 	    super.notifyObservers(new Pair<String, Object>(P_MARKET_LNG, lng));
-
 	}
 
     public void close() {

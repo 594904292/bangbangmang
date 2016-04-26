@@ -63,6 +63,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.TextPaint;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -125,13 +126,16 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 			int limit=10;
 			if(current_sel==0)
 			{
-				MarketAPI.getINfos(getApplicationContext(), this, myapplication.getUserId(), myapplication.getLat(),myapplication.getLng(),"xiaoqu", "0", start, limit);
+				if(myapplication.getLat()!=null&&myapplication.getLng()!=null)
+					MarketAPI.getINfos(getApplicationContext(), this, myapplication.getUserId(), myapplication.getLat(),myapplication.getLng(),"xiaoqu", "0", start, limit);
 			}else if(current_sel==1)
 			{
-				MarketAPI.getINfos(getApplicationContext(), this, myapplication.getUserId(),myapplication.getLat(),myapplication.getLng(), "xiaoqu", "1", start, limit);
+				if(myapplication.getLat()!=null&&myapplication.getLng()!=null)
+					MarketAPI.getINfos(getApplicationContext(), this, myapplication.getUserId(),myapplication.getLat(),myapplication.getLng(), "xiaoqu", "1", start, limit);
 			}else if(current_sel==2)
 			{
-				MarketAPI.getINfos(getApplicationContext(), this, myapplication.getUserId(),myapplication.getLat(),myapplication.getLng(), "self", "1", start, limit);
+				if(myapplication.getLat()!=null&&myapplication.getLng()!=null)
+					MarketAPI.getINfos(getApplicationContext(), this, myapplication.getUserId(),myapplication.getLat(),myapplication.getLng(), "self", "1", start, limit);
 			}/*else if(current_sel==3)
 			{
 				MarketAPI.getFwINfos(getApplicationContext(), this, myapplication.getUserId(), myapplication.getLat(),myapplication.getLng(),"xiaoqufw", "1", start, limit);
@@ -143,13 +147,16 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 			int limit=10;
 			if(current_sel==0)
 			{
-				MarketAPI.getINfos(getApplicationContext(), this, myapplication.getUserId(), myapplication.getLat(), myapplication.getLng(), "xiaoqu", "0", start, limit);
+				if(myapplication.getLat()!=null&&myapplication.getLng()!=null)
+					MarketAPI.getINfos(getApplicationContext(), this, myapplication.getUserId(), myapplication.getLat(), myapplication.getLng(), "xiaoqu", "0", start, limit);
 			}else if(current_sel==1)
 			{
-				MarketAPI.getINfos(getApplicationContext(), this, myapplication.getUserId(),  myapplication.getLat(), myapplication.getLng(),"xiaoqu", "1", start, limit);
+				if(myapplication.getLat()!=null&&myapplication.getLng()!=null)
+					MarketAPI.getINfos(getApplicationContext(), this, myapplication.getUserId(),  myapplication.getLat(), myapplication.getLng(),"xiaoqu", "1", start, limit);
 			}else if(current_sel==2)
 			{
-				MarketAPI.getINfos(getApplicationContext(), this, myapplication.getUserId(), myapplication.getLat(), myapplication.getLng(), "self", "1", start, limit);
+				if(myapplication.getLat()!=null&&myapplication.getLng()!=null)
+					MarketAPI.getINfos(getApplicationContext(), this, myapplication.getUserId(), myapplication.getLat(), myapplication.getLng(), "self", "1", start, limit);
 			}/*else if(current_sel==3)
 			{
 				MarketAPI.getFwINfos(getApplicationContext(), this, myapplication.getUserId(), myapplication.getLat(), myapplication.getLng(), "xiaoqufw", "1", start, limit);
@@ -160,12 +167,22 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 	private void clearSelection() {
 		allImage.setImageResource(R.mipmap.t12);
 		allText.setTextColor(Color.GRAY);
+		allText.setTextSize(14);
+		/*TextPaint alltp = allText.getPaint();
+		alltp.setFakeBoldText(false);*/
+
 		mySosImage.setImageResource(R.mipmap.t22);
 		mySosText.setTextColor(Color.GRAY);
+		mySosText.setTextSize(14);
+		/*TextPaint mySostp = mySosText.getPaint();
+		mySostp.setFakeBoldText(false);*/
+
 		sosImage.setImageResource(R.mipmap.t32);
 		sosText.setTextColor(Color.GRAY);
-		/*serviceImage.setImageResource(R.mipmap.t42);
-		serviceText.setTextColor(Color.GRAY);*/
+		sosText.setTextSize(14);
+		/*TextPaint sostp = sosText.getPaint();
+		sostp.setFakeBoldText(false);*/
+
 	}
 	
 	private void setTabSelection(int index) {
@@ -180,6 +197,9 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 			lstv.setOnLoadListener(this);
 			allImage.setImageResource(R.mipmap.t1);
 			allText.setTextColor(Color.GRAY);
+			/*TextPaint alltp = allText.getPaint();
+			alltp.setFakeBoldText(true);*/
+
 			loadData(AutoListView.REFRESH);
 			break;
 		case 1:
@@ -190,6 +210,9 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 			lstv.setOnLoadListener(this);
 			mySosImage.setImageResource(R.mipmap.t2);
 			mySosText.setTextColor(Color.GRAY);
+			/*TextPaint mySostp = mySosText.getPaint();
+			mySostp.setFakeBoldText(true);*/
+
 			loadData(AutoListView.REFRESH);
 			break;
 		case 2:
@@ -200,6 +223,9 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 			lstv.setOnLoadListener(this);
 			sosImage.setImageResource(R.mipmap.t3);
 			sosText.setTextColor(Color.GRAY);
+			/*TextPaint sostp = sosText.getPaint();
+			sostp.setFakeBoldText(true);*/
+
 			loadData(AutoListView.REFRESH);
 			break;
 		/*case 3:
@@ -219,7 +245,7 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 		title = (TextView)findViewById(R.id.title);
 		right_text = (TextView)findViewById(R.id.right_text);
 		right_text.setVisibility(View.VISIBLE);
-		right_text.setClickable(true);		
+		right_text.setClickable(true);
 		top_more = (ImageView) findViewById(R.id.top_more);	
 		top_more.setVisibility(View.VISIBLE);
 		top_add = (ImageView) findViewById(R.id.top_add);
@@ -233,8 +259,11 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 		sosImage = (ImageView) findViewById(R.id.sos_image);
 		/*serviceImage = (ImageView) findViewById(R.id.service_image);*/
 		allText = (TextView) findViewById(R.id.all_text);
+		allText.setTextSize(14);
 		mySosText = (TextView) findViewById(R.id.mysos_text);
+		mySosText.setTextSize(14);
 		sosText = (TextView) findViewById(R.id.sos_text);
+		sosText.setTextSize(14);
 		/*serviceText = (TextView) findViewById(R.id.service_text);*/
 		allLayout.setOnClickListener(this);
 		mySosLayout.setOnClickListener(this);

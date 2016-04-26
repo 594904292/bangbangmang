@@ -43,6 +43,7 @@ import com.bbxiaoqu.ui.SearchActivity;
 import com.bbxiaoqu.ui.report.DayActivity;
 import com.bbxiaoqu.ui.report.MonthActivity;
 import com.bbxiaoqu.ui.report.WeekActivity;
+import com.bbxiaoqu.ui.sub.RecentActivity;
 import com.bbxiaoqu.ui.user.UserInfoActivity;
 import com.bbxiaoqu.ui.sub.ViewUserInfoActivity;
 import com.bbxiaoqu.update.UpdataInfo;
@@ -97,7 +98,7 @@ public class MainActivity extends BaseActivity  implements ViewSwitcher.ViewFact
 	private DemoApplication myapplication;
 	public ImageView top_head;
 	public ImageView top_more;
-	public TextView headtop_left_count;
+	public BadgeView headtop_left_count;
 	protected SlidingMenu side_drawer;
 	private LocationClient mLocationClient;
 	public Double nLatitude; 
@@ -341,7 +342,7 @@ public class MainActivity extends BaseActivity  implements ViewSwitcher.ViewFact
 		top_more.setVisibility(View.VISIBLE);
 		sos_btn=(Button) findViewById(R.id.sos_btn);
 		can_sos_btnmap=(Button) findViewById(R.id.can_sos_btnmap);
-		headtop_left_count = (TextView) findViewById(R.id.headtop_left_count);
+		headtop_left_count = (BadgeView) findViewById(R.id.headtop_left_count);
 		gonggao=(TextView) findViewById(R.id.gonggao);
 		//lstv = (ListView) findViewById(R.id.nearnewlv);
 		headtop_left_count.setOnClickListener(this);
@@ -377,19 +378,6 @@ public class MainActivity extends BaseActivity  implements ViewSwitcher.ViewFact
 				bundle.putInt("infocatagroy", 0);
 				intent.putExtras(bundle);
 				startActivity(intent);
-
-			/*	Intent intent=new Intent(MainActivity.this,ActivityTouch.class);
-				Bundle bundle = new Bundle();
-				bundle.putInt("infocatagroy", 0);
-				intent.putExtras(bundle);
-				startActivity(intent);*/
-
-//				Intent intent=new Intent(MainActivity.this,ApiActivity.class);
-//				Bundle bundle = new Bundle();
-//				bundle.putInt("infocatagroy", 0);
-//				intent.putExtras(bundle);
-//				startActivity(intent);
-
 			}
 		});
 
@@ -415,69 +403,17 @@ public class MainActivity extends BaseActivity  implements ViewSwitcher.ViewFact
 				startActivity(it);
 			}
 		});
-		/*lstv.setOnItemClickListener(new OnItemClickListener(){
-			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1,
-					int location, long arg3) {								
-				
-				if(dataList.get(location).get("actionname").toString().equals("publishfw"))
-				{//查看信息
-					Intent Intent1=new Intent(MainActivity.this,ViewFwActivity.class);
-					Bundle arguments = new Bundle();
-					arguments.putString("put", "false");
-					arguments.putString("guid",dataList.get(location).get("guid").toString());
-					Intent1.putExtras(arguments);
-					startActivity(Intent1);
-				}else if(dataList.get(location).get("actionname").toString().equals("publish"))
-				{//查看信息
-					Intent Intent1=new Intent(MainActivity.this,ViewActivity.class);
-					Bundle arguments = new Bundle();
-					arguments.putString("put", "false");
-					arguments.putString("guid",dataList.get(location).get("guid").toString());
-					Intent1.putExtras(arguments);
-					startActivity(Intent1);
-				}else
-				{//看人
-					Intent Intent1 = new Intent();
-					Intent1.setClass(MainActivity.this,ViewUserInfoActivity.class);
-					Bundle arguments = new Bundle();
-					arguments.putString("userid", dataList.get(location).get("userid").toString());
-					Intent1.putExtras(arguments);
-					startActivity(Intent1);
-				}
-			}
-		});*/
 
 		reportday_btn= (Button) this.findViewById(R.id.day_button);
 		reportday_btn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-
-			/*	Bundle bundle = new Bundle();
-				bundle.putInt("infocatagroy", 3);
-				intent.putExtras(bundle);*/
 				Intent intent=new Intent(MainActivity.this,DayActivity.class);
 				startActivity(intent);
 
 			}
 		});
-		/*reportweek_btn= (Button) this.findViewById(R.id.week_button);
-		reportweek_btn.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
 
-				Intent intent=new Intent(MainActivity.this,WeekActivity.class);
-				startActivity(intent);
-			}
-		});
-		reportmonth_btn = (Button) this.findViewById(R.id.month_button);
-		reportmonth_btn.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent intent=new Intent(MainActivity.this,MonthActivity.class);
-				startActivity(intent);
-			}
-		});*/
 	}
 
 
@@ -558,7 +494,9 @@ public class MainActivity extends BaseActivity  implements ViewSwitcher.ViewFact
 		case R.id.headtop_left_count:
 			 headtop_left_count.setVisibility(View.GONE);	
 			 headtop_left_count.setText("0");
-			Intent intent=new Intent(MainActivity.this,NoticeActivity.class);
+			//Intent intent=new Intent(MainActivity.this,NoticeActivity.class);
+
+			Intent intent=new Intent(MainActivity.this,RecentActivity.class);
 			startActivity(intent);
 			    
 			break;
@@ -820,41 +758,6 @@ public class MainActivity extends BaseActivity  implements ViewSwitcher.ViewFact
 		public void onSuccess(int method, Object obj) {
 			// TODO Auto-generated method stub
 			  switch (method) {
-		    /*    case MarketAPI.ACTION_GETDYNAMICS:
-		        	 try{
-		                 dismissDialog(DIALOG_PROGRESS);
-		             }catch (IllegalArgumentException e) {
-		             }
-		            HashMap<String, String> result = (HashMap<String, String>) obj;
-		            String JsonContext=result.get("daymic");
-		            if(JsonContext.length()>0)
-    				{
-    					JSONArray jsonarray = null;
-    					try {
-    						dataList.clear();
-    						jsonarray = new JSONArray(JsonContext);
-    						for (int i = 0; i < jsonarray.length(); i++) {
-    							JSONObject customJson = jsonarray.getJSONObject(i);
-    							HashMap<String, Object> item = new HashMap<String, Object>();
-    							item.put("id", String.valueOf(customJson.getString("id").toString()));
-    							item.put("userid", String.valueOf(customJson.getString("userid").toString()));
-    							item.put("username", String.valueOf(customJson.getString("username").toString()));
-    							item.put("actionname", String.valueOf(customJson.getString("actionname").toString()));
-    							item.put("actiontime", String.valueOf(customJson.getString("actiontime").toString()));
-    							item.put("guid", String.valueOf(customJson.getString("guid").toString()));
-    							item.put("messdesc", String.valueOf(customJson.getString("messdesc").toString()));
-    							dataList.add(item);
-    						}
-    					} catch (JSONException e1) {
-    						// TODO Auto-generated catch block
-    						Utils.makeEventToast(MainActivity.this, "daymic xml解释错误",false);
-    						e1.printStackTrace();
-    					}
-    					Message msg = handler.obtainMessage();
-    					msg.what = 3;
-    					handler.sendMessage(msg);
-    				}
-		            break; */
 		        case MarketAPI.ACTION_GONGGAO:
 		        	 try{
 		                 dismissDialog(DIALOG_PROGRESS);

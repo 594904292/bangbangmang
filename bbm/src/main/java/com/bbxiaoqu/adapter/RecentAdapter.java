@@ -85,9 +85,11 @@ public class RecentAdapter extends BaseAdapter {
 		if(list.get(position).get("messnum").toString().equals("0"))
 		{
 			holder_img.messnum.setText("");
+			holder_img.messnum.setVisibility(View.GONE);
 		}else
 		{
 			holder_img.messnum.setText(list.get(position).get("messnum").toString());
+			holder_img.messnum.setVisibility(View.VISIBLE);
 		}
 		
 		holder_img.username.setText(list.get(position).get("username").toString());

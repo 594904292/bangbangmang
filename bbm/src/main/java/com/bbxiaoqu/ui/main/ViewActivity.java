@@ -8,7 +8,8 @@ import com.bbxiaoqu.adapter.BmUserAdapter.Callback;
 import com.bbxiaoqu.api.MarketAPI;
 import com.bbxiaoqu.api.ApiAsyncTask.ApiRequestListener;
 import com.bbxiaoqu.comm.gallery.BigImgActivity;
-import com.bbxiaoqu.comm.gallery.DetailGallery;
+import com.bbxiaoqu.view.HorizontalListView;
+import com.bbxiaoqu.adapter.HorizontalListViewAdapter;
 import com.bbxiaoqu.comm.jsonservices.GetJson;
 import com.bbxiaoqu.ui.popup.Constants.HINT;
 import com.bbxiaoqu.ui.popup.DateUtils;
@@ -17,14 +18,11 @@ import com.bbxiaoqu.ui.popup.TitlePopup;
 import com.bbxiaoqu.comm.service.db.MessGzService;
 import com.bbxiaoqu.comm.service.db.UserService;
 import com.bbxiaoqu.comm.tool.CustomerHttpClient;
-import com.bbxiaoqu.comm.tool.ImageManage;
 import com.bbxiaoqu.comm.tool.NetworkUtils;
 import com.bbxiaoqu.comm.tool.T;
 import com.bbxiaoqu.ui.SearchActivity;
 import com.bbxiaoqu.ui.sub.BmUserActivity;
 import com.bbxiaoqu.ui.sub.ChattingActivity;
-import com.bbxiaoqu.ui.sub.GalleryAdapter;
-import com.bbxiaoqu.ui.sub.MessageInfoBean;
 import com.bbxiaoqu.ui.sub.ViewUserInfoActivity;
 import com.bbxiaoqu.view.BaseActivity;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -37,8 +35,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -46,62 +42,33 @@ import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.params.BasicHttpParams;
-import org.apache.http.params.CoreConnectionPNames;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetManager;
-import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Matrix;
-import android.graphics.PixelFormat;
-import android.graphics.Point;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.media.ThumbnailUtils;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.StrictMode;
-import android.os.SystemClock;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ImageButton;
-import android.widget.ImageView.ScaleType;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Gallery;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -129,7 +96,7 @@ public class ViewActivity extends BaseActivity implements OnItemClickListener,Ap
 	public static final int chatflag = 1;
 
 	// 评论列表
-	private DetailGallery myGallery;
+	//private DetailGallery myGallery;
 	private AssetManager assetManager;
 	private ArrayList<String> potolist = new ArrayList<String>();
 	private List<Map<String, String>> discussList = new ArrayList<Map<String, String>>();
@@ -143,6 +110,7 @@ public class ViewActivity extends BaseActivity implements OnItemClickListener,Ap
 	private Button group_discuss_submit;
 	private RelativeLayout rl_bottom;
 	private RelativeLayout gallery;
+	HorizontalListView hListView;
 	//private Button btn_pl;
 	private Button btn_gz;
 	private String discuzz_content = "";
@@ -165,7 +133,8 @@ public class ViewActivity extends BaseActivity implements OnItemClickListener,Ap
 	private static final int ERROR_CODE_USERNAME_NOT_EXIST = 211;
 	// 用户密码错误
 	private static final int ERROR_CODE_PASSWORD_INVALID = 212;
-	
+
+	HorizontalListViewAdapter hListViewAdapter;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -227,13 +196,42 @@ public class ViewActivity extends BaseActivity implements OnItemClickListener,Ap
 	/**/
 
 	void init() {
-		GalleryAdapter adapter = new GalleryAdapter(potolist,
-				getApplicationContext());
-		myGallery.setAdapter(adapter);
+		//GalleryAdapter adapter = new GalleryAdapter(potolist,getApplicationContext());
+		//myGallery.setAdapter(adapter);
+
+
+		hListViewAdapter = new HorizontalListViewAdapter(getApplicationContext(),potolist);
+		hListView.setAdapter(hListViewAdapter);
+
+
 	}
 
 	void addEvn() {
-		myGallery.setOnItemClickListener(new OnItemClickListener() {
+
+		hListView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+									int position, long id) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(ViewActivity.this,
+						BigImgActivity.class);
+				StringBuilder sb=new StringBuilder();
+				for(int i=0;i<potolist.size();i++)
+				{
+					sb.append(potolist.get(i).toString());
+					if(i<potolist.size()-1)
+					{
+						sb.append(",");
+					}
+				}
+				intent.putExtra("imageName", position);
+				intent.putExtra("imageNames", sb.toString());
+				startActivity(intent);
+
+			}
+		});
+		/*myGallery.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
@@ -252,7 +250,7 @@ public class ViewActivity extends BaseActivity implements OnItemClickListener,Ap
 				intent.putExtra("imageNames", sb.toString());
 				startActivity(intent);
 			}
-		});
+		});*/
 	}
 
 	Handler gzactionhandle = new Handler() {
@@ -290,8 +288,9 @@ public class ViewActivity extends BaseActivity implements OnItemClickListener,Ap
 		listView = (ListView) findViewById(R.id.view_group_discuss_list);
 		group_discuss_tip = (TextView) findViewById(R.id.view_group_discuss_tip);// 暂无评论
 		rl_bottom = (RelativeLayout) findViewById(R.id.view_rl_bottom);// 评论布局
-		myGallery = (DetailGallery) findViewById(R.id.detail_shotcut_gallery);
+		//myGallery = (DetailGallery) findViewById(R.id.detail_shotcut_gallery);
 		gallery = (RelativeLayout) findViewById(R.id.gallery);
+		hListView = (HorizontalListView)findViewById(R.id.horizon_listview);
 		//ext_mLayout = (LinearLayout) findViewById(R.id.layout_container_ext);
 		headface_img = (ImageView) findViewById(R.id.headface);
 		headface_img.setOnClickListener(new OnClickListener() {
@@ -366,6 +365,8 @@ public class ViewActivity extends BaseActivity implements OnItemClickListener,Ap
 		});
 
 	}
+
+
 
 	/*针对用户第一次会话做一次报名记录*/
 	Runnable savebmThread = new Runnable() {
@@ -497,6 +498,7 @@ public class ViewActivity extends BaseActivity implements OnItemClickListener,Ap
 
 		EditText discussContent = (EditText) findViewById(R.id.view_group_discuss);
 		discuzz_content = discussContent.getText().toString();
+		discussContent.setText("");
 		InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 		imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS); // 隐软键盘
 		// 判断content,不能为null或者特定字符

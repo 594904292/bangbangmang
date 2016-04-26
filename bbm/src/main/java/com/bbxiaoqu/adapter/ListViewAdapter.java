@@ -29,6 +29,7 @@ import com.bbxiaoqu.comm.tool.CustomerHttpClient;
 import com.bbxiaoqu.comm.tool.StreamTool;
 import com.bbxiaoqu.ui.LoginActivity;
 import com.bbxiaoqu.ui.fragment.HomeActivity;
+import com.bbxiaoqu.ui.sub.RoundAngleImageView;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiskCache;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
@@ -101,7 +102,7 @@ public class ListViewAdapter extends BaseAdapter {
 			{
 				convertView = LayoutInflater.from(context).inflate(R.layout.listview_item, null);
 				holder_img.tag = (ImageView) convertView.findViewById(R.id.infotag);
-				holder_img.imageView = (ImageView) convertView.findViewById(R.id.imageView);
+				holder_img.imageView = (RoundAngleImageView) convertView.findViewById(R.id.imageView);
 				holder_img.infocatagroy = (TextView) convertView.findViewById(R.id.infocatagroy);
 				holder_img.senduser = (TextView) convertView.findViewById(R.id.senduser);
 				holder_img.sendtimer = (TextView) convertView.findViewById(R.id.sendtimer);
@@ -116,7 +117,7 @@ public class ListViewAdapter extends BaseAdapter {
 			{
 				convertView = LayoutInflater.from(context).inflate(R.layout.listview_noimg_item, null);
 				holder_img.tag = (ImageView) convertView.findViewById(R.id.infotag);
-				holder_img.imageView = (ImageView) convertView.findViewById(R.id.imageView);
+				holder_img.imageView = (RoundAngleImageView) convertView.findViewById(R.id.imageView);
 				holder_img.infocatagroy = (TextView) convertView.findViewById(R.id.infocatagroy);
 				holder_img.senduser = (TextView) convertView.findViewById(R.id.senduser);
 				holder_img.sendtimer = (TextView) convertView.findViewById(R.id.sendtimer);
@@ -235,7 +236,7 @@ public class ListViewAdapter extends BaseAdapter {
 
 	private static class ViewHolderimg {
 		ImageView tag;
-		ImageView imageView;
+		RoundAngleImageView imageView;
 		TextView infocatagroy;
 		TextView senduser;
 		TextView sendtimer;

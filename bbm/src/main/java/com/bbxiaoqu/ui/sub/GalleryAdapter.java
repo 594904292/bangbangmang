@@ -70,7 +70,7 @@ public class GalleryAdapter extends BaseAdapter {
 			matrix.postScale(scaleWidth, scaleHeight);
 			Bitmap newbm = Bitmap.createBitmap(bitmap, 0, 0, width, height, matrix, true);
 			System.out.println(newbm.getHeight()+"-----------"+newbm.getWidth());
-			
+
 			imageView.setImageBitmap(newbm);
 		}else
 		{

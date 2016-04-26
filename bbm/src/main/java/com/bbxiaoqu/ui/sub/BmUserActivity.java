@@ -222,9 +222,10 @@ public class BmUserActivity extends Activity implements  Callback{
 			String _headface = jsonobject.getString("headface");
 			String _status = jsonobject.getString("status");
 			//_username=_username+"_"+_status;
-			if(!_status.equals("0"))
-			{//只要其中一个状态不为零,就说明不是报名,就是交易已经完成
-				this.isbm = true;
+			if(this.isbm == false) {
+				if (!_status.equals("0")) {//只要其中一个状态不为零,就说明不是报名,就是交易已经完成
+					this.isbm = true;
+				}
 			}
 			HashMap<String, Object> item = new HashMap<String, Object>();
 			item.put("id",_id);
@@ -315,7 +316,7 @@ public class BmUserActivity extends Activity implements  Callback{
 				e.printStackTrace();
 			}
 		}
-		private void genorder(int pos) {
+		/*private void genorder(int pos) {
 			//SELECT * FROM `info_act` where action=2 
 			 //生成订单
 			 //订单号:guid
@@ -354,7 +355,7 @@ public class BmUserActivity extends Activity implements  Callback{
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		}
+		}*/
 
 		
 		public void rsload()
