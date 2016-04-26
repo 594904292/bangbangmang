@@ -27,15 +27,16 @@
                 android:layout_height="30dp"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/corners_bg"
-                android:src="@drawable/bg_head" />
+                android:src="@drawable/bg_head"
+                android:layout_marginLeft="15dp" />
 
             <TextView
                 android:id="@+id/info_sendname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
+                style="@style/TextViewView_gray"
                 android:text="发送人"
-                android:textSize="12sp"
                 android:textStyle="bold"
                 android:typeface="sans" />
             
@@ -49,7 +50,8 @@
                 android:paddingRight="10dp"
                 android:paddingTop="8dp"
                 android:text="我来帮"
-                android:textColor="@color/btn_common_text" />
+                android:textColor="@color/btn_common_text"
+                android:layout_marginLeft="6dp" />
 
         </LinearLayout>
 
@@ -70,7 +72,8 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#343434"
                 android:textColorLink="@color/gray"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                style="@style/TextViewItem_body" />
 
             <TextView
                 android:id="@+id/info_status"
@@ -88,12 +91,22 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content" >
 
-                <com.bbxiaoqu.comm.gallery.DetailGallery
+
+
+                <com.bbxiaoqu.view.HorizontalListView
+                    android:id="@+id/horizon_listview"
+                    android:layout_width="match_parent"
+                    android:layout_height="200px"
+                    android:layout_alignParentTop="true"
+                    >
+                </com.bbxiaoqu.view.HorizontalListView>
+
+                <!--com.bbxiaoqu.comm.gallery.DetailGallery
                     android:id="@+id/detail_shotcut_gallery"
                     android:layout_width="fill_parent"
                     android:layout_height="200px"
                     android:gravity="center"
-                    android:spacing="2px" />
+                    android:spacing="2px" /-->
             </RelativeLayout>
 
  
@@ -101,7 +114,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="5dp"
-                android:orientation="horizontal" >
+                android:orientation="horizontal"
+                     style="@style/TextViewItem_gray">
 
                 <TextView
                     android:id="@+id/info_sendtime"
@@ -109,10 +123,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="时间"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="#343434"
-                    android:textColorLink="@color/gray"
-                    android:textSize="12sp" />
+                    style="@style/TextViewItem_gray"
+                     />
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -126,10 +138,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="地点:"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="#343434"
-                    android:textColorLink="@color/gray"
-                    android:textSize="12sp" />
+
+
+                    style="@style/TextViewItem_gray" />
             </RelativeLayout>
 
             <!-- LinearLayout
@@ -219,7 +231,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginBottom="50dp"
                 android:layout_marginTop="10dp"
-                android:divider="#b5b5b5"
+                android:divider="@null"
                 android:dividerHeight="1dp"
                 android:listSelector="@drawable/list_selector" />
         </LinearLayout>
@@ -227,7 +239,7 @@
     <RelativeLayout
         android:id="@+id/view_rl_bottom"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:background="@drawable/chat_footer_bg" >
 

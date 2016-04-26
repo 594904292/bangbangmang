@@ -23,23 +23,34 @@
 	        <item name="android:backgroundDimEnabled">false</item>
 	        <item name="android:windowBackground">@null</item>除去背景色   -->
 	</style>
-	
-     <style name="TextView10">
-	    <item name="android:textSize">10.0sp</item>
+
+
+
+    <style name="TextViewItem_gray">
+        <item name="android:textSize">14.0sp</item>
         <item name="android:textColor">@color/gray</item>
-	</style>
-    <style name="TextView12">
-	    <item name="android:textSize">12.0sp</item>
-        <item name="android:textColor">@color/gray</item>
-	</style>
-	
-	 <style name="TextView16">
-	    <item name="android:textSize">14.0sp</item>
+    </style>
+
+	<style name="TextViewItem_body">
+	    <item name="android:textSize">16.0sp</item>
         <item name="android:textColor">@color/black</item>
 	</style>
-	
-	  <style name="TextView12_red">
-	    <item name="android:textSize">12.0sp</item>
+
+
+
+    <style name="TextViewView_gray">
+        <item name="android:textSize">14.0sp</item>
+        <item name="android:textColor">@color/gray</item>
+    </style>
+
+    <style name="TextViewView_body">
+        <item name="android:textSize">16.0sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+
+    <style name="TextView14_red">
+	    <item name="android:textSize">14.0sp</item>
         <item name="android:textColor">@color/red</item>
 	</style>
 	
@@ -65,11 +76,11 @@
     </style>
 
     <style name="top_update_count">
-        <item name="android:textSize">10.0sp</item>
+        <item name="android:textSize">14.0sp</item>
         <item name="android:textColor">#ffcc3131</item>
         <item name="android:gravity">center</item>
-        <item name="android:height">15.0dip</item>
-        <item name="android:width">15.0dip</item>
+        <item name="android:height">25.0dip</item>
+        <item name="android:width">25.0dip</item>
     </style>
 
     <style name="toptitle_text_style">
@@ -274,7 +285,7 @@
     </style>
 
     <style name="setting_release_info">
-        <item name="android:textSize">12.0sp</item>
+        <item name="android:textSize">14.0sp</item>
         <item name="android:textColor">@color/setting_copyright</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -296,7 +307,7 @@
     </style>
 
     <style name="full_image_progress_text">
-        <item name="android:textSize">12.0sp</item>
+        <item name="android:textSize">14.0sp</item>
         <item name="android:textColor">#ffeeeeee</item>
     </style>
 

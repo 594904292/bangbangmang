@@ -15,7 +15,7 @@
       android:layout_height="fill_parent"
       android:scaleType="fitXY"
       android:src="@mipmap/dynamic_info_left" />
-  <ImageView
+  <com.bbxiaoqu.ui.sub.RoundAngleImageView
         android:id="@+id/imageView"
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -36,7 +36,7 @@
 
     <TextView
         android:id="@+id/senduser"
-        style="@style/TextView10"
+        style="@style/TextViewItem_gray"
          android:layout_toRightOf="@id/infocatagroy"
         android:layout_marginLeft="20dp"
         android:layout_width="wrap_content"
@@ -45,7 +45,7 @@
 
     <TextView
         android:id="@+id/sendtimer"
-        style="@style/TextView10"
+        style="@style/TextViewItem_gray"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
@@ -56,7 +56,7 @@
         android:id="@+id/sendcontent"
         android:layout_marginTop="5dp"
           android:paddingLeft="8px"
-        style="@style/TextView16"
+        style="@style/TextViewItem_body"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/senduser"
@@ -86,9 +86,9 @@
        
           <TextView
             android:id="@+id/status"
-            style="@style/TextView10"
+            style="@style/TextViewItem_gray"
             android:layout_width="wrap_content"
-            android:layout_height="15dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:text="状态:未结束" />
     </RelativeLayout>
@@ -101,25 +101,25 @@
       android:layout_alignParentBottom="true">
     <TextView
         android:id="@+id/tag1"
-        style="@style/TextView10"
+        style="@style/TextViewItem_gray"
         android:paddingLeft="8px"
         android:layout_width="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_height="15dp"
+        android:layout_height="wrap_content"
         android:text="关注数:0" />
     <TextView
         android:id="@+id/tag2"
         android:layout_toRightOf="@id/tag1"
-        style="@style/TextView10"
+        style="@style/TextViewItem_gray"
         android:layout_marginLeft="15dp"
         android:layout_width="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_height="15dp"
+        android:layout_height="wrap_content"
         android:text="评论数:0" />
   <TextView
       android:id="@+id/sendaddress"
       android:layout_marginTop="5dp"
-      style="@style/TextView10"
+      style="@style/TextViewItem_gray"
       android:paddingLeft="8px"
       android:layout_width="fill_parent"
       android:layout_height="wrap_content"

@@ -11,7 +11,7 @@
         android:layout_below="@+id/title_bar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        ></ViewFlipper>
+        android:background="#050000"></ViewFlipper>
     <!--ImageSwitcher
         android:id="@+id/imageSwitcher1"
         android:layout_below="@+id/title_bar"

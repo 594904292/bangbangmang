@@ -252,6 +252,7 @@
         <item>input, 适用于输入短信、微博等长句输入</item>
     </string-array>
     <string name="prop_default"></string>
+    <string name="itemdiscuzz">阿斯顿发撒旦法分谁的发生的发达撒大法师法大撒旦发生的发生的发生阿斯顿发撒旦法分谁的发生的发达撒大法师法大撒旦发生的发生的发生</string>
     <string-array name="prop_tpye">
         <item>@string/prop_default</item>
         <item>20000, 输入</item>

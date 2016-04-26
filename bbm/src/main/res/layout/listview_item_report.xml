@@ -44,7 +44,7 @@
 
    <TextView
        android:id="@+id/username"
-       style="@style/TextView10"
+       style="@style/TextViewItem_gray"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:layout_marginLeft="5px"
@@ -56,7 +56,7 @@
 
     <TextView
         android:id="@+id/nums"
-        style="@style/TextView12"
+        style="@style/TextViewItem_gray"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"

@@ -12,28 +12,15 @@
         android:padding="5dp"
         android:src="@mipmap/ic_launcher" />
 
-    <TextView
-        android:id="@+id/username"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/imageView"        
-        android:textSize="12sp"/>
 
-    <TextView
-        android:id="@+id/telphone"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/username"
-        android:layout_toRightOf="@id/imageView"
-        android:textSize="18sp" />
-
-    
-      <LinearLayout
+	<LinearLayout
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                 android:layout_below="@id/telphone"
-                 android:layout_toRightOf="@id/imageView"     
-                android:gravity="right" >
+                android:layout_height="72dp"
+                 android:layout_below="@+id/telphone"
+                 android:layout_toRightOf="@id/imageView"
+                android:gravity="right"
+		  android:orientation="vertical"
+		android:layout_marginRight="72dp">
 
                 <!--Button
                     android:id="@+id/button1"
@@ -46,21 +33,61 @@
                     android:paddingRight="10dp"
                     android:paddingTop="8dp"
                     android:text="拨打电话" /-->
-			        
-             <Button
-			        android:id="@+id/button2"
-			        android:layout_width="wrap_content"
-			        android:layout_height="wrap_content"     
-			        android:layout_marginLeft="15dp"   
-			        android:paddingLeft="10dp"
-				    android:paddingRight="10dp"
-				    android:paddingTop="8dp"
-				    android:paddingBottom="8dp"
-			        android:background="@drawable/button_green"
-				 android:clickable="true"
-				 android:focusable="false"
-				 android:text="雷锋" />
-            </LinearLayout>
-   
-  
+
+		<TextView
+    android:id="@+id/username"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+
+    android:textSize="12sp"
+			android:layout_marginTop="15dp" />
+
+		<TextView
+    android:id="@+id/telphone"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/username"
+    android:textSize="18sp"
+			android:layout_marginTop="10dp" />
+
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="72dp"
+		android:orientation="horizontal"
+		android:layout_alignParentEnd="true"
+		android:gravity="center|center_vertical|center_horizontal">
+
+		<!--Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:background="@drawable/button_green"
+            android:paddingBottom="8dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="8dp"
+            android:text="拨打电话" /-->
+
+		<Button
+			android:id="@+id/button2"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:paddingLeft="10dp"
+			android:paddingRight="10dp"
+			android:paddingTop="8dp"
+			android:paddingBottom="8dp"
+			android:background="@drawable/button_green"
+			android:clickable="true"
+			android:focusable="false"
+			android:text="雷锋"
+			android:layout_marginRight="5dp" />
+
+
+	</LinearLayout>
+
+
 </RelativeLayout>

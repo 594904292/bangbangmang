@@ -11,9 +11,9 @@
     <RelativeLayout
         android:id="@+id/ly_chat_bottom"
         android:layout_width="fill_parent"
-        android:layout_height="55dp"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        android:background="@color/lighter_gray" >
+        android:background="@drawable/chat_footer_bg" >
 
         <Button
             android:id="@+id/id_chat_send"
