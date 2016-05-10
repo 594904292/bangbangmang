@@ -44,7 +44,7 @@ import static com.bbxiaoqu.SessionManager.P_MARKET_LNG;
  * The Client Seesion Object for GfanMobile, contains some necessary
  * information.
  * 
- * @author andrew
+ * @author dzyang
  * @date 2010-12-22
  * @since Version 0.5.1
  * 
@@ -128,11 +128,9 @@ public class Session extends Observable {
                 userid = (String) preference.get(P_MARKET_USERID);
                 username = (String) preference.get(P_MARKET_USERNAME);
                 password = (String) preference.get(P_MARKET_PASSWORD);
-                
                 headface = (String) preference.get(P_MARKET_HEADFACE);
                 xiaoquid = (String) preference.get(P_MARKET_XIAOQUID);
                 xiaoquname = (String) preference.get(P_MARKET_XIAOQUNAME);
-                
                 lat = (String) preference.get(P_MARKET_LAT);
                 lng = (String) preference.get(P_MARKET_LNG);
            };

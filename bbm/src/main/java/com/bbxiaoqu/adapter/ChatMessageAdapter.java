@@ -1,16 +1,13 @@
 package com.bbxiaoqu.adapter;
 
 import java.util.List;
-
 import com.bbxiaoqu.DemoApplication;
 import com.bbxiaoqu.ImageOptions;
 import com.bbxiaoqu.R;
 import com.bbxiaoqu.bean.ChatMessage;
 import com.nostra13.universalimageloader.core.ImageLoader;
-
 import android.app.Activity;
 import android.content.Context;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

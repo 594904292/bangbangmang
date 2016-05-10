@@ -129,14 +129,12 @@ public class DemoApplication extends Application {
 	    Log.v(TAG, "application created");
 		// 在使用 SDK 各组间之前初始化 context 信息，传入 ApplicationContext
 
-
 		SDKInitializer.initialize(this);
 
 		File cacheDir = StorageUtils.getCacheDirectory(this); // 缓存文件夹路径
 		ImageLoaderConfiguration configuration = new ImageLoaderConfiguration.Builder(this)
 				.threadPoolSize(10) // default 线程池内加载的数量
 				.threadPriority(Thread.NORM_PRIORITY - 2) // default 设置当前线程的优先级
-
 				.denyCacheImageMultipleSizesInMemory()
 				.memoryCacheSize(100 * 1024 * 1024) // 100M内存缓存的最大值
 				.memoryCacheSizePercentage(13) // default

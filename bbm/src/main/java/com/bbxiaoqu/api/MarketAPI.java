@@ -33,7 +33,7 @@ import android.content.pm.PackageManager;
 /**
  * GfanMobile aMarket API utility class
  * 
- * @author andrew.wang
+ * @author dzyang
  * @date 2010-10-29
  * @since Version 0.4.0
  */

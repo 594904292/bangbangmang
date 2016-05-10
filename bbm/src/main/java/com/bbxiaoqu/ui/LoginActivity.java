@@ -161,7 +161,7 @@ public class LoginActivity extends BaseActivity implements OnFocusChangeListener
 					String password = jsonobj.getString("pass");
 					if(!pass.equals(password))
 					{
-						Toast.makeText(LoginActivity.this, "码密错误",Toast.LENGTH_LONG).show();
+						Toast.makeText(LoginActivity.this, "密码错误",Toast.LENGTH_LONG).show();
 						return;
 					}else {
 						String telphone = jsonobj.getString("telphone");
@@ -188,7 +188,7 @@ public class LoginActivity extends BaseActivity implements OnFocusChangeListener
 							Intent intent = new Intent(LoginActivity.this, MainActivity.class);
 							startActivity(intent);
 						} else {
-							Toast.makeText(LoginActivity.this, "码密错误", Toast.LENGTH_LONG).show();
+							Toast.makeText(LoginActivity.this, "密码错误", Toast.LENGTH_LONG).show();
 						}
 					}
 				}

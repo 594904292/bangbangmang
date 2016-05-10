@@ -604,8 +604,8 @@ public class MainActivity extends BaseActivity  implements ViewSwitcher.ViewFact
 					}
 					if(info!=null)
 					{
-						if(info.getVersion().equals(OldVersionName)){  
-							    //Log.i(TAG,"版本号相同无需升级");  
+						if(info.getVersion().equals(OldVersionName)){
+							//T.showShort(MainActivity.this, "版本号相同无需升级！");
 						}else{  
 							if(Double.parseDouble(OldVersionName)<Double.parseDouble(info.getVersion()))
 							{

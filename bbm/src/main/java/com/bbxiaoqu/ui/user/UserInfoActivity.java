@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -90,16 +91,16 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 	private RadioGroup sex=null;
 	private RadioButton male=null;
 	private RadioButton female=null;
-	private EditText community_eidt;
+	//private EditText community_eidt;
 	private EditText telphone;
 	Button save;
 	Button score_btn;
-	Button SelCommunityBtn;
+	//Button SelCommunityBtn;
 	private String headfacepath = "";
 	private String headfacename = "";
-	private String community_id="";
+	/*private String community_id="";
 	private String community_lat="";
-	private String community_lng="";
+	private String community_lng="";*/
 	private String score="";
 	private String userid="";
 	public ImageView top_more;
@@ -108,7 +109,7 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 	private String[] items = new String[] { "选择本地图片", "拍照" };
 	/** 头像名称 */
 	private static final String IMAGE_FILE_NAME = "image.jpg";
-	private static final int SelXq_REQUEST_CODE=100;
+	//private static final int SelXq_REQUEST_CODE=100;
 	private static final int GzXq_REQUEST_CODE=101;
 	/** 请求码 */
 	private static final int IMAGE_REQUEST_CODE = 0;
@@ -123,7 +124,7 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 	TextView dateAndTimeLabel = null;
 	//获取一个日历对象
 	Calendar dateAndTime = Calendar.getInstance(Locale.CHINA);
-
+	String brithdaystr = "";
 
 	//当点击DatePickerDialog控件的设置按钮时，调用该方法
 	DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener()
@@ -181,11 +182,11 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 		username = (EditText) findViewById(R.id.username);
 		brithday= (EditText) findViewById(R.id.brithday);
 		age = (EditText) findViewById(R.id.age);
-		community_eidt = (EditText) findViewById(R.id.community);
+		//community_eidt = (EditText) findViewById(R.id.community);
 		telphone = (EditText) findViewById(R.id.telphone);
 		save = (Button) findViewById(R.id.save);
 		score_btn  = (Button) findViewById(R.id.score_btn);
-		SelCommunityBtn = (Button) findViewById(R.id.SelCommunityBtn);
+		//SelCommunityBtn = (Button) findViewById(R.id.SelCommunityBtn);
 		txt_userid=(TextView) findViewById(R.id.txt_userid);
 		tv_score=(TextView) findViewById(R.id.score_tv);
 		this.txt=(TextView) super.findViewById(R.id.txt);
@@ -241,12 +242,12 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 	            }).show(); 
 			}
 		});
-		SelCommunityBtn.setOnClickListener(new OnClickListener() {
+		/*SelCommunityBtn.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				Intent intent=new Intent(UserInfoActivity.this,SelCommunityActivity.class);
 				startActivityForResult(intent, SelXq_REQUEST_CODE);    
 			}
-		});
+		});*/
 		XiaoquService xiaoquService = new XiaoquService(this);
 		String names=xiaoquService.allxiaoqu();
 
@@ -258,12 +259,24 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 
 			@Override
 			public void onClick(View v) {
+
+				String str="2010-5-27";
+				SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
+				Date date = null;
+				try {
+					date = sdf.parse(str);
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
+				Calendar acalendar = Calendar.getInstance();
+				acalendar.setTime(date);
+
 				//生成一个DatePickerDialog对象，并显示。显示的DatePickerDialog控件可以选择年月日，并设置
 				new DatePickerDialog(UserInfoActivity.this,
 						d,
-						dateAndTime.get(Calendar.YEAR),
-						dateAndTime.get(Calendar.MONTH),
-						dateAndTime.get(Calendar.DAY_OF_MONTH)).show();
+						dateAndTime.get(acalendar.YEAR),
+						dateAndTime.get(acalendar.MONTH),
+						dateAndTime.get(acalendar.DAY_OF_MONTH)).show();
 			}
 		});
 
@@ -348,12 +361,6 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 		// 结果码不等于取消时候
 		if (resultCode != RESULT_CANCELED) {
 			switch (requestCode) {
-			case SelXq_REQUEST_CODE:
-				community_eidt.setText(data.getStringExtra("community"));
-				community_id=data.getStringExtra("community_id");
-				community_lat=data.getStringExtra("community_lat");
-				community_lng=data.getStringExtra("community_lng");
-				break;
 			case IMAGE_REQUEST_CODE:
 				startPhotoZoom(data.getData());
 				break;
@@ -461,10 +468,10 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 			paramsList.add(new BasicNameValuePair("age", age.getText()	.toString()));
 			paramsList.add(new BasicNameValuePair("sex", sex_str));
 			paramsList.add(new BasicNameValuePair("telphone", telphone.getText().toString()));
-			paramsList.add(new BasicNameValuePair("community", community_eidt.getText().toString()));
-			paramsList.add(new BasicNameValuePair("community_id", community_id));
-			paramsList.add(new BasicNameValuePair("community_lat", community_lat));
-			paramsList.add(new BasicNameValuePair("community_lng", community_lng));
+			paramsList.add(new BasicNameValuePair("community", ""));
+			paramsList.add(new BasicNameValuePair("community_id", ""));
+			paramsList.add(new BasicNameValuePair("community_lat", ""));
+			paramsList.add(new BasicNameValuePair("community_lng", ""));
 			try {
 				httprequest.setEntity(new UrlEncodedFormEntity(paramsList,"UTF-8"));
 				HttpClient HttpClient1 = CustomerHttpClient.getHttpClient();
@@ -541,11 +548,11 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 			int result;
 			String username = "";
 			String age = "";
-			String brithday = "";
+
 			String sex = "";
 			String telphone = "";
 			String remote_headface = "";
-			String community="";
+			//String community="";
 			String target = myapplication.getlocalhost()+"getuserinfo.php?userid="
 					+ myapplication.getUserId();
 			HttpGet httprequest = new HttpGet(target);
@@ -569,17 +576,17 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 						JSONObject jsonobject = jsonarray.getJSONObject(0);
 						username = jsonobject.getString("username");
 						age = jsonobject.getString("age");
-						brithday= jsonobject.getString("brithday");
+						 brithdaystr = jsonobject.getString("brithday");
 						sex = jsonobject.getString("sex");
 						telphone = jsonobject.getString("telphone");
 						remote_headface = jsonobject.getString("headface");
-						community = jsonobject.getString("community");
+						//community = jsonobject.getString("community");
 						userid = jsonobject.getString("userid");
 						score = jsonobject.getString("score");
 						uService.updatenickname(username, userid);//更新用户昵称
-						community_id = jsonobject.getString("community_id");
-						community_lat = jsonobject.getString("community_lat");
-						community_lng = jsonobject.getString("community_lng");
+//						community_id = jsonobject.getString("community_id");
+//						community_lat = jsonobject.getString("community_lat");
+//						community_lng = jsonobject.getString("community_lng");
 								
 						uService.updatenickname(username, myapplication.getUserId());
 						uService.updateheadface(remote_headface, myapplication.getUserId());
@@ -597,11 +604,11 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 				Bundle data = new Bundle();
 				data.putString("username", username);
 				data.putString("age", age);
-				data.putString("brithday", brithday);
+				data.putString("brithday", brithdaystr);
 				data.putString("sex", sex);
 				data.putString("telphone", telphone);
 				data.putString("headface", remote_headface);
-				data.putString("community", community);
+				//data.putString("community", community);
 				data.putString("userid", userid);
 				data.putString("score", score);
 				msg.setData(data);
@@ -630,13 +637,13 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 			{
 				female.setChecked(true);
 			}
-			if(!data.getString("community").equals("null")&&data.getString("community").length()>0)
-			{
-				community_eidt.setText(data.getString("community"));
-			}else
-			{
-				community_eidt.setText("");
-			}
+//			if(!data.getString("community").equals("null")&&data.getString("community").length()>0)
+//			{
+//				community_eidt.setText(data.getString("community"));
+//			}else
+//			{
+//				community_eidt.setText("");
+//			}
 			telphone.setText(data.getString("telphone"));
 			
 			

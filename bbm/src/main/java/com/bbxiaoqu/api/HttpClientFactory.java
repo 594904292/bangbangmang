@@ -23,7 +23,7 @@ import com.bbxiaoqu.api.util.Utils;
  * 
  * You can fetch http client by using get***HttpClient method easily. 
  * 
- * @author andrew.wang
+ * @author dzyang
  * @date    2010-9-26
  * @since    Version 0.4.0
  */

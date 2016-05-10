@@ -44,7 +44,7 @@ import android.util.Log;
 /**
  * API 响应结果解析工厂类，所有的API响应结果解析需要在此完成。
  * 
- * @author andrew
+ * @author dzyang
  * @date 2011-4-22
  * 
  */

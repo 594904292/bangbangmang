@@ -60,8 +60,8 @@ import static android.support.v4.app.ActivityCompat.startActivity;
  * @date 2014-2-2
  * @version 1.0
  * @desc 适配器
- * 
  */
+
 	public class FwListViewAdapter extends BaseAdapter {
 	private static final String TAG = "FwListViewAdapter";
 	private List<Map<String, Object>> list;

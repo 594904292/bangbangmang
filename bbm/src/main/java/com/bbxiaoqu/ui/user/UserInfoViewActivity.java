@@ -46,7 +46,7 @@ public class UserInfoViewActivity extends BaseActivity implements OnClickListene
 	TextView tv_score;
 	private TextView username;
 	private TextView age;
-	private TextView community;
+	//private TextView community;
 	private TextView telphone;
 	
 	private String sex_str = "1";
@@ -83,7 +83,7 @@ public class UserInfoViewActivity extends BaseActivity implements OnClickListene
 		title = (TextView) findViewById(R.id.title);
 		username = (TextView) findViewById(R.id.username);
 		age = (TextView) findViewById(R.id.age);
-		community = (TextView) findViewById(R.id.community);
+		//community = (TextView) findViewById(R.id.community);
 		telphone = (TextView) findViewById(R.id.telphone);
 		save = (Button) findViewById(R.id.save);
 		score_btn  = (Button) findViewById(R.id.score_btn);
@@ -143,7 +143,7 @@ public class UserInfoViewActivity extends BaseActivity implements OnClickListene
 			String sex = "";
 			String telphone = "";
 			String remote_headface = "";
-			String community="";
+			//String community="";
 			String target = myapplication.getlocalhost()+"getuserinfo.php?userid="+ myapplication.getUserId();
 			HttpGet httprequest = new HttpGet(target);
 			try {
@@ -169,7 +169,7 @@ public class UserInfoViewActivity extends BaseActivity implements OnClickListene
 						sex = jsonobject.getString("sex");
 						telphone = jsonobject.getString("telphone");
 						remote_headface = jsonobject.getString("headface");
-						community = jsonobject.getString("community");
+						//community = jsonobject.getString("community");
 						userid = jsonobject.getString("userid");
 						score = jsonobject.getString("score");
 						uService.updatenickname(username, userid);//更新用户昵称
@@ -194,7 +194,7 @@ public class UserInfoViewActivity extends BaseActivity implements OnClickListene
 				data.putString("sex", sex);
 				data.putString("telphone", telphone);
 				data.putString("headface", remote_headface);
-				data.putString("community", community);
+				//data.putString("community", community);
 				data.putString("userid", userid);
 				data.putString("score", score);
 				msg.setData(data);
@@ -221,13 +221,13 @@ public class UserInfoViewActivity extends BaseActivity implements OnClickListene
 			{
 				female.setChecked(true);
 			}
-			if(!data.getString("community").equals("null")&&data.getString("community").length()>0)
-			{
-				community.setText(data.getString("community"));
-			}else
-			{
-				community.setText("");
-			}
+//			if(!data.getString("community").equals("null")&&data.getString("community").length()>0)
+//			{
+//				community.setText(data.getString("community"));
+//			}else
+//			{
+//				community.setText("");
+//			}
 			telphone.setText(data.getString("telphone"));
 			txt_userid.setText("用户ID:"+data.getString("userid"));
 			tv_score.setText("积分:"+data.getString("score").toString());

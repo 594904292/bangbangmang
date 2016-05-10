@@ -74,7 +74,7 @@ import android.widget.Toast;
 /**
  * Common Utils for the application
  * 
- * @author andrew.wang
+ * @author dzyang
  * @date 2010-9-19
  * @since Version 0.4.0
  */

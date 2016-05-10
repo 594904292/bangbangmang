@@ -19,7 +19,6 @@ import android.util.Pair;
 public class SessionManager implements Observer {
 	public static final String P_MARKET_ISLOGIN = "pref.islogin";
 	public static final String P_MARKET_ISNOTIC = "pref.isnotic";
-
 	public static final String P_MARKET_USERNAME = "pref.username";
 	public static final String P_MARKET_PASSWORD = "pref.password";
 	public static final String P_MARKET_HEADFACE = "pref.headface";
@@ -31,7 +30,6 @@ public class SessionManager implements Observer {
 
 
     private static SessionManager mInstance;
-    
     //SharedPreferences是Android中最容易理解的数据存储技术，实际上SharedPreferences处理的就是一个key-value（键值对）SharedPreferences常用来存储一些轻量级的数据。
     private SharedPreferences mPreference;
     private Context mContext;

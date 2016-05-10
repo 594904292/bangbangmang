@@ -47,7 +47,7 @@ import android.os.AsyncTask;
 /**
  * 机锋市场API请求任务
  * 
- * @author andrew.wang
+ * @author dzyang.wang
  * @date 2010-10-27
  * @since Version 0.4.0
  */
@@ -251,7 +251,7 @@ public class ApiAsyncTask extends AsyncTask<Void, Void, Object> {
 	/**
 	 * 市场API请求监听器
 	 * 
-	 * @author andrew.wang
+	 * @author dzyang
 	 * @date 2010-10-28
 	 * @since Version 0.4.0
 	 */

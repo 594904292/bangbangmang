@@ -344,7 +344,7 @@ public class SearchActivity extends Activity{
 							item.put("lat", String.valueOf(customJson.getString("lat").toString()));
 							item.put("guid", String.valueOf(customJson.getString("guid").toString()));
 							item.put("infocatagroy", String.valueOf(customJson.getString("infocatagroy").toString()));
-							item.put("message", String.valueOf(customJson.getString("content").toString()));
+							item.put("content", String.valueOf(customJson.getString("content").toString()));
 							item.put("icon", String.valueOf(customJson.getString("photo").toString()));
 							item.put("date", String.valueOf(customJson.getString("sendtime").toString()));
 							item.put("status", String.valueOf(customJson.getString("status").toString()));

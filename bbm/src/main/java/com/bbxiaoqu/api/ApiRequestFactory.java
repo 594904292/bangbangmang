@@ -31,7 +31,7 @@ import android.text.TextUtils;
 /**
  * 这个类是获取API请求内容的工厂方法
  * 
- * @author andrew
+ * @author dzyang
  * @date    2011-4-21
  *
  */
