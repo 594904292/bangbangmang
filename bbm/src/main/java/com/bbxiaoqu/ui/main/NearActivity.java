@@ -24,6 +24,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.baidu.location.BDLocation;
+import com.baidu.location.BDLocationListener;
+import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
 import com.bbxiaoqu.DemoApplication;
 import com.bbxiaoqu.R;
 import com.bbxiaoqu.adapter.FwListViewAdapter;
@@ -43,7 +47,6 @@ import com.bbxiaoqu.comm.tool.NetworkUtils;
 import com.bbxiaoqu.comm.tool.StreamTool;
 import com.bbxiaoqu.comm.tool.T;
 import com.bbxiaoqu.ui.PublishActivity;
-import com.bbxiaoqu.ui.PublishFwActivity;
 import com.bbxiaoqu.ui.SearchActivity;
 import com.bbxiaoqu.view.BaseActivity;
 import com.bbxiaoqu.widget.AutoListView;
@@ -64,6 +67,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextPaint;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -103,6 +107,11 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 	//用户密码错误
 	private static final int ERROR_CODE_PASSWORD_INVALID = 212;
 
+
+	private LocationClient mLocationClient;
+	public Double nLatitude;
+	public Double nLontitude;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -110,6 +119,8 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 		myapplication = (DemoApplication) this.getApplication();
 		initView();
 		initData();
+		LoadLbsThread m = new LoadLbsThread();
+		new Thread(m).start();
 	}
 
 	int action=0;
@@ -201,6 +212,7 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 			alltp.setFakeBoldText(true);*/
 
 			loadData(AutoListView.REFRESH);
+
 			break;
 		case 1:
 			// 当点击了联系人tab时，改变控件的图片和文字颜色
@@ -214,6 +226,7 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 			mySostp.setFakeBoldText(true);*/
 
 			loadData(AutoListView.REFRESH);
+
 			break;
 		case 2:
 			// 当点击了动态tab时，改变控件的图片和文字颜色
@@ -227,6 +240,7 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 			sostp.setFakeBoldText(true);*/
 
 			loadData(AutoListView.REFRESH);
+
 			break;
 		/*case 3:
 			// 当点击了动态tab时，改变控件的图片和文字颜色
@@ -274,15 +288,20 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1,int location, long arg3) 
 			{
+				if (!NetworkUtils.isNetConnected(myapplication)) {
+					T.showShort(myapplication, "当前无网络连接！");
+					NetworkUtils.showNoNetWorkDlg(NearActivity.this);
+					return;
+				}
 				if(dataList.get(location - 1).get("infocatagroy").toString().equals("3"))
 				{
-					Intent Intent1 = new Intent();
+					/*Intent Intent1 = new Intent();
 					Intent1.setClass(NearActivity.this, ViewFwActivity.class);
 					Bundle arguments = new Bundle();
 					arguments.putString("put", "false");
 					arguments.putString("guid", dataList.get(location - 1).get("guid").toString());
 					Intent1.putExtras(arguments);
-					startActivity(Intent1);
+					startActivity(Intent1);*/
 				}else {
 					Intent Intent1 = new Intent();
 					Intent1.setClass(NearActivity.this, ViewActivity.class);
@@ -306,11 +325,7 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				/*Intent intent=new Intent(NearActivity.this, PublishFwActivity.class);
-				Bundle bundle = new Bundle();
-				bundle.putInt("infocatagroy", 3);
-				intent.putExtras(bundle);
-				startActivity(intent);*/
+
 
 				Intent intent=new Intent(NearActivity.this, PublishActivity.class);
 				Bundle bundle = new Bundle();
@@ -361,10 +376,6 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 			current_sel=2;
 			setTabSelection(current_sel);			
 			break;
-		/*case R.id.service_layout:
-			current_sel=3;
-			setTabSelection(current_sel);			
-			break;*/
 		default:
 			break;
 		}
@@ -421,7 +432,6 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 							{
 								len1=String.valueOf(len)+"米";
 							}
-
 							item.put("senduserid", String.valueOf(customJson.getString("senduser").toString()));
 							item.put("sendnickname", String.valueOf(customJson.getString("username").toString()));
 							item.put("community", String.valueOf(customJson.getString("community").toString()));
@@ -429,11 +439,14 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 							item.put("address",String.valueOf(len1));
 							item.put("lng", String.valueOf(customJson.getString("lng").toString()));
 							item.put("lat", String.valueOf(customJson.getString("lat").toString()));
-
-
 							item.put("guid", String.valueOf(customJson.getString("guid").toString()));
 							item.put("infocatagroy", String.valueOf(customJson.getString("infocatagroy").toString()));
-							item.put("content", String.valueOf(customJson.getString("content").toString()));
+							String content=customJson.getString("content").toString();
+							if(content.length()>80)
+							{
+								content=content.substring(0,80)+"...";
+							}
+							item.put("content", content);
 							item.put("icon", String.valueOf(customJson.getString("photo").toString()));
 							item.put("date", String.valueOf(customJson.getString("sendtime").toString()));
 							item.put("status", String.valueOf(customJson.getString("status").toString()));
@@ -493,7 +506,12 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 							 item.put("guid", String.valueOf(customJson.getString("guid").toString()));
 							 item.put("infocatagroy", String.valueOf(customJson.getString("infocatagroy").toString()));
 							 item.put("title", String.valueOf(customJson.getString("title").toString()));
-							 item.put("content", String.valueOf(customJson.getString("content").toString()));
+							 String content=customJson.getString("content").toString();
+							 if(content.length()>80)
+							 {
+								 content=content.substring(0,80)+"...";
+							 }
+							 item.put("content", content);
 							 item.put("icon", String.valueOf(customJson.getString("photo").toString()));
 							 item.put("date", String.valueOf(customJson.getString("sendtime").toString()));
 							 item.put("status", String.valueOf(customJson.getString("status").toString()));
@@ -580,5 +598,61 @@ public class NearActivity extends BaseActivity  implements OnRefreshListener,OnL
 
 		return Math.round(calculatedDistance); //四舍五入
 	}
+
+
+
+	private void initlsb() {
+		// TODO Auto-generated method stub
+		mLocationClient = new LocationClient(this.myapplication);
+		LocationClientOption option = new LocationClientOption();
+		option.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy);// 设置定位模式
+		option.setCoorType("gcj02");// 返回的定位结果是百度经纬度，默认值gcj02
+		int span = 1000*20;
+
+		option.setScanSpan(span);// 设置发起定位请求的间隔时间为5000ms
+		option.setIsNeedAddress(true);
+		mLocationClient.setLocOption(option);
+
+		mLocationClient.registerLocationListener(new BDLocationListener() {
+
+			@Override
+			public void onReceiveLocation(BDLocation location) {
+				// TODO Auto-generated method stub
+				if (location == null) {
+					//Log.v(TAG, "HomeActivity location empty");
+					return;
+				}
+				nLatitude = location.getLatitude();
+				nLontitude = location.getLongitude();
+				Log.i("mylog", nLatitude+"-" + nLontitude);
+				myapplication.setLat(String.valueOf(nLatitude));
+				myapplication.setLng(String.valueOf(nLontitude));
+				myapplication.updatelocation();
+				mLocationClient.stop();
+			}
+		});
+		mLocationClient.start();
+		mLocationClient.requestLocation();
+	}
+
+	class LoadLbsThread implements Runnable {
+		public void run() {
+			Message message = new Message();
+			message.what = 1;
+			handler.sendMessage(message);
+		}
+	}
+
+	Handler handler = new Handler(){
+		public void handleMessage(Message msg) {
+			switch (msg.what) {
+				case 1:
+					initlsb();
+					break;
+			}
+			super.handleMessage(msg);
+		}
+
+	};
 
 }

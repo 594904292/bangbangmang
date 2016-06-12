@@ -61,7 +61,7 @@ public class SendCrashActivity extends BaseActivity {
 
 
 		time = new TimeCount(10000, 1000);//构造CountDownTimer对象
-
+		time.start();//开始计时
 
 		if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) 
 		{
@@ -94,8 +94,8 @@ public class SendCrashActivity extends BaseActivity {
 	}
 
 	public void onTick(long millisUntilFinished){//计时过程显示
-		//btn_verf.setClickable(false);
-		//btn_verf.setText(millisUntilFinished /1000+"秒");
+		return_btn.setClickable(false);
+		return_btn.setText(millisUntilFinished /1000+"秒");
 	}
 	private void initView() {
 		title = (TextView)findViewById(R.id.title);
@@ -148,16 +148,16 @@ public class SendCrashActivity extends BaseActivity {
 		}
 		@Override
 		public void onFinish() {//计时完毕时触发
-			//btn_verf.setText("重新验证");
-			//btn_verf.setClickable(true);
+			//return_btn.setText("重新验证");
+			return_btn.setClickable(true);
 			time.cancel();
 			startActivity(new Intent(getApplicationContext(), MainActivity.class));
 			finish();
 		}
 		@Override
 		public void onTick(long millisUntilFinished){//计时过程显示
-			//btn_verf.setClickable(false);
-			return_btn.setText(millisUntilFinished /1000+"秒");
+			return_btn.setClickable(false);
+			return_btn.setText("返回"+millisUntilFinished /1000+"秒");
 		}
 	}
 }

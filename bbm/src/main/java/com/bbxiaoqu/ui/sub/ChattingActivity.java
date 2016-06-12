@@ -137,6 +137,17 @@ public class ChattingActivity extends Activity implements onNewMessageListener
 		Bundle Bundle1 = this.getIntent().getExtras();		
 		from = Bundle1.getString("to");
 		myself = Bundle1.getString("my");
+		if(from==null||from.trim().length()<1)
+		{
+			T.showShort(myapplication, "获取不到对方参数！");
+			return;
+		}
+		if(myself==null||myself.trim().length()<1)
+		{
+			T.showShort(myapplication, "获取不到自己的用户参数！");
+			return;
+		}
+
 		db.updateuserheadface(myself, myapplication.getheadface());
 		Map mymap=new HashMap();
 		mymap.put("headface", myapplication.getheadface());
@@ -178,6 +189,7 @@ public class ChattingActivity extends Activity implements onNewMessageListener
 			if(msg.what==1) {
 				if (!NetworkUtils.isNetConnected(myapplication)) {
 					T.showShort(myapplication, "当前无网络连接！");
+					NetworkUtils.showNoNetWorkDlg(ChattingActivity.this);
 					return;
 				}
 				myapplication.getInstance().startxmpp();
@@ -192,6 +204,8 @@ public class ChattingActivity extends Activity implements onNewMessageListener
 		public void run() {
 			if (!NetworkUtils.isNetConnected(myapplication)) {
 				T.showShort(myapplication, "当前无网络连接！");
+
+				NetworkUtils.showNoNetWorkDlg(ChattingActivity.this);
 				return;
 			}
 			String target = myapplication.getlocalhost()+"getinfo.php?guid=" + guid;
@@ -477,12 +491,14 @@ public class ChattingActivity extends Activity implements onNewMessageListener
 				if (TextUtils.isEmpty(msg))
 				{
 					T.showShort(myapplication, "您还未填写消息呢!");
+
 					return;
 				}
 
 				if (!NetworkUtils.isNetConnected(myapplication))
 				{
 					T.showShort(myapplication, "当前无网络连接！");
+					NetworkUtils.showNoNetWorkDlg(ChattingActivity.this);
 					return;
 				}
 				

@@ -166,6 +166,7 @@ public class BmUserActivity extends Activity implements  Callback{
 	private void getData() {
 		if (!NetworkUtils.isNetConnected(myapplication)) {
 			T.showShort(myapplication, "当前无网络连接！");
+			NetworkUtils.showNoNetWorkDlg(BmUserActivity.this);
 			return;
 		}
 		String target=myapplication.getlocalhost()+"getbmuserlist.php?guid="+guid;

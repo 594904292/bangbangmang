@@ -181,6 +181,7 @@ public class MyinfosActivity extends Activity  implements OnRefreshListener,OnLo
 		if (!NetworkUtils.isNetConnected(MyinfosActivity.this))
 		{
 			T.showShort(MyinfosActivity.this, "当前无网络连接！");
+			NetworkUtils.showNoNetWorkDlg(MyinfosActivity.this);
 			return;
 		}
 		new Thread(new Runnable() {

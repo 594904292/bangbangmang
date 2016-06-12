@@ -254,6 +254,7 @@ public class ViewListActivity extends BaseActivity implements OnItemClickListene
 		public void run() {
 			if (!NetworkUtils.isNetConnected(myapplication)) {
 				T.showShort(myapplication, "当前无网络连接！");
+				NetworkUtils.showNoNetWorkDlg(ViewListActivity.this);
 				return;
 			}
 			String target = myapplication.getlocalhost()+"getinfo.php?guid=" + guid;
@@ -384,6 +385,7 @@ public class ViewListActivity extends BaseActivity implements OnItemClickListene
 	private void loaddiscuzzBody() {
 		if (!NetworkUtils.isNetConnected(myapplication)) {
 			T.showShort(myapplication, "当前无网络连接！");
+			NetworkUtils.showNoNetWorkDlg(ViewListActivity.this);
 			return;
 		}
 		String target = myapplication.getlocalhost()+"/getdiscuzz.php?infoid="+ this.infoid;		
@@ -605,6 +607,7 @@ public class ViewListActivity extends BaseActivity implements OnItemClickListene
 				// TODO Auto-generated method stub
 				if (!NetworkUtils.isNetConnected(myapplication)) {
 					T.showShort(myapplication, "当前无网络连接！");
+					NetworkUtils.showNoNetWorkDlg(ViewListActivity.this);
 					return;
 				}
 				int result;

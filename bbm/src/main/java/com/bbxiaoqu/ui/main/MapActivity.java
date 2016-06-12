@@ -340,6 +340,7 @@ public class MapActivity extends Activity {
 	public void getnear(double latitude, double longitude) {
 		if (!NetworkUtils.isNetConnected(myapplication)) {			
 			T.showShort(myapplication, "当前无网络连接,请稍后再试！");
+			NetworkUtils.showNoNetWorkDlg(MapActivity.this);
 			return;
 		}
 		List<Map<String, Object>> smalldataList = new ArrayList<Map<String, Object>>();

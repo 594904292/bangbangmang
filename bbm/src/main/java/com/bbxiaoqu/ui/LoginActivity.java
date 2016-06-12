@@ -29,6 +29,7 @@ import com.bbxiaoqu.comm.service.db.UserService;
 import com.bbxiaoqu.ui.main.MainActivity;
 import com.bbxiaoqu.ui.user.RegisterActivity;
 import com.bbxiaoqu.view.BaseActivity;
+import com.tencent.bugly.crashreport.CrashReport;
 
 public class LoginActivity extends BaseActivity implements OnFocusChangeListener,ApiRequestListener {
 	private DemoApplication myapplication;
@@ -167,6 +168,8 @@ public class LoginActivity extends BaseActivity implements OnFocusChangeListener
 						String telphone = jsonobj.getString("telphone");
 						String headface = jsonobj.getString("headface");
 						String username = jsonobj.getString("username");
+						String isrecvmess = jsonobj.getString("isrecvmess");
+						String isopenvoice = jsonobj.getString("isopenvoice");
 						User user = new User();
 						user.setNickname(username);
 						user.setUsername(userid);
@@ -185,6 +188,13 @@ public class LoginActivity extends BaseActivity implements OnFocusChangeListener
 							mSession.setUid(userid);
 							mSession.setUserName(username);
 							mSession.setPassword(password);
+							if(isrecvmess.equals("1"))
+							{
+								mSession.setIsNotic(true);
+							}else
+							{
+								mSession.setIsNotic(false);
+							}
 							Intent intent = new Intent(LoginActivity.this, MainActivity.class);
 							startActivity(intent);
 						} else {

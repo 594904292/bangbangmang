@@ -65,6 +65,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
+import android.os.StrictMode;
 import android.preference.PreferenceManager;
 import android.speech.RecognitionListener;
 import android.speech.SpeechRecognizer;
@@ -97,8 +98,7 @@ import android.widget.ImageView.ScaleType;
 import android.widget.ToggleButton;
 
 public class PublishActivity extends Activity implements OnClickListener {
-	private static final String TAG = "demoActivity";
-
+	private static final String TAG = "PublishActivity";
 	/** 头像 */
 	public ImageView top_head;
 	/** 更多 */
@@ -167,6 +167,23 @@ public class PublishActivity extends Activity implements OnClickListener {
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		String strVer = android.os.Build.VERSION.RELEASE;
+		strVer = strVer.substring(0,3).trim();
+		float fv=Float.valueOf(strVer);
+		if(fv>2.3)
+		{
+			StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+					.detectDiskReads()
+					.detectDiskWrites()
+					.detectNetwork() // 这里可以替换为detectAll() 就包括了磁盘读写和网络I/O
+					.penaltyLog() //打印logcat，当然也可以定位到dropbox，通过文件保存相应的log
+					.build());
+			StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
+					.detectLeakedSqlLiteObjects() //探测SQLite数据库操作
+					.penaltyLog() //打印logcat
+					.penaltyDeath()
+					.build());
+		}
 		setContentView(R.layout.activity_publish);
 		getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 		Resources resource = this.getResources();
@@ -180,7 +197,7 @@ public class PublishActivity extends Activity implements OnClickListener {
 		mScreenWidth = ScreenUtils.getWindowsWidth(this);
 		mItemWidth = mScreenWidth / 3;// 一个Item宽度为屏幕的1/7
 		initbaidu(resource, pkgName);
-		initlsb();
+
 
 		mImageButtonList = new ArrayList<ImageButton>();
 		mPicturePathList = new ArrayList<String>();
@@ -238,6 +255,7 @@ public class PublishActivity extends Activity implements OnClickListener {
 			public void onClick(View v) {
 				if (!NetworkUtils.isNetConnected(myapplication)) {
 					T.showShort(myapplication, "当前无网络连接！");
+					NetworkUtils.showNoNetWorkDlg(PublishActivity.this);
 					return;
 				}
 				String content = content_edit.getText().toString();
@@ -269,69 +287,8 @@ public class PublishActivity extends Activity implements OnClickListener {
 
 			}
 		};
-
-	}
-
-	String[] tag;
-	String[] name;
-	@SuppressLint("ResourceAsColor")
-	public void init_extui()
-	{
-		if(infocatagroy==1)
-		{
-			tag=new String[]{"low_price","hight_price"};
-			name=new String[]{"最低价","最高价"};
-			for(int i=0;i<name.length;i++)
-			{
-				LinearLayout row=new LinearLayout(this);
-				row.setOrientation(LinearLayout.HORIZONTAL);
-				row.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT, 1.0f));
-
-				TextView tv=new TextView(this);
-				tv.setText(name[i]);
-				tv.setLayoutParams(new LinearLayout.LayoutParams(mItemWidth, LayoutParams.WRAP_CONTENT, 1.0f));
-
-				//android:layout_weight
-				EditText edit =new EditText(this);
-				edit.setTag(tag[i]);
-				edit.setBackgroundResource(R.drawable.bg_edittext);
-				//edit.setTextColor(R.color.black);
-				edit.setText("");
-				edit.setLayoutParams(new LinearLayout.LayoutParams(mItemWidth*2, LayoutParams.WRAP_CONTENT, 1.0f));
-				row.addView(tv);
-				row.addView(edit);
-
-				this.ext_mLayout.addView(row);
-
-			}
-		}else if(infocatagroy==2)
-		{
-			tag=new String[]{"name","price"};
-			name=new String[]{"商品名称","价格"};
-			for(int i=0;i<name.length;i++)
-			{
-				LinearLayout row=new LinearLayout(this);
-				row.setOrientation(LinearLayout.HORIZONTAL);
-				row.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT, 1.0f));
-
-				TextView tv=new TextView(this);
-				tv.setText(name[i]);
-				tv.setLayoutParams(new LinearLayout.LayoutParams(mItemWidth, LayoutParams.WRAP_CONTENT, 1.0f));
-
-				//android:layout_weight
-				EditText edit =new EditText(this);
-				edit.setTag(tag[i]);
-				edit.setBackgroundResource(R.drawable.bg_edittext);
-				//edit.setTextColor(R.color.black);
-				edit.setText("");
-				edit.setLayoutParams(new LinearLayout.LayoutParams(mItemWidth*2, LayoutParams.WRAP_CONTENT, 1.0f));
-				row.addView(tv);
-				row.addView(edit);
-
-				this.ext_mLayout.addView(row);
-			}
-		}
-
+		LoadLbsThread m = new LoadLbsThread();
+		new Thread(m).start();
 	}
 
 	private void init_imgui() {
@@ -485,6 +442,26 @@ public class PublishActivity extends Activity implements OnClickListener {
 
 	}
 
+	class LoadLbsThread implements Runnable {
+		public void run() {
+			Message message = new Message();
+			message.what = 1;
+			handler.sendMessage(message);
+		}
+	}
+
+	Handler handler = new Handler(){
+		public void handleMessage(Message msg) {
+			switch (msg.what) {
+				case 1:
+					initlsb();
+					break;
+			}
+			super.handleMessage(msg);
+		}
+
+	};
+
 	Handler lbsfinshhandler = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {
@@ -523,7 +500,8 @@ public class PublishActivity extends Activity implements OnClickListener {
 			for (int i = 0; i < mPicturePathList.size(); i++) {
 				if (mPicturePathList.get(i).length() > 0) {
 					String localpicpath = mPicturePathList.get(i);
-					String compresslocalpicpath=compressBmpToFile(localpicpath,i);
+					ImageUtil imgutil=new ImageUtil();
+					String compresslocalpicpath=imgutil.compressBmpToFile(getApplicationContext(),localpicpath,i);
 					compmPicturePathList.add(compresslocalpicpath);
 				}
 			}
@@ -577,55 +555,7 @@ public class PublishActivity extends Activity implements OnClickListener {
 
 		}
 
-		boolean isFolderExists(String strFolder) {
-			File file = new File(strFolder);
-			if (!file.exists()) {
-				if (file.mkdirs()) {
-					return true;
-				} else {
-					return false;
 
-				}
-			}
-			return true;
-
-		}
-
-		public String compressBmpToFile(String filePath,int pos){
-
-			SimpleDateFormat bartDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
-			Date date = new Date();
-
-			File afile =new File(filePath);
-			String fileName=afile.getName();
-			String[] token = fileName.split("\\.");
-			String ext = token[1];
-
-			String tofilePath="";
-			if(!isFolderExists(getApplicationContext().getFilesDir().getAbsolutePath()+"/temp/"))
-			{
-				//判断的时候已经创建
-			}
-			tofilePath =getApplicationContext().getFilesDir().getAbsolutePath()+"/temp/"+ bartDateFormat.format(date)+String.valueOf(pos)+"."+ext;
-			Bitmap bmp=BitmapFactory.decodeFile(filePath);
-			ByteArrayOutputStream baos = new ByteArrayOutputStream();
-			int options = 80;//个人喜欢从80开始,
-			bmp.compress(Bitmap.CompressFormat.JPEG, options, baos);
-			while (baos.toByteArray().length / 1024 > 100) {
-				baos.reset();
-				options -= 10;
-				bmp.compress(Bitmap.CompressFormat.JPEG, options, baos);
-			}
-			try {
-				FileOutputStream fos = new FileOutputStream(tofilePath);
-				fos.write(baos.toByteArray());
-				fos.flush();
-				fos.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			return tofilePath;
-		}
 		private void UploadPic() throws FileNotFoundException {
 			for (int i = 0; i < compmPicturePathList.size(); i++) {
 				if (compmPicturePathList.get(i).length() > 0) {
@@ -784,15 +714,6 @@ public class PublishActivity extends Activity implements OnClickListener {
 
 		}
 	}
-
-
-
-
-
-
-
-
-
 
 
 	private void print(String msg) {

@@ -65,6 +65,8 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -121,11 +123,7 @@ public class MainActivity extends BaseActivity  implements ViewSwitcher.ViewFact
 	private static final int ERROR_CODE_USERNAME_NOT_EXIST = 211;
 	// 用户密码错误
 	private static final int ERROR_CODE_PASSWORD_INVALID = 212;
-
 	NoticeDB db=new NoticeDB(this);
-
-
-
 
 	/**
 	 * ImagaSwitcher 的引用
@@ -155,7 +153,7 @@ public class MainActivity extends BaseActivity  implements ViewSwitcher.ViewFact
 	public Button reportday_btn;
 	/*public Button reportweek_btn;
 	public Button reportmonth_btn;*/
-
+	private SoundPool soundPool;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -203,9 +201,7 @@ public class MainActivity extends BaseActivity  implements ViewSwitcher.ViewFact
 		mImageSwitcher.setFactory(this);
 		//设置OnTouchListener，我们通过Touch事件来切换图片
 		mImageSwitcher.setOnTouchListener(this);
-
 		linearLayout = (LinearLayout) findViewById(R.id.viewGroup);
-
 		tips = new ImageView[imgIds.length];
 		for(int i=0; i<imgIds.length; i++){
 			ImageView mImageView = new ImageView(this);
@@ -228,6 +224,8 @@ public class MainActivity extends BaseActivity  implements ViewSwitcher.ViewFact
 		setImageBackground(currentPosition);
 
 		new Thread(xmpprunnable).start();
+		soundPool= new SoundPool(10, AudioManager.STREAM_SYSTEM,5);
+		soundPool.load(MainActivity.this, R.raw.msg,1);
 	}
 
 
@@ -474,6 +472,7 @@ public class MainActivity extends BaseActivity  implements ViewSwitcher.ViewFact
 				myapplication.setLat(String.valueOf(nLatitude));
 				myapplication.setLng(String.valueOf(nLontitude));
 				myapplication.updatelocation();
+				mLocationClient.stop();
 			}	
 		});
 		mLocationClient.start();		
@@ -494,11 +493,8 @@ public class MainActivity extends BaseActivity  implements ViewSwitcher.ViewFact
 		case R.id.headtop_left_count:
 			 headtop_left_count.setVisibility(View.GONE);	
 			 headtop_left_count.setText("0");
-			//Intent intent=new Intent(MainActivity.this,NoticeActivity.class);
-
 			Intent intent=new Intent(MainActivity.this,RecentActivity.class);
 			startActivity(intent);
-			    
 			break;
 		default:
 			break;
@@ -609,7 +605,6 @@ public class MainActivity extends BaseActivity  implements ViewSwitcher.ViewFact
 						}else{  
 							if(Double.parseDouble(OldVersionName)<Double.parseDouble(info.getVersion()))
 							{
-
 								new AlertDialog.Builder(MainActivity.this).setTitle("确认升级吗？")
 										.setIcon(android.R.drawable.ic_dialog_info)
 										.setPositiveButton("升级", new DialogInterface.OnClickListener() {
@@ -648,11 +643,12 @@ public class MainActivity extends BaseActivity  implements ViewSwitcher.ViewFact
 			    headtop_left_count.setVisibility(View.VISIBLE);	
 			    headtop_left_count.setText(String.valueOf(num));
 			   //下面的也要更新吗
-				
+				soundPool.play(1,1, 1, 0, 0, 1);
 				break;
 			case 4:
 					if (!NetworkUtils.isNetConnected(myapplication)) {
 						T.showShort(myapplication, "当前无网络连接！");
+						NetworkUtils.showNoNetWorkDlg(MainActivity.this);
 						return;
 					}
 					myapplication.getInstance().startxmpp();
@@ -780,7 +776,6 @@ public class MainActivity extends BaseActivity  implements ViewSwitcher.ViewFact
 							e.printStackTrace();
 							 Utils.makeEventToast(MainActivity.this, "gonggao xml解释错误",false);
 						}
-						
     				}
 		        	break;
 		        default:
@@ -800,8 +795,7 @@ public class MainActivity extends BaseActivity  implements ViewSwitcher.ViewFact
 		            }catch (IllegalArgumentException e) {
 		            }            		            
 		            break;
-		            
-		        case MarketAPI.ACTION_GONGGAO:     
+		        case MarketAPI.ACTION_GONGGAO:
 		            // 隐藏登录框		                    		            
 		            break;
 		        default:

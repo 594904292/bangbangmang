@@ -94,6 +94,7 @@ public class ViewUserInfoActivity extends BaseActivity implements OnClickListene
 			public void onClick(View v) {
 				if (!NetworkUtils.isNetConnected(myapplication)) {			
 					T.showShort(myapplication, "当前无网络连接,请稍后再试！");
+					NetworkUtils.showNoNetWorkDlg(ViewUserInfoActivity.this);
 					return;
 				}
 				new Thread(addfriends).start();
@@ -127,6 +128,7 @@ public class ViewUserInfoActivity extends BaseActivity implements OnClickListene
 	private void getData() {
 		if (!NetworkUtils.isNetConnected(myapplication)) {
 			T.showShort(myapplication, "当前无网络连接！");
+			NetworkUtils.showNoNetWorkDlg(ViewUserInfoActivity.this);
 			return;
 		}
 		String target=myapplication.getlocalhost()+"getmemberevaluates.php?userid="+userid;
@@ -178,6 +180,7 @@ public class ViewUserInfoActivity extends BaseActivity implements OnClickListene
 			int id = jsonobject.getInt("id");
 			String guid = jsonobject.getString("guid");
 			String infouser = jsonobject.getString("infouser");
+			String username  = jsonobject.getString("username");
 			String userid = jsonobject.getString("userid");
 			String score = jsonobject.getString("score");
 			String evaluate = jsonobject.getString("evaluate");
@@ -187,6 +190,7 @@ public class ViewUserInfoActivity extends BaseActivity implements OnClickListene
 			item.put("id",id);
 			item.put("guid",guid);
 			item.put("infouser",infouser);
+			item.put("username",username);
 			item.put("userid",userid);
 			item.put("score",score);
 			item.put("evaluate",evaluate.trim());
@@ -271,6 +275,7 @@ public class ViewUserInfoActivity extends BaseActivity implements OnClickListene
 		title.setText("用户中心");
 		if (!NetworkUtils.isNetConnected(myapplication)) {			
 			T.showShort(myapplication, "当前无网络连接,请稍后再试！");
+			NetworkUtils.showNoNetWorkDlg(ViewUserInfoActivity.this);
 			return;
 		}
 		new Thread(loaduserinfo).start();
@@ -356,7 +361,10 @@ public class ViewUserInfoActivity extends BaseActivity implements OnClickListene
 			Bundle data = msg.getData();
 			username_tv.setText("名称:"+data.getString("username"));
 			score_tv.setText("积分:"+data.getString("score"));
-			telphone_tv.setText("电话："+data.getString("telphone"));
+			String telphone=data.getString("telphone");
+			telphone=telphone.substring(0,3).concat("****").concat(telphone.substring(telphone.length()-4,telphone.length()));
+			//telphone_tv.setText("电话："+data.getString("telphone"));
+			telphone_tv.setText("电话："+telphone);
 			String fileName = myapplication.getlocalhost()+"uploads/"+ data.getString("headface");
 			ImageLoader.getInstance().displayImage(fileName, iv_photo, ImageOptions.getOptions());
 			new Thread(ajaxloadfriend).start();//得到是否关注
@@ -370,6 +378,7 @@ public class ViewUserInfoActivity extends BaseActivity implements OnClickListene
 		public void run() {
 			if (!NetworkUtils.isNetConnected(myapplication)) {
 				T.showShort(myapplication, "当前无网络连接！");
+				NetworkUtils.showNoNetWorkDlg(ViewUserInfoActivity.this);
 				return;
 			}
 			String target = myapplication.getlocalhost()+"getisfriends.php?mid1="+myapplication.getUserId()+"&mid2="+userid;

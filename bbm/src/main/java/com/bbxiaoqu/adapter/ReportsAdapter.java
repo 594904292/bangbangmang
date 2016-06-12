@@ -66,7 +66,7 @@ public class ReportsAdapter extends BaseAdapter {
 			holder_img.usercatagory = (ImageView) convertView.findViewById(R.id.usercatagory);
 			holder_img.userhead = (ImageView) convertView.findViewById(R.id.userhead);
 			holder_img.order = (TextView) convertView.findViewById(R.id.order);
-			holder_img.username = (TextView) convertView.findViewById(R.id.username);
+			holder_img.nickname = (TextView) convertView.findViewById(R.id.nickname);
 			holder_img.nums = (TextView) convertView.findViewById(R.id.nums);
 			holder_img.ratingbar = (RatingBar) convertView.findViewById(R.id.ratingbar);
 			convertView.setTag(holder_img);
@@ -77,7 +77,7 @@ public class ReportsAdapter extends BaseAdapter {
 		holder_img.usercatagory.setImageResource(R.mipmap.dynamic_info_left);
 
 		holder_img.order.setText(list.get(position).get("order").toString());
-		holder_img.username.setText(list.get(position).get("username").toString());
+		holder_img.nickname.setText(list.get(position).get("nickname").toString());
 		holder_img.nums.setText(list.get(position).get("nums").toString());
 		holder_img.ratingbar.setRating(Float.parseFloat(list.get(position).get("score").toString()));
 		return convertView;
@@ -89,7 +89,7 @@ public class ReportsAdapter extends BaseAdapter {
 		ImageView usercatagory;
 		ImageView userhead;
 		TextView order;
-		TextView username;
+		TextView nickname;
 		TextView nums;
 		RatingBar ratingbar;
 

@@ -123,6 +123,7 @@ public class InfoBmActivity extends Activity {
 		 }	
 		 if (!NetworkUtils.isNetConnected(myapplication)) {			
 				T.showShort(myapplication, "当前无网络连接,请稍后再试！");
+			 NetworkUtils.showNoNetWorkDlg(InfoBmActivity.this);
 				return;
 			}
 		String target=myapplication.getlocalhost()+"getbminfo.php?guid="+buf.toString();

@@ -34,7 +34,9 @@ import com.bbxiaoqu.client.baidu.BbPushMessageReceiver.onMessageReadListener;
 import com.bbxiaoqu.comm.service.db.DatabaseHelper;
 import com.bbxiaoqu.comm.service.db.UserService;
 import com.bbxiaoqu.comm.tool.L;
+import com.bbxiaoqu.comm.tool.NetworkUtils;
 import com.bbxiaoqu.comm.tool.StreamTool;
+import com.bbxiaoqu.comm.tool.T;
 import com.bbxiaoqu.ui.LoginActivity;
 import com.bbxiaoqu.ui.SearchActivity;
 import com.bbxiaoqu.ui.main.MainActivity;
@@ -135,6 +137,11 @@ public class FriendsActivity extends Activity implements ApiRequestListener {
 	private void initData() {
 		title.setText("好友列表");
 		right_text.setText("");
+		if (!NetworkUtils.isNetConnected(myapplication)) {
+			NetworkUtils.showNoNetWorkDlg(FriendsActivity.this);
+			T.showShort(myapplication, "当前无网络连接,请稍后再试！");
+			return;
+		}
 	}
 
 	private void LoadData() {

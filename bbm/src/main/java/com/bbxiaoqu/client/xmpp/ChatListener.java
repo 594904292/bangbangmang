@@ -25,11 +25,14 @@ import org.json.JSONObject;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.os.Message;
 import android.util.Log;
 
 import com.bbxiaoqu.DemoApplication;
+import com.bbxiaoqu.R;
 import com.bbxiaoqu.bean.BbMessage;
 import com.bbxiaoqu.bean.ChatMessage;
 import com.bbxiaoqu.client.baidu.BbPushMessageReceiver;
@@ -48,8 +51,8 @@ public class ChatListener implements ChatManagerListener{
 	{
 		this.mContext = context;
 	}
-	
-	
+
+
 	  private static ChatListener instance;  
 	  private ChatListener (){}   
 	  public static ChatListener getInstance(Context context) {  
@@ -129,6 +132,9 @@ public class ChatListener implements ChatManagerListener{
 				    fb.newmess(from, from,msg.getBody(), df.format(new Date()));
 			        for (int i = 0; i < BbPushMessageReceiver.msgListeners.size(); i++)
 			        	BbPushMessageReceiver.msgListeners.get(i).onNewMessage(new BbMessage());
+
+
+
 				}
 			}
 

@@ -34,7 +34,7 @@ import android.widget.Toast;
 
 /**
  * 
- * @author hzcaoyanming
+ * @author dzyang
  *
  */
 public class CrashHandler implements UncaughtExceptionHandler{

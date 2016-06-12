@@ -93,6 +93,7 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 	private RadioButton female=null;
 	//private EditText community_eidt;
 	private EditText telphone;
+	private EditText weixin;
 	Button save;
 	Button score_btn;
 	//Button SelCommunityBtn;
@@ -184,6 +185,7 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 		age = (EditText) findViewById(R.id.age);
 		//community_eidt = (EditText) findViewById(R.id.community);
 		telphone = (EditText) findViewById(R.id.telphone);
+		weixin = (EditText) findViewById(R.id.weixin);
 		save = (Button) findViewById(R.id.save);
 		score_btn  = (Button) findViewById(R.id.score_btn);
 		//SelCommunityBtn = (Button) findViewById(R.id.SelCommunityBtn);
@@ -212,9 +214,23 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 				startActivity(intent);
 			}
 		});
+		/*username.setOnFocusChangeListener(new android.view.View.OnFocusChangeListener() {
+			@Override
+			public void onFocusChange(View v, boolean hasFocus) {
+				if(hasFocus) {
+					// 此处为得到焦点时的处理内容
+					T.showShort(myapplication, "此处为得到焦点时的处理内容");
+				} else {
+					// 此处为失去焦点时的处理内容
+					T.showShort(myapplication, "此处为失去焦点时的处理内容");
+				}
+			}
+		});*/
+
 		save.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				if (!NetworkUtils.isNetConnected(myapplication)) {			
+				if (!NetworkUtils.isNetConnected(myapplication)) {
+					NetworkUtils.showNoNetWorkDlg(UserInfoActivity.this);
 					T.showShort(myapplication, "当前无网络连接,请稍后再试！");
 					return;
 				}
@@ -230,7 +246,8 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 	    				{//远程,头像不为空
 	    					uService.updateheadface(headfacename, userid);
 	    				}
-	    				new Thread(saveuserinfo).start();
+						//检查用户名是否相同
+	    				new Thread(queryusername).start();
 	                } 
 	            }) 
 	            .setNegativeButton("返回", new DialogInterface.OnClickListener() { 
@@ -448,10 +465,49 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 		title.setText("用户中心");
 		if (!NetworkUtils.isNetConnected(myapplication)) {			
 			T.showShort(myapplication, "当前无网络连接,请稍后再试！");
+			NetworkUtils.showNoNetWorkDlg(UserInfoActivity.this);
 			return;
 		}
-		new Thread(loaduserinfo).start();		
+
+		new Thread(loaduserinfo).start();
 	}
+
+
+
+
+	Runnable queryusername = new Runnable() {
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			int result;
+			String target = myapplication.getlocalhost()+"isexitusername.php";
+			HttpPost httprequest = new HttpPost(target);
+			List<NameValuePair> paramsList = new ArrayList<NameValuePair>();
+			paramsList.add(new BasicNameValuePair("_userid", myapplication.getUserId()));
+			paramsList.add(new BasicNameValuePair("_username", username.getText().toString()));
+			try {
+				httprequest.setEntity(new UrlEncodedFormEntity(paramsList,"UTF-8"));
+				HttpClient HttpClient1 = CustomerHttpClient.getHttpClient();
+				HttpResponse httpResponse = HttpClient1.execute(httprequest);
+				if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+					String json = EntityUtils.toString(httpResponse.getEntity());
+					if(json.equals("1"))
+					{//已存在,不让提交
+						Message msg = new Message();
+						msg.what=2;
+						publishhandler.sendMessage(msg);
+					}else
+					{
+						new Thread(saveuserinfo).start();
+					}
+				}
+			} catch (ClientProtocolException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	};
 
 	Runnable saveuserinfo = new Runnable() {
 		@Override
@@ -468,6 +524,7 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 			paramsList.add(new BasicNameValuePair("age", age.getText()	.toString()));
 			paramsList.add(new BasicNameValuePair("sex", sex_str));
 			paramsList.add(new BasicNameValuePair("telphone", telphone.getText().toString()));
+			paramsList.add(new BasicNameValuePair("weixin", weixin.getText().toString()));
 			paramsList.add(new BasicNameValuePair("community", ""));
 			paramsList.add(new BasicNameValuePair("community_id", ""));
 			paramsList.add(new BasicNameValuePair("community_lat", ""));
@@ -491,6 +548,7 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 				Bundle data = new Bundle();
 				data.putInt("result", result);
 				msg.setData(data);
+				msg.what=1;
 				publishhandler.sendMessage(msg);
 			} catch (ClientProtocolException e) {
 				e.printStackTrace();
@@ -527,15 +585,21 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 		@Override
 		public void handleMessage(Message msg) {
 			super.handleMessage(msg);
-			Bundle data = msg.getData();
-			int result = data.getInt("result");
-			Log.i("mylog", "请求结果-->" + result);
-			if (result == 1) {
-				Toast.makeText(UserInfoActivity.this, "更新成功",
-						Toast.LENGTH_SHORT).show();
-			} else {
-				// Toast.makeText(SendFragment.this,
-				// "推送失败",Toast.LENGTH_SHORT).show();
+			if(msg.what==1) {
+				Bundle data = msg.getData();
+				int result = data.getInt("result");
+				Log.i("mylog", "请求结果-->" + result);
+				if (result == 1) {
+					Toast.makeText(UserInfoActivity.this, "更新成功",
+							Toast.LENGTH_SHORT).show();
+				} else {
+					// Toast.makeText(SendFragment.this,
+					// "推送失败",Toast.LENGTH_SHORT).show();
+				}
+			}
+			if(msg.what==2) {
+				Toast.makeText(UserInfoActivity.this, "昵称已存在",Toast.LENGTH_SHORT).show();
+				username.setText("");
 			}
 		}
 	};
@@ -551,6 +615,7 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 
 			String sex = "";
 			String telphone = "";
+			String weixinstr="";
 			String remote_headface = "";
 			//String community="";
 			String target = myapplication.getlocalhost()+"getuserinfo.php?userid="
@@ -579,6 +644,7 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 						 brithdaystr = jsonobject.getString("brithday");
 						sex = jsonobject.getString("sex");
 						telphone = jsonobject.getString("telphone");
+						weixinstr = jsonobject.getString("weixin");
 						remote_headface = jsonobject.getString("headface");
 						//community = jsonobject.getString("community");
 						userid = jsonobject.getString("userid");
@@ -607,6 +673,7 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 				data.putString("brithday", brithdaystr);
 				data.putString("sex", sex);
 				data.putString("telphone", telphone);
+				data.putString("weixin", weixinstr);
 				data.putString("headface", remote_headface);
 				//data.putString("community", community);
 				data.putString("userid", userid);
@@ -649,7 +716,7 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 			
 			txt_userid.setText("用户ID:"+data.getString("userid"));
 			tv_score.setText("积分:"+data.getString("score").toString());
-			
+			weixin.setText(data.getString("weixin").toString());
 			if(data.getString("headface")!=null&&data.getString("headface").length()>0)
 			{
 				String fileName = myapplication.getlocalhost()+"uploads/"+ data.getString("headface");

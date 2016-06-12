@@ -1,12 +1,17 @@
 package com.bbxiaoqu.view;
 
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -21,6 +26,7 @@ import com.bbxiaoqu.DemoApplication;
 import com.bbxiaoqu.ImageOptions;
 import com.bbxiaoqu.R;
 import com.bbxiaoqu.Session;
+import com.bbxiaoqu.comm.tool.CustomerHttpClient;
 import com.bbxiaoqu.ui.sub.FriendsActivity;
 import com.bbxiaoqu.ui.sub.InfoGzActivity;
 import com.bbxiaoqu.ui.sub.MyinfosActivity;
@@ -30,6 +36,18 @@ import com.bbxiaoqu.ui.user.UserInfoViewActivity;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu.OnClosedListener;
 import com.nostra13.universalimageloader.core.ImageLoader;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 public class DrawerView implements OnClickListener{
@@ -94,9 +112,13 @@ public class DrawerView implements OnClickListener{
 			}
 		});
 		initView();
+
+		new Thread(loaduser).start();
 		return localSlidingMenu;
 	}
 
+
+	boolean isfirst=true;
 	private void initView() {
 
 		night_mode_btn = (SwitchButton)localSlidingMenu.findViewById(R.id.night_mode_btn);
@@ -107,27 +129,22 @@ public class DrawerView implements OnClickListener{
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 				// TODO Auto-generated method stub
 				if(isChecked){
-					night_mode_text.setText(activity.getResources().getString(R.string.action_open_mode));
-					mSession.setIsNotic(true);
+					Message msg = basehandler.obtainMessage();
+					msg.what = 1;
+					basehandler.sendMessage(msg);
 				}else{
-					night_mode_text.setText(activity.getResources().getString(R.string.action_close_mode));
-					mSession.setIsNotic(false);
+					Message msg = basehandler.obtainMessage();
+					msg.what = 2;
+					basehandler.sendMessage(msg);
 				}
+				if(!isfirst) {
+					new Thread(saverecvmessRun).start();
+					new Thread(saveopenvoiceRun).start();
+				}
+				isfirst=false;
 			}
 		});
-		if(mSession.getIsNotic())
-		{
-			night_mode_btn.setChecked(true);
-		}else
-		{
-			night_mode_btn.setChecked(false);
-		}
 
-		if(night_mode_btn.isChecked()){
-			night_mode_text.setText(activity.getResources().getString(R.string.action_open_mode));
-		}else{
-			night_mode_text.setText(activity.getResources().getString(R.string.action_close_mode));
-		}
 
 		userinfo_btn =(RelativeLayout)localSlidingMenu.findViewById(R.id.userinfo_btn);
 		userinfo_btn.setOnClickListener(this);
@@ -160,6 +177,153 @@ public class DrawerView implements OnClickListener{
 		}
 	}
 
+	Runnable loaduser = new Runnable() {
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			int result;
+			String target = myapplication.getlocalhost()+"login.php";
+			HttpPost httprequest = new HttpPost(target);
+			List<NameValuePair> paramsList = new ArrayList<NameValuePair>();
+			SimpleDateFormat sDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			String date = sDateFormat.format(new java.util.Date());
+			paramsList.add(new BasicNameValuePair("_userid", myapplication.getUserId()));
+			try {
+				httprequest.setEntity(new UrlEncodedFormEntity(paramsList,
+						"UTF-8"));
+				HttpClient HttpClient1 = CustomerHttpClient.getHttpClient();
+				HttpResponse httpResponse = HttpClient1.execute(httprequest);
+				if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+					String json = EntityUtils
+							.toString(httpResponse.getEntity());
+					try {
+						JSONObject jsonobj = new JSONObject(json);
+						String isrecvmess = jsonobj.getString("isrecvmess");
+						String isopenvoice = jsonobj.getString("isopenvoice");
+						if(isrecvmess.equals("1"))
+						{
+							//mSession.setIsNotic(true);
+							Message msg = basehandler.obtainMessage();
+							msg.what = 1;
+							basehandler.sendMessage(msg);
+						}else
+						{
+							//mSession.setIsNotic(false);
+							Message msg = basehandler.obtainMessage();
+							msg.what = 1;
+							basehandler.sendMessage(msg);
+						}
+						/*if(mSession.getIsNotic())
+						{
+							night_mode_btn.setChecked(true);
+						}else
+						{
+							night_mode_btn.setChecked(false);
+						}
+
+						if(night_mode_btn.isChecked()){
+							night_mode_text.setText(activity.getResources().getString(R.string.action_open_mode));
+						}else{
+							night_mode_text.setText(activity.getResources().getString(R.string.action_close_mode));
+						}*/
+					} catch (JSONException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+
+
+					result = 1;
+				} else {
+					result = 0;
+				}
+			} catch (ClientProtocolException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		}
+	};
+
+
+	Runnable saverecvmessRun = new Runnable() {
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			int result;
+			String target = myapplication.getlocalhost()+"resetuserfield.php";
+			HttpPost httprequest = new HttpPost(target);
+			List<NameValuePair> paramsList = new ArrayList<NameValuePair>();
+			SimpleDateFormat sDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			String date = sDateFormat.format(new java.util.Date());
+			paramsList.add(new BasicNameValuePair("userid", myapplication.getUserId()));
+			paramsList.add(new BasicNameValuePair("field", "isrecvmess"));
+			if(mSession.getIsNotic()) {
+				paramsList.add(new BasicNameValuePair("fieldvalue", "1"));// 正文
+			}else {
+				paramsList.add(new BasicNameValuePair("fieldvalue", "0"));// 正文
+			}
+			try {
+				httprequest.setEntity(new UrlEncodedFormEntity(paramsList,
+						"UTF-8"));
+				HttpClient HttpClient1 = CustomerHttpClient.getHttpClient();
+				HttpResponse httpResponse = HttpClient1.execute(httprequest);
+				if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+					String json = EntityUtils
+							.toString(httpResponse.getEntity());
+					System.out.println(json);
+					result = 1;
+				} else {
+					result = 0;
+				}
+			} catch (ClientProtocolException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		}
+	};
+
+	Runnable saveopenvoiceRun = new Runnable() {
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			int result;
+			String target = myapplication.getlocalhost()+"resetuserfield.php";
+			HttpPost httprequest = new HttpPost(target);
+			List<NameValuePair> paramsList = new ArrayList<NameValuePair>();
+			SimpleDateFormat sDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			String date = sDateFormat.format(new java.util.Date());
+			paramsList.add(new BasicNameValuePair("userid", myapplication.getUserId()));
+			paramsList.add(new BasicNameValuePair("field", "isopenvoice"));
+			if(mSession.getIsNotic()) {
+				paramsList.add(new BasicNameValuePair("fieldvalue", "1"));// 正文
+			}else {
+				paramsList.add(new BasicNameValuePair("fieldvalue", "0"));// 正文
+			}
+			try {
+				httprequest.setEntity(new UrlEncodedFormEntity(paramsList,
+						"UTF-8"));
+				HttpClient HttpClient1 = CustomerHttpClient.getHttpClient();
+				HttpResponse httpResponse = HttpClient1.execute(httprequest);
+				if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+					String json = EntityUtils
+							.toString(httpResponse.getEntity());
+					System.out.println(json);
+					result = 1;
+				} else {
+					result = 0;
+				}
+			} catch (ClientProtocolException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		}
+	};
+
 
 	@Override
 	public void onClick(View v) {	
@@ -188,10 +352,33 @@ public class DrawerView implements OnClickListener{
 				break;
 			case R.id.offline_btn:
 				myapplication.exit();
+				//System.exit(0);
+				android.os.Process.killProcess(android.os.Process.myPid());
 				break;
 			default:
 				break;
 		}
 	}
+
+
+
+	private Handler basehandler = new Handler() {
+		public void handleMessage(Message msg) {
+			switch (msg.what) {
+				case 1:
+					night_mode_btn.setChecked(true);
+					night_mode_text.setText(activity.getResources().getString(R.string.action_open_mode));
+					mSession.setIsNotic(true);
+					break;
+				case 2:
+					night_mode_btn.setChecked(false);
+					night_mode_text.setText(activity.getResources().getString(R.string.action_close_mode));
+					mSession.setIsNotic(false);
+					break;
+				default:
+					break;
+			}
+		};
+	};
 
 }

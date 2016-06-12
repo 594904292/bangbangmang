@@ -113,6 +113,7 @@ public class UserInfoViewActivity extends BaseActivity implements OnClickListene
 			public void onClick(View v) {
 				if (!NetworkUtils.isNetConnected(myapplication)) {			
 					T.showShort(myapplication, "当前无网络连接,请稍后再试！");
+					NetworkUtils.showNoNetWorkDlg(UserInfoViewActivity.this);
 					return;
 				}
 				//更新本地库
@@ -125,7 +126,8 @@ public class UserInfoViewActivity extends BaseActivity implements OnClickListene
 
 	private void initData() {
 		title.setText("用户中心");
-		if (!NetworkUtils.isNetConnected(myapplication)) {			
+		if (!NetworkUtils.isNetConnected(myapplication)) {
+			NetworkUtils.showNoNetWorkDlg(UserInfoViewActivity.this);
 			T.showShort(myapplication, "当前无网络连接,请稍后再试！");
 			return;
 		}

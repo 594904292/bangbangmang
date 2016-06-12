@@ -1,6 +1,10 @@
 package com.bbxiaoqu.ui.main;
 
 
+import com.baidu.location.BDLocation;
+import com.baidu.location.BDLocationListener;
+import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
 import com.bbxiaoqu.DemoApplication;
 import com.bbxiaoqu.ImageOptions;
 import com.bbxiaoqu.R;
@@ -53,6 +57,7 @@ import org.json.JSONObject;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Color;
@@ -134,6 +139,12 @@ public class ViewActivity extends BaseActivity implements OnItemClickListener,Ap
 	// 用户密码错误
 	private static final int ERROR_CODE_PASSWORD_INVALID = 212;
 
+
+	private LocationClient mLocationClient;
+	public Double nLatitude;
+	public Double nLontitude;
+
+
 	HorizontalListViewAdapter hListViewAdapter;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -147,8 +158,15 @@ public class ViewActivity extends BaseActivity implements OnItemClickListener,Ap
 		Bundle Bundle1 = this.getIntent().getExtras();
 		getdatamethon = Bundle1.getString("put");
 		guid = Bundle1.getString("guid");
-		infocatagroy = Bundle1.getString("infocatagroy");	
-		LoadData();		
+		infocatagroy = Bundle1.getString("infocatagroy");
+		if (!NetworkUtils.isNetConnected(myapplication)) {
+			T.showShort(myapplication, "当前无网络连接！");
+			NetworkUtils.showNoNetWorkDlg(ViewActivity.this);
+			return;
+		}
+		LoadData();
+		LoadLbsThread m = new LoadLbsThread();
+		new Thread(m).start();
 	}
 
 	private void LoadData() {
@@ -231,26 +249,7 @@ public class ViewActivity extends BaseActivity implements OnItemClickListener,Ap
 
 			}
 		});
-		/*myGallery.setOnItemClickListener(new OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-					long arg3) {
-				Intent intent = new Intent(ViewActivity.this,
-						BigImgActivity.class);
-				StringBuilder sb=new StringBuilder();
-				for(int i=0;i<potolist.size();i++)
-				{
-					sb.append(potolist.get(i).toString());
-					if(i<potolist.size()-1)
-					{
-						sb.append(",");
-					}
-				}
-				intent.putExtra("imageName", arg1.getTag().toString());
-				intent.putExtra("imageNames", sb.toString());
-				startActivity(intent);
-			}
-		});*/
+
 	}
 
 	Handler gzactionhandle = new Handler() {
@@ -295,6 +294,11 @@ public class ViewActivity extends BaseActivity implements OnItemClickListener,Ap
 		headface_img = (ImageView) findViewById(R.id.headface);
 		headface_img.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
+				if (!NetworkUtils.isNetConnected(myapplication)) {
+					//T.showShort(myapplication, "当前无网络连接！");
+					NetworkUtils.showNoNetWorkDlg(ViewActivity.this);
+					return;
+				}
 				Intent Intent1 = new Intent();
 				Intent1.setClass(ViewActivity.this, ViewUserInfoActivity.class);
 				Bundle arguments = new Bundle();
@@ -318,6 +322,11 @@ public class ViewActivity extends BaseActivity implements OnItemClickListener,Ap
 		//chat.setVisibility(View.VISIBLE);//显示
 		chat_btn.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
+				if (!NetworkUtils.isNetConnected(myapplication)) {
+					T.showShort(myapplication, "当前无网络连接！");
+					NetworkUtils.showNoNetWorkDlg(ViewActivity.this);
+					return;
+				}
 				if (senduserid.equals(myapplication.getUserId())) {
 					Intent intent = new Intent(ViewActivity.this,BmUserActivity.class);
 					Bundle arguments = new Bundle();
@@ -328,7 +337,6 @@ public class ViewActivity extends BaseActivity implements OnItemClickListener,Ap
 					//开线程做会话存储,被认为是做了一次报名动作
 					bmaction="add";
 					new Thread(savebmThread).start();
-
 					Intent intent = new Intent(ViewActivity.this,ChattingActivity.class);
 					Bundle arguments = new Bundle();
 					arguments.putString("to", senduserid);
@@ -342,6 +350,11 @@ public class ViewActivity extends BaseActivity implements OnItemClickListener,Ap
 		// btn_bm=(Button)findViewById(R.id.info__Bmbutton2);
 		btn_gz.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
+				if (!NetworkUtils.isNetConnected(myapplication)) {
+					T.showShort(myapplication, "当前无网络连接！");
+					NetworkUtils.showNoNetWorkDlg(ViewActivity.this);
+					return;
+				}
 				String name = v.getTag().toString();
 				if (name.equals("收藏")) {
 					Message msg = new Message();
@@ -368,6 +381,9 @@ public class ViewActivity extends BaseActivity implements OnItemClickListener,Ap
 
 
 
+
+
+
 	/*针对用户第一次会话做一次报名记录*/
 	Runnable savebmThread = new Runnable() {
 		@Override
@@ -375,6 +391,7 @@ public class ViewActivity extends BaseActivity implements OnItemClickListener,Ap
 			// TODO Auto-generated method stub
 			if (!NetworkUtils.isNetConnected(myapplication)) {
 				T.showShort(myapplication, "当前无网络连接！");
+				NetworkUtils.showNoNetWorkDlg(ViewActivity.this);
 				return;
 			}
 			int result;
@@ -425,6 +442,7 @@ public class ViewActivity extends BaseActivity implements OnItemClickListener,Ap
 	private void loaddiscuzzBody() {
 		if (!NetworkUtils.isNetConnected(myapplication)) {
 			T.showShort(myapplication, "当前无网络连接！");
+			NetworkUtils.showNoNetWorkDlg(ViewActivity.this);
 			return;
 		}
 		String target = myapplication.getlocalhost()+ "/getdiscuzz.php?infoid=" + this.infoid;
@@ -511,6 +529,7 @@ public class ViewActivity extends BaseActivity implements OnItemClickListener,Ap
 		}
 		if (!NetworkUtils.isNetConnected(ViewActivity.this)) {
 			T.showShort(ViewActivity.this, "当前无网络连接！");
+			NetworkUtils.showNoNetWorkDlg(ViewActivity.this);
 			return;
 		}
 		Map<String, String> map = new HashMap<String, String>();
@@ -901,5 +920,62 @@ public class ViewActivity extends BaseActivity implements OnItemClickListener,Ap
 	            break;
 	        }
 	}
+
+
+	private void initlsb() {
+		// TODO Auto-generated method stub
+		mLocationClient = new LocationClient(this.myapplication);
+		LocationClientOption option = new LocationClientOption();
+		option.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy);// 设置定位模式
+		option.setCoorType("gcj02");// 返回的定位结果是百度经纬度，默认值gcj02
+		int span = 1000*20;
+
+		option.setScanSpan(span);// 设置发起定位请求的间隔时间为5000ms
+		option.setIsNeedAddress(true);
+		mLocationClient.setLocOption(option);
+
+		mLocationClient.registerLocationListener(new BDLocationListener() {
+
+			@Override
+			public void onReceiveLocation(BDLocation location) {
+				// TODO Auto-generated method stub
+				if (location == null) {
+					//Log.v(TAG, "HomeActivity location empty");
+					return;
+				}
+				nLatitude = location.getLatitude();
+				nLontitude = location.getLongitude();
+				Log.i("mylog", nLatitude+"-" + nLontitude);
+				myapplication.setLat(String.valueOf(nLatitude));
+				myapplication.setLng(String.valueOf(nLontitude));
+				myapplication.updatelocation();
+				mLocationClient.stop();
+			}
+		});
+		mLocationClient.start();
+		mLocationClient.requestLocation();
+	}
+
+
+
+	class LoadLbsThread implements Runnable {
+		public void run() {
+			Message message = new Message();
+			message.what = 1;
+			handler.sendMessage(message);
+		}
+	}
+
+	Handler handler = new Handler(){
+		public void handleMessage(Message msg) {
+			switch (msg.what) {
+				case 1:
+					initlsb();
+					break;
+			}
+			super.handleMessage(msg);
+		}
+
+	};
 
 }

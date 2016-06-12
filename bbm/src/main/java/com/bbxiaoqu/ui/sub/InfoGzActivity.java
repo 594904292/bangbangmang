@@ -132,6 +132,10 @@ public class InfoGzActivity extends Activity {
 	private void initData() {
 		title.setText("收藏信息");
 		right_text.setText("");
+		if (!NetworkUtils.isNetConnected(InfoGzActivity.this)) {
+			NetworkUtils.showNoNetWorkDlg(InfoGzActivity.this);
+			return;
+		}
 	}
 	
 	private void loadData() {
@@ -157,8 +161,8 @@ public class InfoGzActivity extends Activity {
 			 }
 			 System.out.println(list.get(i).toString());
 		 }		
-		 if (!NetworkUtils.isNetConnected(myapplication)) {			
-				T.showShort(myapplication, "当前无网络连接,请稍后再试！");
+		 if (!NetworkUtils.isNetConnected(InfoGzActivity.this)) {
+				T.showShort(InfoGzActivity.this, "当前无网络连接,请稍后再试！");
 				return;
 			}
 		String target=myapplication.getlocalhost()+"getgzinfo.php?guid="+buf.toString();

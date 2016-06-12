@@ -371,7 +371,7 @@ public class BbPushMessageReceiver extends PushMessageReceiver {
 			Log.d(TAG, "解绑成功");
 		}
 		// Demo更新界面展示代码，应用请在这里加入自己的处理逻辑
-		updateContent(context, responseString);
+		//updateContent(context, responseString);
 	}
 
 	private void updateContent(Context context, String content) {

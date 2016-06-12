@@ -104,6 +104,7 @@ public class WeekActivity extends Activity {
 	private void LoadData() {
 		if (!NetworkUtils.isNetConnected(myapplication)) {
 			T.showShort(myapplication, "当前无网络连接！");
+			NetworkUtils.showNoNetWorkDlg(WeekActivity.this);
 			return;
 		}
 		String target=myapplication.getlocalhost()+"rank.php?type=day";

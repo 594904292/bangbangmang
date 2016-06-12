@@ -128,7 +128,7 @@ public class XmppTool {
 	}
 
     public static void closeConnection() {
-    	if(con!=null){
+    	if(con!=null&&con.isConnected()){
 			//移除連接監聽
     		con.getChatManager().removeChatListener(chatlistener);//移消息监听
     		con.removeConnectionListener(connectionListener);//移连接监听

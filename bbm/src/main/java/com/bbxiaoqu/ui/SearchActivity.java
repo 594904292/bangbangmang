@@ -154,18 +154,20 @@ public class SearchActivity extends Activity{
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1,int location, long arg3) 
 			{
-				Intent Intent1 = new Intent();
-				if(dataList.get(location).get("infocatagroy").toString().equals("3")) {
-					Intent1.setClass(SearchActivity.this, ViewFwActivity.class);
-				}else
-				{
-					Intent1.setClass(SearchActivity.this, ViewActivity.class);
+				if(dataList.get(location)!=null) {
+					Intent Intent1 = new Intent();
+					if(dataList.get(location).get("infocatagroy").toString().equals("3")) {
+						Intent1.setClass(SearchActivity.this, ViewFwActivity.class);
+					}else
+					{
+						Intent1.setClass(SearchActivity.this, ViewActivity.class);
+					}
+					Bundle arguments = new Bundle();
+					arguments.putString("put", "false");
+					arguments.putString("guid", dataList.get(location).get("guid").toString());
+					Intent1.putExtras(arguments);
+					startActivity(Intent1);
 				}
-				Bundle arguments = new Bundle();
-				arguments.putString("put", "false");
-				arguments.putString("guid",dataList.get(location).get("guid").toString());
-				Intent1.putExtras(arguments);
-				startActivity(Intent1);
 			}
 		});
 		adapter = new ListViewAdapter(SearchActivity.this, dataList);

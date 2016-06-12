@@ -55,14 +55,14 @@ public class AboutActivity extends BaseActivity {
 		//wxApi = WXAPIFactory.createWXAPI(this, Constants.APP_ID);
 	    //wxApi.registerApp(Constants.APP_ID);
 		qr_android =(ImageView)findViewById(R.id.qr_android);
-		 String url = "http://api.bbxiaoqu.com/wap/qr_android.png";
+		 String url = "http://www.bbxiaoqu.com/wap/qr_android.png";
 		 ImageLoader.getInstance().displayImage(url, qr_android, ImageOptions.getOptions());  
 		 
 		 qr_android.setDrawingCacheEnabled(true);
  		 qr_android.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Uri uri = Uri.parse("http://api.bbxiaoqu.com/wap/index.php");
+				Uri uri = Uri.parse("http://www.bbxiaoqu.com/wap/");
 				Intent it = new Intent(Intent.ACTION_VIEW, uri);  
 				startActivity(it);
 			}
@@ -92,7 +92,7 @@ public class AboutActivity extends BaseActivity {
  		
  		
 		textView = (TextView) findViewById(R.id.about_textView1);	
-		textView.setText("帮帮忙（"+getVersionName()+"),作为全球首家个人C2C服务平台，是北京思博易科技有限公司独立开发运营的一款针对家庭小区生活服务而打造的手机端应用，初期为小区用户提供全方位的生活配套信息求助、二手交易服务，服务内容包括：生活求助、二手求购、二手出售等四项服务内容。");
+		textView.setText("襄助（"+getVersionName()+")是基于位置的是传播正能量的互联网互助平台。让附近的人互相帮忙，我们希望把大众的力量组织起来，有一技之长的人可以通过“襄助”为附近的人提供帮助；普通大众可以通过“襄助” 快速寻求帮助。 “涓滴之水成海洋，颗颗爱心变希望”。");
 	}
 	
 	public String getSDPath(){  

@@ -368,6 +368,7 @@ public class ViewFwActivity extends BaseActivity implements OnItemClickListener,
 	private void loaddiscuzzBody() {
 		if (!NetworkUtils.isNetConnected(myapplication)) {
 			T.showShort(myapplication, "当前无网络连接！");
+			NetworkUtils.showNoNetWorkDlg(ViewFwActivity.this);
 			return;
 		}
 		String target = myapplication.getlocalhost()+ "/getdiscuzz.php?infoid=" + this.infoid;
@@ -452,6 +453,7 @@ public class ViewFwActivity extends BaseActivity implements OnItemClickListener,
 		}
 		if (!NetworkUtils.isNetConnected(ViewFwActivity.this)) {
 			T.showShort(ViewFwActivity.this, "当前无网络连接！");
+			NetworkUtils.showNoNetWorkDlg(ViewFwActivity.this);
 			return;
 		}
 		Map<String, String> map = new HashMap<String, String>();

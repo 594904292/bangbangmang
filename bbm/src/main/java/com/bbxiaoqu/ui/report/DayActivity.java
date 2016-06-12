@@ -80,6 +80,11 @@ public class DayActivity extends Activity {
 		myapplication.getInstance().addActivity(this);
 		initView();
 		initData();
+		if (!NetworkUtils.isNetConnected(myapplication)) {
+			T.showShort(myapplication, "当前无网络连接！");
+			NetworkUtils.showNoNetWorkDlg(DayActivity.this);
+			return;
+		}
 		LoadData();
 		LoadRate();
 
@@ -125,6 +130,7 @@ public class DayActivity extends Activity {
 	private void LoadRate() {
 		if (!NetworkUtils.isNetConnected(myapplication)) {
 			T.showShort(myapplication, "当前无网络连接！");
+
 			return;
 		}
 		String target=myapplication.getlocalhost()+"myrank.php?userid="+myapplication.getUserId();
@@ -144,9 +150,6 @@ public class DayActivity extends Activity {
 			if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
 				//InputStream json = null;
 				try {
-
-					//json = httpResponse.getEntity().getContent();
-
 					InputStream instream = httpResponse.getEntity().getContent();
 					BufferedReader reader = new BufferedReader(new InputStreamReader(instream,"UTF-8"));
 					String json=reader.readLine();
@@ -237,11 +240,13 @@ public class DayActivity extends Activity {
 			JSONObject jsonobject = jsonarray.getJSONObject(i);
 			int order = jsonobject.getInt("order");
 			String username = jsonobject.getString("username");
+			String nickname = jsonobject.getString("nickname");
 			String score = jsonobject.getString("score");
 			String nums = jsonobject.getString("nums");
 			HashMap<String, Object> item = new HashMap<String, Object>();
 			item.put("order", order);
 			item.put("username",username);
+			item.put("nickname",nickname);
 			item.put("score", score);
 			item.put("nums", nums);
 			list.add(item);

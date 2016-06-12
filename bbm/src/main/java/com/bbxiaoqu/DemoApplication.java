@@ -53,6 +53,8 @@ import com.nostra13.universalimageloader.core.decode.BaseImageDecoder;
 import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 import com.nostra13.universalimageloader.utils.StorageUtils;
+import com.tencent.bugly.crashreport.CrashReport;
+
 public class DemoApplication extends Application {
 
 	static DemoApplication mApplication;
@@ -138,14 +140,14 @@ public class DemoApplication extends Application {
 				.denyCacheImageMultipleSizesInMemory()
 				.memoryCacheSize(100 * 1024 * 1024) // 100M内存缓存的最大值
 				.memoryCacheSizePercentage(13) // default
-				.diskCacheSize(500 * 1024 * 1024) // 500 Mb sd卡(本地)缓存的最大值
+				.diskCacheSize(200 * 1024 * 1024) // 500 Mb sd卡(本地)缓存的最大值
 				.diskCacheFileCount(1000) // 可以缓存的文件数量
 				.imageDownloader(new BaseImageDownloader(this,5 * 1000, 30 * 1000)) // connectTimeout (5 s), readTimeout (30 s)超时时间   
 				.defaultDisplayImageOptions(DisplayImageOptions.createSimple()) // default
 				.writeDebugLogs() // 打印debug log
 				.build(); // 开始构建
 		ImageLoader.getInstance().init(configuration);
-
+		CrashReport.initCrashReport(getApplicationContext(), "900024545", false);
 	}
 
 	
@@ -293,7 +295,7 @@ public class DemoApplication extends Application {
 		UserService u=new UserService(this);
 		u.offline(getUserId());//下线
 		mSession.setIslogin(false);
-		System.exit(0);
+
 	}
 
 	public void update() {
@@ -406,34 +408,36 @@ public class DemoApplication extends Application {
 		@Override
 		public void run() {
 			// TODO Auto-generated method stub
-			int result;
-			String target = getlocalhost()+"updatelocation.php";
-			HttpPost httprequest = new HttpPost(target);
-			List<NameValuePair> paramsList = new ArrayList<NameValuePair>();
-			paramsList.add(new BasicNameValuePair("_userId", getUserId()));// 公司代号
-			paramsList.add(new BasicNameValuePair("_lat", getLat()));// 公司代号
-			paramsList.add(new BasicNameValuePair("_lng", getLng()));// 公司代号
-			paramsList.add(new BasicNameValuePair("_os", "android"));// 公司代号
-			try {
-				httprequest.setEntity(new UrlEncodedFormEntity(paramsList,
-						"UTF-8"));
-				HttpClient HttpClient1 = CustomerHttpClient.getHttpClient();
-				HttpResponse httpResponse = HttpClient1.execute(httprequest);
-				if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
-					String json = EntityUtils
-							.toString(httpResponse.getEntity());
-					result = Integer.parseInt(json);
-				} else {
-					result = 0;
+			if (getUserId() != null && getUserId().length() > 0) {
+				int result;
+				String target = getlocalhost() + "updatelocation.php";
+				HttpPost httprequest = new HttpPost(target);
+				List<NameValuePair> paramsList = new ArrayList<NameValuePair>();
+				paramsList.add(new BasicNameValuePair("_userId", getUserId()));// 公司代号
+				paramsList.add(new BasicNameValuePair("_lat", getLat()));// 公司代号
+				paramsList.add(new BasicNameValuePair("_lng", getLng()));// 公司代号
+				paramsList.add(new BasicNameValuePair("_os", "android"));// 公司代号
+				try {
+					httprequest.setEntity(new UrlEncodedFormEntity(paramsList,
+							"UTF-8"));
+					HttpClient HttpClient1 = CustomerHttpClient.getHttpClient();
+					HttpResponse httpResponse = HttpClient1.execute(httprequest);
+					if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+						String json = EntityUtils
+								.toString(httpResponse.getEntity());
+						result = Integer.parseInt(json);
+					} else {
+						result = 0;
+					}
+				} catch (UnsupportedEncodingException e1) {
+					e1.printStackTrace();
+				} catch (ClientProtocolException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
 				}
-			} catch (UnsupportedEncodingException e1) {
-				e1.printStackTrace();
-			} catch (ClientProtocolException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
 
+			}
 		}
 	};
 }

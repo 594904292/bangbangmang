@@ -108,6 +108,7 @@ public class SuggestActivity extends Activity {
 			public void onClick(View v) {
 				if (!NetworkUtils.isNetConnected(myapplication)) {
 					T.showShort(myapplication, "当前无网络连接！");
+					NetworkUtils.showNoNetWorkDlg(SuggestActivity.this);
 					return;
 				}
 				String content = content_edit.getText().toString();
