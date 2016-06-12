@@ -75,7 +75,7 @@ public class EvaluateAdapter extends BaseAdapter {
 		}
 		holder_img.usercatagory.setImageResource(R.mipmap.dynamic_info_left);
 		holder_img.evaluate.setText(list.get(position).get("evaluate").toString());
-		holder_img.infouser.setText(list.get(position).get("infouser").toString());
+		holder_img.infouser.setText(list.get(position).get("username").toString());
 		holder_img.addtime.setText(list.get(position).get("addtime").toString());
 		holder_img.ratingBar.setRating(Float.parseFloat(list.get(position).get("score").toString()));
 		return convertView;
