@@ -50,7 +50,9 @@
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
                             android:layout_gravity="center_horizontal"
-                            android:text="积分" />
+                            android:text="积分"
+                            android:visibility="gone"
+                    />
                 <Button
                             android:id="@+id/score_btn"
                             android:layout_width="wrap_content"
@@ -60,7 +62,8 @@
                             android:layout_marginLeft="15dp"
                             android:layout_toRightOf="@+id/score_tv"
                             android:background="@drawable/button_green"
-                            android:text="查看积分" />
+                            android:text="查看积分"
+                    android:visibility="gone"/>
             </RelativeLayout>
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -166,7 +169,7 @@
                         android:textColor="@color/black" />
                 </RadioGroup>
             </LinearLayout>
-             <LinearLayout
+             <!--LinearLayout
                  android:layout_width="fill_parent"
                  android:layout_height="wrap_content"
                  android:orientation="horizontal"
@@ -196,13 +199,18 @@
                     android:paddingTop="8dp"
                     android:text="选择"
                     android:textColor="@color/btn_common_text" />
-             </LinearLayout>
+             </LinearLayout-->
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="10.0dip" >
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="您的电话为:"
+                    android:textColor="@color/black" />
                 <EditText
                     android:id="@+id/telphone"
                     android:layout_width="match_parent"
@@ -210,6 +218,32 @@
                     android:background="@drawable/bg_edittext"
                     android:ems="10"
                     android:hint="电话"
+                    android:layout_marginTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingTop="5dp"
+                    android:textColor="@color/edit_common_text" >
+                </EditText>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10.0dip" >
+                <TextView
+
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="您的微信为:"
+                    android:textColor="@color/black" />
+                <EditText
+                    android:id="@+id/weixin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_edittext"
+                    android:ems="10"
+                    android:hint="微信"
                     android:layout_marginTop="5dp"
                     android:paddingBottom="5dp"
                     android:paddingLeft="5dp"

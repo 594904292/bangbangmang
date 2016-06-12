@@ -142,7 +142,7 @@ public class RegisterActivity extends BaseActivity {
 		agreement = (TextView) findViewById(R.id.agreement);
 		agreement.setClickable(true);
 		agreement.setFocusable(true);
-		agreement.setText(Html.fromHtml("<u>帮帮忙用户使用协议</u>"));
+		agreement.setText(Html.fromHtml("<u>襄助用户使用协议</u>"));
 		//agreement.getPaint().setFlags(Paint. UNDERLINE_TEXT_FLAG ); //下划线
 		//agreement.getPaint().setAntiAlias(true);//抗锯齿
 		agreement.setOnClickListener(new OnClickListener() {

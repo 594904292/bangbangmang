@@ -39,6 +39,12 @@
                 <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/button_green"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingTop="5dp"
+
                     android:id="@+id/close_btn"
                     android:src="@mipmap/bdspeech_close_v2"
                     android:layout_gravity="right"

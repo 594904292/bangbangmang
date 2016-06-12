@@ -8,6 +8,10 @@ android {
         applicationId "com.bbxiaoqu"
         minSdkVersion 14
         targetSdkVersion 19
+        ndk {
+            // 设置支持的SO库架构
+            abiFilters 'armeabi' //, 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+        }
     }
 
     buildTypes {
@@ -22,6 +26,8 @@ dependencies {
     compile project(':slidingmenu_library')
     compile 'com.google.code.gson:gson:2.2.4'
     compile 'com.google.android.gms:play-services-appindexing:8.1.0'
+    compile 'com.tencent.bugly:crashreport:latest.release' //其中latest.release指代最新版本号，也可以指定明确的版本号，例如2.1.5
+    compile 'com.tencent.bugly:nativecrashreport:latest.release' //其中latest.release指代最新版本号，也可以指定明确的版本号，例如2.2.0
     compile files('libs/android-async-http-1.4.4.jar')
     compile files('libs/crittercism_v3_0_3_sdkonly.jar')
     compile files('libs/smack.jar')
@@ -36,4 +42,5 @@ dependencies {
     compile files('src/main/jniLibs/baidumapapi_util_v3_7_0.jar')
     compile files('src/main/jniLibs/locSDK_6.13.jar')
     compile files('src/main/jniLibs/VoiceRecognition.jar')
+
 }

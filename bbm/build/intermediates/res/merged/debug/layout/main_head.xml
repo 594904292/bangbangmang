@@ -23,7 +23,7 @@
             android:scaleType="fitXY" />
     </FrameLayout>
 
-    <TextView
+    <com.bbxiaoqu.ui.main.BadgeView
         android:id="@+id/headtop_left_count"
         style="@style/top_update_count"
         android:layout_width="wrap_content"
@@ -32,7 +32,7 @@
         android:layout_marginTop="5.0dip"
         android:layout_toRightOf="@id/top_head_container"
         android:background="@drawable/badge_titlebar"
-         android:visibility="gone" 
+         android:visibility="gone"
        />
 
     <ImageView

@@ -14,11 +14,14 @@
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"        
         android:scaleType="fitXY"
-        android:src="@mipmap/dynamic_info_left" />
+        android:adjustViewBounds="true"
+        android:src="@mipmap/dynamic_info_left"
+        android:background="@drawable/image_radius"
+        />
 
     <TextView
         android:id="@+id/username"
-        style="@style/TextView10"
+        style="@style/TextViewItem_gray"
         android:layout_toRightOf="@+id/tag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -51,27 +54,27 @@
       android:text="发表了一条求助信息" 
       android:textColor="#7f7f7f"
       android:textSize="12sp"/>
-  
-  
+
+
    <TextView
       android:id="@+id/messnum"
-   	  android:layout_marginTop="10dp"      
+   	  android:layout_marginTop="10dp"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_below="@id/username"   
-      android:layout_alignParentRight="true"   
-      android:text="" 
+      android:layout_below="@id/username"
+      android:layout_alignParentRight="true"
+      android:text=""
       android:textColor="#7f7f7f"
       android:textSize="12sp"
+       android:background="@drawable/text_view_border"
       style="@style/left_drawer_count"
-      android:background="@drawable/left_drawer_count_bg"/>
-  
-      
+      />
+
 
 
   <TextView
       android:id="@+id/lastchattimer"
-      style="@style/TextView10"
+      style="@style/TextViewItem_gray"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_alignParentRight="true"   
