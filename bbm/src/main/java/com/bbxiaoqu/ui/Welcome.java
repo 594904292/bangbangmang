@@ -1,20 +1,10 @@
 package com.bbxiaoqu.ui;
 
-import org.jivesoftware.smack.AccountManager;
-import org.jivesoftware.smack.Chat;
-import org.jivesoftware.smack.ChatManager;
-import org.jivesoftware.smack.ChatManagerListener;
-import org.jivesoftware.smack.ConnectionConfiguration;
-import org.jivesoftware.smack.MessageListener;
-import org.jivesoftware.smack.XMPPConnection;
-import org.jivesoftware.smack.XMPPException;
-import org.jivesoftware.smack.packet.Message;
+
 
 import com.bbxiaoqu.DemoApplication;
 import com.bbxiaoqu.R;
-import com.bbxiaoqu.R.layout;
 import com.bbxiaoqu.comm.service.db.UserService;
-import com.bbxiaoqu.ui.fragment.HomeActivity;
 import com.bbxiaoqu.ui.main.MainActivity;
 
 import android.app.Activity;
@@ -98,26 +88,26 @@ public class Welcome extends Activity {
 	 * 
 	 * @return
 	 */
-	public boolean conServer() {
+	/*public boolean conServer() {
 		XMPPConnection connection;
 		ConnectionConfiguration config = new ConnectionConfiguration("101.200.194.1", 5222);	//新建连接配置对象，设置服务器IP和监听端口
-		/** 是否启用安全验证 */
+		*//** 是否启用安全验证 *//*
 		config.setSASLAuthenticationEnabled(false);
-		/** 是否启用调试 */
+		*//** 是否启用调试 *//*
 		// config.setDebuggerEnabled(true);
-		/** 创建connection链接 */
+		*//** 创建connection链接 *//*
 		try {
 			connection = new XMPPConnection(config);
-			/** 建立连接 */
+			*//** 建立连接 *//*
 			connection.connect();
 			
 			connection.login("admin", "admin");
 			ChatManager cm = connection.getChatManager(); 	//取得聊天管理器
 			Chat chat = cm.createChat("369@iz25u7vq72az", null);	//得到与另一个帐号的连接，这里是一对一,@后面是你安装openfire时注册的域
 			
-			/*
+			*//*
 			 * 添加监听器
-			 */
+			 *//*
 			cm.addChatListener(new ChatManagerListener() {				
 				@Override
 				public void chatCreated(Chat chat, boolean create) {
@@ -144,7 +134,7 @@ public class Welcome extends Activity {
 			e.printStackTrace();
 		}
 		return false;
-	}
+	}*/
 	/*private void test() {
 		AccountManager accountManager;
 		final ConnectionConfiguration connectionConfig =  new ConnectionConfiguration("101.200.194.1", 9090);

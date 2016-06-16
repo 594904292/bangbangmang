@@ -21,7 +21,7 @@ public class FileUtil {
 
 	/** 
 	* 方法描述：createFile方法
-	* @param   String app_name
+	* @param   app_name
 	* @return 
 	* @see FileUtil
 	*/

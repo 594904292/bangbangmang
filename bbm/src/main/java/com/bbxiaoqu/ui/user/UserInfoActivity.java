@@ -491,14 +491,14 @@ public class UserInfoActivity extends BaseActivity implements OnClickListener {
 				HttpResponse httpResponse = HttpClient1.execute(httprequest);
 				if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
 					String json = EntityUtils.toString(httpResponse.getEntity());
-					if(json.equals("1"))
+					if(json.equals("0"))
+					{
+						new Thread(saveuserinfo).start();
+					}else
 					{//已存在,不让提交
 						Message msg = new Message();
 						msg.what=2;
 						publishhandler.sendMessage(msg);
-					}else
-					{
-						new Thread(saveuserinfo).start();
 					}
 				}
 			} catch (ClientProtocolException e) {

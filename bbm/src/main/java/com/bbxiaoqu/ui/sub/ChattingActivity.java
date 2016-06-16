@@ -22,9 +22,6 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
-import org.jivesoftware.smack.Chat;
-import org.jivesoftware.smack.ChatManager;
-import org.jivesoftware.smack.ChatManagerListener;
 import org.jivesoftware.smack.ConnectionConfiguration;
 import org.jivesoftware.smack.MessageListener;
 import org.jivesoftware.smack.XMPPConnection;
@@ -147,7 +144,11 @@ public class ChattingActivity extends Activity implements onNewMessageListener
 			T.showShort(myapplication, "获取不到自己的用户参数！");
 			return;
 		}
-
+		if (!NetworkUtils.isNetConnected(myapplication)) {
+			NetworkUtils.showNoNetWorkDlg(ChattingActivity.this);
+			T.showShort(myapplication, "当前无网络连接,请稍后再试！");
+			return;
+		}
 		db.updateuserheadface(myself, myapplication.getheadface());
 		Map mymap=new HashMap();
 		mymap.put("headface", myapplication.getheadface());
@@ -159,7 +160,8 @@ public class ChattingActivity extends Activity implements onNewMessageListener
 		}else
 		{
 			
-		}		
+		}
+
 		new Thread(loaduserinfo).start();
 		new Thread(ajaxloadinfo).start();
 
@@ -463,13 +465,32 @@ public class ChattingActivity extends Activity implements onNewMessageListener
 				chatMessage.setSenduserId(c.getString(2));
 				if(c.getString(2).equals(myself))
 				{
-					
-					chatMessage.setSendnickname(UserMap.get(myself).get("username").toString());
-					chatMessage.setSenduserIcon(UserMap.get(myself).get("headface").toString());					
+					String myselfname="-";
+					if(UserMap.get(myself).get("username")!=null)
+					{
+						myselfname=UserMap.get(myself).get("username").toString();
+					}
+					String myselfheadface="";
+					if(UserMap.get(myself).get("headface")!=null)
+					{
+						myselfheadface=UserMap.get(myself).get("headface").toString();
+					}
+					chatMessage.setSendnickname(myselfname);
+					chatMessage.setSenduserIcon(myselfheadface);
 				}else
 				{
-					chatMessage.setSendnickname(UserMap.get(from).get("username").toString());
-					chatMessage.setSenduserIcon(UserMap.get(from).get("headface").toString());
+					String fromname="-";
+					if(UserMap.get(from).get("username")!=null)
+					{
+						fromname=UserMap.get(from).get("username").toString();
+					}
+					String fromheadface="";
+					if(UserMap.get(myself).get("headface")!=null)
+					{
+						fromheadface=UserMap.get(from).get("headface").toString();
+					}
+					chatMessage.setSendnickname(fromname);
+					chatMessage.setSenduserIcon(fromheadface);
 				}			
 				chatMessage.setMessage(c.getString(4));
 				chatMessage.setReaded(true);

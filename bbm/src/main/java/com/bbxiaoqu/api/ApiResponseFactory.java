@@ -232,10 +232,14 @@ public class ApiResponseFactory {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		HashMap<String, String> result = new HashMap<String, String>();     
-		String JsonContext = new String(data);
-		result.put("guidinfo", JsonContext);
-              
+		HashMap<String, String> result = new HashMap<String, String>();
+		if(data!=null&&data.length>0) {
+			String JsonContext = new String(data);
+			result.put("guidinfo", JsonContext);
+		}else
+		{
+			result.put("guidinfo", "");
+		}
         return result;
     }
     

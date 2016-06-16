@@ -54,26 +54,32 @@ public class UpdateService extends Service {
 
 	/** 
 	* 方法描述：onStartCommand方法
-	* @param   Intent intent, int flags, int startId
+	* @param   intent,  flags,  startId
 	* @return    int
 	* @see     UpdateService
 	*/
 	@Override
-	public int onStartCommand(Intent intent, int flags, int startId) 
-	{		
-		app_name = intent.getStringExtra("Key_App_Name");
-		down_url = intent.getStringExtra("Key_Down_Url");		
-		// create file,应该在这个地方加一个返回值的判断SD卡是否准备好，文件是否创建成功，等等！
-		FileUtil.createFile(app_name);
-		
-		if(FileUtil.isCreateFileSucess == true){			
-			createNotification();
-			createThread();
-		}else{
-			Toast.makeText(this, R.string.insert_card, Toast.LENGTH_SHORT).show();
-			/***************stop service************/
-			stopSelf();		
-		}		
+	public int onStartCommand(Intent intent, int flags, int startId)
+	{
+		if(intent.hasExtra("Key_App_Name")&&intent.hasExtra("Key_Down_Url")) {
+			app_name = intent.getStringExtra("Key_App_Name");
+			down_url = intent.getStringExtra("Key_Down_Url");
+			// create file,应该在这个地方加一个返回值的判断SD卡是否准备好，文件是否创建成功，等等！
+			FileUtil.createFile(app_name);
+
+			if (FileUtil.isCreateFileSucess == true) {
+				createNotification();
+				createThread();
+			} else {
+				Toast.makeText(this, R.string.insert_card, Toast.LENGTH_SHORT).show();
+				/***************stop service************/
+				stopSelf();
+			}
+		}else
+		{
+			Toast.makeText(this, "请手工卸载重新安装", Toast.LENGTH_SHORT).show();
+			stopSelf();
+		}
 		return super.onStartCommand(intent, flags, startId);
 	}
 

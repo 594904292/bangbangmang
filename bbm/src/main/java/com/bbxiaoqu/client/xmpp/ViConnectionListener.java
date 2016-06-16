@@ -4,6 +4,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import org.jivesoftware.smack.ConnectionListener;
+import org.jivesoftware.smack.XMPPConnection;
 
 import android.content.Context;
 import android.os.Build;
@@ -22,7 +23,17 @@ public class ViConnectionListener implements ConnectionListener {
     ViConnectionListener(Context context) {
         mContext = context;
     }
-    
+
+	@Override
+	public void connected(XMPPConnection connection) {
+
+	}
+
+	@Override
+	public void authenticated(XMPPConnection connection, boolean resumed) {
+
+	}
+
 	@Override
 	public void connectionClosed() {
 		System.out.println("connectionClosed--->");
@@ -84,6 +95,7 @@ public class ViConnectionListener implements ConnectionListener {
 		@Override
 		public void run() {			
 			XmppTool.getInstance(mContext).getConnection();
+			XmppTool.getInstance(mContext).login();
 		}
 	}
 }

@@ -164,7 +164,9 @@ public class ViewListActivity extends BaseActivity implements OnItemClickListene
 		
 		myapplication = (DemoApplication) this.getApplication();
 		Bundle Bundle1 = this.getIntent().getExtras();
-		getdatamethon = Bundle1.getString("put");	
+		if(Bundle1.containsKey("put")) {
+			getdatamethon = Bundle1.getString("put");
+		}
 		guid = Bundle1.getString("guid");
 		infocatagroy = Bundle1.getString("infocatagroy");
 		

@@ -11,8 +11,6 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import org.jivesoftware.smack.util.Base64.InputStream;
-
 import com.bbxiaoqu.ImageOptions;
 import com.bbxiaoqu.R;
 import com.bbxiaoqu.ui.sub.SettingsActivity;

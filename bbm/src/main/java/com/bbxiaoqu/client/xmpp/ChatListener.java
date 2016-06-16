@@ -16,10 +16,12 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.message.BasicNameValuePair;
-import org.jivesoftware.smack.Chat;
-import org.jivesoftware.smack.ChatManagerListener;
+
 import org.jivesoftware.smack.MessageListener;
 import org.jivesoftware.smack.XMPPException;
+import org.jivesoftware.smack.chat.Chat;
+import org.jivesoftware.smack.chat.ChatManagerListener;
+import org.jivesoftware.smack.chat.ChatMessageListener;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -45,7 +47,7 @@ import com.bbxiaoqu.comm.tool.StreamTool;
 import com.bbxiaoqu.ui.LoginActivity;
 import com.bbxiaoqu.ui.main.MainActivity;
 
-public class ChatListener implements ChatManagerListener{
+public class ChatListener implements ChatManagerListener {
 	private Context mContext;
 	public ChatListener(Context context)
 	{
@@ -64,79 +66,72 @@ public class ChatListener implements ChatManagerListener{
 	
 	@Override
 	public void chatCreated(Chat chat, boolean create) {
-		chat.addMessageListener(new MessageListener() {
+		System.out.println(chat.toString());
+		System.out.println(chat.toString());
+		chat.addMessageListener(new ChatMessageListener() {
 			@Override
-			public void processMessage(Chat chat,
-					org.jivesoftware.smack.packet.Message msg) {
-				// TODO Auto-generated method stub
-				System.out.println(chat.getParticipant() + ":" + msg.getBody());
-				/*
-				try {
-					chat.sendMessage("你刚才说的是："+msg.getBody());		//发送消息
-				} catch (XMPPException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}*/
-				
-				String from=msg.getFrom().toString().split("@")[0];
-				String to=msg.getTo().toString().split("@")[0];				
+			public void processMessage(Chat chat, org.jivesoftware.smack.packet.Message message) {
+
+				String from=message.getFrom().toString().split("@")[0];
+				String to=message.getTo().toString().split("@")[0];
 				if(from.equals(DemoApplication.getInstance().getUserId()))
 				{//不处理自己的消息
 					return;
 				}else if(from.equals("admin"))
 				{//广播消息
-					
-					
+
+
 				}else {
 					ChatMessage mess=new ChatMessage();
 					mess.setSenduserId(from);
 					mess.setTouserId(to);
-					mess.setGuid(msg.getPacketID());
-					mess.setMessage(msg.getBody());
-			        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");		       
+					mess.setGuid(message.getPacketID());
+					mess.setMessage(message.getBody());
+					SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 					mess.setDate(new Date());
-					
-					mess.setDateStr(df.format(new Date()));			        						 
-					NoticeDB noticedb=new NoticeDB(mContext);	
+
+					mess.setDateStr(df.format(new Date()));
+					NoticeDB noticedb=new NoticeDB(mContext);
 					ChatDB chatdb=new ChatDB(mContext);
 					//if(!chatdb.isexit(mess.getGuid()))
-				    //{
-				        	chatdb.add(mess);		        			        
-				    //}
+					//{
+					chatdb.add(mess);
+					//}
 					//if(!noticedb.isexit(mess.getGuid()))
-				    //{
-						//查询chat表,form用户未读数据
-						if(noticedb.unreadnum(from,"私信")==0)
-						{//不存在这人的私信
-							noticedb.add(df.format(new Date()), "私信", from, from+"发送了一条私信","0");
-						}else
-						{//已经有一条通知了
-							long num=chatdb.unreadnum(from,to);						
-							noticedb.updateusercontent(from, from+"发送了"+num+"条私信");
-						}
-				    //}
-				    FriendDB fb=new FriendDB(mContext);
-				    //fb.removall();
-				    if(!fb.isexit(from))
-				    {//添加朋友联系人
-				    	
-				    	
-				    	fb.add(from, "", "",from, "", msg.getBody(), df.format(new Date()), 0);
-				    	GetUserThread thread = new GetUserThread(mContext,from);
-				        thread.start();       
-				    }else
-				    {//更新最后联系人
-				    	
-				    }
-				    //直接查数据库中信息
-				    fb.newmess(from, from,msg.getBody(), df.format(new Date()));
-			        for (int i = 0; i < BbPushMessageReceiver.msgListeners.size(); i++)
-			        	BbPushMessageReceiver.msgListeners.get(i).onNewMessage(new BbMessage());
+					//{
+					//查询chat表,form用户未读数据
+					if(noticedb.unreadnum(from,"私信")==0)
+					{//不存在这人的私信
+						noticedb.add(df.format(new Date()), "私信", from, from+"发送了一条私信","0");
+					}else
+					{//已经有一条通知了
+						long num=chatdb.unreadnum(from,to);
+						noticedb.updateusercontent(from, from+"发送了"+num+"条私信");
+					}
+					//}
+					FriendDB fb=new FriendDB(mContext);
+					//fb.removall();
+					if(!fb.isexit(from))
+					{//添加朋友联系人
+
+
+						fb.add(from, "", "",from, "", message.getBody(), df.format(new Date()), 0);
+						GetUserThread thread = new GetUserThread(mContext,from);
+						thread.start();
+					}else
+					{//更新最后联系人
+
+					}
+					//直接查数据库中信息
+					fb.newmess(from, from,message.getBody(), df.format(new Date()));
+					for (int i = 0; i < BbPushMessageReceiver.msgListeners.size(); i++)
+						BbPushMessageReceiver.msgListeners.get(i).onNewMessage(new BbMessage());
 
 
 
 				}
 			}
+
 
 			
 		});

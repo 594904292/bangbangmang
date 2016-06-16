@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.bbxiaoqu"
-    android:versionCode="20"
-    android:versionName="1.20160603" >
+    android:versionCode="23"
+    android:versionName="1.20160617" >
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="22" />
@@ -37,33 +37,26 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_LOGS" />
-
     <supports-screens
         android:anyDensity="true"
         android:largeScreens="true"
         android:normalScreens="false"
         android:resizeable="true"
         android:smallScreens="true" />
-
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <application android:name="com.bbxiaoqu.DemoApplication"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
-
          <activity
             android:name="com.bbxiaoqu.ui.fragment.SendCrashActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar"
             android:windowSoftInputMode="adjustPan" >
-
         </activity>
          <activity
             android:name="com.bbxiaoqu.ui.Welcome"
@@ -82,7 +75,6 @@
             android:screenOrientation="portrait"               
             android:label="@string/login" >
         </activity>
-
          <activity
              android:name="com.bbxiaoqu.ui.SearchPassActivity"
              android:windowSoftInputMode="stateVisible|adjustResize"
@@ -90,7 +82,6 @@
              android:screenOrientation="portrait"
              android:label="找回密码" >
          </activity>
-
          <activity
              android:name="com.bbxiaoqu.ui.ResetPassActivity"
              android:windowSoftInputMode="stateVisible|adjustResize"
@@ -169,10 +160,7 @@
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name" >
         </activity>
-       
-        
-        
-          <activity
+        <activity
             android:name=".ui.user.UserInfoActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name" >
@@ -197,14 +185,11 @@
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name" >
         </activity>
-        
-      
-          <activity
+        <activity
             android:name="com.bbxiaoqu.ui.community.SelCommunityActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name" >
         </activity>
-
          <activity
             android:name="com.bbxiaoqu.ui.community.CommunityGzListActivity"
             android:configChanges="orientation|keyboardHidden"
@@ -215,7 +200,7 @@
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name" >
         </activity>
-                 <activity
+        <activity
             android:name="com.bbxiaoqu.ui.sub.ViewUserInfoActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name" >
@@ -250,14 +235,11 @@
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name" >
         </activity>
-        
         <activity
             android:name="com.bbxiaoqu.ui.sub.PayAddActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name" >
         </activity>
-
-
         <activity
             android:name="com.bbxiaoqu.comm.gallery.BigImgActivity"
             android:label="@string/app_name"
@@ -279,7 +261,6 @@
             android:theme="@android:style/Theme.Black.NoTitleBar"
             android:windowSoftInputMode="adjustPan" >
         </activity>
-        
        <activity
             android:name="com.bbxiaoqu.ui.main.NearActivity"
             android:label="@string/app_name"
@@ -301,7 +282,6 @@
              android:theme="@style/myDialogTheme"          
             android:windowSoftInputMode="adjustPan" >
         </activity>
-
          <activity
              android:name="com.bbxiaoqu.ui.report.DayActivity"
              android:label="@string/app_name"
@@ -320,24 +300,19 @@
              android:screenOrientation="portrait"
              android:windowSoftInputMode="adjustPan" >
          </activity>
-
         <activity
             android:name="com.bbxiaoqu.ui.Setting"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" >
         </activity>
-
-
         <activity
             android:name="com.bbxiaoqu.ui.AgreementActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" >
         </activity>
-              <!--后台服务 -->
-	
-        
+        <!--后台服务 -->
 		<service android:name="com.bbxiaoqu.update.UpdateService" >
 		</service>
 		<service android:name="com.bbxiaoqu.client.xmpp.MessageService" >
@@ -347,7 +322,6 @@
                 <action android:name="com.bbxiaoqu.comm.service.ServiceDemo"/>  
             </intent-filter>              
 		</service>
-		 
      	 <receiver android:name="com.bbxiaoqu.client.xmpp.StartXmppReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>

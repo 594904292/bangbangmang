@@ -26,12 +26,12 @@ dependencies {
     compile project(':slidingmenu_library')
     compile 'com.google.code.gson:gson:2.2.4'
     compile 'com.google.android.gms:play-services-appindexing:8.1.0'
-    compile 'com.tencent.bugly:crashreport:latest.release' //其中latest.release指代最新版本号，也可以指定明确的版本号，例如2.1.5
-    compile 'com.tencent.bugly:nativecrashreport:latest.release' //其中latest.release指代最新版本号，也可以指定明确的版本号，例如2.2.0
+    compile 'com.tencent.bugly:crashreport:latest.release'
+    //其中latest.release指代最新版本号，也可以指定明确的版本号，例如2.1.5
+    compile 'com.tencent.bugly:nativecrashreport:latest.release'
+    //其中latest.release指代最新版本号，也可以指定明确的版本号，例如2.2.0
     compile files('libs/android-async-http-1.4.4.jar')
     compile files('libs/crittercism_v3_0_3_sdkonly.jar')
-    compile files('libs/smack.jar')
-    compile files('libs/smackx.jar')
     compile files('libs/universal-image-loader-1.9.4.jar')
     compile files('src/main/jniLibs/pushservice-4.6.2.39.jar')
     compile files('src/main/jniLibs/baidumapapi_base_v3_7_0.jar')
@@ -43,4 +43,16 @@ dependencies {
     compile files('src/main/jniLibs/locSDK_6.13.jar')
     compile files('src/main/jniLibs/VoiceRecognition.jar')
 
+
+    compile files('libs/commons-logging-1.2.jar')
+    compile files('libs/httpclient-4.5.2.jar')
+    compile files('libs/jxmpp-core-0.4.0.jar')
+    compile files('libs/jxmpp-util-cache-0.4.0-alpha1.jar')
+    compile files('libs/smack-android-4.1.7.jar')
+    compile files('libs/smack-compression-jzlib-4.1.7.jar')
+    compile files('libs/smack-core-4.1.7.jar')
+    compile files('libs/smack-extensions-4.1.7.jar')
+    compile files('libs/smack-im-4.1.7.jar')
+    compile files('libs/smack-sasl-provided-4.1.7.jar')
+    compile files('libs/smack-tcp-4.1.7.jar')
 }

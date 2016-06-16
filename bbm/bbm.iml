@@ -71,7 +71,7 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/8.1.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.1.0/jars" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.tencent.bugly/crashreport/2.1.5/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.tencent.bugly/crashreport/2.1.5.1/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.tencent.bugly/nativecrashreport/2.2.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/manifests" />
@@ -86,25 +86,34 @@
     </content>
     <orderEntry type="jdk" jdkName="Android API 19 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="android-async-http-1.4.4" level="project" />
     <orderEntry type="library" exported="" name="baidumapapi_util_v3_7_0" level="project" />
+    <orderEntry type="library" exported="" name="smack-im-4.1.7" level="project" />
     <orderEntry type="library" exported="" name="VoiceRecognition" level="project" />
     <orderEntry type="library" exported="" name="baidumapapi_search_v3_7_0" level="project" />
-    <orderEntry type="library" exported="" name="gson-2.2.4" level="project" />
-    <orderEntry type="library" exported="" name="play-services-appindexing-8.1.0" level="project" />
-    <orderEntry type="library" exported="" name="baidumapapi_map_v3_7_0" level="project" />
-    <orderEntry type="library" exported="" name="smackx" level="project" />
-    <orderEntry type="library" exported="" name="support-annotations-22.2.0" level="project" />
-    <orderEntry type="library" exported="" name="crittercism_v3_0_3_sdkonly" level="project" />
-    <orderEntry type="library" exported="" name="crashreport-2.1.5" level="project" />
-    <orderEntry type="library" exported="" name="locSDK_6.13" level="project" />
-    <orderEntry type="library" exported="" name="pushservice-4.6.2.39" level="project" />
+    <orderEntry type="library" exported="" name="commons-logging-1.2" level="project" />
+    <orderEntry type="library" exported="" name="smack-core-4.1.7" level="project" />
+    <orderEntry type="library" exported="" name="httpclient-4.5.2" level="project" />
+    <orderEntry type="library" exported="" name="smack-extensions-4.1.7" level="project" />
     <orderEntry type="library" exported="" name="nativecrashreport-2.2.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-basement-8.1.0" level="project" />
-    <orderEntry type="library" exported="" name="smack" level="project" />
-    <orderEntry type="library" exported="" name="support-v4-22.2.0" level="project" />
+    <orderEntry type="library" exported="" name="smack-compression-jzlib-4.1.7" level="project" />
+    <orderEntry type="library" exported="" name="crashreport-2.1.5.1" level="project" />
     <orderEntry type="library" exported="" name="universal-image-loader-1.9.4" level="project" />
+    <orderEntry type="library" exported="" name="smack-tcp-4.1.7" level="project" />
+    <orderEntry type="library" exported="" name="android-async-http-1.4.4" level="project" />
+    <orderEntry type="library" exported="" name="gson-2.2.4" level="project" />
+    <orderEntry type="library" exported="" name="baidumapapi_map_v3_7_0" level="project" />
+    <orderEntry type="library" exported="" name="play-services-appindexing-8.1.0" level="project" />
+    <orderEntry type="library" exported="" name="jxmpp-util-cache-0.4.0-alpha1" level="project" />
+    <orderEntry type="library" exported="" name="support-annotations-22.2.0" level="project" />
+    <orderEntry type="library" exported="" name="crittercism_v3_0_3_sdkonly" level="project" />
+    <orderEntry type="library" exported="" name="smack-android-4.1.7" level="project" />
+    <orderEntry type="library" exported="" name="locSDK_6.13" level="project" />
+    <orderEntry type="library" exported="" name="pushservice-4.6.2.39" level="project" />
+    <orderEntry type="library" exported="" name="support-v4-22.2.0" level="project" />
     <orderEntry type="library" exported="" name="baidumapapi_base_v3_7_0" level="project" />
+    <orderEntry type="library" exported="" name="smack-sasl-provided-4.1.7" level="project" />
+    <orderEntry type="library" exported="" name="jxmpp-core-0.4.0" level="project" />
     <orderEntry type="module" module-name="slidingmenu_library" exported="" />
   </component>
 </module>

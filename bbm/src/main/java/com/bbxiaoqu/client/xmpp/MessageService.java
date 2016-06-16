@@ -1,10 +1,10 @@
 package com.bbxiaoqu.client.xmpp;
 
-import org.jivesoftware.smack.ChatManager;
 import org.jivesoftware.smack.XMPPConnection;
 import org.jivesoftware.smack.XMPPException;
+import org.jivesoftware.smack.chat.ChatManager;
 import org.jivesoftware.smack.packet.Presence;
-import org.jivesoftware.smackx.OfflineMessageManager;
+import org.jivesoftware.smackx.offline.OfflineMessageManager;
 
 import com.bbxiaoqu.DemoApplication;
 import com.bbxiaoqu.R;

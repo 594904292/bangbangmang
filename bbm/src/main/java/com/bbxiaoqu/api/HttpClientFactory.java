@@ -51,7 +51,7 @@ public class HttpClientFactory {
     
     /**
      * Get the http client for MARKET module
-     * @param userAgent customize user agent
+     * @param customize user agent
      * @return android http client contains some default settings for android device
      */
     public AndroidHttpClient getHttpClient() {

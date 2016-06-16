@@ -16,9 +16,10 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
-import org.jivesoftware.smack.ChatManager;
+//import org.jivesoftware.smack.ChatManager;
 import org.jivesoftware.smack.XMPPConnection;
 import org.jivesoftware.smack.XMPPException;
+import org.jivesoftware.smack.tcp.XMPPTCPConnection;
 
 import android.app.Activity;
 import android.app.Application;
@@ -333,8 +334,7 @@ public class DemoApplication extends Application {
 
 		}
 	};
-	XMPPConnection connection=null;
-	ChatManager cm=null;
+
 	public void startxmpp() {
 		new Thread(xmppstartRun).start();
 		/*try {
@@ -376,7 +376,7 @@ public class DemoApplication extends Application {
 	Runnable xmppstartRun = new Runnable() {
 		@Override
 		public void run() {
-			connection=XmppTool.getInstance(mApplication).getConnection();
+			XMPPTCPConnection connection=XmppTool.getInstance(mApplication).getConnection();
 			XmppTool.getInstance(mApplication).login();
 
 		}
