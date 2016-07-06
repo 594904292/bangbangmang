@@ -26,12 +26,12 @@ public class ViConnectionListener implements ConnectionListener {
 
 	@Override
 	public void connected(XMPPConnection connection) {
-
+		Log.i("XmppConnection", "連接成功");
 	}
 
 	@Override
 	public void authenticated(XMPPConnection connection, boolean resumed) {
-
+		Log.i("XmppConnection", "验证成功");
 	}
 
 	@Override

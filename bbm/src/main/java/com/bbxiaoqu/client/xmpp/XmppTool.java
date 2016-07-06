@@ -10,6 +10,9 @@ import org.jivesoftware.smack.tcp.XMPPTCPConnectionConfiguration;
 import android.content.Context;
 import android.util.Log;
 import com.bbxiaoqu.DemoApplication;
+import com.bbxiaoqu.Session;
+import com.bbxiaoqu.comm.service.db.UserService;
+
 public class XmppTool {
 
 	
@@ -79,8 +82,10 @@ public class XmppTool {
 				} catch (XMPPException e) {
 					//e.printStackTrace();
 				}
+				UserService uService = new UserService(mContext);
+				Session mSession = Session.get(mContext);
 				try {
-					connection.login(DemoApplication.getInstance().getUserId(), DemoApplication.getInstance().getPassword(), "XMPPTCPConnection");
+					connection.login(mSession.getUid(), mSession.getPassword(), "XMPPTCPConnection");
 				} catch (XMPPException e) {
 					//e.printStackTrace();
 				} catch (SmackException e) {

@@ -12,6 +12,7 @@ import com.bbxiaoqu.adapter.BmUserAdapter.Callback;
 import com.bbxiaoqu.api.MarketAPI;
 import com.bbxiaoqu.api.ApiAsyncTask.ApiRequestListener;
 import com.bbxiaoqu.comm.gallery.BigImgActivity;
+import com.bbxiaoqu.comm.tool.ListViewUtil;
 import com.bbxiaoqu.view.HorizontalListView;
 import com.bbxiaoqu.adapter.HorizontalListViewAdapter;
 import com.bbxiaoqu.comm.jsonservices.GetJson;
@@ -29,6 +30,7 @@ import com.bbxiaoqu.ui.sub.BmUserActivity;
 import com.bbxiaoqu.ui.sub.ChattingActivity;
 import com.bbxiaoqu.ui.sub.ViewUserInfoActivity;
 import com.bbxiaoqu.view.BaseActivity;
+import com.bbxiaoqu.widget.MyListView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.io.IOException;
@@ -57,7 +59,6 @@ import org.json.JSONObject;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Color;
@@ -74,7 +75,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -109,7 +109,7 @@ public class ViewActivity extends BaseActivity implements OnItemClickListener,Ap
 	private TextView title_tv;
 	private TextView right_text_tv;
 	private TextView group_discuss_tip;
-	private ListView listView;
+	private MyListView mylistView;
 	private ImageView groupPopup;
 	private TitlePopup titlePopup;
 	private Button group_discuss_submit;
@@ -284,7 +284,7 @@ public class ViewActivity extends BaseActivity implements OnItemClickListener,Ap
 		sendtimetv = (TextView) findViewById(R.id.info_sendtime);
 		sendaddresstv = (TextView) findViewById(R.id.info_sendaddress);
 		
-		listView = (ListView) findViewById(R.id.view_group_discuss_list);
+		mylistView = (MyListView) findViewById(R.id.view_group_discuss_list);
 		group_discuss_tip = (TextView) findViewById(R.id.view_group_discuss_tip);// 暂无评论
 		rl_bottom = (RelativeLayout) findViewById(R.id.view_rl_bottom);// 评论布局
 		//myGallery = (DetailGallery) findViewById(R.id.detail_shotcut_gallery);
@@ -501,14 +501,14 @@ public class ViewActivity extends BaseActivity implements OnItemClickListener,Ap
 	private void showhiddendiscuss() {
 		if (discussList.size() == 0) {
 			group_discuss_tip.setVisibility(View.VISIBLE);
-			listView.setVisibility(View.GONE);
+			mylistView.setVisibility(View.GONE);
 		} else {
 			group_discuss_tip.setVisibility(View.GONE);
-			listView.setVisibility(View.VISIBLE);
+			mylistView.setVisibility(View.VISIBLE);
 			ListLazyAdapter adapter = new ListLazyAdapter(this, discussList,
 					this, senduserid, this.issolution, this.solutionid);
-			listView.setAdapter(adapter);
-			new Utility().setListViewHeightBasedOnChildren(listView);
+			mylistView.setAdapter(adapter);
+			ListViewUtil.setListViewHeightBasedOnChildren(mylistView);
 		}
 	}
 
